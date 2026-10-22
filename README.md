@@ -2,7 +2,7 @@
 
 A standalone browser-based simulator for experimental pilot skill builds in FRAME DOCTRINE: LAST RESORT.
 
-**Status:** Research prototype v0.4. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
+**Status:** Research prototype v0.5. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
 
 ## Features
 
@@ -61,3 +61,23 @@ This app currently simulates **training-point allocation only**, not on-map kill
 - In interactions between guaranteed hit and guaranteed dodge, the governing priority is **undecided**. Direct Fire vs Missile vs Area/multi-hit and interactions with critical penetration need explicit rules. Do not infer priorities from the labels alone.
 
 The skill-list page models **purchase allocation**, not true combat resolution or activation charges. These new entries are deliberately labeled exploratory.
+
+## 2026-10-23 — effective Ability rework of the original 19 skills
+
+The Skill Lab now shows the research redesign on all 19 original candidates, retaining all 6 later rough ideas (25 total) and stable IDs for saved builds. **No Core changes are authorized.** Existing Option mechanics remain untouched.
+
+**Research principle:** When a Skill grants conditional Ability +N or −N, use that *effective* Ability consistently in **all otherwise eligible formulas** that use SHOOTING, MELEE, SENSOR, or REFLEX, instead of one-off Hit/Evasion percentage exceptions. Conditional skills do not mutate the underlying base value. Base and effective Ability caps are removed *in the research design*; probability outputs still use ordinary 0–100% rules.
+
+New compare-only Lv1/2/3 values:
+
+- Frame Proficiency L/S/H: SHOOTING and MELEE +1/+2/+3 (not REFLEX).
+- Early Starter, Solo Operator: SHOOTING and REFLEX +1/+2/+3.
+- Precision Shooting, Mobile Evasion, Momentum Melee: relevant SHOOTING/REFLEX/MELEE +2/+4/+6 respectively, with existing stationary or 3-Hex movement trigger.
+- Ordinary INTERCEPT specialist: SHOOTING +2/+4/+6 only during qualifying ordinary INTERCEPT.
+- Burst Focus: selected Ability +2/+4/+6 (activation economics unresolved).
+- Night/Adverse Weather, Stationary Observation, Active Scan Interpretation: SENSOR +4/+8/+12 under their respective conditions (strong provisional values; Active Scan Skill remains unapproved).
+- Suppressive Fire: target effective REFLEX −1/−2/−3 for rest of firing Faction Phase; full applicable REFLEX semantics, not a special +Hit% buff.
+- Guardian Reaction: REFLEX +1/+2/+3 when protecting an ally (Skill migration on hold).
+- Stationary penetration, Lance charge penetration, BRACE Armor, CONCEAL Signature: remain special-effect skills; not all effects should be expressed as Ability gains.
+
+The app is only a **point-allocation simulator**. Conditional skills are not automatically added to the base-Ability numbers in the pilot panel, because no battlefield conditions have been simulated; see each skill's trigger and effect instead. All new numeric proposals are marked provisional.
