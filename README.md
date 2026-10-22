@@ -2,11 +2,11 @@
 
 A standalone browser-based simulator for experimental pilot skill builds in FRAME DOCTRINE: LAST RESORT.
 
-**Status:** Research prototype v0.3. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
+**Status:** Research prototype v0.4. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
 
 ## Features
 
-- 23 experimental pilot skills (original research ideas and Option-inspired candidates)
+- 25 experimental pilot skills (original research ideas and Option-inspired candidates)
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
@@ -46,3 +46,18 @@ Besides ordinary Ability-boosting Skills, investigate Skills whose *magnitude or
 When a Skill says it grants an effective Ability bonus (SHOOTING, MELEE, SENSOR or REFLEX), the intended *research direction* is to use the resulting effective Ability in all relevant calculations, rather than granting narrow +Hit% / +Evasion% substitutions. This still requires explicit combat-design review before any change to the private Core.
 
 This app currently simulates **training-point allocation only**, not on-map kill events, HP reductions, Action outcomes, or chance rolls.
+
+## Ability cap removal and limited guaranteed outcomes (2026-10-23)
+
+**New accepted research direction (not yet canonical Core):**
+- Remove the numeric ceiling on both *base* and *effective* Pilot Abilities (SHOOTING, MELEE, SENSOR, REFLEX). A player may continue investing Training Points into a base Ability past 20, subject to their finite Training Point budget.
+- Conditional Skill boosts stack into the effective Ability and use that full value consistently in all relevant Ability-dependent calculations.
+- Extreme accuracy and evasion are allowed to become correspondingly strong. Probability quantities, however, are still bounded by 0–100%; removing an Ability ceiling is **not** removing probability bounds.
+- Balance through finite growth points, real activation conditions, opportunity costs and build tradeoffs, not a universal ability ceiling. Do not silently migrate this rule into the private game Core or master specs.
+
+**New speculative Skills (not approved effects):**
+- **必中の一撃 / Decisive Shot:** a limited number of eligible attacks per Mission become guaranteed hits; draft ranks allow 1/2/3 uses. Prefer an understandable passive/conditional trigger over another active command. What counts as an eligible attack, how a use is spent and whether a 100% base hit consumes it remain unresolved.
+- **完全回避 / Certain Evasion:** evade exactly one qualifying incoming attack after a preparation cost. Working non-active version is to use existing WAIT as its trigger, with 1/2/3 prepared guaranteed evades per Mission by rank. This is a proposal, not approval of specific timing or effect.
+- In interactions between guaranteed hit and guaranteed dodge, the governing priority is **undecided**. Direct Fire vs Missile vs Area/multi-hit and interactions with critical penetration need explicit rules. Do not infer priorities from the labels alone.
+
+The skill-list page models **purchase allocation**, not true combat resolution or activation charges. These new entries are deliberately labeled exploratory.
