@@ -2,11 +2,11 @@
 
 A standalone browser-based simulator for experimental pilot skill builds in FRAME DOCTRINE: LAST RESORT.
 
-**Status:** Research prototype v0.6. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
+**Status:** Research prototype v0.7. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
 
 ## Features
 
-- 28 experimental pilot skills (original research ideas and Option-inspired candidates)
+- 30 experimental pilot skills (original research ideas and Option-inspired candidates)
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
@@ -82,3 +82,6 @@ New compare-only Lv1/2/3 values:
 
 The app is only a **point-allocation simulator**. Conditional skills are not automatically added to the base-Ability numbers in the pilot panel, because no battlefield conditions have been simulated; see each skill's trigger and effect instead. All new numeric proposals are marked provisional.
 \n## Passive-first Skill design (2026-10-23)\n\n[SKILL_DESIGN_NOTES.md](SKILL_DESIGN_NOTES.md) has the current cost catalogue and new Skill concepts: REFLEX-based second-chance dodge, SHOOTING-based movement-disabling hit, and additional-ammo multi-attempt FIRE. The design direction favors passive Skills and existing tactical resources, with active Skills as exceptions only. All three are exploratory.\n
+## 2026-10-23 — Range and movement-triggered skill drafts
+
+Two further exploratory candidates were added (30 total): a condition-based “Lucky Star” slot (example: firing from 7 Hexes, effect TBD) and a REFLEX-dependent movement firing penalty mitigation skill. Refer to [SKILL_DESIGN_NOTES.md](SKILL_DESIGN_NOTES.md) for candidate formulas and Core distinctions. Their conditions and numbers are not approved final mechanics.
