@@ -101,3 +101,23 @@
 - 発動中の実効AWARENESS上昇は通常のDetection Powerへ反映する。REFLEXは通常回避とその他適格な判定に反映。機体固定制約・追加Action/Reaction・専用リソースなし。
 - **既存スキルID `early-starter` 維持**で保存済みビルドを保護。4種類の確定スキルは「機体習熟Light/Standard/Heavy」と「初動警戒」。機体習熟はSHOOTING＋MELEEの現在の仕様を変更しない。6種の能力ペアを機体習熟へ拡張しない。
 - 過去の旧名称・旧効果のメモは設計過程の履歴であり、この項目を現行の確定判断とする。これは公開Skill Labのみ。非公開本編Coreや公式仕様は未変更。
+
+## 2026-10-23 — Skill Lab v0.12 統合リリース（最新版）
+
+現在32件：**確定6件、検討中26件**。過去の各研究段階メモと競合する場合、この節を最新のSkill Lab判断として扱う。
+
+### 仕様確定
+
+- **機体戦闘習熟 Light / Standard / Heavy：** 表示名の変更のみ。機体区分と一致した場合に実効SHOOTING・MELEEが各Lv1:+1、Lv2:+2、Lv3:+3。索敵・防御・移動力は上がらない。既存ID `frame-light` 等を維持。
+- **初動警戒 / Opening Vigilance：** 変更なし。基礎AWARENESS÷2（floor、最低1Turn）だけ全体Turn1から実効AWARENESS＋REFLEX各Lv上昇。ID `early-starter`。
+- **戦況適応 / Tactical Adaptation：** 新規確定。全体Turn `max(3, 20 - 出撃時の基礎AWARENESS)` からMission終了まで、実効SHOOTING・MELEEがLv1:+1、Lv2:+2、Lv3:+3。途中の一時AWARENESS変動では発動Turnを再計算しない。
+- **臨戦集中 / Combat Focus：** 旧「集中バースト」ID `burst-focus` を確定改訂。WAITで取得した通常Reactionを介在する敵/第三Faction Phaseで消費しなかった場合、次自Faction Phase開始時のReaction通常失効により、自動で次の自Activation終了まで実効SHOOTING・MELEEがLv1:+2、Lv2:+4、Lv3:+6。追加コマンドなし、累積なし。
+
+### 新規・再設計された未確定候補
+
+- **臨戦警戒 / Combat Vigilance（`certain-evasion`）**：WAITによるReaction AVAILABLEの間は、受ける適格な攻撃の最終命中率を下げる回避補正を付与。完全回避ではない、回避でReactionを自動消費しない。比較数値：Lv1＝floor(基礎AWARENESS/3)pt、Lv2＝floor(基礎AWARENESS×2/3)pt、Lv3＝基礎AWARENESS pt。攻撃種・実効Abilityとの関係、臨戦集中との二重取得時の相乗効果は未決。Lv補正値は正式決定でない。
+- **Charlene / 愛用武器（`charlene-favorite-weapon`）**：選んだ1武器Definitionによる攻撃のAbilityのみ強化。比較数値：攻撃に使用する実効SHOOTINGまたはMELEE Lv1:+2、Lv2:+4、Lv3:+6。ほかの武器には適用せず、武器の選択方法・変更可否・数値は未確定。映画の愛銃にちなむ仮名。
+
+### リリース範囲・保存互換
+
+Skill Labは育成ポイントとスキル取得のシミュレーターであり、戦闘行動・武器指定・Reaction/Turn・確率計算は実行しない。表示カードの条件と効果は設計表示のみ。内部の旧スキルIDを保つことで既存JSON/ブラウザ保存ビルドを保護する。非公開本編Coreおよびマスター仕様書は更新していない。
