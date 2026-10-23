@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.17（2026-10-23）：** 現役31件（確定8、検討中23）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
+**現行版 v0.18（2026-10-23）：** 現役31件（確定8、検討中23）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -187,3 +187,12 @@ Skill Labは育成ポイントとスキル取得のシミュレーターであ�
 - **Got Your Six**（旧護衛反応、ID `guardian-reaction`）：別の味方Friendly Unitを守るCOVERまたは味方へ向かうミサイルのMissile Interceptに限り、実効REFLEX+3/+6/+9。COVERは隣接1Hexの味方に対する単体Direct FIRE／単体MELEE／単体誘導Missileの攻撃全体をReaction消費で自機が引き受ける。通常のCOVER命中係数3で敵HitRaw−9/−18/−27、味方へのミサイル迎撃は係数2で迎撃HitRaw+6/+12/+18。自身へのCOVERや自己Missile Interceptは対象外。範囲・Hex・方向指定、Reaction由来攻撃はCOVERできない。
 - 元の物理Option Defensive Response Suiteは本編Coreに残存。技能研究確定はOption削除や重複バフの自動許可ではない。統合方法は将来の仕様決定事項。
 - 現行31スキル、確定8、研究中23、Quick Studyアーカイブ1。Skill ID、育成ポイント、ローカル保存/JSON互換、他のスキル効果は変更なし。private Coreには触れていない。
+
+## 2026-10-23 — v0.18 Stay Frostyを実効REFLEX上昇へ改訂
+
+- **Stay Frosty（ID `certain-evasion`）**：旧版v0.16／v0.17の「敵HitRaw −floor(INSIGHT×50%/75%/100%)」は**撤回・置換**。Reactionを保持している間に**実効REFLEXを加算する**。Lv1 `+ceil(出撃時の基礎INSIGHT/6)`、Lv2 `+ceil(出撃時の基礎INSIGHT/4)`、Lv3 `+ceil(出撃時の基礎INSIGHT/3)`。
+- 例：基礎INSIGHT10→REFLEX +2/+3/+4、15→+3/+4/+5、18→+3/+5/+6、20→+4/+5/+7。Skill LabのLv欄は具体値を表示し、サンプルのINSIGHT育成で再計算。計算式は折りたたみ詳細欄に記載。
+- **「被攻撃時のみ」の独自制約は設けない**。通常の実効REFLEXを参照する適格判定に適用し、通常単体FIRE／MELEEでREFLEX+1ごとに敵HitRaw−3、Missile InterceptでREFLEX+1ごとに命中値+2、誘導ミサイルの着弾防御でも対応するREFLEXを参照する。命中値→命中率クランプ→100%超過分のCritical Penetrationという共通順序は変えず、専用の直接命中値補正は廃止。
+- 通常Reactionを使用して開始したCOVER／INTERCEPT／Missile Interceptは**行動開始時にReactionがAVAILABLEだった事実でStay Frostyの適格性を決め、その行動の解決まではREFLEX上昇を適用**。行動後は通常のReaction消費により効果終了。この順序で実装時の消費タイミングによる消滅を避ける。
+- 基礎INSIGHTは出撃時の永続成長込み・一時バフなしの固定値。First Watch自身の一時INSIGHT増加ではStay Frostyの加算量を増やさない。未使用ReactionならSteady Nervesと別途組み合わせ可能。
+- この改訂によって確定件数は変化しない：31現役・8確定・23候補、Quick Studyはアーカイブ1。元のOption DRSは本編Coreに残存し、併用／廃止は未決。Skill ID・保存JSONの互換も維持。本編Core未変更。
