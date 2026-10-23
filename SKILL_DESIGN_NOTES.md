@@ -74,9 +74,20 @@
 
 これはSkill Labにおける正式な設計判断で、旧い+2/+3/+5%命中・回避効果案や後続の仮数値案に優先する。本編Core・マスター仕様書への実装・変更は行わない。ほかのスキルは個別の確定指示まで未確定。
 
-## 2026-10-23 — AWARENESS名称確定・アーリースターター継続検討
+## 2026-10-23 — AWARENESS名称確定・アーリースターター当時の検討記録（後の確定仕様により更新）
 
 - Skill Labおよび今後の会話におけるPilot第3能力を **AWARENESS（状況把握）** とする。以前のSkill Lab表示SENSORとは同じ能力だが、現行C#内部の名称は `PilotStats.Detection`、機体側の `Frame.Sensor` とは別である。本編Coreは変更しない。
-- **アーリースターターは未確定**：出撃時の基礎AWARENESS÷2の切り捨て（最低1Turn）まで全体Turn 1から自動発動する比較案。AWARENESS 10→5 Turn、20→10 Turn。スキルLvによるSHOOTINGとREFLEX +1/+2/+3も未確定。全体TurnとActivationを区別し、途中のAbility変化で期間を再計算しない。
+- **アーリースターター（当時の未確定案。下記確定仕様により上書き）**：出撃時の基礎AWARENESS÷2の切り捨て（最低1Turn）まで全体Turn 1から自動発動する比較案。AWARENESS 10→5 Turn、20→10 Turn。スキルLvによるSHOOTINGとREFLEX +1/+2/+3も未確定。全体TurnとActivationを区別し、途中のAbility変化で期間を再計算しない。
 - 正の値を整数へ量子化する場合は原則floorを採用する方向で検討。現行Coreでも索敵予算や最終命中率にfloorを使用。ただし必要回数等でceilを用いる場面はあり得る。ゲーム全体の丸め仕様を決定したわけではない。
 - 確定スキルフィルターボタンは再クリックでフィルター解除し、元のフィルターを復元する（Issue #1）。
+
+## 2026-10-23 — 確定：初動掌握 / Opening Advantage（旧アーリースターター）
+
+- **検討状況：確定。** Skill Labの汎用スキル `early-starter` の表示名称を「初動掌握 / Opening Advantage」に変更するが、ビルド保存互換性のため内部Skill IDは維持する。
+- **Lv1：** 実効SHOOTING +1、実効REFLEX +1（1P）。
+- **Lv2：** 実効SHOOTING +2、実効REFLEX +2（累計2P）。
+- **Lv3：** 実効SHOOTING +3、実効REFLEX +3（累計3P）。
+- 完全パッシブ。全体Turn1から効果発動、`max(1, floor(出撃時の基礎AWARENESS / 2))` ターン目の最後のFaction Phaseまで有効。その次の全体Turn開始時に失効。出撃後のAbility変動は持続時間に影響しない。
+- 例：基礎AWARENESS 10→5ターン、16→8ターン、20→10ターン。特別な機体制限・Action/Reaction/MP/弾薬/使用回数の追加消費なし。該当するすべてのSHOOTING/REFLEX判定で実効Abilityを使用。基礎値を変更しない。
+- **設計上の意図：** AWARENESSの高い索敵型の序盤で命中と回避を強化し、後半の失効で常時スキルと区別する。高AWARENESSと高SHOOTINGが両立しない場合もビルドの価値がある。ただし、初動接敵と実ミッションの持続ターン数をプレイテストで検証。
+- **変更範囲：** 独立したSkill Labの設計確定。非公開の本編Core・正式仕様の実装・変更は行わない。前段の「未確定」という記述は当時の履歴として扱い、この項目を現行判断とする。

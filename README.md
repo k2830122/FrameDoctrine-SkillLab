@@ -12,7 +12,7 @@
 
 Passive automatic Skill: applies while operating the matching Frame class. The changes are effective Ability modifiers used by all eligible SHOOTING/MELEE calculations, including applicable Missile Intercept or Critical Penetration checks. REFLEX and AWARENESS are unaffected. No Action, Reaction, MP, cooldown or use count. One Training Point per rank.
 
-This decision replaces the earlier provisional +2/+3/+5% accuracy/evasion proposal. **Confirmed for Skill Lab game design, not yet implemented into private Core or canonical specifications.** All other skills are not formally approved.
+This decision replaces the earlier provisional +2/+3/+5% accuracy/evasion proposal. **Confirmed for Skill Lab game design, not yet implemented into private Core or canonical specifications.** All other skills were not approved at the time of that decision; see the later Opening Advantage confirmation below.
 
 
 A standalone browser-based simulator for experimental pilot skill builds in FRAME DOCTRINE: LAST RESORT.
@@ -86,7 +86,7 @@ The Skill Lab now shows the research redesign on all 19 original candidates, ret
 New compare-only Lv1/2/3 values:
 
 - Frame Proficiency L/S/H: SHOOTING and MELEE +1/+2/+3 (not REFLEX).
-- Early Starter, Solo Operator: SHOOTING and REFLEX +1/+2/+3.
+- Opening Advantage (formerly Early Starter; confirmed) and Solo Operator (provisional): SHOOTING and REFLEX +1/+2/+3, subject to their distinct triggers.
 - Precision Shooting, Mobile Evasion, Momentum Melee: relevant SHOOTING/REFLEX/MELEE +2/+4/+6 respectively, with existing stationary or 3-Hex movement trigger.
 - Ordinary INTERCEPT specialist: SHOOTING +2/+4/+6 only during qualifying ordinary INTERCEPT.
 - Burst Focus: selected Ability +2/+4/+6 (activation economics unresolved).
@@ -95,7 +95,7 @@ New compare-only Lv1/2/3 values:
 - Guardian Reaction: REFLEX +1/+2/+3 when protecting an ally (Skill migration on hold).
 - Stationary penetration, Lance charge penetration, BRACE Armor, CONCEAL Signature: remain special-effect skills; not all effects should be expressed as Ability gains.
 
-The app is only a **point-allocation simulator**. Conditional skills are not automatically added to the base-Ability numbers in the pilot panel, because no battlefield conditions have been simulated; see each skill's trigger and effect instead. All new numeric proposals are marked provisional.
+The app is only a **point-allocation simulator**. Conditional skills are not automatically added to the base-Ability numbers in the pilot panel, because no battlefield conditions have been simulated; see each skill's trigger and effect instead. Unconfirmed numerical proposals are marked provisional; the approved Frame Proficiency and Opening Advantage Skills have fixed Skill Lab specifications.
 \n## Passive-first Skill design (2026-10-23)\n\n[SKILL_DESIGN_NOTES.md](SKILL_DESIGN_NOTES.md) has the current cost catalogue and new Skill concepts: REFLEX-based second-chance dodge, SHOOTING-based movement-disabling hit, and additional-ammo multi-attempt FIRE. The design direction favors passive Skills and existing tactical resources, with active Skills as exceptions only. All three are exploratory.\n
 ## 2026-10-23 — Range and movement-triggered skill drafts
 
@@ -106,4 +106,20 @@ Two further exploratory candidates were added (30 total): a condition-based “L
 - Pilot Ability label: **AWARENESS（状況把握）**, formerly displayed as SENSOR in Skill Lab. This remains the current private game's internal **`PilotStats.Detection`**. Physical **`Frame.Sensor`** is a distinct Frame statistic; private Core and canonical game specs remain unchanged.
 - Legacy browser saves and imported JSON with `abilityBonus.SENSOR` automatically map to `abilityBonus.AWARENESS`, preserving allocated Training Points. New exports use AWARENESS.
 - The 「確定スキルを見る」 button toggles on/off; the second click restores previously selected search/category/origin/status filters (Issue #1).
-- **Early Starter remains provisional:** proposed effect duration `max(1, floor(base AWARENESS at deployment / 2))` global Turns. AWARENESS10=5 Turns; AWARENESS20=10 Turns. Rank bonuses SHOOTING/REFLEX +1/+2/+3 remain drafts; validate against mission duration first. General integer rounding consistency is also a discussion, not an approved Core change.
+- **Historical exploration (superseded by the confirmed v0.10 design below):** Early Starter duration was proposed as `max(1, floor(base AWARENESS at deployment / 2))` global Turns. The formula and Lv bonuses have since been approved for Opening Advantage. The general integer-rounding policy is still under discussion and is not an approved global Core change.
+
+## v0.10 — Confirmed Opening Advantage / 初動掌握 (2026-10-23)
+
+**Status: 確定 (Skill Lab design, not implemented in private Core).** Existing Skill ID `early-starter` is retained for saved build compatibility. Rename from アーリースターター / Early Starter to **初動掌握 / Opening Advantage**.
+
+| Rank | Effective SHOOTING | Effective REFLEX | Training cost |
+|---|---:|---:|---:|
+| Lv1 | +1 | +1 | 1P total |
+| Lv2 | +2 | +2 | 2P total |
+| Lv3 | +3 | +3 | 3P total |
+
+Trigger: passive and automatic from global Turn 1. Duration: global Turns `1..max(1, floor(base AWARENESS measured at sortie deployment / 2))`, inclusive. It applies in **every Faction Phase** of each eligible global Turn; expires from the start of the next global Turn. The base AWARENESS snapshot is not recomputed on conditional temporary changes during the battle. Examples: AWARENESS 10 → Turns 1–5; 16 → Turns 1–8; 20 → Turns 1–10.
+
+The modifiers affect all eligible uses of effective SHOOTING/REFLEX while active, including direct-attack accuracy, defensive evasion, qualifying missile-intercept formula, and relevant CritPen. No Frame-class restriction or extra Action/Reaction/ammunition/resource consumption. Baseline Ability is unchanged. The confirmed-vs-draft count becomes **4 confirmed / 26 under consideration** in the Skill Lab; use the confirmed filter to inspect them.
+
+Design rationale: a time-limited, Frame-agnostic alternative to permanent single-Ability training and Frame Proficiency. Particularly useful for high-AWARENESS reconnaissance pilots who need early evasion; mission lengths and contact-turn distributions should still be tested. This decision **does not change `docs/IDEAS.md`, `docs/CORE_SPEC.md`, or any implementation in the private game**.
