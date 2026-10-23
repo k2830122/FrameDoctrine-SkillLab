@@ -163,3 +163,28 @@ The following are **not confirmed**, with explicit provisional numerical effects
 **The lab still simulates only Training Point allocation, not live battle conditions, Reaction lifecycle, weapon registration or attack probabilities.** Charlene's selected weapon is stated conceptually only; there is no weapon selection control yet. Existing saved builds retain the IDs for the three renamed Frame skills, `early-starter`, `burst-focus` and `certain-evasion`, preventing loss of owned ranks. No private Core, Godot or master specification files are modified by this release. Older sections above record historical design proposals; for the current Skill Lab state use this v0.12 section.
 
 Related tracked work: GitHub Issues #4–#8.
+
+## v0.13 — Activation-condition categories and opportunity-cost research UI (2026-10-23)
+
+The Skill Lab now groups **all 32 cards by their primary activation/eligibility condition** rather than mixing the strengthened combat stat and trigger. The former broad `汎用`, `射撃`, `白兵` etc. category labels have been replaced with the following **ten research categories, in explicit display order**:
+
+| Primary category | Cards | Purpose |
+|---|---:|---|
+| 機体・武器固定 | 4 | Match Frame class or a particular weapon; Frame Combat Proficiency remains the first baseline reference |
+| 時間経過 | 2 | Opening-only or delayed Turn activation |
+| WAIT・Reaction | 4 | WAIT, ordinary INTERCEPT/COVER, Reaction held or spent |
+| 移動・静止 | 7 | MOVE, no-MOVE, route-length constraints |
+| 距離・布陣 | 2 | Isolation, particular Hex range |
+| 天候・環境 | 1 | Weather-dependent activation |
+| 姿勢・走査 | 3 | BRACE, CONCEAL or ACTIVE SCAN Main Action |
+| 攻撃・弾薬 | 4 | Direct attacks, Hit conditions, ammunition and special attack effect |
+| 被弾・HP | 3 | HP thresholds, fatal damage, attacks received |
+| 行動後・撃破 | 2 | End-of-action chance or kill-triggered effect |
+
+Every card also includes independent `costTags` and a plain-language `tradeoffDetail` to describe **the resource, tradeoff or restrictive requirement**: Frame/weapon commitment, limited effective Turns, WAIT/Reaction opportunity, stationary/movement choice, separation and geometry, attack Signature exposure, Main Action, added ammunition, dangerous HP, special chance/uses, etc. A new **制約・対価** dropdown filters by these tags; keyword search also includes the new metadata. **Activation requirements, resource expenditure, opportunity costs and mere conditional limits are not identical**; the UI label explicitly warns against counting inherent Core action costs twice.
+
+The category tab bar, `すべて` grouped sections and category dropdown use the same ordering, and the default page opens the **すべて** view with Frame/weapon specialists first. The `確定スキルを見る` toggle also retains the selected tradeoff filter when restoring previous selections.
+
+No Skill's identifier, cost, numeric effect, approved status, or trigger text changed. It remains **6 confirmed / 26 exploratory**; existing local-storage/JSON build data stays compatible. All categories and tag assignments are **research UI taxonomy**, not an implementation of in-battle effects and not a change to private Core.
+
+Related issue: #10.
