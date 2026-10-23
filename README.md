@@ -1,8 +1,23 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
+## 2026-10-23 — Confirmed Frame Proficiency Skills (Skill Lab)
+
+**確定（仕様確定）:** 機体習熟 Light / Standard / Heavy
+
+| Level | Effective SHOOTING | Effective MELEE |
+|---|---:|---:|
+| Lv1 | +1 | +1 |
+| Lv2 | +2 | +2 |
+| Lv3 | +3 | +3 |
+
+Passive automatic Skill: applies while operating the matching Frame class. The changes are effective Ability modifiers used by all eligible SHOOTING/MELEE calculations, including applicable Missile Intercept or Critical Penetration checks. REFLEX and SENSOR are unaffected. No Action, Reaction, MP, cooldown or use count. One Training Point per rank.
+
+This decision replaces the earlier provisional +2/+3/+5% accuracy/evasion proposal. **Confirmed for Skill Lab game design, not yet implemented into private Core or canonical specifications.** All other skills are not formally approved.
+
+
 A standalone browser-based simulator for experimental pilot skill builds in FRAME DOCTRINE: LAST RESORT.
 
-**Status:** Research prototype v0.7. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
+**Status:** Research prototype v0.8. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
 
 ## Features
 

@@ -67,3 +67,9 @@
 - 自己MOVEのあと同じActivationでFIREしたときの固有ペナルティ。以前のTurnのMOVEは後続Reaction射撃のペナルティとならない。DISPLACEや他者によるREPOSITIONもこの自己MOVE判定ではない。
 - このSkillはAbility強化型とは違う「REFLEXを参照して状況ペナルティを軽減する型」。**単なる命中率増加と混同しない**。
 - Hex-targeted、誘導Missile、Reaction/INTERCEPT等へ拡張するかは未決定。本編Coreは変更しない。
+
+## 2026-10-23 — 確定したスキル：機体習熟3種類
+
+**機体習熟：Light / Standard / Heavy** の各スキルは、該当機体に搭乗中、SHOOTINGとMELEEがLv1では各+1、Lv2では各+2、Lv3では各+3。REFLEX・SENSORへの効果なし。基礎値は不変、実効Abilityとして該当する全判定に使用する。パッシブで自動発動し、追加Action・Reaction・MP・使用回数は不要。各Lvは育成ポイント1消費。
+
+これはSkill Labにおける正式な設計判断で、旧い+2/+3/+5%命中・回避効果案や後続の仮数値案に優先する。本編Core・マスター仕様書への実装・変更は行わない。ほかのスキルは個別の確定指示まで未確定。
