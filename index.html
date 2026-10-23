@@ -110,6 +110,11 @@ input[type=range]{width:100%;accent-color:var(--cyan);height:22px}
 .details{border-top:1px solid #4b647b;padding-top:10px;color:var(--muted);font-size:15px}
 .details summary{cursor:pointer;color:#d0e6f2;font-size:16px}
 .details p{margin:8px 0}.details strong{color:var(--text)}
+.effect-text{overflow-wrap:anywhere}
+.effect-example{color:#bbebd8;font-weight:700}
+.formula-reference{background:#142638;border:1px solid #45627a;border-radius:6px;padding:10px;margin:9px 0}
+.formula-reference strong{display:block;margin-bottom:5px;color:#e3f1ff}
+.formula-reference code{display:block;font-size:13px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere;padding:3px 0}
 .option-list{width:100%;border-collapse:collapse;font-size:16px}
 .option-list th{text-align:left;color:var(--muted);font-size:15px}
 .option-list td,.option-list th{padding:11px;border-bottom:1px solid #405870;vertical-align:top}
@@ -122,14 +127,14 @@ details.review summary{font-size:20px;font-weight:750;padding:4px;cursor:pointer
 @media(max-width:950px){.pilot-dashboard{grid-template-columns:1fr 1fr}.pilot-stats{grid-column:1/-1}.pilot-actions{grid-column:1/-1}.build-dashboard{grid-template-columns:1fr}.formula-grid{grid-template-columns:1fr}}
 @media(max-width:640px){body{font-size:17px}.shell{padding:12px 10px 55px}header{padding:15px 12px}.panel{padding:15px}.pilot-dashboard{grid-template-columns:1fr}.pilot-identity{display:flex;gap:14px;align-items:center}.portrait{min-width:100px;max-width:125px}.pilot-stats{grid-column:auto}.pilot-actions{grid-column:auto;display:flex;flex-wrap:wrap}#abilities{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.skill-name{font-size:20px}.toolbar label.search{min-width:100%}.stat{grid-template-columns:1fr 55px 42px 42px}.build-dashboard{grid-template-columns:1fr}.group-nav button{flex:1;min-width:130px}}
 </style></head><body>
-<header><div class="eyebrow">RESEARCH CONSOLE / UNOFFICIAL / BUILD PREVIEW v0.13</div><h1>FRAME DOCTRINE <span style="color:var(--cyan)">/ PILOT SKILL LAB</span></h1><p class="subtitle">LAST RESORT — パイロット育成・戦術スキル研究室。Skill Lab研究：Ability上限なし。条件付き実効Ability強化に統一した比較案を掲載。</p></header>
+<header><div class="eyebrow">RESEARCH CONSOLE / UNOFFICIAL / BUILD PREVIEW v0.14</div><h1>FRAME DOCTRINE <span style="color:var(--cyan)">/ PILOT SKILL LAB</span></h1><p class="subtitle">LAST RESORT — パイロット育成・戦術スキル研究室。Skill Lab研究：Ability上限なし。条件付き実効Ability強化に統一した比較案を掲載。</p></header>
 <main class="shell">
 <aside class="side">
 <section class="panel pilot-dashboard">
 <div class="pilot-identity"><div class="eyebrow">SAMPLE PILOT</div><div class="portrait" aria-label="架空パイロットのシルエット"><svg viewBox="0 0 240 130" role="img" aria-label="架空パイロットのシルエット"><defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#536c87"/><stop offset="1" stop-color="#263b56"/></linearGradient></defs><path d="M0 110L65 95 120 115 180 91 240 113V130H0Z" fill="#365674"/><circle cx="120" cy="47" r="25" fill="url(#g)" stroke="#91b2c9" stroke-width="2"/><path d="M61 128Q65 85 120 81Q175 85 179 128" fill="url(#g)" stroke="#91b2c9" stroke-width="2"/><path d="M97 43L120 38 143 43 143 53 120 61 97 53Z" fill="#12263e"/><path d="M104 50H136" stroke="#a1d1e6" stroke-width="2"/><text x="13" y="19" fill="#9bb8d3" font-size="10" font-family="monospace">ID: DEMO-01</text><text x="195" y="19" fill="#9bb8d3" font-size="10" font-family="monospace">SIM</text></svg></div><div class="unit-name">PHANTOM-01</div><div class="unit-sub">研究用の架空パイロット</div></div>
 <div class="pilot-budget"><div class="eyebrow">TRAINING POINTS</div><div class="budget"><div class="metric"><strong id="remaining">12</strong><span>残り</span></div><div class="metric"><strong id="spent">0</strong><span>使用</span></div><div class="metric"><strong id="budget-value">12</strong><span>予算</span></div></div>
 <div class="budget-line"><span>育成ポイント</span><span id="budget-caption">12 P</span></div><input id="budget-slider" type="range" min="1" max="12" value="12" aria-label="育成予算"><div class="quick"><button type="button" id="budget-one">初期 1P</button><button type="button" id="budget-all">全12P</button></div></div>
-<div class="pilot-stats"><h2>ABILITIES</h2><div class="unit-sub">ここは基礎Ability。スキル補正は戦術上の条件を満たすと実効Abilityへ加算。実際の戦闘処理は未シミュレーション。上限なし。</div><div id="abilities"></div></div>
+<div class="pilot-stats"><h2>ABILITIES</h2><div class="unit-sub">サンプルの基礎Abilityです。能力値を変更すると、能力連動型スキルの各Lv表示も再計算されます。実戦中の他スキル補正は未合算。上限なし。</div><div id="abilities"></div></div>
 <div class="pilot-actions"><button type="button" id="undo">↶ 取り消す</button><button type="button" id="reset">全配分をリセット</button><div id="toast" class="toast" role="status" aria-live="polite"></div></div>
 </section>
 <section class="panel build-dashboard"><h2>習得済みスキル</h2><div id="owned" class="owned"></div><div class="row"><button id="export" type="button">JSON保存</button><button id="import" type="button">JSON読込</button></div><input id="file-input" class="hidden-input" type="file" accept=".json,application/json"></section>
@@ -151,7 +156,7 @@ clamp(迎撃武器命中値 − 50
 <div class="formula-box"><h3>%表示の読み方</h3><p class="formula-example">元の命中率70% + スキル命中率6% ⇒ <strong>76%</strong>。70% × 1.06 ⇒74.2%ではありません。</p><p>このサイトの「+6%」は正確には<strong>6パーセントポイント</strong>の変化を意味します。最終命中率の0〜100%制限・適用条件により、実際の変化幅は小さくなることがあります。</p><p>「装甲値」「装甲貫通」「Detection Power」は確率ではないため、%へ変換しません。</p></div>
 </div></details></section><section class="panel"><div class="eyebrow">PERSONNEL DEVELOPMENT MATRIX</div><h2 style="margin-top:6px">スキル候補一覧</h2>
 <div class="toolbar"><label class="search">キーワード検索<input id="search" type="search" placeholder="スキル名・発動条件・効果を検索"></label><label>カテゴリ<select id="group-filter"><option value="">すべて（カテゴリ別）</option></select></label><label>制約・対価<select id="cost-filter"><option value="">すべての条件</option></select></label><label>由来<select id="origin-filter"><option value="">すべて</option><option value="IDEAS">既存アイデア</option><option value="CORE">CORE将来案</option><option value="Option由来">Option由来</option><option value="新規アイデア">新規アイデア</option></select></label><label>検討状況<select id="status-filter"><option value="">すべて</option><option value="確定">✓ 確定</option><option value="スキル化方針決定・数値仮">スキル化方針決定</option><option value="原案仮数値">原案仮数値</option><option value="再設計仮数値">再設計仮数値</option><option value="新規仮数値">新規仮数値</option><option value="数値未定">数値未定</option><option value="保留・数値仮">保留</option><option value="要検討">要検討</option><option value="新規アイデア・叩き台">新規アイデア・叩き台</option></select></label></div>
-<div class="note">主カテゴリーは<strong>何をすると発動するか</strong>で整理しました。「制約・対価」は追加コストだけでなく、利用条件や機会費用も表します。攻撃やMOVEなど、既存の行動がもともと持つコストを新たに二重徴収する意味ではありません。<strong>確定スキル6件の数値は今回変更していません。</strong></div><div class="note">1レベルの取得・強化には1P。クリックでLvを設定し、点灯中の最後のLvを再クリックすると1段階戻せます。<strong>命中率 +6%は70%→76%を意味します</strong>。4種のOption由来技能はスキル化方針のみ決定し、レベル別数値は未定です。確定は機体戦闘習熟3種類・初動警戒・臨戦集中・戦況適応の計6件。臨戦警戒とCharleneは比較案で、確定していません。初動警戒の持続は出撃時の基礎AWARENESSのみで決まり、スキル自身の補正では延長されません。武器の指定や戦場でのスキル効果はこの配分シミュレーターでは計算しません。</div>
+<div class="note"><strong>Lv1〜3の欄は、サンプルパイロットの基礎Abilityを使った具体的な効果を優先表示。</strong> 能力値の変更で自動更新します。計算式は各カードの「計算式・設計上の補足」を開けば確認できます。武器依存の例は移動補正−10・−20の武器を比較し、他の状況スキル効果は未合算です。</div><div class="note">主カテゴリーは<strong>何をすると発動するか</strong>で整理しました。「制約・対価」は追加コストだけでなく、利用条件や機会費用も表します。攻撃やMOVEなど、既存の行動がもともと持つコストを新たに二重徴収する意味ではありません。<strong>確定スキル6件の数値は今回変更していません。</strong></div><div class="note">1レベルの取得・強化には1P。クリックでLvを設定し、点灯中の最後のLvを再クリックすると1段階戻せます。<strong>命中率 +6%は70%→76%を意味します</strong>。4種のOption由来技能はスキル化方針のみ決定し、レベル別数値は未定です。確定は機体戦闘習熟3種類・初動警戒・臨戦集中・戦況適応の計6件。臨戦警戒とCharleneは比較案で、確定していません。初動警戒の持続は出撃時の基礎AWARENESSのみで決まり、スキル自身の補正では延長されません。武器の指定や戦場でのスキル効果はこの配分シミュレーターでは計算しません。</div>
 <section class="panel formula-panel"><details id="skill-cost-notes"><summary>スキル設計の基本方針・使えるコスト一覧 <span>／ パッシブ中心</span></summary><p class="review-intro">アクティブスキルは少数の例外として検討し、まずはAction・Reaction・移動・弾薬・位置・情報といった既存リソースを使う方向を優先します。<strong>発動条件と消費コストは別物</strong>です。</p><div style="overflow-x:auto"><table class="option-list"><thead><tr><th>使えるもの</th><th>種別</th><th>設計時の対価・制約</th></tr></thead><tbody><tr><td>Main Action</td><td>既存</td><td>攻撃・索敵・BRACEなど他の主行動を諦める</td></tr><tr><td>Reaction</td><td>既存</td><td>WAITで得られる1回のINTERCEPT／COVERを何に使うか</td></tr><tr><td>MOVEの機会</td><td>既存</td><td>移動せず精密射撃・観測する</td></tr><tr><td>移動量・経路</td><td>既存</td><td>3Hex助走、回り道、警戒移動とのトレードオフ</td></tr><tr><td>弾薬・RELOAD</td><td>既存</td><td>追加弾薬と装填の機会を払って連射する</td></tr><tr><td>HP・被弾リスク</td><td>既存</td><td>体力を払う、低HPで危険を引き受ける</td></tr><tr><td>位置・地形・遮蔽</td><td>既存</td><td>孤立・接近・遮蔽放棄で別の利点を得る</td></tr><tr><td>Signature／CONCEAL</td><td>既存</td><td>露見リスク、隠密喪失と交換する</td></tr><tr><td>TRACK・LOS</td><td>既存条件</td><td>索敵・追跡維持の達成条件。直接支払う消費資源ではない</td></tr><tr><td>残り時間・Extraction Deadline</td><td>既存</td><td>準備のための待機・遅れは撤収リスク</td></tr><tr><td>味方布陣・連携</td><td>既存条件</td><td>友軍距離・援護態勢・行動順の制約</td></tr><tr><td>装備枠・武器相性</td><td>既存</td><td>装備選択・不適合装備という機会費用</td></tr><tr><td>育成ポイント</td><td>研究中の育成経済</td><td>他のAbilityやSkillを取得しない選択</td></tr><tr><td>専用の発動回数</td><td>新規管理</td><td>必中・完全回避向けの例外。増やしすぎない</td></tr></tbody></table></div><p class="review-intro">より詳しい考え方：<a href="https://github.com/k2830122/FrameDoctrine-SkillLab/blob/main/SKILL_DESIGN_NOTES.md" target="_blank" rel="noopener noreferrer" style="color:#b8dfea">スキル設計メモ</a>。本編Coreと正式仕様は未変更です。</p></details></section><div class="confirmed-summary"><span>✓ 仕様確定：<strong id="confirmed-count">6</strong>件（Skill Lab／本編未実装）</span><button type="button" id="show-confirmed">確定スキルを見る</button></div><div class="heading-row"><h2>SKILLS</h2><span id="count"></span></div><nav id="group-nav" class="group-nav" aria-label="スキルのカテゴリ切り替え"></nav><div id="cards"></div></section>
 <section class="panel"><details class="review"><summary>OPTION → SKILL 研究分類 / 全20件</summary><p class="review-intro">原Optionは本編Coreに存在する正式装備です。この表は研究上の移行適性だけを評価しており、装備の削除や仕様変更は行いません。</p><div style="overflow-x:auto"><table class="option-list"><thead><tr><th>Option</th><th>研究上の分類</th><th>判断の理由</th></tr></thead><tbody id="option-rows"></tbody></table></div></details></section>
 <div class="footer">REFERENCE: master/docs/IDEAS.md・master/docs/CORE_SPEC.md・master/src/FrameTactics.Core/OptionCatalog.cs（2026-10-22調査）。共通ルール案「命中率100%超過→CritPen」はスキル一覧へ登録していません。</div>
@@ -190,6 +195,40 @@ byId("abilities").innerHTML=STATS.map(k=>'<div class="stat" title="'+(k==="SHOOT
 const own=SKILLS.filter(s=>skillLevel(s.id));byId("owned").innerHTML=own.length?own.map(s=>'<span>'+enc(s.name)+' Lv.'+skillLevel(s.id)+'</span>').join(""):'<span class="muted" style="border:0;background:none">未取得</span>';
 renderCards();
 }
+
+const FORMULA_HELP={
+ "early-starter":["効果終了Turn = max(1, floor(出撃時の基礎AWARENESS / 2))"],
+ "tactical-adaptation":["発動開始Turn = max(3, 20 − 出撃時の基礎AWARENESS)"],
+ "certain-evasion":["Lv1: floor(基礎AWARENESS / 3) ポイント","Lv2: floor(基礎AWARENESS × 2 / 3) ポイント","Lv3: 基礎AWARENESS ポイント"],
+ "reflex-followup-move":["Lv1〜3: clamp(実効REFLEX × Lv%, 0%, 100%)"],
+ "reflex-second-chance":["Lv1〜3: clamp(実効REFLEX × Lv%, 0%, 100%)"],
+ "leg-disrupting-shot":["Lv1〜3: clamp(実効SHOOTING × Lv%, 0%, 100%)"],
+ "moving-fire-discipline":["Lv1〜3: min(武器の移動時の減少量, floor(実効REFLEX × Lv / 3)) ポイント軽減","移動補正が0以上の武器には命中ボーナスなし。"]
+};
+const DYNAMIC_LEVELS=new Set(["certain-evasion","reflex-followup-move","reflex-second-chance","leg-disrupting-shot","moving-fire-discipline"]);
+const statValue=k=>BASE[k]+state.abilityBonus[k];
+const clampChance=x=>Math.max(0,Math.min(100,x));
+function sampleLevelText(s,lv){
+ const a=statValue("AWARENESS"),r=statValue("REFLEX"),sh=statValue("SHOOTING");
+ if(s.id==="certain-evasion")return "回避率 +"+Math.floor(a*lv/3)+"ポイント（仮）";
+ if(s.id==="reflex-followup-move")return "追加移動の発動率 "+clampChance(r*lv)+"%（仮）";
+ if(s.id==="reflex-second-chance")return "命中後の追加回避率 "+clampChance(r*lv)+"%（仮）";
+ if(s.id==="leg-disrupting-shot")return "脚部移動阻害率 "+clampChance(sh*lv)+"%（仮）";
+ if(s.id==="moving-fire-discipline"){
+  const n=Math.floor(r*lv/3);
+  return "移動補正 −10→"+(-10+Math.min(10,n))+"pt / −20→"+(-20+Math.min(20,n))+"pt（仮）";
+ }
+ return s.levels[lv-1];
+}
+function sampleCondition(s){
+ if(s.id==="early-starter")return "全体Turn 1〜"+Math.max(1,Math.floor(statValue("AWARENESS")/2))+"（基礎AWARENESS "+statValue("AWARENESS")+"）";
+ if(s.id==="tactical-adaptation")return "全体Turn "+Math.max(3,20-statValue("AWARENESS"))+"からミッション終了まで（基礎AWARENESS "+statValue("AWARENESS")+"）";
+ return s.condition;
+}
+function formulaDetails(s){
+ const lines=FORMULA_HELP[s.id];
+ return lines?'<div class="formula-reference"><strong>計算式・備考</strong>'+lines.map(x=>'<code>'+enc(x)+'</code>').join("")+'</div>':'';
+}
 function renderCards(){
  const q=byId("search").value.trim().toLocaleLowerCase(),g=byId("group-filter").value,cost=byId("cost-filter").value,o=byId("origin-filter").value,st=byId("status-filter").value;
  const pool=SKILLS.filter(s=>(!o||s.origin===o)&&(!st||s.status===st)&&(!cost||s.costTags.includes(cost))&&(!q||[s.name,s.group,s.origin,s.type,s.condition,s.description,s.source,s.original,s.tradeoffDetail,...s.costTags,...s.levels].join(" ").toLocaleLowerCase().includes(q)));
@@ -203,7 +242,7 @@ function renderCards(){
  byId("show-confirmed").setAttribute("aria-pressed",String(st==="確定"));
  function card(s){
  const lv=skillLevel(s.id);
- return '<article class="skill '+(lv?'learned':'')+(s.status==="確定"?' confirmed':'')+'"><div class="skill-top"><div><div class="skill-name">'+enc(s.name)+'</div><div class="skill-sub">'+enc(s.group)+' · '+enc(s.source)+'</div></div><span class="pill '+(s.origin==="Option由来"?'option':'')+'">'+enc(s.origin)+'</span></div><div><span class="pill status '+(s.status==="確定"?'confirmed':s.status.startsWith("スキル化方針")?'decided':'')+'">'+(s.status==="確定"?'✓ ':'')+enc(s.status)+'</span> <span class="pill">'+enc(s.type)+'</span></div><div class="condition"><small>発動条件</small>'+enc(s.condition)+'</div><div class="tradeoffs"><small>制約・対価（消費資源・機会費用・成立制約）</small><div class="cost-tags">'+s.costTags.map(tag=>'<span class="cost-tag">'+enc(tag)+'</span>').join("")+'</div><div class="cost-note">'+enc(s.tradeoffDetail)+'</div></div><div class="effects">'+s.levels.map((x,i)=>'<div class="effect"><em>LV '+(i+1)+'</em><span>'+enc(x)+'</span></div>').join("")+'</div><div class="levels" aria-label="'+enc(s.name)+'のレベル">'+[1,2,3].map(n=>'<button type="button" class="lvl '+(n<=lv?'on':'')+'" title="Lv.'+n+'に変更（最後の点灯を再クリックすると下げる）" aria-label="'+enc(s.name)+'のレベル'+n+'" aria-pressed="'+(n<=lv)+'" data-skill="'+enc(s.id)+'" data-level="'+n+'" '+(n>lv&&n-lv>remaining()?'disabled':'')+'>'+(n<=lv?'●':'○')+'</button>').join("")+'<span class="level-label">LV '+lv+'/3</span></div><details class="details"><summary>原案の根拠・技術的な補足</summary><p>'+enc(s.description)+'</p>'+(s.original?'<p><strong>現行Option（本編Coreに残存）</strong>：'+enc(s.original)+'</p>':'')+'<p>資料区分：'+enc(s.origin)+'。'+(s.status==="確定"?"Skill Labで効果とLv数値が確定。本編Coreは未変更です。":"Lv別数値は未確定です。")+'</p></details></article>';
+ return '<article class="skill '+(lv?'learned':'')+(s.status==="確定"?' confirmed':'')+'"><div class="skill-top"><div><div class="skill-name">'+enc(s.name)+'</div><div class="skill-sub">'+enc(s.group)+' · '+enc(s.source)+'</div></div><span class="pill '+(s.origin==="Option由来"?'option':'')+'">'+enc(s.origin)+'</span></div><div><span class="pill status '+(s.status==="確定"?'confirmed':s.status.startsWith("スキル化方針")?'decided':'')+'">'+(s.status==="確定"?'✓ ':'')+enc(s.status)+'</span> <span class="pill">'+enc(s.type)+'</span></div><div class="condition"><small>発動条件</small>'+enc(sampleCondition(s))+'</div><div class="tradeoffs"><small>制約・対価（消費資源・機会費用・成立制約）</small><div class="cost-tags">'+s.costTags.map(tag=>'<span class="cost-tag">'+enc(tag)+'</span>').join("")+'</div><div class="cost-note">'+enc(s.tradeoffDetail)+'</div></div><div class="effects">'+s.levels.map((x,i)=>'<div class="effect"><em>LV '+(i+1)+'</em><span class="effect-text '+(DYNAMIC_LEVELS.has(s.id)?'effect-example':'')+'">'+enc(sampleLevelText(s,i+1))+'</span></div>').join("")+'</div><div class="levels" aria-label="'+enc(s.name)+'のレベル">'+[1,2,3].map(n=>'<button type="button" class="lvl '+(n<=lv?'on':'')+'" title="Lv.'+n+'に変更（最後の点灯を再クリックすると下げる）" aria-label="'+enc(s.name)+'のレベル'+n+'" aria-pressed="'+(n<=lv)+'" data-skill="'+enc(s.id)+'" data-level="'+n+'" '+(n>lv&&n-lv>remaining()?'disabled':'')+'>'+(n<=lv?'●':'○')+'</button>').join("")+'<span class="level-label">LV '+lv+'/3</span></div><details class="details"><summary>計算式・設計上の補足</summary>'+formulaDetails(s)+'<p>'+enc(s.description)+'</p>'+(s.original?'<p><strong>現行Option（本編Coreに残存）</strong>：'+enc(s.original)+'</p>':'')+'<p>資料区分：'+enc(s.origin)+'。'+(s.status==="確定"?"Skill Labで効果とLv数値が確定。本編Coreは未変更です。":"Lv別数値は未確定です。")+'</p></details></article>';
  }
  const renderSection=(name,arr)=>'<section class="skill-section"><h3 class="section-title">'+enc(name)+' <small>'+arr.length+' SKILLS</small></h3><div class="cards">'+arr.map(card).join("")+'</div></section>';
  byId("cards").innerHTML=g?(list.length?renderSection(g,list):'<p class="muted">条件に合うスキルはありません。</p>'):(pool.length?groups.map(group=>{const arr=pool.filter(s=>s.group===group);return arr.length?renderSection(group,arr):'';}).join(""):'<p class="muted">条件に合うスキルはありません。</p>');
