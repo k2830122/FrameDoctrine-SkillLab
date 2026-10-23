@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.15（2026-10-23）：** 現役31件（確定5、検討中26）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
+**現行版 v0.16（2026-10-23）：** 現役31件（確定6、検討中25）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -170,3 +170,13 @@ Skill Labは育成ポイントとスキル取得のシミュレーターであ�
 古いビルドで `tactical-adaptation` Lv1〜3 を取得済みなら、当該ランクを `retiredSkillLevels` へ歴史情報として移し、**育成ポイント使用量には算入せず実質全額返却**。Lvはアーカイブ欄と習得欄の注意書きに表示。JSON再保存も履歴を保持。育成配分のリセットは履歴を消去しない。
 
 現在の確定は5件、検討中26件、アーカイブ1件。スキルIDの再割当なし。本編Coreや正式仕様書は更新しない。
+
+## 2026-10-23 — v0.16 Stay Frosty 確定・反映
+
+- 旧「臨戦警戒 / Combat Vigilance」の `certain-evasion` を名称 **Stay Frosty** に確定変更。安定Skill IDは維持し、古いビルドの取得Lvを失わない。日本語版でもスキル名は英語のみ。
+- WAIT後の既存Reaction権がAVAILABLEの間、受ける適格攻撃の**攻撃側HitRawへ負の補正**を与える。直接回避率を加算したりREFLEXを上げたりしない。Lv1 `−floor(基礎INSIGHT/2)`、Lv2 `−floor(基礎INSIGHT×3/4)`、Lv3 `−基礎INSIGHT`。基礎INSIGHTは出撃時の恒久育成値を使用し、First Watch等の一時Ability強化で変化しない。
+- 例 INSIGHT10→−5/−7/−10、15→−7/−11/−15、20→−10/−15/−20。Level表示はサンプル基礎INSIGHTを反映して自動更新、計算式は詳細欄へ。
+- 補正適用順序：攻撃側命中・防御側REFLEX等を含むHitRaw → Stay Frostyの減算 → 0〜100%のHitChanceクランプ＆100超過HitRawをCritPenへ変換。敵味方共通。もともとHitRaw130、Lv3・基礎INSIGHT15ではHitRaw115、命中率100%のままでも超過命中加算が15→7.5ptに減る（CritPen対応攻撃の研究式）。
+- 普通の単体Direct FIRE、MELEE、適格な誘導ミサイル着弾など回避判定がある攻撃に作用する方向。必中・Area・特異な命中プロファイル、多段Hit等は本編Coreを改修する前に仕様詳細を検証。UNKNOWN FIREに敵情報を表示しない。
+- 攻撃をかわした／受けたことではReactionを消費しない。保持中は複数攻撃に適用。INTERCEPT／COVER／Missile InterceptにReactionを使用すると失効。敵Phaseをまたいで未使用だったらSteady Nervesと併用可。追加の専用回数管理やコマンドなし。
+- 現役31件（確定6、検討中25）、Quick Studyはアーカイブ1件で不変。既存5確定スキルの効果・ポイント数も変更なし。公開ブラウザのSkill Labのみの更新で非公開Coreは未変更。超過命中値50%→CritPenの規則はIDEAS.mdの未実装研究案。

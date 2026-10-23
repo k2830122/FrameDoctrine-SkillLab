@@ -1,6 +1,6 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.15 (2026-10-23).** 31 active Skills: **5 confirmed**, 26 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+**Current release: v0.16 (2026-10-23).** 31 active Skills: **6 confirmed**, 25 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
 
 ## Historical decision log: Frame Proficiency Skills (2026-10-23)
@@ -24,7 +24,7 @@ A standalone browser-based simulator for experimental pilot skill builds in FRAM
 
 ## Features
 
-- 31 active experimental pilot skills (five confirmed, 26 provisional) and one retired Skill in the archive
+- 31 active experimental pilot skills (six confirmed, 25 provisional) and one retired Skill in the archive
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
@@ -226,3 +226,20 @@ For the confirmed **初動警戒 / Opening Vigilance**, the shown expiry Turn is
 **Legacy build migration:** same browser storage key `fd-skill-lab-v1` and unchanged schema version 1. On load/import, input `abilityBonus.INSIGHT` is preferred; older `abilityBonus.AWARENESS` and older `abilityBonus.SENSOR` are accepted and converted to INSIGHT. When `skillLevels["tactical-adaptation"]` is found, its historical Lv is stored under `retiredSkillLevels["tactical-adaptation"]` for archival display, but it **does not consume training points**. The abandoned rank's points are thus available for new training. New JSON exports retain the archival rank metadata and use INSIGHT. All other Skill IDs, acquisition ranks and costs remain intact. Reset preserves archived-history metadata.
 
 This release changes public Skill Lab only; private game Core and canonical specifications remain unchanged. Candidate Skill names among the 26 unfinished concepts have **not** been wholesale renamed to English or approved. Historical sections in this README and the notes are preserved as design records; this v0.15 section supersedes conflicts in older names, counts and Skill decisions.
+
+## v0.16 — Stay Frosty confirmed (2026-10-23)
+
+**Current Skill Lab:** 31 active Skills (6 confirmed, 25 experimental), plus Quick Study in Archived Skills. Existing five approved Skill effects are unchanged.
+
+The former experimental `certain-evasion` / 臨戦警戒 / Combat Vigilance is now the sixth confirmed Skill, **Stay Frosty**. Its unchanged stable identifier protects localStorage and exported build ranks. Only its **newly approved rules** are reflected:
+
+- WAIT grants an ordinary binary Reaction. **While that Reaction is still AVAILABLE**, Stay Frosty decreases the attacker's **pre-clamp HitRaw** by a Skill-dependent flat number of HitRaw points. It does not directly increase REFLEX or guarantee the same numeric improvement to the final evasion probability.
+- Apply `N=base INSIGHT at sortie` (permanent training included, temporary buffs excluded): **Lv1: −floor(N/2)**, **Lv2: −floor(3N/4)**, **Lv3: −N** HitRaw points.
+- Sample N10 => −5/−7/−10; N12 => −6/−9/−12; N15 => −7/−11/−15; N20 => −10/−15/−20. The Skill Lab displays the computed sample pilot numbers on each Lv and recalculates when INSIGHT is trained.
+- Resolve eligible attacks with the same rules on either faction: form HitRaw, subtract Stay Frosty, then clamp ordinary hit probability to 0..100 and calculate any excess-hit Critical Penetration conversion from that final HitRaw. For example with N15 and Lv3, incoming original HitRaw130 becomes 115; hit chance stays 100% but the *excess-accuracy addition* to CritPen changes from 15 percentage points to 7.5 percentage points under the proposed CritPen conversion.
+- The effect is automatic and remains active for **multiple eligible attacks as long as the usual Reaction remains unused**. Evading or being hit does not itself consume Reaction. INTERCEPT/COVER/Missile Intercept spends Reaction and ends the bonus; unused Reaction expires normally at the next own Faction Phase.
+- Compatible with **Steady Nerves**: if the Reaction was not spent, it can still trigger Steady Nerves in the next own Activation. Does not extend itself with temporary INSIGHT, including First Watch's effects.
+- Ordinary unit-targeted Direct FIRE / MELEE and eligible guided-impact hit checks are in the intended scope; immunity to attacks that have no such hit/evasion roll is not created. Edge cases (special profiles, area attack, multi-hit and priority of other modifiers) still require private Core implementation design and combat tests, with hidden Faction information safeguarded.
+- **Important:** The public simulator is still a *Skill point planner* displaying research-defined effects; it does not execute battles, CritPen rolls or a combat pipeline. `docs/IDEAS.md` in the private game repo holds the candidate 100% excess accuracy to CritPen conversion (50% of excess and no 8% artificial cap); `docs/CORE_SPEC.md` continues to describe legacy Core. Skill Lab v0.16 does not modify the private Core or canonical specifications.
+
+Previous sections of this document are retained as historical snapshots; this v0.16 section supersedes their older Skill status and placeholder numeric descriptions.
