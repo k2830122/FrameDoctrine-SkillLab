@@ -208,6 +208,7 @@ const FORMULA_HELP={
 const DYNAMIC_LEVELS=new Set(["certain-evasion","reflex-followup-move","reflex-second-chance","leg-disrupting-shot","moving-fire-discipline"]);
 const statValue=k=>BASE[k]+state.abilityBonus[k];
 const clampChance=x=>Math.max(0,Math.min(100,x));
+const signedPenalty=n=>n<0?"−"+Math.abs(n):String(n);
 function sampleLevelText(s,lv){
  const a=statValue("AWARENESS"),r=statValue("REFLEX"),sh=statValue("SHOOTING");
  if(s.id==="certain-evasion")return "回避率 +"+Math.floor(a*lv/3)+"ポイント（仮）";
@@ -216,7 +217,7 @@ function sampleLevelText(s,lv){
  if(s.id==="leg-disrupting-shot")return "脚部移動阻害率 "+clampChance(sh*lv)+"%（仮）";
  if(s.id==="moving-fire-discipline"){
   const n=Math.floor(r*lv/3);
-  return "移動補正 −10→"+(-10+Math.min(10,n))+"pt / −20→"+(-20+Math.min(20,n))+"pt（仮）";
+  return "移動補正 −10→"+signedPenalty(-10+Math.min(10,n))+"pt / −20→"+signedPenalty(-20+Math.min(20,n))+"pt（仮）";
  }
  return s.levels[lv-1];
 }
