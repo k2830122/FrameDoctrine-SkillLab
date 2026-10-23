@@ -1,6 +1,9 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-## 2026-10-23 — Confirmed Frame Proficiency Skills (Skill Lab)
+**Current release: v0.15 (2026-10-23).** 31 active Skills: **5 confirmed**, 26 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+
+
+## Historical decision log: Frame Proficiency Skills (2026-10-23)
 
 **確定（仕様確定）:** 機体習熟 Light / Standard / Heavy
 
@@ -17,11 +20,11 @@ This decision replaces the earlier provisional +2/+3/+5% accuracy/evasion propos
 
 A standalone browser-based simulator for experimental pilot skill builds in FRAME DOCTRINE: LAST RESORT.
 
-**Status:** Research prototype v0.8. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
+**Status:** Research prototype v0.15. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
 
 ## Features
 
-- 30 experimental pilot skills (original research ideas and Option-inspired candidates)
+- 31 active experimental pilot skills (five confirmed, 26 provisional) and one retired Skill in the archive
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
@@ -203,3 +206,23 @@ The research sample Pilot **PHANTOM-01** has base Abilities of 10 before the use
 For the confirmed **初動警戒 / Opening Vigilance**, the shown expiry Turn is now the sample's computed `max(1,floor(base AWARENESS/2))`; for **戦況適応 / Tactical Adaptation**, the start Turn is `max(3,20-base AWARENESS)`. Their approved level bonuses and triggering rules have not changed.
 
 **Disclosure and scope:** The pilot number is the current displayed *base* Ability after point allocation, not the entire battle-effective Ability after other conditional Skills. Dynamic drafts remain **未確定**, and values are illustrations, not guaranteed outcomes in a specific battle. Original detailed research formulas remain present in expanded notes; existing Skill IDs, level effects, training costs and confirmed-status count (**6**) are unchanged. Skill count stays **32**. Browser-stored and JSON builds remain backward compatible. No changes to private Core or master gameplay specs.
+
+## v0.15 — INSIGHT, English-first naming and retirement archive (2026-10-23)
+
+**The current five confirmed Skill IDs and their displayed names** are:
+
+| Stable Skill ID | English name | Confirmed effect |
+|---|---|---|
+| `frame-light` | **Frame Combat Proficiency (Light)** | Matching class: effective SHOOTING & MELEE +1/+2/+3 |
+| `frame-standard` | **Frame Combat Proficiency (Standard)** | Matching class: effective SHOOTING & MELEE +1/+2/+3 |
+| `frame-heavy` | **Frame Combat Proficiency (Heavy)** | Matching class: effective SHOOTING & MELEE +1/+2/+3 |
+| `early-starter` | **First Watch** | During global Turn 1 through `max(1,floor(base INSIGHT / 2))`: effective INSIGHT & REFLEX +1/+2/+3 |
+| `burst-focus` | **Steady Nerves** | After WAIT with its Reaction unspent through the start of next friendly phase: next Activation effective SHOOTING & MELEE +2/+4/+6 |
+
+**INSIGHT** is the English name for the pilot's cognitive awareness/detection stat previously called **AWARENESS**. This is a **Skill Lab presentation/data key change**, not a changed combat formula or a change to private C# `PilotStats.Detection` / `Frame.Sensor`. First Watch uses **base INSIGHT at sortie** as a duration snapshot; its temporary INSIGHT bonus never extends its duration.
+
+**The formerly confirmed Tactical Adaptation, subsequently renamed Quick Study, has been retired.** Stable historical ID `tactical-adaptation` is **absent from the 31 active Skills**, no longer learnable or included in filters. It is listed in a separate collapsed **Archived Skills** section, with its former behavior and retirement rationale. Its former passive offense bonus could come online very early for high-INSIGHT pilots, remain indefinitely, and overlap with class-limited Frame Combat Proficiency. The suggestion to delay it until First Watch ends was also rejected because it would paradoxically activate later for higher-INSIGHT pilots. Do not implement or assume that rejected change.
+
+**Legacy build migration:** same browser storage key `fd-skill-lab-v1` and unchanged schema version 1. On load/import, input `abilityBonus.INSIGHT` is preferred; older `abilityBonus.AWARENESS` and older `abilityBonus.SENSOR` are accepted and converted to INSIGHT. When `skillLevels["tactical-adaptation"]` is found, its historical Lv is stored under `retiredSkillLevels["tactical-adaptation"]` for archival display, but it **does not consume training points**. The abandoned rank's points are thus available for new training. New JSON exports retain the archival rank metadata and use INSIGHT. All other Skill IDs, acquisition ranks and costs remain intact. Reset preserves archived-history metadata.
+
+This release changes public Skill Lab only; private game Core and canonical specifications remain unchanged. Candidate Skill names among the 26 unfinished concepts have **not** been wholesale renamed to English or approved. Historical sections in this README and the notes are preserved as design records; this v0.15 section supersedes conflicts in older names, counts and Skill decisions.

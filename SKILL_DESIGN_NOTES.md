@@ -1,5 +1,8 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
+**現行版 v0.15（2026-10-23）：** 現役31件（確定5、検討中26）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
+
+
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
 
 ## 設計原則
@@ -142,3 +145,28 @@ Skill Labは育成ポイントとスキル取得のシミュレーターであ�
 - 各カードの「計算式・設計上の補足」展開欄に元の式や設計経緯を残す。レベル効果が単純固定値のカードはそのまま。
 - 他のスキルの一時的なAbility補正、機体・武器・戦闘状況を含めた計算ではないので、**実際の戦場での最終結果を保証しない**。元仕様で実効Abilityを参照するスキルも、Skill Labプレビューでは表示パイロットの現在基礎Abilityを代用して計算する。
 - 32スキル（確定6件）の定義と保存形式は変更しない。本編Coreや正式仕様書は未変更。
+
+## 2026-10-23 — v0.15 本番Skill Lab反映結果
+
+### 確定5種類の英語表記
+
+- `Frame Combat Proficiency (Light)`／`Frame Combat Proficiency (Standard)`／`Frame Combat Proficiency (Heavy)`。機体の種類はコロンやカンマでなく末尾の括弧で表す。強化は当該機体に搭乗中の実効SHOOTING・MELEE＋1／2／3のみ。
+- `First Watch`（旧初動警戒）：出撃時の基礎INSIGHTから有効終了Turn = max(1,floor(基礎INSIGHT÷2)) を一度決め、Turn1〜そのTurnまで実効INSIGHTとREFLEX＋1／2／3。**高INSIGHTほど持続が長い従来仕様のまま。**
+- `Steady Nerves`（旧臨戦集中）：WAITで得たReactionを次自Faction Phase開始まで使わず通常失効した場合、次自Activation終了まで実効SHOOTING・MELEE＋2／4／6。効果・レベルは変更なし。
+- 英語名は日本語UIでも英語のまま表示。日本語の発動条件・効果説明は残す。26件の未確定案は一括英語改名しない。
+
+### INSIGHT表示・保存互換
+
+- 表示・検索・式・スキル説明中の旧AWARENESSをINSIGHTへ。索敵に使う能力値であり、Core内部のPilot DetectionとFrame.Sensorは既存名のまま。
+- 旧ローカル保存・旧JSONにある `abilityBonus.AWARENESS` / さらに古い `abilityBonus.SENSOR` を INSIGHT に自動移行。新書き出しは `abilityBonus.INSIGHT`。
+- 技能のLv／発動条件の算式と他のスキル効果は名前以外変更しない。
+
+### Quick Study（旧戦況適応）の取り下げ
+
+以前の確定技能 `tactical-adaptation` を**現役31カードから除外**し、画面下部の展開可能な「Archived Skills」へ移動。旧式 `max(3, 20-基礎INSIGHT)` 以後Mission終了まで実効SHOOTING・MELEE +1/2/3 はもはや選択・適用されない。
+
+理由：高INSIGHTほど機体制限なしの持続攻撃強化が非常に早く成立して、`Frame Combat Proficiency` と類似の効果をより少ない条件で与えやすい。First Watchの後半へ隙間なく接続する別式は、高INSIGHTほどQuick Studyが遅延するため不採用。
+
+古いビルドで `tactical-adaptation` Lv1〜3 を取得済みなら、当該ランクを `retiredSkillLevels` へ歴史情報として移し、**育成ポイント使用量には算入せず実質全額返却**。Lvはアーカイブ欄と習得欄の注意書きに表示。JSON再保存も履歴を保持。育成配分のリセットは履歴を消去しない。
+
+現在の確定は5件、検討中26件、アーカイブ1件。スキルIDの再割当なし。本編Coreや正式仕様書は更新しない。
