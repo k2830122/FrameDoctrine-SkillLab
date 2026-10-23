@@ -10,7 +10,7 @@
 | Lv2 | +2 | +2 |
 | Lv3 | +3 | +3 |
 
-Passive automatic Skill: applies while operating the matching Frame class. The changes are effective Ability modifiers used by all eligible SHOOTING/MELEE calculations, including applicable Missile Intercept or Critical Penetration checks. REFLEX and SENSOR are unaffected. No Action, Reaction, MP, cooldown or use count. One Training Point per rank.
+Passive automatic Skill: applies while operating the matching Frame class. The changes are effective Ability modifiers used by all eligible SHOOTING/MELEE calculations, including applicable Missile Intercept or Critical Penetration checks. REFLEX and AWARENESS are unaffected. No Action, Reaction, MP, cooldown or use count. One Training Point per rank.
 
 This decision replaces the earlier provisional +2/+3/+5% accuracy/evasion proposal. **Confirmed for Skill Lab game design, not yet implemented into private Core or canonical specifications.** All other skills are not formally approved.
 
@@ -58,14 +58,14 @@ The following candidates are only rough exploratory ideas, not accepted implemen
 
 Besides ordinary Ability-boosting Skills, investigate Skills whose *magnitude or activation probability is calculated from the Pilot's current effective Ability*, such as `REFLEX × 1%` for a conditional follow-up move. This gives ordinary Ability increases additional strategic value.
 
-When a Skill says it grants an effective Ability bonus (SHOOTING, MELEE, SENSOR or REFLEX), the intended *research direction* is to use the resulting effective Ability in all relevant calculations, rather than granting narrow +Hit% / +Evasion% substitutions. This still requires explicit combat-design review before any change to the private Core.
+When a Skill says it grants an effective Ability bonus (SHOOTING, MELEE, AWARENESS or REFLEX), the intended *research direction* is to use the resulting effective Ability in all relevant calculations, rather than granting narrow +Hit% / +Evasion% substitutions. This still requires explicit combat-design review before any change to the private Core.
 
 This app currently simulates **training-point allocation only**, not on-map kill events, HP reductions, Action outcomes, or chance rolls.
 
 ## Ability cap removal and limited guaranteed outcomes (2026-10-23)
 
 **New accepted research direction (not yet canonical Core):**
-- Remove the numeric ceiling on both *base* and *effective* Pilot Abilities (SHOOTING, MELEE, SENSOR, REFLEX). A player may continue investing Training Points into a base Ability past 20, subject to their finite Training Point budget.
+- Remove the numeric ceiling on both *base* and *effective* Pilot Abilities (SHOOTING, MELEE, AWARENESS, REFLEX). A player may continue investing Training Points into a base Ability past 20, subject to their finite Training Point budget.
 - Conditional Skill boosts stack into the effective Ability and use that full value consistently in all relevant Ability-dependent calculations.
 - Extreme accuracy and evasion are allowed to become correspondingly strong. Probability quantities, however, are still bounded by 0–100%; removing an Ability ceiling is **not** removing probability bounds.
 - Balance through finite growth points, real activation conditions, opportunity costs and build tradeoffs, not a universal ability ceiling. Do not silently migrate this rule into the private game Core or master specs.
@@ -81,7 +81,7 @@ The skill-list page models **purchase allocation**, not true combat resolution o
 
 The Skill Lab now shows the research redesign on all 19 original candidates, retaining all 6 later rough ideas (28 total) and stable IDs for saved builds. **No Core changes are authorized.** Existing Option mechanics remain untouched.
 
-**Research principle:** When a Skill grants conditional Ability +N or −N, use that *effective* Ability consistently in **all otherwise eligible formulas** that use SHOOTING, MELEE, SENSOR, or REFLEX, instead of one-off Hit/Evasion percentage exceptions. Conditional skills do not mutate the underlying base value. Base and effective Ability caps are removed *in the research design*; probability outputs still use ordinary 0–100% rules.
+**Research principle:** When a Skill grants conditional Ability +N or −N, use that *effective* Ability consistently in **all otherwise eligible formulas** that use SHOOTING, MELEE, AWARENESS, or REFLEX, instead of one-off Hit/Evasion percentage exceptions. Conditional skills do not mutate the underlying base value. Base and effective Ability caps are removed *in the research design*; probability outputs still use ordinary 0–100% rules.
 
 New compare-only Lv1/2/3 values:
 
@@ -90,7 +90,7 @@ New compare-only Lv1/2/3 values:
 - Precision Shooting, Mobile Evasion, Momentum Melee: relevant SHOOTING/REFLEX/MELEE +2/+4/+6 respectively, with existing stationary or 3-Hex movement trigger.
 - Ordinary INTERCEPT specialist: SHOOTING +2/+4/+6 only during qualifying ordinary INTERCEPT.
 - Burst Focus: selected Ability +2/+4/+6 (activation economics unresolved).
-- Night/Adverse Weather, Stationary Observation, Active Scan Interpretation: SENSOR +4/+8/+12 under their respective conditions (strong provisional values; Active Scan Skill remains unapproved).
+- Night/Adverse Weather, Stationary Observation, Active Scan Interpretation: AWARENESS +4/+8/+12 under their respective conditions (strong provisional values; Active Scan Skill remains unapproved).
 - Suppressive Fire: target effective REFLEX −1/−2/−3 for rest of firing Faction Phase; full applicable REFLEX semantics, not a special +Hit% buff.
 - Guardian Reaction: REFLEX +1/+2/+3 when protecting an ally (Skill migration on hold).
 - Stationary penetration, Lance charge penetration, BRACE Armor, CONCEAL Signature: remain special-effect skills; not all effects should be expressed as Ability gains.
@@ -100,3 +100,10 @@ The app is only a **point-allocation simulator**. Conditional skills are not aut
 ## 2026-10-23 — Range and movement-triggered skill drafts
 
 Two further exploratory candidates were added (30 total): a condition-based “Lucky Star” slot (example: firing from 7 Hexes, effect TBD) and a REFLEX-dependent movement firing penalty mitigation skill. Refer to [SKILL_DESIGN_NOTES.md](SKILL_DESIGN_NOTES.md) for candidate formulas and Core distinctions. Their conditions and numbers are not approved final mechanics.
+
+## v0.9 — Pilot AWARENESS and saved-build migration (2026-10-23)
+
+- Pilot Ability label: **AWARENESS（状況把握）**, formerly displayed as SENSOR in Skill Lab. This remains the current private game's internal **`PilotStats.Detection`**. Physical **`Frame.Sensor`** is a distinct Frame statistic; private Core and canonical game specs remain unchanged.
+- Legacy browser saves and imported JSON with `abilityBonus.SENSOR` automatically map to `abilityBonus.AWARENESS`, preserving allocated Training Points. New exports use AWARENESS.
+- The 「確定スキルを見る」 button toggles on/off; the second click restores previously selected search/category/origin/status filters (Issue #1).
+- **Early Starter remains provisional:** proposed effect duration `max(1, floor(base AWARENESS at deployment / 2))` global Turns. AWARENESS10=5 Turns; AWARENESS20=10 Turns. Rank bonuses SHOOTING/REFLEX +1/+2/+3 remain drafts; validate against mission duration first. General integer rounding consistency is also a discussion, not an approved Core change.

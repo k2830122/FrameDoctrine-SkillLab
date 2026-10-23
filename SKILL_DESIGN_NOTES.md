@@ -70,6 +70,13 @@
 
 ## 2026-10-23 — 確定したスキル：機体習熟3種類
 
-**機体習熟：Light / Standard / Heavy** の各スキルは、該当機体に搭乗中、SHOOTINGとMELEEがLv1では各+1、Lv2では各+2、Lv3では各+3。REFLEX・SENSORへの効果なし。基礎値は不変、実効Abilityとして該当する全判定に使用する。パッシブで自動発動し、追加Action・Reaction・MP・使用回数は不要。各Lvは育成ポイント1消費。
+**機体習熟：Light / Standard / Heavy** の各スキルは、該当機体に搭乗中、SHOOTINGとMELEEがLv1では各+1、Lv2では各+2、Lv3では各+3。REFLEX・AWARENESSへの効果なし。基礎値は不変、実効Abilityとして該当する全判定に使用する。パッシブで自動発動し、追加Action・Reaction・MP・使用回数は不要。各Lvは育成ポイント1消費。
 
 これはSkill Labにおける正式な設計判断で、旧い+2/+3/+5%命中・回避効果案や後続の仮数値案に優先する。本編Core・マスター仕様書への実装・変更は行わない。ほかのスキルは個別の確定指示まで未確定。
+
+## 2026-10-23 — AWARENESS名称確定・アーリースターター継続検討
+
+- Skill Labおよび今後の会話におけるPilot第3能力を **AWARENESS（状況把握）** とする。以前のSkill Lab表示SENSORとは同じ能力だが、現行C#内部の名称は `PilotStats.Detection`、機体側の `Frame.Sensor` とは別である。本編Coreは変更しない。
+- **アーリースターターは未確定**：出撃時の基礎AWARENESS÷2の切り捨て（最低1Turn）まで全体Turn 1から自動発動する比較案。AWARENESS 10→5 Turn、20→10 Turn。スキルLvによるSHOOTINGとREFLEX +1/+2/+3も未確定。全体TurnとActivationを区別し、途中のAbility変化で期間を再計算しない。
+- 正の値を整数へ量子化する場合は原則floorを採用する方向で検討。現行Coreでも索敵予算や最終命中率にfloorを使用。ただし必要回数等でceilを用いる場面はあり得る。ゲーム全体の丸め仕様を決定したわけではない。
+- 確定スキルフィルターボタンは再クリックでフィルター解除し、元のフィルターを復元する（Issue #1）。
