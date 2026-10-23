@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.16（2026-10-23）：** 現役31件（確定6、検討中25）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
+**現行版 v0.17（2026-10-23）：** 現役31件（確定8、検討中23）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -180,3 +180,10 @@ Skill Labは育成ポイントとスキル取得のシミュレーターであ�
 - 普通の単体Direct FIRE、MELEE、適格な誘導ミサイル着弾など回避判定がある攻撃に作用する方向。必中・Area・特異な命中プロファイル、多段Hit等は本編Coreを改修する前に仕様詳細を検証。UNKNOWN FIREに敵情報を表示しない。
 - 攻撃をかわした／受けたことではReactionを消費しない。保持中は複数攻撃に適用。INTERCEPT／COVER／Missile InterceptにReactionを使用すると失効。敵Phaseをまたいで未使用だったらSteady Nervesと併用可。追加の専用回数管理やコマンドなし。
 - 現役31件（確定6、検討中25）、Quick Studyはアーカイブ1件で不変。既存5確定スキルの効果・ポイント数も変更なし。公開ブラウザのSkill Labのみの更新で非公開Coreは未変更。超過命中値50%→CritPenの規則はIDEAS.mdの未実装研究案。
+
+## 2026-10-23 — v0.17 Right on Cue / Got Your Six 正式反映
+
+- **Right on Cue**（旧迎撃射撃術、ID `reaction-shooter`）：通常Reaction INTERCEPT射撃とMissile Interceptの双方で実効SHOOTING+2/+4/+6を確定。通常単体INTERCEPTはHitRaw+6/+12/+18、ミサイル迎撃はHitRaw+4/+8/+12。通常のMain Action射撃には適用しない。Missile InterceptにCritPenはない。Reaction消費、合法武器・弾薬・LOS等は既存どおり。英語名は、敵の行動を予期して待っていたところ予想どおり動いた、という意味。
+- **Got Your Six**（旧護衛反応、ID `guardian-reaction`）：別の味方Friendly Unitを守るCOVERまたは味方へ向かうミサイルのMissile Interceptに限り、実効REFLEX+3/+6/+9。COVERは隣接1Hexの味方に対する単体Direct FIRE／単体MELEE／単体誘導Missileの攻撃全体をReaction消費で自機が引き受ける。通常のCOVER命中係数3で敵HitRaw−9/−18/−27、味方へのミサイル迎撃は係数2で迎撃HitRaw+6/+12/+18。自身へのCOVERや自己Missile Interceptは対象外。範囲・Hex・方向指定、Reaction由来攻撃はCOVERできない。
+- 元の物理Option Defensive Response Suiteは本編Coreに残存。技能研究確定はOption削除や重複バフの自動許可ではない。統合方法は将来の仕様決定事項。
+- 現行31スキル、確定8、研究中23、Quick Studyアーカイブ1。Skill ID、育成ポイント、ローカル保存/JSON互換、他のスキル効果は変更なし。private Coreには触れていない。
