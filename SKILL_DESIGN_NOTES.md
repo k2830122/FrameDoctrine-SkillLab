@@ -81,7 +81,7 @@
 - 正の値を整数へ量子化する場合は原則floorを採用する方向で検討。現行Coreでも索敵予算や最終命中率にfloorを使用。ただし必要回数等でceilを用いる場面はあり得る。ゲーム全体の丸め仕様を決定したわけではない。
 - 確定スキルフィルターボタンは再クリックでフィルター解除し、元のフィルターを復元する（Issue #1）。
 
-## 2026-10-23 — 確定：初動掌握 / Opening Advantage（旧アーリースターター）
+## 2026-10-23 — 旧確定仕様：初動掌握 / Opening Advantage（現在は初動警戒に改訂）
 
 - **検討状況：確定。** Skill Labの汎用スキル `early-starter` の表示名称を「初動掌握 / Opening Advantage」に変更するが、ビルド保存互換性のため内部Skill IDは維持する。
 - **Lv1：** 実効SHOOTING +1、実効REFLEX +1（1P）。
@@ -91,3 +91,13 @@
 - 例：基礎AWARENESS 10→5ターン、16→8ターン、20→10ターン。特別な機体制限・Action/Reaction/MP/弾薬/使用回数の追加消費なし。該当するすべてのSHOOTING/REFLEX判定で実効Abilityを使用。基礎値を変更しない。
 - **設計上の意図：** AWARENESSの高い索敵型の序盤で命中と回避を強化し、後半の失効で常時スキルと区別する。高AWARENESSと高SHOOTINGが両立しない場合もビルドの価値がある。ただし、初動接敵と実ミッションの持続ターン数をプレイテストで検証。
 - **変更範囲：** 独立したSkill Labの設計確定。非公開の本編Core・正式仕様の実装・変更は行わない。前段の「未確定」という記述は当時の履歴として扱い、この項目を現行判断とする。
+
+## 2026-10-23 — 現行確定仕様：初動警戒 / Opening Vigilance
+
+- **確定**：従来の「初動掌握 / Opening Advantage」は **「初動警戒 / Opening Vigilance」** へ改訂。旧初動掌握のSHOOTING・REFLEX強化と途中検討のMELEE追加案は取りやめ、**AWARENESS＋REFLEX** の組へ変更する。
+- **Lv1:** 実効AWARENESS +1、実効REFLEX +1（1P）。**Lv2:** それぞれ+2（累計2P）。**Lv3:** それぞれ+3（累計3P）。
+- パッシブ自動発動。全体Turn1から **`max(1, floor(出撃時の基礎AWARENESS / 2))`** Turn終了まで有効。全Faction Phaseの適格な索敵・回避等に適用し、次の全体Turn開始時に失効する。
+- **持続時間へスキル自身のAWARENESS増加は含めない。** 出撃時の基礎AWARENESS（恒久的なAbility育成反映済み）で持続時間を1回決め、発動中の実効Ability変化では再計算しない。例：基礎AWARENESS10ならすべてのスキルLvで5Turn、16なら8Turn、20なら10Turn。
+- 発動中の実効AWARENESS上昇は通常のDetection Powerへ反映する。REFLEXは通常回避とその他適格な判定に反映。機体固定制約・追加Action/Reaction・専用リソースなし。
+- **既存スキルID `early-starter` 維持**で保存済みビルドを保護。4種類の確定スキルは「機体習熟Light/Standard/Heavy」と「初動警戒」。機体習熟はSHOOTING＋MELEEの現在の仕様を変更しない。6種の能力ペアを機体習熟へ拡張しない。
+- 過去の旧名称・旧効果のメモは設計過程の履歴であり、この項目を現行の確定判断とする。これは公開Skill Labのみ。非公開本編Coreや公式仕様は未変更。
