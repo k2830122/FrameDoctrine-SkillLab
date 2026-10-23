@@ -188,3 +188,18 @@ The category tab bar, `すべて` grouped sections and category dropdown use the
 No Skill's identifier, cost, numeric effect, approved status, or trigger text changed. It remains **6 confirmed / 26 exploratory**; existing local-storage/JSON build data stays compatible. All categories and tag assignments are **research UI taxonomy**, not an implementation of in-battle effects and not a change to private Core.
 
 Related issue: #10.
+
+## v0.14 — Pilot-aware Level previews (2026-10-23)
+
+**The main Lv1 / Lv2 / Lv3 descriptions prioritize concrete sample-Pilot values over formulas.** Formula details are available in each relevant card's expandable **計算式・設計上の補足** section. The prototype still simulates Training Point allocation, not full battle resolution.
+
+The research sample Pilot **PHANTOM-01** has base Abilities of 10 before the user's permanent point allocations. For the following existing draft Skills, visible Lv results are calculated using the sample's current base Abilities and update immediately when they are changed:
+
+- **臨戦警戒 / Combat Vigilance** (`certain-evasion`): direct evasion bonus in **percentage points** from base AWARENESS; display Lv1/2/3 values using `floor(AWARENESS × Lv / 3)` (the Lv3 expression is equivalent to the full AWARENESS value).
+- **反射機動** (`reflex-followup-move`), **見切り回避** (`reflex-second-chance`): probability `clamp(REFLEX × Lv,0,100)%`.
+- **脚部制圧射撃** (`leg-disrupting-shot`): probability `clamp(SHOOTING × Lv,0,100)%`.
+- **移動射撃術** (`moving-fire-discipline`): result of reducing weapon movement modifiers **−10 and −20** by up to `floor(REFLEX × Lv / 3)`, capped at zero penalty; show both practical examples for the same sample Pilot. Weapons with zero penalty do not acquire a bonus.
+
+For the confirmed **初動警戒 / Opening Vigilance**, the shown expiry Turn is now the sample's computed `max(1,floor(base AWARENESS/2))`; for **戦況適応 / Tactical Adaptation**, the start Turn is `max(3,20-base AWARENESS)`. Their approved level bonuses and triggering rules have not changed.
+
+**Disclosure and scope:** The pilot number is the current displayed *base* Ability after point allocation, not the entire battle-effective Ability after other conditional Skills. Dynamic drafts remain **未確定**, and values are illustrations, not guaranteed outcomes in a specific battle. Original detailed research formulas remain present in expanded notes; existing Skill IDs, level effects, training costs and confirmed-status count (**6**) are unchanged. Skill count stays **32**. Browser-stored and JSON builds remain backward compatible. No changes to private Core or master gameplay specs.
