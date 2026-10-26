@@ -1,6 +1,6 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.26 (2026-10-27).** 34 active Skills: **13 confirmed**, 21 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+**Current release: v0.27 (2026-10-27).** 35 active Skills: **14 confirmed**, 21 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
 
 ## Historical decision log: Frame Proficiency Skills (2026-10-23)
@@ -414,3 +414,18 @@ The existing Skill Lab entry `solo-operator` is now named **On Your Own** and mo
 ### Other statuses unchanged
 
 First Watch, Right on Cue, Steady Nerves and Stay Frosty remain in review, and numerical Go Dark Signature effects remain provisional. Keep Watch, Sweep the Sector and the other previously confirmed skills are unchanged. The prior v0.25 totals/history are superseded by this dated entry.
+
+## v0.27 — Pick Your Ground confirmed (2026-10-27)
+
+**Pick Your Ground** is a newly added Skill with ID `pick-your-ground`, category `地形・陣地`, source `新規アイデア`, and Skill Lab status **confirmed**. Now **35 active Skills: 14 confirmed, 21 unconfirmed**, plus 1 archived Quick Study. The existing localStorage format/key `fd-skill-lab-v1`, existing 34 active Skill IDs and saved allocation semantics remain unchanged. The production Core has **not** been modified.
+
+### Mechanics (skill-specific additive positional-cover protection)
+
+- While the Pilot's Hex carries a **negative positional CoverHitModifier** from Forest, Rubble or a stronger Fortified Position such as Revetment, improve that cover by **−5/−10/−15 HitRaw points at Lv1/Lv2/Lv3**, respectively. It does not change REFLEX, Armor, Signature or the Pilot's other effective Abilities.
+- Baseline Forest/Rubble cover −10 becomes −15/−20/−25; baseline Revetment cover −15 becomes −20/−25/−30. Plain, road, passable Rock and other Hexes with cover 0 **do not gain cover from this Skill**. Fortification may grant cover on otherwise open ground.
+- Preserve Core's strongest-only positional rule: `BaseCover = min(TerrainCover, FortifiedPositionCover)`. If `BaseCover < 0`, use `BaseCover - (5 × SkillLv)`; otherwise use `BaseCover`. **Do not add the bonuses separately to terrain and emplacement and then stack them.**
+- Applies only to attacks whose existing Core hit calculation actually consults positional cover: ordinary Unit-targeted Direct FIRE and applicable guided missile hits. Does **not** grant protection against MELEE or Area/Hex damage that does not consult the positional cover modifier; does **not** enhance the ally-protecting Reaction named COVER. This is **not** a global evasion/REFLEX buff.
+- Movement costs, Line of Sight, Range and detection/Track constraints still apply. Synergies: Keep Moving for moving into a strong cover Hex; Plant Your Feet/Keep Watch for holding favorable firing/observation positions; On Your Own for isolated covered flanking.
+- The Skill Lab is a **Training Point allocation and Skill comparison simulator, not an actual battlefield simulator**. The Skill's Lv cards and expanded calculation notes give deterministic examples. Balance and implementation interactions remain subject to later Core integration and playtesting.
+
+The v0.26 On Your Own skill and other existing Skill statuses remain unchanged.
