@@ -1,6 +1,6 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.25 (2026-10-27).** 34 active Skills: **12 confirmed**, 22 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+**Current release: v0.26 (2026-10-27).** 34 active Skills: **13 confirmed**, 21 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
 
 ## Historical decision log: Frame Proficiency Skills (2026-10-23)
@@ -24,7 +24,7 @@ A standalone browser-based simulator for experimental pilot skill builds in FRAM
 
 ## Features
 
-- 34 active experimental pilot skills (twelve confirmed, 22 provisional) and one retired Skill in the archive
+- 34 active experimental pilot skills (thirteen confirmed, 21 provisional) and one retired Skill in the archive
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
@@ -396,3 +396,21 @@ Skill Lab version v0.25 maintains **34 active Skills (12 confirmed, 22 under rev
 Confirmed Skill Lab entries now comprise Frame Combat Proficiency (Light/Standard/Heavy), Plant Your Feet, Keep Moving, On the Charge, Got Your Six, Hunker Down, Go Dark (its Signature numbers remain explicitly provisional), Fired Up, Keep Watch and Sweep the Sector.
 
 First Watch, Right on Cue, Steady Nerves and Stay Frosty remain under review. Against the Odds keeps its agreed name but provisional formula; paired fire remains provisional. Previous notes treating 定点観測 as on hold or 能動走査術 as undecided are historical and superseded by this record. No code implementation or game balance certification is implied.
+
+## v0.26 — On Your Own confirmed (2026-10-27)
+
+The existing Skill Lab entry `solo-operator` is now named **On Your Own** and moved to **confirmed** status. It is not a new Skill entry; IDs, existing allocations, archived entries, import/export and `fd-skill-lab-v1` saved builds are unchanged. Total: **34 active Skills; 13 confirmed, 21 unconfirmed; 1 separately archived Quick Study**. This changes the **independent Skill Lab's research design only**, not the private production Core.
+
+### Conditions and approved Skill Lab research formula
+
+- While there is **no other Friendly Unit within geometric Hex distance 4 inclusive** of the Pilot, the Pilot receives an effective **SHOOTING** increase. At Hex distance 5 and beyond the isolation condition can be met. Range to Hostiles is **not** an extra condition. Distance is Hex geometry, not MOVE path cost.
+- This is a positional condition rather than a distinct Action: it updates as other Friendly Unit positions change, and does not require the Pilot to MOVE. Enemy position, forward/back rank, terrain, weapon class and Action order are not extra gates.
+- The current explicit Skill Lab scaling model is `1 + floor(SortieBaseINSIGHT * SkillLevel / 6)`. The **SortieBaseINSIGHT** includes permanent Training Point gains but does **not** include temporary INSIGHT boosts from Keep Watch, Sweep the Sector and other conditions. This protects against recursive temporary scaling.
+- Illustrative effective SHOOTING bonuses: INSIGHT 10 → Lv1 +2, Lv2 +4, Lv3 +6; INSIGHT 14 → +3/+5/+8; INSIGHT 18 → +4/+7/+10. The Skill Lab displays computed values dynamically as the sample Pilot's permanently trained INSIGHT changes.
+- There is **no REFLEX bonus**, no MELEE bonus and no added defensive protection. Isolation makes COVER by nearby allies unavailable and exposes a forward scout to risk; a slower Heavy Frame left behind might instead exploit this condition for long-range FIRE but must still satisfy range, LOS and legal Track requirements.
+- Legitimate Datalink reception remains available even when isolated, subject to existing jamming/sharing rules. SHOOTING affects eligible HitRaw and CritPen calculations; it does not automatically grant a shot or alter weapon range. Combines with Plant Your Feet when stationary, with Go Dark for a temporary concealment/then-fire pattern, and possibly with Keep Watch in flanking observation positions.
+- The category remains `距離・布陣`, origin `IDEAS`, Skill ID `solo-operator`. Unlike the discarded early concept, **SHOOTING and REFLEX are NOT both increased**. The high-INSIGHT scaling and geometric isolation are approved as Skill Lab's current concrete design, but have not undergone comprehensive combat balance tests.
+
+### Other statuses unchanged
+
+First Watch, Right on Cue, Steady Nerves and Stay Frosty remain in review, and numerical Go Dark Signature effects remain provisional. Keep Watch, Sweep the Sector and the other previously confirmed skills are unchanged. The prior v0.25 totals/history are superseded by this dated entry.
