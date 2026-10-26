@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.23（2026-10-26）：** 現役33件（確定6、検討中・保留27）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
+**現行版 v0.24（2026-10-27）：** 現役34件（確定10、検討中・保留24）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -262,3 +262,39 @@ Skill Labは育成ポイントとスキル取得のシミュレーターであ�
 変更は現在の研究上の**確定ステータスだけ**。3件のLv1～3、発動条件、説明、Ability計算参考値は削除・変更せず、過去の比較用仮案として残す。廃案やArchivedへ移す判断ではない。過去の「確定」の記録は当時の研究履歴であって、現状の確定状況を意味しない。
 
 First Watchの再検討、定点観測の保留も継続。現役33件中**確定6件、未確定・保留27件**。確定はFrame Combat Proficiency 3件、Plant Your Feet、Keep Moving、Got Your Sixの6件。スキルID・ローカル保存・ビルドのJSON形式は保持。本編COREおよび既存Optionには変更を加えない。
+
+## 2026-10-27 — v0.24 On the Charge / Hunker Down / Fired Up / Go Dark
+
+ユーザーとのゲームデザイン検討をSkill Labにまとめて反映。**現役34件（確定10件・再検討／保留24件）**、Quick Studyアーカイブ1件。既存のSkill ID、localStorage `fd-skill-lab-v1`、保存ビルド、既存34件中元33件のレベル選択互換性を維持。本編 private Coreのゲームロジック・既存Optionは変更しない。ここでの「確定」は**Skill Labの設計研究上**の暫定採用で、コード実装済みを意味しない。
+
+### On the Charge（旧助走白兵、ID `momentum-melee`）— 確定
+
+- 自Activation中に自分の通常MOVEで**実際に3Hex以上進入成功**したあと、同じActivationで適格なMELEE攻撃を行う際の**実効MELEE +2/+4/+6**（Lv1/2/3）。通常の命中値なら+6/+12/+18pt。Combat KnifeなどCritPen YES武器では実効MELEE・HitRaw超過命中も通常どおり参照。
+- 予定経路やMovement Cost 3では条件を満たさない。REPOSITION・Light DISPLACEでは進入カウントを増やさない。白兵攻撃と前進の危険を引き受ける。
+- 元CCAS Optionの廃止や重複有無は未決定。
+
+### Hunker Down（旧防御姿勢術、ID `brace-discipline`）— 確定
+
+- BRACEのArmor +2を、Lv1/2/3に応じて**追加Armor +1/+2/+3**で合計**+3/+4/+5**に強化。
+- さらに、BRACEが有効な間、通常の装甲・Penetration・最低保証ダメージ処理を行った結果が**ちょうど1ダメージのHitのみ、最終HPダメージを0へ置換**する。複数Hit武器にはHit単位で適用。命中の事実は消えないのでFired Upは発動できる。
+- 通常BRACEの寿命とMain Actionコストを変えない。強力な貫通攻撃、CritPenなどの反撃対策がある。元ARS Optionとの併用・置換は未決。通常の最小ダメージ1ルールの例外は本編Coreへまだ実装していない。
+
+### Fired Up（新規ID `fired-up`）— 確定
+
+- 相手からの**Attackに1回以上Hitされたら**、最終HPダメージが0でも発動準備。**次の自Activation**に限り、Lv1/2/3で**SHOOTING・MELEE +6/+9/+12**。
+- **完全非累積の二値条件**：敵のAttackが2回・3回命中しても上昇幅は変わらない。同じAttackの多段Hitも1Attackとみなす。次の自Activationが完了すると失効。
+- 一般的な命中式HitRaw+18/+27/+36、CritPen YES武器なら実効Abilityと超過命中値にも反映する。MISSのみなら発動しない。自Activation中の敵INTERCEPT Hitも、その自Activationに遡及させず**次の**自Activationに回す。特殊な命中判定なしArea攻撃などは本編Coreに移管する段階で発動対象を要整理。
+- Hunker Downと組み合わせれば、BRACEで敵のHitを装甲で受け、0ダメージでも次の自Activationの反撃にボーナスを得る。狙って被弾する難しさがあり、強化は1回分のActivationに限る。
+
+### Go Dark（旧隠密動作、ID `conceal-discipline`）— 基本方針確定、Lv数値は暫定
+
+- CONCEAL中の低Signatureと引き換えに**自機センサーによるDetectionおよびLocal Trackを完全停止**。Detection Powerを単に0にするだけでは正Signatureの目標を検出できてしまうので、センサー観測源を無効化する設計。隣接Proximityなど別の情報源は維持。
+- 他味方からのDatalink Track受信は**可能**。通信妨害や別観測者の情報喪失に依存する。敵フェーズ中に周辺で敵が移動しても気づかず、次の自軍Faction Phase開始でセンサーが戻り、突然敵を多数発見し得る。
+- 通常CONCEALの主行動消費と次の自軍Faction Phase開始で失効するルールを維持。潜伏状態を維持したまま次の自軍ターンにMOVEするような例外は設けない。
+- Lv1/2/3の**CONCEALによるSignature合計−2/−3/−4**は比較用の**暫定値であり、未だ数値確定ではない**。名前と技能の軸は確定。元SRS Optionの重複・置換は未決。
+
+### 確定数と未決事項
+
+確定10件＝Frame Combat Proficiency（Light/Standard/Heavy）3件、Plant Your Feet、Keep Moving、On the Charge、Got Your Six、Hunker Down、Go Dark（Signature数値仮）、Fired Up。今回名称未確定だった戦闘適応はFired Upという名前になった。以前確定を解除したFirst Watch、Right on Cue、Steady Nerves、Stay Frostyは引き続き再検討、定点観測は保留。Against the Oddsは名称のみ確定で計算係数は未確定。二丁同時射撃も研究段階。いずれも今回勝手に確定数へ加算しない。
+
+旧版の記録は履歴であり、現在のstatusは本項とSkill Labのカード表示を優先する。数値未確定の効果を正式戦闘仕様や実装指示として流用しない。
