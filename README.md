@@ -1,6 +1,6 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.24 (2026-10-27).** 34 active Skills: **10 confirmed**, 24 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+**Current release: v0.25 (2026-10-27).** 34 active Skills: **12 confirmed**, 22 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
 
 ## Historical decision log: Frame Proficiency Skills (2026-10-23)
@@ -24,7 +24,7 @@ A standalone browser-based simulator for experimental pilot skill builds in FRAM
 
 ## Features
 
-- 34 active experimental pilot skills (ten confirmed, 24 provisional) and one retired Skill in the archive
+- 34 active experimental pilot skills (twelve confirmed, 22 provisional) and one retired Skill in the archive
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
@@ -369,3 +369,30 @@ These are status changes only, not automatic balance adjustments. The former for
 Frame Combat Proficiency (Light, Standard, Heavy); Plant Your Feet; Keep Moving; On the Charge; Got Your Six; Hunker Down; Go Dark (Signature numbers provisional); Fired Up.
 
 First Watch, Right on Cue, Steady Nerves and Stay Frosty remain reopened for design review, and 定点観測 remains on hold. Against the Odds has an agreed **name**, but its mathematical formula has **not** been promoted to confirmed. 二丁同時射撃 remains provisional. Prior version logs are historical; this v0.24 section overrides older status and counts.
+
+## v0.25 — Keep Watch and Sweep the Sector confirmed (2026-10-27)
+
+Skill Lab version v0.25 maintains **34 active Skills (12 confirmed, 22 under review/on hold)** and the separately archived Quick Study. No source Skill IDs, localStorage key, saved build format or retired histories have changed. These decisions concern independent Skill Lab research, not private production Core changes.
+
+### Keep Watch (former 定点観測), existing ID `observation-discipline`
+
+- **Confirmed Skill Lab name and Lv effects**: Lv1/2/3 **effective INSIGHT +4/+8/+12**.
+- Trigger: finish an own Activation without committing an ordinary self-MOVE. The Skill activates only **after** its Main Action (FIRE, ACTIVE SCAN, etc.) or WAIT fully resolves and the Activation is Completed. Earlier Attack/scan/Reaction results are not modified retroactively.
+- Duration: through intervening hostile/other-faction Phases and own Faction Phase transitions, until the Unit begins its **next own Activation** (not simply the next Faction Phase start). A not-yet-activated observing Unit can still share legitimate Track while allies act first.
+- Effective INSIGHT contributes to Detection Power one-for-one: BasicDetectionBudget = floor(DetectionPower/4), hence the +4/+8/+12 provides **+1/+2/+3 base sensor budget**. This is not guaranteed geographical Hex detection; target Signature, Terrain Sensor Cost, blockers, weather, Smoke and Datalink restrictions remain authoritative.
+- The Skill creates meaningful decisions about movement versus positional overwatch, early versus late Activation, flank observations, and combination with **Plant Your Feet**. Light Frame's native post-Action DISPLACE does not count as ordinary MOVE. Standard/Heavy MSU post-Action ordinary MOVE does count and prevents qualification.
+- Existing Sensor Stabilizer Option remains in private Core, including its current +4 Detection Power and lifecycle. Future replacement/stacking with Keep Watch is unresolved.
+
+### Sweep the Sector (former 能動走査術), existing ID `scan-interpretation`
+
+- **Confirmed Skill Lab name and Lv effects**: during the instantaneous **ACTIVE SCAN** calculation, effective INSIGHT **+4/+8/+12**.
+- The standard ACTIVE SCAN contribution remains instant **Detection Power +12**, making its total Skill-assisted instant bonus **+16/+20/+24** at levels 1/2/3 (excluding other unconfirmed stacking from Options). There is no continued INSIGHT bonus after the scan completes.
+- ACTIVE SCAN still consumes the Main Action and creates its ordinary temporary **scanner Signature +2**, preserving normal information reconciliation, exposure, Datalink, range/line cost and blockers.
+- **Synergy, not simultaneity:** if ACTIVE SCAN is used without ordinary MOVE and the Unit also owns Keep Watch, the scan first uses Sweep the Sector's instantaneous bonus, then after the entire Activation completes Keep Watch's passive observation boost begins. Keep Watch's bonus is **not** added during that ACTIVE SCAN. The wider instant scan can produce contacts/Last Known, while the smaller continued observation can preserve some valid Tracks for allies.
+- The existing Active Scan Amplifier Option remains in the private Core; its replacement, stacking and integration with the Skill are separate future decisions.
+
+### Confirmed roster and remaining statuses
+
+Confirmed Skill Lab entries now comprise Frame Combat Proficiency (Light/Standard/Heavy), Plant Your Feet, Keep Moving, On the Charge, Got Your Six, Hunker Down, Go Dark (its Signature numbers remain explicitly provisional), Fired Up, Keep Watch and Sweep the Sector.
+
+First Watch, Right on Cue, Steady Nerves and Stay Frosty remain under review. Against the Odds keeps its agreed name but provisional formula; paired fire remains provisional. Previous notes treating 定点観測 as on hold or 能動走査術 as undecided are historical and superseded by this record. No code implementation or game balance certification is implied.
