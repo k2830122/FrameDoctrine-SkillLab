@@ -1,6 +1,6 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.20 (2026-10-26).** 33 active Skills: **8 confirmed**, 25 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+**Current release: v0.21 (2026-10-26).** 33 active Skills: **7 confirmed**, 26 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
 
 ## Historical decision log: Frame Proficiency Skills (2026-10-23)
@@ -24,7 +24,7 @@ A standalone browser-based simulator for experimental pilot skill builds in FRAM
 
 ## Features
 
-- 33 active experimental pilot skills (eight confirmed, 25 provisional) and one retired Skill in the archive
+- 33 active experimental pilot skills (seven confirmed, 26 provisional) and one retired Skill in the archive
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
@@ -289,3 +289,8 @@ The confirmed **Stay Frosty** skill (ID `certain-evasion`) has been redesigned a
 **CritPen:** Two independent weapon Attacks mean that a **CritPen YES** pair can make up to one CritPen roll **per weapon Attack** (two total), contingent on qualifying Hits and remaining effective Armor. In each Attack, success ignores armor for only its own eligible Hit. A Shotgun is CritPen NO and gains no CritPen. Against the Odds can stack on the two qualifying Attack calculations, but the combined Skill investment at Lv3+Lv3 would be six Training Points.
 
 **Open mechanics / scope:** Final naming, balance, auto-single fallback when the second weapon is not ready, Reaction-INTERCEPT scope, and exact COVER/Exposure/Signature once-per-composite-action orchestration still require separate design work. The preferred concept gives only one original targeting/COVER/Exposure opportunity despite two weapon Attacks. Fired ammunition is spent for both as part of the committed composite action, with unneeded Hit attempts skipped after destruction. Presentation may depict simultaneous fire while Core resolves outcomes deterministically. Do not automatically extend the skill to missiles, direction-/Hex-targeted Area weapons, Melee, Missile Intercept or other attack families. No edits to private game Core and no confirmed individual Skill migration. This is a Training Point build planner, not a tactical simulator.
+
+
+## v0.21 — First Watch design status reopened (2026-10-26)
+
+First Watch (stable ID `early-starter`) is now **under review**, not confirmed. Its old level effects and INSIGHT-dependent duration remain provisional reference values; the Skill Lab saved builds and skill IDs are preserved. 33 active entries: 7 confirmed and 26 provisional. This change does not modify the private game's Core.
