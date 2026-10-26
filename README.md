@@ -1,6 +1,6 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.19 (2026-10-26).** 32 active Skills: **8 confirmed**, 24 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+**Current release: v0.20 (2026-10-26).** 33 active Skills: **8 confirmed**, 25 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
 
 ## Historical decision log: Frame Proficiency Skills (2026-10-23)
@@ -24,7 +24,7 @@ A standalone browser-based simulator for experimental pilot skill builds in FRAM
 
 ## Features
 
-- 32 active experimental pilot skills (eight confirmed, 24 provisional) and one retired Skill in the archive
+- 33 active experimental pilot skills (eight confirmed, 25 provisional) and one retired Skill in the archive
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
@@ -276,3 +276,16 @@ The confirmed **Stay Frosty** skill (ID `certain-evasion`) has been redesigned a
 - **Existing resolution preserved:** In ordinary multi-hit Direct FIRE, each attempt has its own Hit roll but the whole Attack has at most one CritPen roll, and only the corresponding successful Hit ignores Armor. Combat Knife's six-Hex AreaMelee treats each affected target as its own Melee Attack for CritPen eligibility. Do not grant repeated CritPen rolls to SMG/GPMG bursts.
 - **Scope:** Skill Lab is a Training Point allocation simulator, not a combat simulator. New card and formula help illustrate prospective outcomes; no RNG, attack resolution or change to the private Core. Preserve existing Skill IDs and saved builds. Old README design-log paragraphs are historical and are overridden by the current main-repository canonical specifications where inconsistent.
 
+## v0.20 — Provisional simultaneous paired-weapon FIRE skill (2026-10-26)
+
+**Provisional card:** `二丁同時射撃（仮）` (`paired-fire`). The name and Lv1–3 penalties are **not finalized**. The Skill Lab now shows 33 active Skills (8 confirmed, 25 provisional), plus archived Quick Study.
+
+**Proposed player behavior:** Equip two copies of exactly the same standard `UnitTargetedDirectFire` Weapon Definition and select either one for an ordinary FIRE. If both are eligible for firing, the passive skill automatically fires **both** at the same original Unit target. No extra active ability button or second Main Action is added. The 1 Main Action contains two independent weapon Attacks; both equipped entries retain distinct runtime ammunition identities and spend their normal `AmmoCostPerAttack`. No automatic retargeting on destruction.
+
+**Provisional level values:** Lv1: both weapon Attack HitRaw values **−40 points**; Lv2 **−30 points**; Lv3 **−20 points**. Apply each penalty within its weapon's normal accuracy calculation, along with the usual shooter SHOOTING, target REFLEX, movement/terrain and other permitted situational modifiers; clamp to 0–100% per Hit attempt. Example with SHOOTING10, REFLEX10, no other modifier: SMG or Assault Rifle (ACC95) gives per-Hit 55/65/75%, and Shotgun (ACC105) 65/75/85%, across Lv1/2/3. The build planner shows these examples dynamically as the sample pilot's base SHOOTING changes; it does not simulate combat.
+
+**Ammo, capacity, hit attempts:** SMG×2 has 3+3 Hit attempts and spends 3+3 Ready rounds; GPMG-6×2 has 2+2 attempts and spends 2+2 rounds; Shotgun/Assault Rifle/Sniper Rifle×2 each produces two single-shot Attacks with one round spent from each copy. Weapon capacity is paid twice: SMG/Assault Rifle/Shotgun pairs cost 2 (any Frame class); GPMG-6/Sniper Rifle pairs cost 4 (Heavy only). Each weapon's own RELOAD rules remain.
+
+**CritPen:** Two independent weapon Attacks mean that a **CritPen YES** pair can make up to one CritPen roll **per weapon Attack** (two total), contingent on qualifying Hits and remaining effective Armor. In each Attack, success ignores armor for only its own eligible Hit. A Shotgun is CritPen NO and gains no CritPen. Against the Odds can stack on the two qualifying Attack calculations, but the combined Skill investment at Lv3+Lv3 would be six Training Points.
+
+**Open mechanics / scope:** Final naming, balance, auto-single fallback when the second weapon is not ready, Reaction-INTERCEPT scope, and exact COVER/Exposure/Signature once-per-composite-action orchestration still require separate design work. The preferred concept gives only one original targeting/COVER/Exposure opportunity despite two weapon Attacks. Fired ammunition is spent for both as part of the committed composite action, with unneeded Hit attempts skipped after destruction. Presentation may depict simultaneous fire while Core resolves outcomes deterministically. Do not automatically extend the skill to missiles, direction-/Hex-targeted Area weapons, Melee, Missile Intercept or other attack families. No edits to private game Core and no confirmed individual Skill migration. This is a Training Point build planner, not a tactical simulator.
