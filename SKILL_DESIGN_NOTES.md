@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.19（2026-10-26）：** 現役32件（確定8、検討中24）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
+**現行版 v0.20（2026-10-26）：** 現役33件（確定8、検討中25）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -207,3 +207,13 @@ Skill Labは育成ポイントとスキル取得のシミュレーターであ�
 - **ゲームデザイン意図：** 70%台の心許ない命中率でも、一発の装甲突破が狙える攻撃専門化。高SHOOTINGの人物が追加命中系Skillを取らずに索敵・回避等を育てる選択、平均的な攻撃Abilityで重装甲を狙う選択、SMG/GPMGの多段Hitと1回CritPenの関係を評価する。低命中率の原因にかかわらず効果が増える抽象表現であり、移動でわざと命中率を下げると対重装甲の期待ダメージが上がる場合があることも設計上許容する。
 - **位置付け：** 名前とスキル候補登録は決定。係数60×Lv・追加上限10×Lvは現時点の研究基準値（バランス評価で調整可能）。本編CORE正式スキルへの移管、ゲーム実装は未実施。
 
+## 2026-10-26 — 二丁同時射撃（仮） / paired-fire — Skill Lab v0.20
+
+- **候補ID：** `paired-fire`。英語名・最終名称は未決定。現役33件（確定8、検討中25）＋Quick StudyはArchivedのまま。既存の`double-tap`（1丁の追加弾薬による射撃回数追加候補）とは別技能。新しいMain Actionや専用発動コマンドは追加しない。
+- **運用案：** 同一Weapon Definitionの通常`UnitTargetedDirectFire`武器を2丁装備して、いずれかを選んだ通常FIRE時に自動で双方が発砲。1 Main Actionから同一対象への独立した2 Attackを生成する（別WeaponRuntimeState、個別のHitAttemptCountとAmmoCostPerAttackを使用）。双方が発砲可能な必要あり。途中撃破時は後続Hitをスキップして別敵へ自動転射しない。
+- **研究値（未確定）：** Lv1は各武器のHitRaw −40pt、Lv2 −30pt、Lv3 −20pt。移動・地形Cover・敵REFLEX等の既存補正とは別に反映し、各HitChanceを既存の0〜100%へ制限。SHOOTING10対REFLEX10、ほかの補正なしではSMG/Assault Rifleの命中率55/65/75%、Shotgun65/75/85%。Skill Labはサンプルの基礎SHOOTING配分に追従してこの例を表示する。
+- **現行Core上の装備コスト：** SMG×2、Assault Rifle×2、Shotgun×2はArmament Capacity合計2（Light/Standard/Heavy可）。GPMG-6×2、Sniper Rifle×2は合計4（Heavyのみ）。同一武器の重複装備は既存COREの許可済み規則。装弾数は武器ごとに独立。
+- **複数Hitと弾：** SMG×2は各3Hit判定・弾3+3発、GPMG-6×2は各2Hit判定・弾2+2発。Shotgun、Assault Rifle、Sniper Rifleなど単発銃×2は各1Hit判定・弾1+1発。両武器のMagazineやRELOADは別々に管理する。
+- **CritPen：** CritPen YESの2武器は独立したAttackとして各最大1回のCritical Penetration機会を持つ（成功時にはそれぞれ該当する1Hitだけ装甲無視）。SMG/GPMG-6の1丁の複数HitにCritPen判定を2回・3回付与することはない。CritPen NOのShotgun等にはCritPenを新規付与しない。Against the Oddsとの併用候補だがLv3同士なら計6Pを要する。
+- **決定していない詳細：** 片方の銃が弾不足やRELOAD待ちの場合に単独FIREへフォールバックするか。通常INTERCEPTにも適用するか（現在は通常Main ActionのFIREを検討）。COVER／行動露見／Signature／Reactionの単位と厳密な処理順序。高SHOOTINGでのLv1取得とLight Shotgun2丁、Heavy Sniper Rifle2丁などのビルド比較。これらは実装前に明示的に決める。
+- **責務境界：** 今回は独立Skill Labへの追加のみ。本編COREの個別Skill仕様には移管しない。計算表示はモデル例であり実際の戦闘をシミュレートしない。保存済みビルドのSkill IDやローカル保存JSONを破壊しない。
