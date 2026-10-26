@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.24（2026-10-27）：** 現役34件（確定10、検討中・保留24）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
+**現行版 v0.25（2026-10-27）：** 現役34件（確定12、検討中・保留22）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -298,3 +298,27 @@ First Watchの再検討、定点観測の保留も継続。現役33件中**確�
 確定10件＝Frame Combat Proficiency（Light/Standard/Heavy）3件、Plant Your Feet、Keep Moving、On the Charge、Got Your Six、Hunker Down、Go Dark（Signature数値仮）、Fired Up。今回名称未確定だった戦闘適応はFired Upという名前になった。以前確定を解除したFirst Watch、Right on Cue、Steady Nerves、Stay Frostyは引き続き再検討、定点観測は保留。Against the Oddsは名称のみ確定で計算係数は未確定。二丁同時射撃も研究段階。いずれも今回勝手に確定数へ加算しない。
 
 旧版の記録は履歴であり、現在のstatusは本項とSkill Labのカード表示を優先する。数値未確定の効果を正式戦闘仕様や実装指示として流用しない。
+
+## 2026-10-27 — v0.25 Keep Watch / Sweep the Sectorを確定
+
+Skill Labで以下2件の**名称・Lv1～3・発動タイミング**を確定扱いへ変更。現在は現役34件（確定12、再検討・保留22）、Quick Studyアーカイブ1件。既存Skill IDとlocalStorage保存形式は不変。すべてSkill Lab内の育成設計判断であり、private本編Coreおよび既存Optionには変更を加えない。
+
+### Keep Watch（旧定点観測、ID `observation-discipline`）
+
+- **通常MOVEをせずに自Activationを完全に終了した直後**から実効INSIGHT **+4/+8/+12**（Lv1/2/3）。内部Pilot DetectionとしてDetection Powerに1:1加算され、基本索敵予算は**+1/+2/+3**。地形コスト、敵Signature、天候、遮蔽物・煙、Datalink制限などはそのまま。
+- 効果を得るために終了させたMain Action（FIRE、ACTIVE SCAN等）には遡及しない。終了時の通常索敵再評価で新しい合法なLocal Trackが成立すれば味方へ共有可能。該当範囲に敵を見つけられなかった情報も価値がある。
+- **次の自Activationを開始するまで維持**。自Faction Phaseが切り替わっただけでは失効しない。主に行動順の前後調整、右翼・左翼・前線の警戒、Plant Your Feetとの併用で専門化を形成する。
+- Light DISPLACEは通常MOVE扱いでないため資格を妨げない。MSUで行動後に通常MOVEすると発動条件を失う。元のSensor Stabilizer Optionは本編に現存し、併用/置換は未決。
+
+### Sweep the Sector（旧能動走査術、ID `scan-interpretation`）
+
+- ACTIVE SCANの**瞬間的Detection計算時だけ**実効INSIGHT **+4/+8/+12**（Lv1/2/3）。標準のACTIVE SCANのDetection Power +12は残るので、技能だけを加えた瞬間的な増加総量は**+16/+20/+24**（別Option等は別途未決）。
+- ACTIVE SCANの主行動消費、scanner Signature +2、敵への露見・Action INTERCEPTの可能性、情報再評価や地形/Smokeの制約は維持。Skill効果はACTIVE SCAN終了後の継続観測には残らない。
+- 同一パイロットがKeep Watchと両方を持ち、通常MOVEせずACTIVE SCANした場合、走査中はSweep the Sector、**Activation完了後に**Keep Watchが発動する。技能ボーナスが同一瞬間のACTIVE SCANに二重加算されるわけではない。結果として「一時的な広域走査→狭めの継続観測」が成立する。
+- 元のActive Scan Amplifier Optionは本編に残存。技能化・装備とのスタックは未決。
+
+### v0.25時点の整理
+
+Skill Lab確定12件：Frame Combat Proficiency（Light/Standard/Heavy）、Plant Your Feet、Keep Moving、On the Charge、Got Your Six、Hunker Down、Go Dark（Signature値は暫定）、Fired Up、Keep Watch、Sweep the Sector。
+
+First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続。Against the Oddsの数値、二丁同時射撃の詳細も未確定。過去の「定点観測は保留」「能動走査術は要検討」の記載は履歴であり、本節が最新決定として優先する。
