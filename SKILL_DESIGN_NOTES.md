@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.18（2026-10-23）：** 現役31件（確定8、検討中23）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
+**現行版 v0.19（2026-10-26）：** 現役32件（確定8、検討中24）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -196,3 +196,14 @@ Skill Labは育成ポイントとスキル取得のシミュレーターであ�
 - 通常Reactionを使用して開始したCOVER／INTERCEPT／Missile Interceptは**行動開始時にReactionがAVAILABLEだった事実でStay Frostyの適格性を決め、その行動の解決まではREFLEX上昇を適用**。行動後は通常のReaction消費により効果終了。この順序で実装時の消費タイミングによる消滅を避ける。
 - 基礎INSIGHTは出撃時の永続成長込み・一時バフなしの固定値。First Watch自身の一時INSIGHT増加ではStay Frostyの加算量を増やさない。未使用ReactionならSteady Nervesと別途組み合わせ可能。
 - この改訂によって確定件数は変化しない：31現役・8確定・23候補、Quick Studyはアーカイブ1。元のOption DRSは本編Coreに残存し、併用／廃止は未決。Skill ID・保存JSONの互換も維持。本編Core未変更。
+
+## 2026-10-26 — Against the Odds（名称確定／数値は研究基準値）
+
+- 新規スキル `against-the-odds` / **Against the Odds** をSkill Labに追加。武器を問わない精神的・戦闘感覚の技能名として英語名は確定。総32候補、**設計確定8・検討中24**、Archived Quick Study 1。独立のSkill Lab v0.19に反映。
+- **適用対象：** 射撃と白兵の両方。ただし既存の武器定義で **CritPen YES**、通常貫通後 `EffectiveArmor > 0`、かつ命中したHitに限る。射撃のSHOOTING、白兵のMELEEを既存CritPen基礎式に用いる。スキル自体は命中率やPowerを変更せず、新コマンド／MP／使用回数／Reactionを追加しない。
+- **研究式（Lv係数と上限はまだ正式確定ではない）：** `H=clamp(floor(HitRaw),0,100)`, `BaseCritPen=max(2,4+0.5*(実効SHOOTINGまたはMELEE−10))`, `C0=min(100,BaseCritPen+0.5*max(0,floor(HitRaw)−100))`; `BonusRaw=min(10*Lv,60*Lv*((100−H)/100)^2)`; `Bonus=floor(BonusRaw*2)/2`（0.5ポイント切捨て）；`FinalCritPen=min(100,C0+Bonus)`。
+- **命中率70%：** Lv1/2/3追加CritPen +5/+10.5/+16pt、基礎CritPen 4%の例では命中時9/14.5/20%。**命中率60%：** 追加 +9.5/+19/+28.5pt、同例では13.5/23/32.5%。高命中時は小さく、60〜70%程度から目立つ二乗型。数値自体は敵Armor・REFLEX・他Skillとの比較を続ける。
+- **複数Hitのルールを変えない：** 通常Direct FIREのShots 2/3などはHit判定ごと、CritPenはAttackにつき最大1回・成功した該当Hitだけ装甲無視。Combat KnifeのAreaMeleeは各対象を独立Melee Attackとして扱う。現行白兵でCritPen YESはCombat Knifeだけ。BASH／Assault Lance／Explosive Axeを勝手にCritPen対応へ変更しない。誘導ミサイル／Missile Intercept／現行CritPen NO範囲攻撃にも付与しない。
+- **ゲームデザイン意図：** 70%台の心許ない命中率でも、一発の装甲突破が狙える攻撃専門化。高SHOOTINGの人物が追加命中系Skillを取らずに索敵・回避等を育てる選択、平均的な攻撃Abilityで重装甲を狙う選択、SMG/GPMGの多段Hitと1回CritPenの関係を評価する。低命中率の原因にかかわらず効果が増える抽象表現であり、移動でわざと命中率を下げると対重装甲の期待ダメージが上がる場合があることも設計上許容する。
+- **位置付け：** 名前とスキル候補登録は決定。係数60×Lv・追加上限10×Lvは現時点の研究基準値（バランス評価で調整可能）。本編CORE正式スキルへの移管、ゲーム実装は未実施。
+
