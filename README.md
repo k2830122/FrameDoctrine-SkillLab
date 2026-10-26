@@ -1,6 +1,6 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.23 (2026-10-26).** 33 active Skills: **6 confirmed**, 27 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+**Current release: v0.24 (2026-10-27).** 34 active Skills: **10 confirmed**, 24 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
 
 ## Historical decision log: Frame Proficiency Skills (2026-10-23)
@@ -24,7 +24,7 @@ A standalone browser-based simulator for experimental pilot skill builds in FRAM
 
 ## Features
 
-- 33 active experimental pilot skills (six confirmed, 27 provisional) and one retired Skill in the archive
+- 34 active experimental pilot skills (ten confirmed, 24 provisional) and one retired Skill in the archive
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
@@ -331,3 +331,41 @@ The user requested that **every confirmed WAIT / Reaction Skill except Got Your 
 **Got Your Six** (`guardian-reaction`) remains **confirmed**. The other five confirmed entries are Frame Combat Proficiency (Light / Standard / Heavy), Plant Your Feet, and Keep Moving. First Watch remains under review and 定点観測 remains on hold. The total active catalogue is unchanged at **33**: **6 confirmed / 27 provisional or on hold**. Archived Quick Study remains 1.
 
 These are status changes only, not automatic balance adjustments. The former formulas and effect details stay accessible for design comparisons; Skill IDs, point-allocation behavior, JSON imports/exports and existing browser saves stay intact. Historical README sections describing older confirmed counts and effects remain dated design history, superseded for current status by this v0.23 record. Nothing is migrated to, or changed in, the private production Core.
+
+## v0.24 — On the Charge, Hunker Down, Fired Up, Go Dark (2026-10-27)
+
+**Current status:** 34 active Skills, 10 Skill Lab design-confirmed and 24 under review/on hold; archived Quick Study remains unchanged. Research design decisions in Skill Lab are **not** changes to the private production Core. This update preserves every pre-existing Skill ID, build JSON schema, storage key, existing saved point allocations and archived entries. Fired Up adds one entirely new Skill ID. Confirmed names remain English-only.
+
+### On the Charge — confirmed
+
+- Existing ID `momentum-melee` (previous Japanese working title 助走白兵), Option-derived from Close Combat Assist System.
+- When the Pilot's **own ordinary MOVE** successfully enters at least three Hexes, eligible **MELEE in the same Activation** receives effective MELEE **+2/+4/+6** by Lv, equal to typical normal melee HitRaw **+6/+12/+18** before clamp. Movement-point costs and planned routes do not substitute for actual successful entries; Light DISPLACE and REPOSITION are excluded.
+- Effective MELEE participates in the revised CritPen calculation for eligible CritPen YES attacks, such as Combat Knife. The existing CCAS Option remains in private Core; Skill/Option migration and stacking are not approved.
+
+### Hunker Down — confirmed for Skill Lab
+
+- Existing ID `brace-discipline` (former working title 防御姿勢術), Option-derived from Armor Reinforcement Suite.
+- On **BRACE**, gain **additional Armor +1/+2/+3** beyond the BRACE baseline +2, for a **total BRACE bonus of +3/+4/+5**, following ordinary BRACE duration and expiry.
+- In addition, after ordinary Armor/Penetration/damage resolution, a Hit that would inflict exactly **1 final HP damage** instead inflicts **0**. This is an explicit exception to the current minimum-damage rule and applies separately to each Hit in multi-hit attacks. The attack still **Hit**, and the Hit remains eligible to trigger Fired Up even at 0 damage.
+- Strong penetration and eligible CritPen armor bypass remain dangerous. No new action command or free Reaction. Existing Armor Reinforcement Suite persists in Core, not changed by this Lab decision.
+
+### Fired Up — newly added, confirmed for Skill Lab
+
+- **New stable Skill ID:** `fired-up`, category 被弾・HP; 3 levels, 1 Training Point per level.
+- One or more actual **Hits** from hostile Attacks activate a **binary** boost for the Pilot's **next own Activation**: effective SHOOTING and MELEE **+6/+9/+12** for Lv1/2/3. **Non-stacking**: two or more attacks do not increase the amount. All Hits in one multihit Attack count as that Attack having Hit, not multiple stacks. Normal defensive Armor or Hunker Down zeroing the final damage does **not** cancel the Hit trigger.
+- The boost benefits eligible HitRaw calculations (+18/+27/+36 for ordinary coefficient-3 Hit formulas) and the approved revised effective-Ability/excess-HitRaw CritPen calculation. It expires **at the end of that next own Activation**, rather than lasting a mission or stacking through later turns.
+- Timing of a hostile INTERCEPT Hit during the Pilot's current Activation is explicitly **next**, not retroactive. Exact Hit/affected-target qualification for attacks with no usual Hit roll (e.g. Area weapons) remains for future Core integration review. The Skill Lab is an allocation preview, not a battle simulation.
+
+### Go Dark — foundational design confirmed; Signature levels provisional
+
+- Existing ID `conceal-discipline` (former working title 隠密動作), Option-derived from Signature Reduction Suite.
+- On **CONCEAL**, the Unit's own sensor-based Detection and sensor-derived Local Track contribution **stop entirely** while the effect is active; merely setting Detection Power to zero is inadequate, because target Signature may still yield valid detections. Other established Track sources such as adjacency Proximity are not silently disabled.
+- Legitimate **Datalink reception remains available**; the unit can rely on another friendly observer but loses the ability to detect advancing targets itself. CONCEAL still uses its normal Main Action and expires at the start of the next own Faction Phase; ordinary sensing then resumes, with normal information reconciliation. The unit cannot maintain CONCEAL while moving the following own Turn under the current action rules.
+- For comparison, the Skill Lab displays **total CONCEAL Signature modifiers of −2/−3/−4** at Lv1/2/3 (baseline normal CONCEAL is −1), explicitly marked **provisional numeric levels**. The general stealth/sensor tradeoff and Go Dark name are selected, but those numbers are NOT final approved game balance.
+- Existing SRS Option stays in private Core; future Skill/Option stacking and replacement remain separate decisions.
+
+### Current confirmed roster
+
+Frame Combat Proficiency (Light, Standard, Heavy); Plant Your Feet; Keep Moving; On the Charge; Got Your Six; Hunker Down; Go Dark (Signature numbers provisional); Fired Up.
+
+First Watch, Right on Cue, Steady Nerves and Stay Frosty remain reopened for design review, and 定点観測 remains on hold. Against the Odds has an agreed **name**, but its mathematical formula has **not** been promoted to confirmed. 二丁同時射撃 remains provisional. Prior version logs are historical; this v0.24 section overrides older status and counts.
