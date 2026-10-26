@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.22（2026-10-26）：** 現役33件（確定9、検討中・保留24）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
+**現行版 v0.23（2026-10-26）：** 現役33件（確定6、検討中・保留27）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -249,3 +249,16 @@ Skill Labは育成ポイントとスキル取得のシミュレーターであ�
 - 定点観測（`observation-discipline`）は**保留・再設計待ち**。旧「移動せずActivation完了でINSIGHT+4/+8/+12」は実用場面が限定的。代替「MOVE後WAIT」「WAITだけ」は、攻撃できない時のWAITに索敵をほぼ無償で加えるため採用しない。Reactionを取り上げるような複雑な条件も作らない。現行のカードは旧研究数値を残すだけで、確定扱いではない。
 - 追加ルールや未決の数値をまとめて無断で確定させない。本編コードは別工程。
 
+
+## 2026-10-26 — v0.23 WAIT・Reactionの3件を再検討へ
+
+ユーザーの指示により、WAIT・Reaction分類の4件のうち **Got Your Six以外の3件はSkill Labの確定扱いを解除**する。
+
+- Right on Cue（`reaction-shooter`）：**再検討**
+- Steady Nerves（`burst-focus`）：**再検討**
+- Stay Frosty（`certain-evasion`）：**再検討**
+- Got Your Six（`guardian-reaction`）：**確定維持**
+
+変更は現在の研究上の**確定ステータスだけ**。3件のLv1～3、発動条件、説明、Ability計算参考値は削除・変更せず、過去の比較用仮案として残す。廃案やArchivedへ移す判断ではない。過去の「確定」の記録は当時の研究履歴であって、現状の確定状況を意味しない。
+
+First Watchの再検討、定点観測の保留も継続。現役33件中**確定6件、未確定・保留27件**。確定はFrame Combat Proficiency 3件、Plant Your Feet、Keep Moving、Got Your Sixの6件。スキルID・ローカル保存・ビルドのJSON形式は保持。本編COREおよび既存Optionには変更を加えない。
