@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.21（2026-10-26）：** 現役33件（確定7、検討中26）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
+**現行版 v0.22（2026-10-26）：** 現役33件（確定9、検討中・保留24）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -224,3 +224,28 @@ Skill Labは育成ポイントとスキル取得のシミュレーターであ�
 - First Watch（`early-starter`）の確定表示を解除。旧INSIGHT/REFLEX +1/+2/+3とINSIGHT依存の持続式は仮値として保持し、廃案・アーカイブにはしない。無条件の序盤強化が戦術判断を十分に変えるか検証する。
 - 現役33件・確定7件・検討中26件。Skill IDおよび既存のビルドは維持。本編Coreには移管していない。
 - 次の候補は機動回避（`mobile-evasion`）：3Hex以上の自MOVE後に実効REFLEX +2/+4/+6という仮値を、発動しやすさと既存MASとの差を中心に再検討する。
+
+## 2026-10-26 — v0.22 名称・効果決定の一括反映
+
+現役33件、Skill Lab内確定9件、未確定・保留24件。過去の決定ログで古いスキル件数や旧称が残っている場合、現在の状態はこの最新節を優先する。今回の変更は独立Skill Labに限定し、private Coreや本編正式個別Skill仕様には移管しない。
+
+### Plant Your Feet（旧：精密射撃、ID `marksmanship`）— Skill Lab設計確定
+
+- 英語名 **Plant Your Feet**、Lv1/2/3の実効SHOOTING **+2/+4/+6** を確定。
+- 自分の通常MOVEより前に、適格な通常の対Unit Direct FIREを行うと自動適用。通常の命中計算ではHitRaw +6/+12/+18。適格なCritical Penetrationも実効SHOOTINGと超過命中値から計算する。通常の武器・Track・射程・Direct-Fire LOS制約は維持。
+- MSU（Standard/Heavy）で射撃後に未使用の通常MOVEを実行しても、射撃へ遡ってペナルティを適用しない。ただし射撃後の露見や敵INTERCEPTを先に解決する。Light DISPLACEも同じく後の移動であり、発砲前に移動できたことにはならない。
+- 通常Main ActionのUnit-targeted FIREを確定対象とし、Reaction INTERCEPT・特殊攻撃への適用拡張は未決。元のFCS Optionの削除や重複は別途整理。
+
+### Keep Moving（旧：機動回避、ID `mobile-evasion`）— Skill Lab設計確定
+
+- 英語名 **Keep Moving**、Lv1/2/3の実効REFLEX **+2/+4/+6** を確定。
+- 自己の通常MOVEで実際に3Hex以上成功進入した時点から、次の自軍Faction Phase開始まで効果が継続。経路予約・Movement Cost合計で判定しない。途中HALT等で3Hexに届かなければ不発。REPOSITION・Light DISPLACEはカウントしない。
+- 通常射撃・白兵で敵の命中値を−6/−12/−18pt。誘導ミサイル着弾や適格なMissile Interceptでも実効REFLEXとして評価し、迎撃命中値は+4/+8/+12pt。REFLEX値を参照する全ての適格判定で元の式を尊重する。
+- 移動後の武器固有命中補正、敵からの露見・Reactionなど、既存MOVEの帰結は残る。元MAS Optionの廃止・併用は未決。
+
+### 保留・再検討
+
+- First Watch（`early-starter`）はv0.21から再検討状態を継続。旧値を研究資料として保持。
+- 定点観測（`observation-discipline`）は**保留・再設計待ち**。旧「移動せずActivation完了でINSIGHT+4/+8/+12」は実用場面が限定的。代替「MOVE後WAIT」「WAITだけ」は、攻撃できない時のWAITに索敵をほぼ無償で加えるため採用しない。Reactionを取り上げるような複雑な条件も作らない。現行のカードは旧研究数値を残すだけで、確定扱いではない。
+- 追加ルールや未決の数値をまとめて無断で確定させない。本編コードは別工程。
+
