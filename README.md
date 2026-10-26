@@ -1,6 +1,6 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.18 (2026-10-23).** 31 active Skills: **8 confirmed**, 23 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+**Current release: v0.19 (2026-10-26).** 32 active Skills: **8 confirmed**, 24 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
 
 ## Historical decision log: Frame Proficiency Skills (2026-10-23)
@@ -24,7 +24,7 @@ A standalone browser-based simulator for experimental pilot skill builds in FRAM
 
 ## Features
 
-- 31 active experimental pilot skills (eight confirmed, 23 provisional) and one retired Skill in the archive
+- 32 active experimental pilot skills (eight confirmed, 24 provisional) and one retired Skill in the archive
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
@@ -264,3 +264,15 @@ The confirmed **Stay Frosty** skill (ID `certain-evasion`) has been redesigned a
 - If the Pilot **starts a legal INTERCEPT / COVER / Missile Intercept while Reaction is available**, the skill bonus applies through **that Reaction's own resolution**, even though the Reaction is consumed by the action's commit. It is no longer available for subsequent attacks or checks after the consumed Reaction. Merely being attacked, hitting or dodging does not itself consume Reaction. Unspent Reaction expires at the next own Faction Phase as usual; this may trigger separately purchased Steady Nerves.
 - No new button, Reaction stock, cooldown or uses. `Got Your Six` may strengthen REFLEX further in an eligible ally-protection Reaction when both skills are learned; the *private Core Option* Defensive Response Suite's equipment/stacking treatment is still unresolved.
 - The public simulator only models **Training Point allocations and per-skill sample values**, not actual battles, Reaction timing, or CritPen rolls. The private game Core and canonical specifications are not modified.
+
+## v0.19 — Against the Odds (2026-10-26)
+
+**Against the Odds** (new stable Skill ID `against-the-odds`) is added as an active research candidate. **English name is selected; numerical coefficients are research baselines, not final balance approval.** This is **not** a ninth confirmed Skill. Active catalogue: **32 Skills (8 confirmed, 24 provisional)**; archived Quick Study remains separate.
+
+- **Concept:** A passive mental/combat-instinct technique that makes an infrequent successful Hit more likely to find an armor weakness when normal Hit Chance is low. It neither increases ordinary Hit Chance nor multiplies weapon Power. Applies to **both shooting and melee**, but only to attacks whose weapon has **CritPen YES**, and only when normal Penetration leaves `EffectiveArmor > 0`. No extra command, Action, Reaction, charge or currency.
+- **Research formula:** Set `H = clamp(floor(HitRaw), 0, 100)`, `C0 = min(100, max(2, 4 + 0.5*(EffectiveSHOOTING_or_MELEE - 10)) + 0.5*max(0, floor(HitRaw)-100))`. For Skill level `L` in 1..3, `BonusRaw = min(10*L, 60*L*((100-H)/100)^2)`, `Bonus = floor(2*BonusRaw)/2` in percentage points, and `CritPenWithSkill = min(100, C0 + Bonus)`. Use half-point precision, existing CritPen qualification and usual probability clamp; this remains a study design only.
+- **Examples:** At H=70%, Skill Bonuses are +5/+10.5/+16pt at Lv1/2/3, and with C0=4% the resulting conditional CritPen rates are 9/14.5/20%. At H=60% bonuses are +9.5/+19/+28.5pt, resulting in 13.5/23/32.5% with C0=4%. Increasing low-H effects and preserving high-H excess-accuracy rewards are deliberate. The possibility that a lower-H attack yields greater expected armor-bypass damage against very heavy armor is accepted as a potential tactical specialization, not an automatic reason for rejection.
+- **Eligible melee under the current weapon table:** Combat Knife (CritPen YES). BASH, Assault Lance and Explosive Axe currently have CritPen NO. Current ranged NO weapons, guided Missile, Missile Intercept and Area/Hex attacks gain no CritPen.
+- **Existing resolution preserved:** In ordinary multi-hit Direct FIRE, each attempt has its own Hit roll but the whole Attack has at most one CritPen roll, and only the corresponding successful Hit ignores Armor. Combat Knife's six-Hex AreaMelee treats each affected target as its own Melee Attack for CritPen eligibility. Do not grant repeated CritPen rolls to SMG/GPMG bursts.
+- **Scope:** Skill Lab is a Training Point allocation simulator, not a combat simulator. New card and formula help illustrate prospective outcomes; no RNG, attack resolution or change to the private Core. Preserve existing Skill IDs and saved builds. Old README design-log paragraphs are historical and are overridden by the current main-repository canonical specifications where inconsistent.
+
