@@ -1,6 +1,6 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.22 (2026-10-26).** 33 active Skills: **9 confirmed**, 24 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+**Current release: v0.23 (2026-10-26).** 33 active Skills: **6 confirmed**, 27 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
 
 ## Historical decision log: Frame Proficiency Skills (2026-10-23)
@@ -24,7 +24,7 @@ A standalone browser-based simulator for experimental pilot skill builds in FRAM
 
 ## Features
 
-- 33 active experimental pilot skills (nine confirmed, 24 provisional) and one retired Skill in the archive
+- 33 active experimental pilot skills (six confirmed, 27 provisional) and one retired Skill in the archive
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
@@ -319,3 +319,15 @@ First Watch (stable ID `early-starter`) is now **under review**, not confirmed. 
 - **定点観測** (ID `observation-discipline`): **on hold**. The former stationary Activation completion → INSIGHT +4/+8/+12 design is historical comparison data, not adopted. MOVE→WAIT or WAIT-only variants were explored but are not approved: WAIT is often the default when a moved unit has no legal attack, and passive extended detection risks displacing the distinct ACTIVE SCAN action. Do not add a complex second WAIT variant or suppress the normal Reaction as a forced cost.
 - All other Skill Lab confirmed/provisional entries retain their prior state. The independent Skill Lab remains an allocation/suggestion tool, not a combat simulator.
 
+
+## v0.23 — Reopen three WAIT / Reaction skill designs (2026-10-26)
+
+The user requested that **every confirmed WAIT / Reaction Skill except Got Your Six** return to design review. These three Skill Lab cards now have status **under review**, without removing or archiving their prior effects and Lv1–3 research values:
+
+- `reaction-shooter` — Right on Cue
+- `burst-focus` — Steady Nerves
+- `certain-evasion` — Stay Frosty
+
+**Got Your Six** (`guardian-reaction`) remains **confirmed**. The other five confirmed entries are Frame Combat Proficiency (Light / Standard / Heavy), Plant Your Feet, and Keep Moving. First Watch remains under review and 定点観測 remains on hold. The total active catalogue is unchanged at **33**: **6 confirmed / 27 provisional or on hold**. Archived Quick Study remains 1.
+
+These are status changes only, not automatic balance adjustments. The former formulas and effect details stay accessible for design comparisons; Skill IDs, point-allocation behavior, JSON imports/exports and existing browser saves stay intact. Historical README sections describing older confirmed counts and effects remain dated design history, superseded for current status by this v0.23 record. Nothing is migrated to, or changed in, the private production Core.
