@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.20（2026-10-26）：** 現役33件（確定8、検討中25）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
+**現行版 v0.21（2026-10-26）：** 現役33件（確定7、検討中26）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -217,3 +217,10 @@ Skill Labは育成ポイントとスキル取得のシミュレーターであ�
 - **CritPen：** CritPen YESの2武器は独立したAttackとして各最大1回のCritical Penetration機会を持つ（成功時にはそれぞれ該当する1Hitだけ装甲無視）。SMG/GPMG-6の1丁の複数HitにCritPen判定を2回・3回付与することはない。CritPen NOのShotgun等にはCritPenを新規付与しない。Against the Oddsとの併用候補だがLv3同士なら計6Pを要する。
 - **決定していない詳細：** 片方の銃が弾不足やRELOAD待ちの場合に単独FIREへフォールバックするか。通常INTERCEPTにも適用するか（現在は通常Main ActionのFIREを検討）。COVER／行動露見／Signature／Reactionの単位と厳密な処理順序。高SHOOTINGでのLv1取得とLight Shotgun2丁、Heavy Sniper Rifle2丁などのビルド比較。これらは実装前に明示的に決める。
 - **責務境界：** 今回は独立Skill Labへの追加のみ。本編COREの個別Skill仕様には移管しない。計算表示はモデル例であり実際の戦闘をシミュレートしない。保存済みビルドのSkill IDやローカル保存JSONを破壊しない。
+
+
+## 2026-10-26 — First Watchは再検討へ
+
+- First Watch（`early-starter`）の確定表示を解除。旧INSIGHT/REFLEX +1/+2/+3とINSIGHT依存の持続式は仮値として保持し、廃案・アーカイブにはしない。無条件の序盤強化が戦術判断を十分に変えるか検証する。
+- 現役33件・確定7件・検討中26件。Skill IDおよび既存のビルドは維持。本編Coreには移管していない。
+- 次の候補は機動回避（`mobile-evasion`）：3Hex以上の自MOVE後に実効REFLEX +2/+4/+6という仮値を、発動しやすさと既存MASとの差を中心に再検討する。
