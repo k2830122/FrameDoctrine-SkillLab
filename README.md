@@ -1,6 +1,6 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.21 (2026-10-26).** 33 active Skills: **7 confirmed**, 26 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+**Current release: v0.22 (2026-10-26).** 33 active Skills: **9 confirmed**, 24 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
 
 ## Historical decision log: Frame Proficiency Skills (2026-10-23)
@@ -24,7 +24,7 @@ A standalone browser-based simulator for experimental pilot skill builds in FRAM
 
 ## Features
 
-- 33 active experimental pilot skills (seven confirmed, 26 provisional) and one retired Skill in the archive
+- 33 active experimental pilot skills (nine confirmed, 24 provisional) and one retired Skill in the archive
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
@@ -294,3 +294,28 @@ The confirmed **Stay Frosty** skill (ID `certain-evasion`) has been redesigned a
 ## v0.21 — First Watch design status reopened (2026-10-26)
 
 First Watch (stable ID `early-starter`) is now **under review**, not confirmed. Its old level effects and INSIGHT-dependent duration remain provisional reference values; the Skill Lab saved builds and skill IDs are preserved. 33 active entries: 7 confirmed and 26 provisional. This change does not modify the private game's Core.
+
+## v0.22 — Plant Your Feet / Keep Moving; observation deferred (2026-10-26)
+
+**Current Skill Lab status:** 33 active entries, 9 Skill Lab design-confirmed and 24 provisional/on hold; 1 archived Quick Study. Changes here concern **research design**, not canonical individual Core Skill implementation. Existing Skill IDs, storage key and saved builds are unchanged.
+
+### Plant Your Feet — design-confirmed
+
+- Stable Skill ID: `marksmanship` (renamed from the provisional Japanese label 精密射撃).
+- Passive trigger: make a qualifying **ordinary Unit-targeted Direct FIRE** before performing one's own ordinary MOVE in the same Activation. This requires a legal target Track, Range and Direct-Fire LOS before moving; moving afterward via a valid MSU sequence does **not** disqualify the shot retroactively. A Light Frame's post-action DISPLACE similarly does not change an already-resolved FIRE.
+- Effective SHOOTING is **+2 / +4 / +6** for Lv1 / Lv2 / Lv3. In normal unit-target accuracy, that contributes **+6 / +12 / +18 HitRaw points** before clamp. The approved effective-Ability/excess-HitRaw CritPen design uses the same applicable effective SHOOTING. No extra ammo, dedicated Action or Skill-charge system.
+- This confirmation covers the normal own-Activation Unit-targeted FIRE use discussed. Reaction INTERCEPT and special attack families are **not automatically broadened** by this entry. Original Fire Control Stabilizer Option remains in private Core; its eventual migration/replacement and stacking are separately open.
+
+### Keep Moving — design-confirmed
+
+- Stable Skill ID: `mobile-evasion` (renamed from provisional 機動回避).
+- Passive trigger: successfully enter **at least 3 actual Hexes** during the Pilot's own **ordinary MOVE**. The third successful Hex entry activates the effect, not a planned path length or 3 Movement-cost points. If movement is halted earlier, it never activates. REPOSITION and Light DISPLACE do not supply qualifying ordinary-MOVE entries.
+- Effective REFLEX **+2 / +4 / +6** at Lv1 / Lv2 / Lv3; effect persists through intervening Faction Phases and expires at start of the Unit's next own Faction Phase. In normal direct-fire or Melee defense, attacker HitRaw is reduced by **6 / 12 / 18** points; other otherwise-eligible effective REFLEX uses (including guided missile terminal defense and Missile Intercept) also receive the bonus through their respective formulas. Missile Intercept's coefficient 2 yields **+4 / +8 / +12** accuracy points while this Skill is active.
+- Movement can expose the Pilot to enemy sensors/INTERCEPT; eligible weapons may incur their ordinary self-movement firing modifiers. No separate gauge, penalty or command is invented. The existing Maneuver Assist System (MAS) Option remains in the private Core; eventual removal/stacking and full migration details are separately open.
+
+### Reopened / deferred candidates
+
+- **First Watch** (ID `early-starter`): remains *under review* following v0.21; former INSIGHT-based duration and Lv1–3 values are comparison material, not confirmed design.
+- **定点観測** (ID `observation-discipline`): **on hold**. The former stationary Activation completion → INSIGHT +4/+8/+12 design is historical comparison data, not adopted. MOVE→WAIT or WAIT-only variants were explored but are not approved: WAIT is often the default when a moved unit has no legal attack, and passive extended detection risks displacing the distinct ACTIVE SCAN action. Do not add a complex second WAIT variant or suppress the normal Reaction as a forced cost.
+- All other Skill Lab confirmed/provisional entries retain their prior state. The independent Skill Lab remains an allocation/suggestion tool, not a combat simulator.
+
