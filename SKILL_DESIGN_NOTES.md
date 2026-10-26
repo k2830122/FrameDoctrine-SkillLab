@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.25（2026-10-27）：** 現役34件（確定12、検討中・保留22）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
+**現行版 v0.26（2026-10-27）：** 現役34件（確定13、検討中・保留21）＋取り下げたQuick Studyのアーカイブ1件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾v0.15を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -322,3 +322,15 @@ Skill Labで以下2件の**名称・Lv1～3・発動タイミング**を確定�
 Skill Lab確定12件：Frame Combat Proficiency（Light/Standard/Heavy）、Plant Your Feet、Keep Moving、On the Charge、Got Your Six、Hunker Down、Go Dark（Signature値は暫定）、Fired Up、Keep Watch、Sweep the Sector。
 
 First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続。Against the Oddsの数値、二丁同時射撃の詳細も未確定。過去の「定点観測は保留」「能動走査術は要検討」の記載は履歴であり、本節が最新決定として優先する。
+
+## 2026-10-27 — v0.26 On Your Own（旧・単独行動）を設計確定
+
+現役34件、**Skill Lab確定13件・未確定21件**。旧版で提案した「SHOOTINGとREFLEXを両方強化」は採用せず、ユーザーとの検討に沿って**高INSIGHTによる孤立時のSHOOTING強化だけ**に変更する。元ID `solo-operator`、分類 `距離・布陣`、origin `IDEAS` は維持。
+
+- 英語名 **On Your Own**。
+- 発動条件：本人の**幾何学的Hex距離4以内にほかの味方Unitが1機もいない間**。5Hex以上離れていれば有効。敵より前方・敵への最短距離・前衛であること等の追加条件は設けない。本人の移動だけでなく味方の移動でも条件を満たせる。味方の近距離COVERなどを受けられないことが弱点。
+- 効果：出撃時の**基礎INSIGHT（恒久育成込み）に応じてSHOOTINGが増加**。採用するSkill Lab計算式は `1 + floor(基礎INSIGHT × SkillLevel / 6)`。INSIGHT10ならLv1/2/3でSHOOTING+2/+4/+6、14なら+3/+5/+8、18なら+4/+7/+10。一時的なINSIGHT上昇では計算式を変えず、スキルシミュレーターのサンプルパイロットで恒久INSIGHTを変更した場合はLv別表示が自動更新される。
+- REFLEX・MELEE・INSIGHTには補正なし。実効SHOOTINGを参照する適格な命中計算・CritPenへ適用。武器Range・LOS・Track制約は解除しない。Datalink受信は通常ルールどおり可能。
+- 前進した高INSIGHTの単独偵察／遊撃手、主力が前進した後に孤立して長射程FIREするHeavy、Go Darkで敵フェーズをしのいで次に撃つ潜伏射手などのビルドに使える。ただし立ち回りが上手くいかなければ低REFLEXの孤立機は撃破されやすい。
+- 他の確定スキルとの併用ではPlant Your Feetによる静止射撃、Keep Watchによる翼側・前線観測等が有望。純粋な常時Abilityボーナスではなく、陣形と行動順に依存することを重視。
+- 今回の確定は独立Skill Labの設計研究ステータスの変更。本編CORE・既存Option・出撃ロースターは変更しない。古いLv値や確定数の記録は歴史的メモとして保持。
