@@ -1,7 +1,30 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.27 (2026-10-27).** 35 active Skills: **14 confirmed**, 21 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+**Current release: v0.28 (2026-10-29).** 35 active Skills: **14 confirmed**, 21 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
+
+## v0.28 — Confirmed Skill names replaced with MTG card titles (2026-10-29)
+
+**All 14 design-confirmed pilot skills now use actual Magic: The Gathering
+card titles** (12 distinct card names because Light/Standard/Heavy share
+the title `Tempered Steel`). Display names were selected for atmosphere
+and cohesion, **not because source-card effects map to the pilot skills**.
+
+See [MTG_SKILL_NAMES.md](MTG_SKILL_NAMES.md) for the authoritative
+**old name → current name → stable Skill ID** table, source-card links
+and short explanations of the source MTG card effects. Selected examples:
+`Tempered Steel`, `Last Word`, `Escape Velocity`, `No One Left Behind`,
+`Moment of Silence`, `Repercussion`, and `Dead of Winter`.
+
+**Names only:** skill mechanics, levels, activation conditions, status,
+skill IDs, the `fd-skill-lab-v1` save key, existing saved builds,
+and import/export compatibility remain unchanged. No canonical Core
+implementation was changed. Prior version notes below are historical
+records and deliberately keep the names used at the time.
+
+A naming near-collision remains between the confirmed skill
+`Against All Odds` and the separate research skill `Against the Odds`;
+the latter was not renamed as part of the confirmed-14 naming pass.
 
 ## Historical decision log: Frame Proficiency Skills (2026-10-23)
 
@@ -20,11 +43,11 @@ This decision replaces the earlier provisional +2/+3/+5% accuracy/evasion propos
 
 A standalone browser-based simulator for experimental pilot skill builds in FRAME DOCTRINE: LAST RESORT.
 
-**Status:** Research prototype v0.15. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
+**Status:** Research prototype v0.28. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
 
 ## Features
 
-- 34 active experimental pilot skills (thirteen confirmed, 21 provisional) and one retired Skill in the archive
+- 35 active experimental pilot skills (fourteen confirmed, 21 provisional) and one retired Skill in the archive
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
