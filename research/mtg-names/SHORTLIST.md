@@ -32,6 +32,7 @@ The MTG card's own mechanic has no veto power over assigning its name.
 | [See Beyond](https://scryfall.com/card/roe/86/see-beyond) | 2枚引き、手札1枚を山札に混ぜる。 | 説明ではなく、認識の広がりを感じさせる。 |
 | [Against All Odds](https://scryfall.com/card/one/1/against-all-odds) | 自軍パーマネントを追放後に戻す／墓地の低コストカードを復帰させる。 | 不利を承知で挑む物語。軍事SFに合う。 |
 | [City of Solitude](https://scryfall.com/card/vis/102/city-of-solitude) | 各プレイヤーは自分のターンにしか呪文や起動型能力を使えない。 | 静かな孤立。技能名としては詩的でやや長い。 |
+| [Solitary Defiance](https://scryfall.com/card/yotj/7/solitary-defiance) | 自軍クリーチャーがちょうど1体なら警戒・護法を与え、単独攻撃時に非土地カード2枚を抽出して1枚捨てる（MTG Arena専用）。 | 孤高の抵抗。Alchemy由来なので拡張セットのみのTSVには未収録。 |
 | [No Mercy](https://scryfall.com/card/ulg/56/no-mercy) | クリーチャーに自分がダメージを受けると、そのクリーチャーを破壊する。 | 短く冷酷。被弾後強化の印象を変える。 |
 | [Stubborn Denial](https://scryfall.com/card/ktk/56/stubborn-denial) | 追加マナを払わないと非クリーチャー呪文を打ち消す。強力な味方がいれば無条件で打ち消す。 | 反抗と精神力。過度に英雄的ではない。 |
 | [Final Fortune](https://scryfall.com/card/mir/173/final-fortune) | 追加ターンを得るが、そのターン終了時に敗北する。 | 最後の賭け。作品タイトルLAST RESORTとも共鳴。 |
