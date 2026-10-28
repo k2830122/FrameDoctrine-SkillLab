@@ -12,8 +12,8 @@ Skill Lab UI, or main-game code were changed.
   non-expansion products, including digital-only cards, rather than only
   expansion sets). It has NOT been run in this environment because the Scryfall
   download host cannot be reached from the local execution environment.
-- A future `SHORTLIST.md` will contain aesthetic nominations and succinct
-  source-card effects separately from this uncurated name catalog.
+- `SHORTLIST.md`: aesthetic nominations, brief source-card effects, and a
+  deliberately provisional 14-skill naming lineup, separately from the raw catalog.
 
 ## Snapshot methodology and scope
 
