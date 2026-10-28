@@ -1,8 +1,8 @@
-# Confirmed Skill Names — MTG card-title adoption (v0.29)
+# Confirmed Skill Names — MTG card-title adoption (v0.30)
 
-**Decision date: 2026-10-29.** All 14 confirmed Skill Lab skills use
+**Decision date: 2026-10-29.** All 16 confirmed Skill Lab skills use
 titles of actual *Magic: The Gathering* cards. The three Frame variants
-share one card-title prefix, giving 12 distinct source card titles.
+share one card-title prefix, giving 14 distinct source card titles.
 
 This document records the **currently approved display names**. They
 are deliberately not rigid: a later skill may receive a better-fitting
@@ -27,6 +27,8 @@ for context only.
 | `scan-interpretation` | Sweep the Sector | **[See Beyond](https://scryfall.com/card/roe/86/see-beyond)** | 2枚引き、手札1枚を山札に戻して切り直す。 |
 | `solo-operator` | On Your Own | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)** | 自軍パーマネントを一時追放して戻す／墓地の軽量アーティファクトかクリーチャーを復活。 |
 | `pick-your-ground` | Pick Your Ground | **[Dead of Winter](https://scryfall.com/card/mh1/85/dead-of-winter)** | 自軍の氷雪パーマネントの数だけ、氷雪でない全クリーチャーを一時的に弱体化。 |
+| `fault-line` | 新規（装甲破壊） | **[Fault Line](https://scryfall.com/card/usg/185/fault-line)** | 飛行を持たない各クリーチャーと各プレイヤーにX点ダメージを与えるインスタント。 |
+| `survival-cache` | 新規（Repair Kit効率化） | **[Survival Cache](https://scryfall.com/card/roe/44/survival-cache)** | 2点ライフ回復。自分のライフが相手より多ければ1枚引く。反復（Rebound）で再使用可能。 |
 
 ## Scope of the rename
 
@@ -63,3 +65,16 @@ for context only.
 - **Last Word** is **unassigned** and reserved for possible future use with a WAIT/Reaction skill. No WAIT/Reaction skill was renamed or confirmed in this update.
 - The earlier v0.28 assignment is preserved in the historical note above.
 - This was a **name-only** change: skill levels, conditions, effects, status, stable IDs, existing saves, and production Core are unchanged.
+
+## v0.30 — Two new approved names (2026-10-29)
+
+- **Fault Line** (`fault-line`): permanent-on-target armor break from
+  CritPen success (Lv1/2/3 = −2/−4/−6), immediately affecting later Hits
+  in the same Attack. No additional proc roll; no stacking.
+- **Survival Cache** (`survival-cache`): equipped Repair Kit efficiency,
+  8 HP base +4/+8/+12 HP at Lv1/2/3, while keeping the normal two
+  charges and legal REPAIR targeting requirements.
+
+These are newly added **confirmed** Skill Lab entries, not changes to
+existing skills. The older card list and v0.28/v0.29 naming decisions are
+historical; the two new rows above are the v0.30 additions.

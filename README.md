@@ -1,7 +1,42 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.29 (2026-10-29).** 35 active Skills: **14 confirmed**, 21 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+**Current release: v0.30 (2026-10-29).** 37 active Skills: **16 confirmed**, 21 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
+
+## v0.30 — Fault Line and Survival Cache confirmed (2026-10-29)
+
+**Two new confirmed pilot skills** were added to the point-allocation simulator:
+37 active skills total, **16 design-confirmed**, 21 provisional.
+One stable Skill ID per new entry; previous 35 IDs are untouched.
+
+- **[Fault Line](https://scryfall.com/card/usg/185/fault-line)** (`fault-line`,
+  attack/ammunition): on eligible enemy Unit **Critical Penetration success**
+  during FIRE or MELEE, reduce the target's Armor by **−2/−4/−6**
+  (Lv1/2/3). The successful CritPen Hit itself resolves as ordinary
+  Armor-bypassing damage; **the reduction occurs immediately after that Hit's
+  damage**, so remaining Hits in the same multi-Hit Attack already benefit.
+  The best reduction applies, not cumulative stacks. Clamp Armor at zero;
+  lasts until target destruction or Mission end. CritPen eligibility and
+  once-per-Attack roll semantics are unchanged, including independent
+  per-target Attacks for the Combat Knife's AreaMelee. No extra proc roll.
+  Normal total Armor penetration *without CritPen* does not trigger it.
+- **[Survival Cache](https://scryfall.com/card/roe/44/survival-cache)**
+  (`survival-cache`, repair/support): while using an **equipped Repair Kit**,
+  increase recovery from 8 HP to **12/16/20 HP** at Lv1/2/3
+  (bonuses +4/+8/+12). The original **two Kit charges per Mission**,
+  Main Action cost, self/adjacent friendly living Frame eligibility,
+  Max HP cap, and inability to revive a destroyed Frame stay unchanged.
+
+The adopted names are real *Magic: The Gathering* card titles;
+source-card effects are described in
+[MTG_SKILL_NAMES.md](MTG_SKILL_NAMES.md).
+These titles are naming references; source MTG mechanics are **not** copied.
+
+**Implementation boundary:** Skill Lab models acquisition, rank comparisons,
+and textual formula examples only. It does **not** run battlefield CritPen,
+Armor mutation, or REPAIR actions. No change to private production Core.
+The `fd-skill-lab-v1` save key, previous skill IDs, existing allocations,
+export and import remain compatible; new IDs default to level 0.
 
 ## v0.29 — Rename stationary-fire skill to Iron Verdict (2026-10-29)
 
@@ -54,11 +89,11 @@ This decision replaces the earlier provisional +2/+3/+5% accuracy/evasion propos
 
 A standalone browser-based simulator for experimental pilot skill builds in FRAME DOCTRINE: LAST RESORT.
 
-**Status:** Research prototype v0.28. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
+**Status:** Research prototype v0.30. The game project itself is separate and is not included in this public repository. None of the proposed skills or balance numbers are official game specifications.
 
 ## Features
 
-- 35 active experimental pilot skills (fourteen confirmed, 21 provisional) and one retired Skill in the archive
+- 37 active experimental pilot skills (sixteen confirmed, 21 provisional) and one retired Skill in the archive
 - Ability development and Lv.1–3 skill purchases with a shared 1–12 point budget
 - Undo, reset, filter and search
 - Local browser auto-save and import/export of build JSON
