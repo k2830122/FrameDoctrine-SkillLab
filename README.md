@@ -1,5 +1,16 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
+**Current release: v0.31 (2026-10-29).** 37 active skills: **17 confirmed**, 20 provisional, and one retired archived skill. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.31 — Finalized suppression skill, renames and categories (2026-10-29)
+
+- Reused existing `suppressive-fire` ID: renamed **Shadow of Doubt**, confirmed with Lv1/2/3 enemy REFLEX −2/−4/−6 only when **every Hit** of a normal enemy Unit Direct FIRE Attack misses. Applies after Attack resolution until the **attacker Faction Phase ends**, strongest effect only, not cumulative. Ineligible: any Hit lands, Reaction/INTERCEPT, missiles, Area/Hex attacks. Existing FIRE resource costs apply; no special action.
+- Five other confirmed names updated: **Shielded Passage**, **Decisive Denial**, **Stillness in Motion**, **Audacity**, **Confront the Unknown**. **Repercussion stays unchanged**. No other skill effects changed.
+- Grouped COVER/BRACE/CONCEAL/ACTIVE SCAN under **コマンド強化**; merged geographic/terrain skills under **位置・地形**; moved Repair Kit enhancement under **装備・消耗品**. WAIT-specific provisional skills remain in WAIT・Reaction.
+- The updated approved roster, descriptions of each skill, and linked source MTG card images are in [MTG_SKILL_NAMES.md](MTG_SKILL_NAMES.md).
+- Main game Core was not modified. The new effects are design-confirmed in Skill Lab only.
+
+
 **Current release: v0.30 (2026-10-29).** 37 active Skills: **16 confirmed**, 21 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
 

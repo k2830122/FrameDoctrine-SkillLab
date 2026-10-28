@@ -415,3 +415,11 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - Skill Lab画面のLvカード・分類・確定フィルタ・サンプル計算説明に反映。Skill Labは**戦闘シミュレーターではなく育成ポイント配分と技能効果の比較用**であり、装甲破壊の実戦判定や修理実行を直接再現しない。
 - 既存ビルドJSONとlocalStorageキー `fd-skill-lab-v1` を維持。旧ビルドの新規2Skillは未取得Lv0として読み込まれる。育成ポイント消費は従来どおり1ランク1P。
 - 以前の設計履歴は当時の名前・状態として保持。これら2件はバランス再調整を許容するが、現時点では**設計確定**として扱う。
+
+## 2026-10-29 — v0.31 牽制射撃の正式確定・命名と分類整理
+
+- 17件目の確定技能：`suppressive-fire` → **Shadow of Doubt**。通常の敵Unit対象Direct FIREのAttack全体で全Hit不命中となった場合のみ発動。対象REFLEX Lv1/2/3で−2/−4/−6、後続命中値+6/+12/+18ポイント相当。Attack処理終了後、攻撃側Faction Phase終了まで。複数回発動は最大低下のみ。通常の発砲コストのみ。Reaction・INTERCEPT、ミサイル、Area／Hex攻撃は非対象。SMGなどの複数Hitも1Hitでも命中したら発動しない。
+- 改名：`guardian-reaction` **Shielded Passage**、`brace-discipline` **Decisive Denial**、`observation-discipline` **Stillness in Motion**、`solo-operator` **Audacity**、`scan-interpretation` **Confront the Unknown**。**Repercussion**は維持。
+- 分類：COVER/BRACE/CONCEAL/ACTIVE SCAN＝**コマンド強化**、孤立時と防御地形など＝**位置・地形**、Repair Kit強化＝**装備・消耗品**。WAIT・Reactionに属する他の技能はそのまま。
+- 元ネタMTGカードへのリンク・カード画像と現在の17件の短い効果は `MTG_SKILL_NAMES.md` に収録。過去の設計履歴は改変せず追記で記録。
+- Core非変更。既存ID、育成配分、ローカル保存キー、エクスポート/インポート形式は維持。
