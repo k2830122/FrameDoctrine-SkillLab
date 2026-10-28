@@ -1,6 +1,13 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.32 (2026-10-29).** 36 active skills: **17 confirmed**, 19 provisional, and two retired archived skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.33 (2026-10-29).** 35 active skills: **17 confirmed**, 18 provisional, and three archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.33 — Retire moving-fire penalty mitigation (2026-10-29)
+
+- Archived provisional `moving-fire-discipline` (移動射撃術) without adopting it. Old rank/skill ID preserved in `ARCHIVED_SKILLS`, active list now 35 skills (17 confirmed, 18 provisional), archived list now 3 skills.
+- Rationale: reducing or eliminating a weapon's negative post-MOVE accuracy modifier undermines the intended tradeoff between movement flexibility and static precision. The idea lacks sufficient new tactical choices to justify neutralizing a deliberately designed disadvantage.
+- **WAIT assessment:** in this game, movement and end-of-movement detection are automatic and WAIT is the natural default when no enemy is located; it also enables eligible INTERCEPT/COVER/anti-missile reactions. Thus WAIT provides practical utility without a major opportunity cost in that situation. Right on Cue, Steady Nerves, Stay Frosty remain provisional, because extra unconditional WAIT rewards could make WAIT excessively dominant.
+- Legacy saved ranks migrate to `retiredSkillLevels` and points are refunded for reallocation. Keep `fd-skill-lab-v1`, import/export structure, and main battle Core unchanged.
 
 ## v0.32 — Archive Lucky Seven (2026-10-29)
 
