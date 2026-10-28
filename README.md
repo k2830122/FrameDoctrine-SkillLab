@@ -1,7 +1,18 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.28 (2026-10-29).** 35 active Skills: **14 confirmed**, 21 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
+**Current release: v0.29 (2026-10-29).** 35 active Skills: **14 confirmed**, 21 provisional; 1 retired Skill archived separately. Confirmed Skill names are English-only even in the Japanese interface. The Pilot Ability formerly labeled AWARENESS is now **INSIGHT**; private Core's Pilot Detection and Frame Sensor have not been renamed. Historical notes below may still use former names.
 
+
+## v0.29 — Rename stationary-fire skill to Iron Verdict (2026-10-29)
+
+The confirmed stationary-fire skill (stable ID `marksmanship`) has been
+renamed **Iron Verdict** (a real MTG card from *Kaldheim*); previously,
+the same Skill was named **Last Word**. **Last Word** is now unassigned,
+and may later be used for a WAIT/Reaction Skill if that design is approved.
+No other Skills were renamed. See [MTG_SKILL_NAMES.md](MTG_SKILL_NAMES.md).
+
+All skill effects, activation conditions, levels, IDs, save compatibility,
+confirmation status and production Core behavior are unchanged.
 
 ## v0.28 — Confirmed Skill names replaced with MTG card titles (2026-10-29)
 
@@ -12,7 +23,7 @@ and cohesion, **not because source-card effects map to the pilot skills**.
 
 See [MTG_SKILL_NAMES.md](MTG_SKILL_NAMES.md) for the authoritative
 **old name → current name → stable Skill ID** table, source-card links
-and short explanations of the source MTG card effects. Selected examples:
+and short explanations of the source MTG card effects. Selected examples (as of v0.28):
 `Tempered Steel`, `Last Word`, `Escape Velocity`, `No One Left Behind`,
 `Moment of Silence`, `Repercussion`, and `Dead of Winter`.
 
