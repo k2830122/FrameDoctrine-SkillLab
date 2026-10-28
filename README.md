@@ -1,6 +1,13 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.31 (2026-10-29).** 37 active skills: **17 confirmed**, 20 provisional, and one retired archived skill. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.32 (2026-10-29).** 36 active skills: **17 confirmed**, 19 provisional, and two retired archived skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.32 — Archive Lucky Seven (2026-10-29)
+
+- Moved `range-lucky-star` (the former provisional ラッキースター / Lucky Seven) from active skills into `ARCHIVED_SKILLS`. Now 36 active skills: 17 confirmed, 19 provisional; 2 archived (including Quick Study).
+- Rationale: indicating legal 7-Hex trigger positions is important to make the condition understandable, but then optimal play risks becoming just choosing a highlighted destination and firing. This was not found to create enough interesting positional decisions. CritPen +7/+14/+21 was only a provisional proposal.
+- Existing `range-lucky-star` allocations migrate via `retiredSkillLevels`, preserving their history while refunding the points. The `fd-skill-lab-v1` key, active IDs, import/export format, and main game Core are unchanged.
+- WAIT/Reaction candidates remain under review; simply rewarding WAIT can make it the default action without a new tradeoff. No WAIT skill was finalized or archived.
 
 ## v0.31 — Finalized suppression skill, renames and categories (2026-10-29)
 
