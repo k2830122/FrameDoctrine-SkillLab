@@ -1,4 +1,4 @@
-# Confirmed Skill Names — MTG card-title adoption (v0.28)
+# Confirmed Skill Names — MTG card-title adoption (v0.29)
 
 **Decision date: 2026-10-29.** All 14 confirmed Skill Lab skills use
 titles of actual *Magic: The Gathering* cards. The three Frame variants
@@ -16,7 +16,7 @@ for context only.
 | `frame-light` | Frame Combat Proficiency (Light) | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel) (Light)** | 自軍のアーティファクト・クリーチャー全体に+2/+2。 |
 | `frame-standard` | Frame Combat Proficiency (Standard) | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel) (Standard)** | 同上。 |
 | `frame-heavy` | Frame Combat Proficiency (Heavy) | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel) (Heavy)** | 同上。 |
-| `marksmanship` | Plant Your Feet | **[Last Word](https://scryfall.com/card/dst/23/last-word)** | 打ち消されない呪文で、対象の呪文を打ち消す。 |
+| `marksmanship` | Plant Your Feet → Last Word | **[Iron Verdict](https://scryfall.com/card/khm/17/iron-verdict)** | タップ状態のクリーチャー1体に5点ダメージ。予顕で後のターンに唱えられる。 |
 | `mobile-evasion` | Keep Moving | **[Escape Velocity](https://scryfall.com/card/thb/132/escape-velocity)** | クリーチャーに+1/+0と速攻を付与。墓地からの再利用も可能。 |
 | `momentum-melee` | On the Charge | **[Through the Breach](https://scryfall.com/card/chk/193/through-the-breach)** | 手札のクリーチャーを一時的に戦場へ出し、速攻を付与。終了時に生け贄。 |
 | `guardian-reaction` | Got Your Six | **[No One Left Behind](https://scryfall.com/card/bro/109/no-one-left-behind)** | 墓地のクリーチャーを戦場に戻す。小型の対象ならコスト軽減。 |
@@ -56,3 +56,10 @@ for context only.
 - Card title and game mechanics are independently changeable. Name
   assignments should be evaluated as a **complete roster** rather than
   one-by-one translations of skills.
+
+## v0.29 — Name reassignment (2026-10-29)
+
+- `marksmanship` (pre-MOVE Direct FIRE, SHOOTING +2/+4/+6) is now **Iron Verdict**.
+- **Last Word** is **unassigned** and reserved for possible future use with a WAIT/Reaction skill. No WAIT/Reaction skill was renamed or confirmed in this update.
+- The earlier v0.28 assignment is preserved in the historical note above.
+- This was a **name-only** change: skill levels, conditions, effects, status, stable IDs, existing saves, and production Core are unchanged.
