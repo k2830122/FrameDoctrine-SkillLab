@@ -1,80 +1,42 @@
-# Confirmed Skill Names — MTG card-title adoption (v0.30)
+# Approved MTG Skill Names — v0.31 (2026-10-29)
 
-**Decision date: 2026-10-29.** All 16 confirmed Skill Lab skills use
-titles of actual *Magic: The Gathering* cards. The three Frame variants
-share one card-title prefix, giving 14 distinct source card titles.
+**17 confirmed skills (15 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Stable Skill IDs, existing costs and levels are unchanged, except `suppressive-fire` whose previously provisional effect was explicitly finalized in this version. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
-This document records the **currently approved display names**. They
-are deliberately not rigid: a later skill may receive a better-fitting
-name, in which case names can be reassigned together. Naming does not
-imply that the MTG card's rules text is being adapted into the game.
-The source-card effect notes below are concise Japanese paraphrases
-for context only.
-
-| Stable Skill ID | Previous name | Adopted display name (source MTG card) | Original MTG card effect (summary) |
+| Skill ID | Current name / MTG card image | Skill effect | Source card's original effect (brief) |
 | --- | --- | --- | --- |
-| `frame-light` | Frame Combat Proficiency (Light) | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel) (Light)** | 自軍のアーティファクト・クリーチャー全体に+2/+2。 |
-| `frame-standard` | Frame Combat Proficiency (Standard) | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel) (Standard)** | 同上。 |
-| `frame-heavy` | Frame Combat Proficiency (Heavy) | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel) (Heavy)** | 同上。 |
-| `marksmanship` | Plant Your Feet → Last Word | **[Iron Verdict](https://scryfall.com/card/khm/17/iron-verdict)** | タップ状態のクリーチャー1体に5点ダメージ。予顕で後のターンに唱えられる。 |
-| `mobile-evasion` | Keep Moving | **[Escape Velocity](https://scryfall.com/card/thb/132/escape-velocity)** | クリーチャーに+1/+0と速攻を付与。墓地からの再利用も可能。 |
-| `momentum-melee` | On the Charge | **[Through the Breach](https://scryfall.com/card/chk/193/through-the-breach)** | 手札のクリーチャーを一時的に戦場へ出し、速攻を付与。終了時に生け贄。 |
-| `guardian-reaction` | Got Your Six | **[No One Left Behind](https://scryfall.com/card/bro/109/no-one-left-behind)** | 墓地のクリーチャーを戦場に戻す。小型の対象ならコスト軽減。 |
-| `brace-discipline` | Hunker Down | **[Built to Last](https://scryfall.com/card/kld/7/built-to-last)** | +2/+2。対象がアーティファクトなら破壊不能も付与。 |
-| `conceal-discipline` | Go Dark | **[Moment of Silence](https://scryfall.com/card/mmq/28/moment-of-silence)** | 対象プレイヤーの次の戦闘フェイズを飛ばす。 |
-| `fired-up` | Fired Up | **[Repercussion](https://scryfall.com/card/uds/95/repercussion)** | クリーチャーへのダメージを、そのコントローラーにも反映する。 |
-| `observation-discipline` | Keep Watch | **[Standstill](https://scryfall.com/card/ody/102/standstill)** | 誰かが呪文を唱えると生け贄にし、そのプレイヤーの対戦相手が3枚ずつ引く。 |
-| `scan-interpretation` | Sweep the Sector | **[See Beyond](https://scryfall.com/card/roe/86/see-beyond)** | 2枚引き、手札1枚を山札に戻して切り直す。 |
-| `solo-operator` | On Your Own | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)** | 自軍パーマネントを一時追放して戻す／墓地の軽量アーティファクトかクリーチャーを復活。 |
-| `pick-your-ground` | Pick Your Ground | **[Dead of Winter](https://scryfall.com/card/mh1/85/dead-of-winter)** | 自軍の氷雪パーマネントの数だけ、氷雪でない全クリーチャーを一時的に弱体化。 |
-| `fault-line` | 新規（装甲破壊） | **[Fault Line](https://scryfall.com/card/usg/185/fault-line)** | 飛行を持たない各クリーチャーと各プレイヤーにX点ダメージを与えるインスタント。 |
-| `survival-cache` | 新規（Repair Kit効率化） | **[Survival Cache](https://scryfall.com/card/roe/44/survival-cache)** | 2点ライフ回復。自分のライフが相手より多ければ1枚引く。反復（Rebound）で再使用可能。 |
+| `frame-light` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (light)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Light搭乗時 SHOOTING・MELEE +1/+2/+3 | アーティファクト・クリーチャー全体+2/+2 |
+| `frame-standard` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (standard)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Standard搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
+| `frame-heavy` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (heavy)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Heavy搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
+| `marksmanship` | **[Iron Verdict](https://scryfall.com/card/khm/17/iron-verdict)**<br>![Iron Verdict MTG card](https://api.scryfall.com/cards/khm/17?format=image&version=small) | 通常MOVE前の対Unit射撃で SHOOTING +2/+4/+6 | タップ状態のクリーチャーに5ダメージ、予顕 |
+| `mobile-evasion` | **[Escape Velocity](https://scryfall.com/card/thb/132/escape-velocity)**<br>![Escape Velocity MTG card](https://api.scryfall.com/cards/thb/132?format=image&version=small) | 通常MOVEで3Hex以上移動すると REFLEX +2/+4/+6 | 速攻と攻撃修整を付与、脱出可能 |
+| `momentum-melee` | **[Through the Breach](https://scryfall.com/card/chk/193/through-the-breach)**<br>![Through the Breach MTG card](https://api.scryfall.com/cards/chk/193?format=image&version=small) | 3Hex以上通常MOVE後の白兵で MELEE +2/+4/+6 | 手札のクリーチャーを一時的に速攻で戦場へ出す |
+| `guardian-reaction` | **[Shielded Passage](https://scryfall.com/card/gtc/24/shielded-passage)**<br>![Shielded Passage MTG card](https://api.scryfall.com/cards/gtc/24?format=image&version=small) | 味方のCOVER／ミサイル迎撃時 REFLEX +3/+6/+9 | クリーチャーへの次のダメージを軽減 |
+| `brace-discipline` | **[Decisive Denial](https://scryfall.com/card/stx/382/decisive-denial)**<br>![Decisive Denial MTG card](https://api.scryfall.com/cards/stx/382?format=image&version=small) | BRACEのArmor追加+1/+2/+3、最終1ダメージを0に | クリーチャー間の格闘か、相手の呪文の打ち消しを選択 |
+| `conceal-discipline` | **[Moment of Silence](https://scryfall.com/card/mmq/28/moment-of-silence)**<br>![Moment of Silence MTG card](https://api.scryfall.com/cards/mmq/28?format=image&version=small) | CONCEAL時Signature低下（暫定−2/−3/−4）、自機センサー停止 | 相手の次の戦闘フェイズを飛ばす |
+| `fired-up` | **[Repercussion](https://scryfall.com/card/uds/95/repercussion)**<br>![Repercussion MTG card](https://api.scryfall.com/cards/uds/95?format=image&version=small) | 敵の攻撃でHitを受けた次のActivation、SHOOTING・MELEE +6/+9/+12 | クリーチャーが受けたダメージをそのコントローラーにも与える |
+| `observation-discipline` | **[Stillness in Motion](https://scryfall.com/card/tdm/334/stillness-in-motion)**<br>![Stillness in Motion MTG card](https://api.scryfall.com/cards/tdm/334?format=image&version=small) | 通常MOVEせずActivation終了で次の自Activationまで INSIGHT +4/+8/+12 | クリーチャーに関わる能力を備えたエンチャント |
+| `scan-interpretation` | **[Confront the Unknown](https://scryfall.com/card/soi/198/confront-the-unknown)**<br>![Confront the Unknown MTG card](https://api.scryfall.com/cards/soi/198?format=image&version=small) | ACTIVE SCAN中だけ INSIGHT +4/+8/+12 | 調査を行い、手掛かり数に応じてクリーチャーを強化 |
+| `solo-operator` | **[Audacity](https://scryfall.com/card/bro/169/audacity)**<br>![Audacity MTG card](https://api.scryfall.com/cards/bro/169?format=image&version=small) | 味方が4Hex以内にいないとき基礎INSIGHT依存でSHOOTING上昇 | クリーチャーに+2/+0とトランプル、死亡時ドロー |
+| `pick-your-ground` | **[Dead of Winter](https://scryfall.com/card/mh1/85/dead-of-winter)**<br>![Dead of Winter MTG card](https://api.scryfall.com/cards/mh1/85?format=image&version=small) | 森林・瓦礫・掩体などの地形防御を追加−5/−10/−15pt | 氷雪パーマネント数に応じて非氷雪クリーチャー全体を弱体化 |
+| `fault-line` | **[Fault Line](https://scryfall.com/card/usg/185/fault-line)**<br>![Fault Line MTG card](https://api.scryfall.com/cards/usg/185?format=image&version=small) | CritPen成功直後から対象Armor −2/−4/−6（同Attack後続Hitにも適用） | 地上クリーチャーと各プレイヤーへXダメージ |
+| `survival-cache` | **[Survival Cache](https://scryfall.com/card/roe/44/survival-cache)**<br>![Survival Cache MTG card](https://api.scryfall.com/cards/roe/44?format=image&version=small) | Repair Kitの回復量8HPを12/16/20HPへ強化 | 2点回復、条件付きドロー、反復 |
+| `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 
-## Scope of the rename
+## Unassigned / candidate names
 
-- **Changed:** Skill Lab card titles; in-page prose, sample text,
-  formulas and option-study notes that name those current confirmed
-  skills; the preview version label.
-- **Unchanged:** all stable Skill IDs, levels, effects, activation
-  conditions, skill group/category, status, source design decisions,
-  saves/import/export format, and the separate main-game Core.
-- **Historical README / design-note logs** retain their old wording
-  because they document past decisions; the mapping above is current.
-- The latest research-only [MTG candidate catalog and broader naming
-  notes](https://github.com/k2830122/FrameDoctrine-SkillLab/tree/research/mtg-naming-20261029/research/mtg-names)
-  are kept separate from approved skill definitions.
+- **Last Word**: formerly used for stationary-fire skill; not currently assigned.
+- **Cost of Brilliance**: promising future title, deliberately unassigned.
+- **Against All Odds**: no longer assigned to solo skill. The separate provisional **Against the Odds** remains a distinct, unconfirmed skill; it has not been renamed.
 
-## Naming-review notes
+## v0.31 approved changes
 
-- **Against All Odds** (now confirmed for `solo-operator`) is very
-  similar to **Against the Odds** (separate, provisional
-  `against-the-odds` CritPen-related skill with a previously settled
-  name). We deliberately **did not rename that provisional skill** in
-  this 14-skill-only change. This collision should be revisited when
-  organizing the next batch of names.
-- In spite of its snow setting, **Dead of Winter** is used for the
-  terrain/position-defense skill solely as a creative title, not as an
-  adaptation of its original mass-debuff effect.
-- Card title and game mechanics are independently changeable. Name
-  assignments should be evaluated as a **complete roster** rather than
-  one-by-one translations of skills.
+| Stable ID | Previous title | Current title |
+| --- | --- | --- |
+| `guardian-reaction` | No One Left Behind | Shielded Passage |
+| `brace-discipline` | Built to Last | Decisive Denial |
+| `observation-discipline` | Standstill | Stillness in Motion |
+| `solo-operator` | Against All Odds | Audacity |
+| `scan-interpretation` | See Beyond | Confront the Unknown |
+| `suppressive-fire` | 牽制射撃（仮） | Shadow of Doubt（設計確定） |
 
-## v0.29 — Name reassignment (2026-10-29)
-
-- `marksmanship` (pre-MOVE Direct FIRE, SHOOTING +2/+4/+6) is now **Iron Verdict**.
-- **Last Word** is **unassigned** and reserved for possible future use with a WAIT/Reaction skill. No WAIT/Reaction skill was renamed or confirmed in this update.
-- The earlier v0.28 assignment is preserved in the historical note above.
-- This was a **name-only** change: skill levels, conditions, effects, status, stable IDs, existing saves, and production Core are unchanged.
-
-## v0.30 — Two new approved names (2026-10-29)
-
-- **Fault Line** (`fault-line`): permanent-on-target armor break from
-  CritPen success (Lv1/2/3 = −2/−4/−6), immediately affecting later Hits
-  in the same Attack. No additional proc roll; no stacking.
-- **Survival Cache** (`survival-cache`): equipped Repair Kit efficiency,
-  8 HP base +4/+8/+12 HP at Lv1/2/3, while keeping the normal two
-  charges and legal REPAIR targeting requirements.
-
-These are newly added **confirmed** Skill Lab entries, not changes to
-existing skills. The older card list and v0.28/v0.29 naming decisions are
-historical; the two new rows above are the v0.30 additions.
+**Repercussion remains unchanged.** Labels: `コマンド強化` for COVER/BRACE/CONCEAL/ACTIVE SCAN skills, `位置・地形` for terrain and separation/position skills, and `装備・消耗品` for the Repair Kit skill. Historical documents retain prior names when describing past releases.
