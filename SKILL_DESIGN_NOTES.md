@@ -347,3 +347,32 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - Skill Lab内の研究・取得シミュレーションに反映。実際の地形と敵命中を逐次シミュレートする戦場UIは追加していない。数値・対象を含めて今回の技能案として確定表示するが、実戦バランス検証とCore実装は別工程。
 
 同日のv0.26ではOn Your Ownを確定した。既存13確定スキルの内容は維持し、今回Pick Your Groundを1件追加した。
+
+## 2026-10-29 — v0.28 全確定スキルのMTG由来名称への改名
+
+ユーザーの指示により、**Skill Labの確定済み14件すべて**を実在するMTGカード名へ改名する。機体適性3種は同じカード名 **Tempered Steel** を共通に使用するため、12種類の元カード名を採用した。元カードの効果とPilot Skillの効果を揃えることは命名の条件としない。英語名の語感、作品世界との親和性、14件を並べた際の統一感を優先する。
+
+| 旧名称 | 現行名称 | 安定ID |
+| --- | --- | --- |
+| Frame Combat Proficiency (Light) | **Tempered Steel (Light)** | `frame-light` |
+| Frame Combat Proficiency (Standard) | **Tempered Steel (Standard)** | `frame-standard` |
+| Frame Combat Proficiency (Heavy) | **Tempered Steel (Heavy)** | `frame-heavy` |
+| Plant Your Feet | **Last Word** | `marksmanship` |
+| Keep Moving | **Escape Velocity** | `mobile-evasion` |
+| On the Charge | **Through the Breach** | `momentum-melee` |
+| Got Your Six | **No One Left Behind** | `guardian-reaction` |
+| Hunker Down | **Built to Last** | `brace-discipline` |
+| Go Dark | **Moment of Silence** | `conceal-discipline` |
+| Fired Up | **Repercussion** | `fired-up` |
+| Keep Watch | **Standstill** | `observation-discipline` |
+| Sweep the Sector | **See Beyond** | `scan-interpretation` |
+| On Your Own | **Against All Odds** | `solo-operator` |
+| Pick Your Ground | **Dead of Winter** | `pick-your-ground` |
+
+元カードへのリンクとその**実際のカード効果の要約**は [MTG_SKILL_NAMES.md](MTG_SKILL_NAMES.md) に記録。
+
+- **名前のみ変更**。Lv1～3の効果・発動条件・数値・確定/検討中ステータス・内部Skill IDはすべて維持。Go Dark（新名 Moment of Silence）のSignature値が暫定であることも変わらない。Skill Lab現役35件、確定14件、未確定21件。
+- 保存キー `fd-skill-lab-v1` とSkill IDを変えないため、既存のビルド保存、JSONエクスポート/インポート、育成ポイント配分は維持。**本編Coreには未反映**。
+- Skill Lab本体の各カード名と現在の説明文・計算欄・関連Optionメモの呼称を更新。ここより前の設計履歴は**当時の名前を保存**し、過去の判断を書き換えない。
+- 研究中（効果未確定）の `against-the-odds` は既に **Against the Odds** という表示名を持つため、確定技能の新名 **Against All Odds** と酷似する。今回それを理由に承認済の14件を差し替えたり、研究中の別技能を無断改名したりしない。今後の命名整理で優先的に検討。
+- 今回の名前は現在の採用名だが、将来追加する技能との兼ね合いで**一括再割当・改名は可能**。それは効果設計の変更を意味しない。
