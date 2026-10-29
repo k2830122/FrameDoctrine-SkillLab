@@ -1,6 +1,14 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.38 (2026-10-29).** 31 active skills: **22 confirmed**, 9 provisional, with ten archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.39 (2026-10-29).** 30 active skills: **21 confirmed**, 9 provisional, with eleven archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.39 — Retire Stillness in Motion; rebalance Confront the Unknown (2026-10-29)
+
+- Archived **Stillness in Motion** (`observation-discipline`, formerly confirmed), preserving its original +4/+8/+12 effective INSIGHT levels and prior design description in `ARCHIVED_SKILLS` and the research history. Its lack of natural value in this game's advance-and-stop reconnaissance loop led to retirement: after no normal MOVE and completion of the Activation, a late extended scan generally cannot replace forward reconnaissance or immediate ACTIVE SCAN.
+- Prior saved `skillLevels["observation-discipline"]` transfers into `retiredSkillLevels["observation-discipline"]` by the existing migration path, with **full point refund**. Existing stable ID is retained in the archive, not reused.
+- **Confront the Unknown** (`scan-interpretation`) keeps ACTIVE SCAN-only effective INSIGHT +4/+8/+12 and standard scan +12 Detection Power. Its ACTIVE SCAN scanner Signature **total** is now **+3/+4/+5** at Lv1/2/3, up from standard scan +2, persisting to the next own Activation start under the existing scan rules. No extra command or additional Signature stacking category is introduced.
+- The skill gives +1/+2/+3 Detection Budget over standard ACTIVE SCAN while increasing the owner's Signature by the same integer amount, but neither value guarantees a fixed number of Hexes of detection through varied terrain and blockers. The Main Action and exposure/INTERCEPT risk are retained.
+- **30 active (21 confirmed, 9 provisional); 11 archived**. `fd-skill-lab-v1`, existing allocations and old JSON import/export remain compatible. The production Core and Option definitions were **not** changed.
 
 ## v0.38 — Final Fortune confirmed (2026-10-29)
 

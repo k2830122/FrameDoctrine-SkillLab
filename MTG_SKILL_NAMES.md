@@ -1,6 +1,6 @@
-# Approved MTG Skill Names — v0.38 (2026-10-29)
+# Approved MTG Skill Names — v0.39 (2026-10-29)
 
-**22 confirmed skills (20 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Stable Skill IDs, existing costs and levels are unchanged, except `suppressive-fire` whose previously provisional effect was explicitly finalized in this version. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
+**21 confirmed skills (19 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Stable Skill IDs, existing costs and levels are unchanged, except `suppressive-fire` whose previously provisional effect was explicitly finalized in this version. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
 | Skill ID | Current name / MTG card image | Skill effect | Source card's original effect (brief) |
 | --- | --- | --- | --- |
@@ -17,8 +17,7 @@
 | `brace-discipline` | **[Decisive Denial](https://scryfall.com/card/stx/382/decisive-denial)**<br>![Decisive Denial MTG card](https://api.scryfall.com/cards/stx/382?format=image&version=small) | BRACEのArmor追加+1/+2/+3、最終1ダメージを0に | クリーチャー間の格闘か、相手の呪文の打ち消しを選択 |
 | `conceal-discipline` | **[Moment of Silence](https://scryfall.com/card/mmq/28/moment-of-silence)**<br>![Moment of Silence MTG card](https://api.scryfall.com/cards/mmq/28?format=image&version=small) | CONCEAL時Signature低下（暫定−2/−3/−4）、自機センサー停止 | 相手の次の戦闘フェイズを飛ばす |
 | `fired-up` | **[Repercussion](https://scryfall.com/card/uds/95/repercussion)**<br>![Repercussion MTG card](https://api.scryfall.com/cards/uds/95?format=image&version=small) | 敵の攻撃でHitを受けた次のActivation、SHOOTING・MELEE +6/+9/+12 | クリーチャーが受けたダメージをそのコントローラーにも与える |
-| `observation-discipline` | **[Stillness in Motion](https://scryfall.com/card/tdm/334/stillness-in-motion)**<br>![Stillness in Motion MTG card](https://api.scryfall.com/cards/tdm/334?format=image&version=small) | 通常MOVEせずActivation終了で次の自Activationまで INSIGHT +4/+8/+12 | クリーチャーに関わる能力を備えたエンチャント |
-| `scan-interpretation` | **[Confront the Unknown](https://scryfall.com/card/soi/198/confront-the-unknown)**<br>![Confront the Unknown MTG card](https://api.scryfall.com/cards/soi/198?format=image&version=small) | ACTIVE SCAN中だけ INSIGHT +4/+8/+12 | 調査を行い、手掛かり数に応じてクリーチャーを強化 |
+| `scan-interpretation` | **[Confront the Unknown](https://scryfall.com/card/soi/198/confront-the-unknown)**<br>![Confront the Unknown MTG card](https://api.scryfall.com/cards/soi/198?format=image&version=small) | ACTIVE SCAN中だけ INSIGHT +4/+8/+12、scanner Signature合計 +3/+4/+5 | 調査を行い、手掛かり数に応じてクリーチャーを強化 |
 | `solo-operator` | **[Audacity](https://scryfall.com/card/bro/169/audacity)**<br>![Audacity MTG card](https://api.scryfall.com/cards/bro/169?format=image&version=small) | 味方が4Hex以内にいないとき基礎INSIGHT依存でSHOOTING上昇 | クリーチャーに+2/+0とトランプル、死亡時ドロー |
 | `pick-your-ground` | **[Dead of Winter](https://scryfall.com/card/mh1/85/dead-of-winter)**<br>![Dead of Winter MTG card](https://api.scryfall.com/cards/mh1/85?format=image&version=small) | 森林・瓦礫・掩体などの地形防御を追加−5/−10/−15pt | 氷雪パーマネント数に応じて非氷雪クリーチャー全体を弱体化 |
 | `fault-line` | **[Fault Line](https://scryfall.com/card/usg/185/fault-line)**<br>![Fault Line MTG card](https://api.scryfall.com/cards/usg/185?format=image&version=small) | CritPen成功直後から対象Armor −2/−4/−6（同Attack後続Hitにも適用） | 地上クリーチャーと各プレイヤーへXダメージ |
@@ -76,3 +75,16 @@ All four are real MTG card titles; source card mechanics are not ported. Current
 ## v0.38 — Final Fortune (2026-10-29)
 
 - Confirmed `final-fortune` from [Final Fortune](https://scryfall.com/card/mir/173/final-fortune). 50/50 good/bad roll at each friendly Faction Phase start, independent per pilot and phase. Good boosts SHOOTING/MELEE +4/+5/+6; bad reduces REFLEX −6/−5/−4. Effect lasts through the enemy phase until the next friendly phase. Source card mechanics are not ported. 22 confirmed, 9 provisional, 10 archived; Core unchanged.
+
+## v0.39 — scan balance and archived MTG title (2026-10-29)
+
+- **Confront the Unknown** (`scan-interpretation`): LIVE, unchanged INSIGHT +4/+8/+12 during ACTIVE SCAN; revised scanner Signature totals +3/+4/+5 (normal ACTIVE SCAN is +2), persisting until next own Activation start. [Original card](https://scryfall.com/card/soi/198/confront-the-unknown) remains the same.
+- **Stillness in Motion** (`observation-discipline`): archived from confirmed skills. Prior name, source-card link and image, plus original effects retained for historical reference below. Existing skill ID and old saved rank history preserved.
+
+### Archived approved title — original v0.38 row
+
+| Skill ID | Original approved MTG title | Former Skill effect | Source card's original effect |
+| --- | --- | --- | --- |
+| `observation-discipline` | **[Stillness in Motion](https://scryfall.com/card/tdm/334/stillness-in-motion)**<br>![Stillness in Motion MTG card](https://api.scryfall.com/cards/tdm/334?format=image&version=small) | 通常MOVEせずActivation終了で次の自Activationまで INSIGHT +4/+8/+12 | クリーチャーに関わる能力を備えたエンチャント |
+
+Current totals: **21 confirmed**, **9 provisional**, **11 archived**. Prior release notes below or above are historical and retain their original counts. Core unchanged.
