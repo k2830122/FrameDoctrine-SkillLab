@@ -1,6 +1,13 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.37 (2026-10-29).** 30 active skills: **21 confirmed**, 9 provisional, with ten archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.38 (2026-10-29).** 31 active skills: **22 confirmed**, 9 provisional, with ten archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.38 — Final Fortune confirmed (2026-10-29)
+
+- New confirmed **Final Fortune** (`final-fortune`), named after the [real MTG card](https://scryfall.com/card/mir/173/final-fortune). Each friendly Faction Phase start (including the first after mission start), independently roll 50% good / 50% bad for each owner.
+- Good: effective SHOOTING and MELEE +4/+5/+6 (Lv1/2/3). Bad: effective REFLEX −6/−5/−4. State persists until the next friendly Faction Phase start, including enemy phases. Independent rolls allow repeated outcomes.
+- Each rank 1P; 12P budget provisional. No new command, MP, cooldown, use counter or bad-luck protection. Skill Lab displays both states but does not run RNG or battle simulation. Core unchanged.
+- Active 31 (22 confirmed, 9 provisional), archived 10. Existing IDs, `fd-skill-lab-v1`, import/export and retired-level compatibility retained.
 
 ## v0.37 — Confirm two weapon proficiencies and rename two skills (2026-10-29)
 
