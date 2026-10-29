@@ -1,12 +1,13 @@
-# Approved MTG Skill Names — v0.37 (2026-10-29)
+# Approved MTG Skill Names — v0.38 (2026-10-29)
 
-**21 confirmed skills (19 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Stable Skill IDs, existing costs and levels are unchanged, except `suppressive-fire` whose previously provisional effect was explicitly finalized in this version. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
+**22 confirmed skills (20 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Stable Skill IDs, existing costs and levels are unchanged, except `suppressive-fire` whose previously provisional effect was explicitly finalized in this version. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
 | Skill ID | Current name / MTG card image | Skill effect | Source card's original effect (brief) |
 | --- | --- | --- | --- |
 | `frame-light` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (light)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Light搭乗時 SHOOTING・MELEE +1/+2/+3 | アーティファクト・クリーチャー全体+2/+2 |
 | `frame-standard` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (standard)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Standard搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
 | `frame-heavy` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (heavy)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Heavy搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
+| `final-fortune` | **[Final Fortune](https://scryfall.com/card/mir/173/final-fortune)**<br>![Final Fortune MTG card](https://api.scryfall.com/cards/mir/173?format=image&version=small) | 各自軍Faction Phase開始時50%抽選。好調SHOOTING・MELEE +4/+5/+6、不調REFLEX −6/−5/−4 | 追加ターンを得るが、その終了時にゲームに敗北する |
 | `marksmanship` | **[Seize Opportunity](https://scryfall.com/card/tdm/119/seize-opportunity)**<br>![Seize Opportunity MTG card](https://api.scryfall.com/cards/tdm/119?format=image&version=small) | 通常MOVE前の対Unit射撃で SHOOTING +2/+4/+6（旧Iron Verdict） | 上2枚を一時使用可能、または最大2体を+2/+1 |
 | `sniper-rifle-proficiency` | **[Last Word](https://scryfall.com/card/dst/23/last-word)**<br>![Last Word MTG card](https://api.scryfall.com/cards/dst/23?format=image&version=small) | Sniper Rifleによる適格な射撃中のみ SHOOTING +2/+4/+6 | 打ち消されない呪文で対象の呪文を打ち消す |
 | `mobile-evasion` | **[Escape Velocity](https://scryfall.com/card/thb/132/escape-velocity)**<br>![Escape Velocity MTG card](https://api.scryfall.com/cards/thb/132?format=image&version=small) | 通常MOVEで3Hex以上移動すると REFLEX +2/+4/+6 | 速攻と攻撃修整を付与、脱出可能 |
@@ -71,3 +72,7 @@
 | `sniper-rifle-proficiency` (new) | — | **Last Word** | [DST #23](https://scryfall.com/card/dst/23/last-word) |
 
 All four are real MTG card titles; source card mechanics are not ported. Current 21 confirmed skills, 9 provisional, 10 archived. Existing IDs and save compatibility are maintained. Production Core unchanged.
+
+## v0.38 — Final Fortune (2026-10-29)
+
+- Confirmed `final-fortune` from [Final Fortune](https://scryfall.com/card/mir/173/final-fortune). 50/50 good/bad roll at each friendly Faction Phase start, independent per pilot and phase. Good boosts SHOOTING/MELEE +4/+5/+6; bad reduces REFLEX −6/−5/−4. Effect lasts through the enemy phase until the next friendly phase. Source card mechanics are not ported. 22 confirmed, 9 provisional, 10 archived; Core unchanged.
