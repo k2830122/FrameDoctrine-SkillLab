@@ -1,6 +1,13 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.35 (2026-10-29).** 29 active skills: **19 confirmed**, 10 provisional, with nine archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.36 (2026-10-29).** 28 active skills: **19 confirmed**, 9 provisional, with ten archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.36 — Retire generic favorite-weapon skill (2026-10-29)
+
+- Archived provisional **Charlene / 愛用武器（仮）** (`charlene-favorite-weapon`) without changing its stable ID or historical level descriptions.
+- **Reason:** Selecting any one weapon would let players take the buff with a general-purpose, low-capacity weapon such as the Assault Rifle; the intended equipment commitment would be weak. Instead, separately design dedicated proficiency skills for high-commitment **Assault Lance** and **Sniper Rifle** (both Armament Capacity 2). Names, final specifications, and registration of the new individual skills will follow the naming/design discussion; they are **not added in v0.36**.
+- Active total **28** (19 confirmed / 9 provisional), archived total **10**. Old ranks migrate to `retiredSkillLevels` and their point costs are refunded; save key `fd-skill-lab-v1` and import/export schema remain unchanged.
+- Core game remains unchanged.
 
 ## v0.35 — Retire Against the Odds (2026-10-29)
 
