@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.38（2026-10-29）：** 現役31件（確定22、検討中・保留9）＋アーカイブ10件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.39（2026-10-29）：** 現役30件（確定21、検討中・保留9）＋アーカイブ11件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -512,3 +512,12 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - Lv1：好調SHOOTING・MELEE +4／不調REFLEX −6。Lv2：好調+5／不調−5。Lv3：好調+6／不調−4。基礎Abilityは不変、実効Abilityを補正。命中・回避・CritPen等は既存の適格な共通式を使用。
 - 武器・機体制約なし。攻撃強化と防御リスクの両面を持つ個性重視のパッシブ。初期1Pおすすめ技能としての採用可能性はあるが、パイロット割当は未確定。各Lv1P、最大Lv3。新コマンド・MP・クールダウン・使用回数カウンターなし。
 - Skill Labは育成配分と好調／不調の両効果を表示するだけで、実際の確率抽選・戦闘進行は行わない。現役31（確定22、検討中9）、アーカイブ10。既存ID、`fd-skill-lab-v1`、JSON入出力、退役履歴を維持。本編Coreは未変更。
+
+## 2026-10-29 — v0.39 Stillness in Motionアーカイブ／Confront the Unknown調整
+
+- **Stillness in Motion**（旧確定 `observation-discipline`）を現役スキルから取り下げ、アーカイブへ。旧設計は「同Activationで通常MOVEをせず終了後から次の自ActivationまでINSIGHT +4/+8/+12、基本索敵予算+1/+2/+3」。旧効果と安定IDは`ARCHIVED_SKILLS`に保存する。既存の取得ランクは`retiredSkillLevels`へ移行し、使用ポイントを返却する。
+- **理由**：前進する偵察機は移動中の自動索敵で敵を見つけた時点で任意停止し、後続が攻撃する。移動を捨てて行動終了後からだけ広がる継続索敵は、必要な瞬間に効果を得にくい。見えない敵に攻撃された緊急局面ではACTIVE SCANが直ちに情報を得る手段になる。静止狙撃等への付随効果はあるが、技能ポイントに見合う自律した戦術用途は乏しい。将来必要なら新規に再検討する。
+- **Confront the Unknown**（既存ID `scan-interpretation`）はACTIVE SCAN中の実効INSIGHT +4/+8/+12を維持。標準ACTIVE SCANのDetection Power +12に上乗せする瞬間合計は+16/+20/+24、基本索敵予算の追加は標準に比べ+1/+2/+3相当。
+- **対価の追加**：ACTIVE SCANのscanner Signature合計を標準+2からLv1:+3／Lv2:+4／Lv3:+5へ引き上げる。追加SignatureはSkill Lvと同じ+1/+2/+3で、走査のDetection Budget増加に対応。元のACTIVE SCANと同じく次の自Activation開始時まで維持し、合法な敵索敵・Action INTERCEPTリスクに反映する。Signatureは移動距離を直接表さず、地形のSensor Cost・遮蔽物・敵センサーとの関係次第で結果は変わる。
+- ACTIVE SCANのMain Action消費・Detection Line・Smoke・Track・Datalink等の共通規則は維持。追加のリソース、Activeコマンド、クールダウンは設けない。旧Active Scan Amplifier／Sensor Stabilizer Optionの本編での扱いは従来どおり別途検討。
+- 現役30（確定21・未確定9）、アーカイブ11。保存キー`fd-skill-lab-v1`、既存ID、旧保存／JSON読込とポイント返却の仕組みは不変。**本編Core実装は未変更**。
