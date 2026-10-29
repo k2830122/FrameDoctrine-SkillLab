@@ -1,6 +1,14 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.34 (2026-10-29).** 30 active skills: **19 confirmed**, 11 provisional, with eight archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.35 (2026-10-29).** 29 active skills: **19 confirmed**, 10 provisional, with nine archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.35 — Retire Against the Odds (2026-10-29)
+
+- Archived the **provisional** `against-the-odds` (**Against the Odds**, low-accuracy / CritPen chance boost), retaining its full old research specification under the same stable ID.
+- **Reason:** Making low accuracy directly increase armor-critical effects may reward deliberately poor shooting conditions. Synergies with Shadow of Doubt and Fault Line further undermine the intended cost of low Hit chance. The name also closely resembled the confirmed **Against All Odds**.
+- The confirmed **Against All Odds** (`lethal-endurance`) and all other 18 confirmed skills are unchanged.
+- **29 active skills** (19 confirmed, 10 provisional) and **9 archived**. Existing skill IDs, `fd-skill-lab-v1`, and old-build import/export remain compatible. Saved ranks in the retired skill are preserved in `retiredSkillLevels` without consuming active points.
+- No change to production Core.
 
 ## v0.34 — Brink of Disaster / Against All Odds confirmed; five more skills archived (2026-10-29)
 
