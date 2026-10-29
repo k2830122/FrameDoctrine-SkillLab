@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.33（2026-10-29）：** 現役35件（確定17、検討中・保留18）＋取り下げたQuick Study、Lucky Seven、移動射撃術のアーカイブ3件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.34（2026-10-29）：** 現役30件（確定19、検討中・保留11）＋アーカイブ8件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -440,3 +440,34 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - WAIT評価：このゲームではMOVE中・終了後とも索敵が自動であり、敵未発見時にはWAITが自然な基本行動。発見後の迎撃、被攻撃への対処、COVERやミサイル迎撃などの機会もある。従って「WAITで主行動を消費するから高い機会費用がある」という一般的SRPG型の想定は適用しにくい。WAITするだけで得られる追加能力強化は、実際には無料ボーナスに近づく危険がある。
 - Right on Cue／Steady Nerves／Stay Frostyは未確定の研究案のまま。役割分化・意思決定価値を再評価するまで確定しない。取り下げは未決。
 - 古いビルドに残る`moving-fire-discipline`の取得ランクは`retiredSkillLevels`へ移し、育成Pを再配分可能にする。保存キー、ID、インポート/エクスポート形式の互換を維持。本編Coreは変更しない。
+
+## 2026-10-29 — v0.34 生存系2件の設計確定／5件アーカイブ
+
+### Brink of Disaster — `last-stand-ability`（旧・背水の陣仮）
+
+- 生存中の現在HPが**最大HPの50%以下**になったら自動発動。HPを回復して50%超になれば即座に失効する。
+- 効果は**REFLEXのみ**。 `1 + floor(出撃時の基礎INSIGHT × Skill Lv / 6)` を実効REFLEXへ加算。Audacityと同じ式だが、Audacityは孤立時のSHOOTINGを強化する。例：基礎INSIGHT10ならLv1/2/3＝+2/+4/+6、18なら+4/+7/+10。
+- 出撃時の基礎INSIGHTは恒久育成込み。一時的なINSIGHTの増減で効果量は再計算しない。
+- 同一Attackの途中でHP50%以下になった場合は**閾値を跨いだHitのダメージ処理直後から**以降のHit判定へ反映。すでに命中したHitを遡及的に回避しない。
+- 目的：高INSIGHTの前線偵察パイロットが損傷しても冷静な戦況把握で生存率を上げられる。REFLEX強化にはポイント消費と低HPリスクがある。Repercussion（被弾後の攻撃力上昇）とは別役割。
+- 名前の元ネタはMTG **Brink of Disaster**（カード効果はタップされた対象パーマネントを破壊する）。元カードの効果そのものは移植しない。
+
+### Against All Odds — `lethal-endurance`（旧・不屈仮）
+
+- 致命的な敵Attackが始まった**時点のHP**が条件を満たすなら、そのAttackでHP0以下になるはずのダメージを受けても**HP1で生存**。追加抽選なし。
+- Lv1：Attack開始時HPが最大HPの**50%以上**かつHP2以上。Lv2：**25%以上**かつHP2以上。Lv3：**HP2以上**ならHP割合条件なし。
+- **同一Attack全体**に生存保証がかかり、SMGやGPMGの複数Hitの途中で致命傷になってもそのAttackの終了までHP1で残る。Hitの事実や攻撃の副次効果をMISSに変えない。
+- 別のAttackは開始時HPで再評価。HP1で次のAttackを受ければ全Lvで不発し、通常どおり撃破され得る。
+- **1ミッション1回という制限は設けない。** Repair Kitで再び発動条件まで回復した後は繰り返し使用できる。独立コマンド・MP・クールダウンなし。HP0からの蘇生機能ではない。
+- Brink of Disasterと組み合わせると、HP1での生存後に低HP時REFLEX強化が有効。複数Attackを受けることへの危険は残る。
+- 実在MTGカード **Against All Odds** から命名。既存の未確定別Skill `against-the-odds`（Against the Odds、CritPen系）と表示名が似るので、後の検討で候補名を整理する（今回は無断改名しない）。
+
+### 取り下げ・アーカイブ
+
+- `early-starter` **First Watch**：序盤に低コストでINSIGHT/REFLEXを自動強化する案。強力かつ戦術的な選択に乏しいため取り下げ。
+- `burst-focus` **Steady Nerves**：WAITしてReactionを使用しなかった結果、次Activationの攻撃力が上がる。WAIT自体が自然な基本行動となる本作では追加ボーナスが安易。
+- `certain-evasion` **Stay Frosty**：WAIT後のReaction保持だけで大きなREFLEXを獲得でき、低コストで安全性を上げるため取り下げ。
+- `reaction-shooter` **Right on Cue**：WAITを通じたINTERCEPT/ミサイル迎撃強化が無料の強化に近づき、他のWAIT系とともに設計上の選択を狭めるため取り下げ。
+- `stationary-penetration` **据置精密貫徹**：Iron Verdictと同一の静止射撃条件でPenを上げる案。命中＆貫通の安易な重ね掛けを避け、装備やFault Lineとの役割分担を保つため取り下げ。
+- 元ID／旧設計効果／旧取得ランクをアーカイブへ移す。旧ビルドの育成Pを返却。保存キー `fd-skill-lab-v1`、既存の識別子とインポート／エクスポート形式は維持。
+- Skill Labは育成ポイントと効果説明の研究ツールであり、Battle中のAttack、HP変化、回復処理を再現しない。本編Core未変更。

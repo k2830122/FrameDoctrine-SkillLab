@@ -1,6 +1,17 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.33 (2026-10-29).** 35 active skills: **17 confirmed**, 18 provisional, and three archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.34 (2026-10-29).** 30 active skills: **19 confirmed**, 11 provisional, with eight archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.34 — Brink of Disaster / Against All Odds confirmed; five more skills archived (2026-10-29)
+
+**Two existing provisional skills are now design-confirmed**, with unchanged stable IDs:
+
+- **Brink of Disaster** (`last-stand-ability`): at HP ≤50% of MaxHP (while alive), effective REFLEX increases by `1 + floor(deployment-base INSIGHT × Lv / 6)`, identical to Audacity's growth formula but improving REFLEX rather than SHOOTING. Lv1–3 with base INSIGHT10: +2/+4/+6; INSIGHT18: +4/+7/+10. Recompute after damage and repair; a newly crossed threshold takes effect for subsequent Hits within the same Attack, never retroactively. The base INSIGHT is fixed at deployment (including permanent training), not temporary buffs. No activation command, extra resources, or use limit.
+- **Against All Odds** (`lethal-endurance`): guaranteed survival at **HP1** when an eligible incoming Attack would otherwise be fatal, checking the actor's HP **at Attack start**. Lv1: HP≥50% MaxHP and HP≥2; Lv2: HP≥25% MaxHP and HP≥2; Lv3: HP≥2 regardless of fraction. The entire one Attack is survivable, including all Hits of a multi-Hit Attack. The next distinct Attack checks its own starting HP and may kill the HP1 survivor. **No once-per-Mission limit**; repair can bring the unit back above threshold. This is not resurrection of an HP0/Destroyed unit.
+- Archived five provisional entries: **First Watch** (`early-starter`), **Steady Nerves** (`burst-focus`), **Stay Frosty** (`certain-evasion`), **Right on Cue** (`reaction-shooter`), and **据置精密貫徹** (`stationary-penetration`). This removes passive, low-tradeoff WAIT buffs and redundant static-accuracy/penetration stacking from the active list.
+- Active count **30 (19 confirmed, 11 provisional)**; archived count **8**. Existing archived rank handling saves retired IDs in `retiredSkillLevels` and refunds their spent points, preserving `fd-skill-lab-v1` storage and the v1 import/export schema.
+- The provisional `against-the-odds` (CritPen skill) remains a separate existing ID and title, **not design-confirmed**. Its name is now close to the approved **Against All Odds**; rename it separately if that provisional skill is retained.
+- The Skill Lab remains a **point-allocation and effect-description tool**, not an in-battle HP/damage simulation; **production Core has not been changed**. Updated approved MTG references, card art links and effects are in [MTG_SKILL_NAMES.md](MTG_SKILL_NAMES.md).
 
 ## v0.33 — Retire moving-fire penalty mitigation (2026-10-29)
 
