@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.39（2026-10-29）：** 現役30件（確定21、検討中・保留9）＋アーカイブ11件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.40（2026-10-30）：** 現役32件（確定23、検討中・保留9）＋アーカイブ11件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -521,3 +521,10 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - **対価の追加**：ACTIVE SCANのscanner Signature合計を標準+2からLv1:+3／Lv2:+4／Lv3:+5へ引き上げる。追加SignatureはSkill Lvと同じ+1/+2/+3で、走査のDetection Budget増加に対応。元のACTIVE SCANと同じく次の自Activation開始時まで維持し、合法な敵索敵・Action INTERCEPTリスクに反映する。Signatureは移動距離を直接表さず、地形のSensor Cost・遮蔽物・敵センサーとの関係次第で結果は変わる。
 - ACTIVE SCANのMain Action消費・Detection Line・Smoke・Track・Datalink等の共通規則は維持。追加のリソース、Activeコマンド、クールダウンは設けない。旧Active Scan Amplifier／Sensor Stabilizer Optionの本編での扱いは従来どおり別途検討。
 - 現役30（確定21・未確定9）、アーカイブ11。保存キー`fd-skill-lab-v1`、既存ID、旧保存／JSON読込とポイント返却の仕組みは不変。**本編Core実装は未変更**。
+
+## 2026-10-30 — v0.40 Sight Beyond Sight／Iron Verdictの確定とUI分類整理
+
+- **Sight Beyond Sight**（新規ID `anti-air-recon`、確定、元ネタMTG [Sight Beyond Sight](https://scryfall.com/card/dtk/75/sight-beyond-sight)）：自機の通常索敵またはACTIVE SCANにおける飛行型敵への索敵計算に限り、対象のSignature項をLv1/2/3で+1/+2/+3と評価する。飛行型敵への判定で−5なら−4／−3／−2、地上敵には無効。0を上限とする新たな制限は設けない。敵の実際のSignatureや他Unitの索敵計算は不変。INSIGHT・Detection Powerそのものも増加しない。飛行型の低Signatureは三次元半球センサーを地表Hexへ投影したときの観測距離の差の近似であり、必ずしもステルス能力を指さない。合法的なLocal Track共有・Datalink・LOS・地形Sensor Cost・遮蔽など既存規則はすべて維持。
+- **Iron Verdict**（新規ID `heavy-rail-proficiency`、確定、元ネタMTG [Iron Verdict](https://scryfall.com/card/khm/17/iron-verdict)）：Heavy Railの適格な射撃Attack中のみ実効SHOOTING +2/+4/+6（通常対Unit HitRawで+6/+12/+18pt）。追加MOVE条件なし。Heavy Rail容量4、射程3〜9、Mag2、移動後命中補正−20pt、CritPen YESなど固有条件は維持。Heavy Frameへの搭乗時はTempered Steel (Heavy)、通常MOVE前の適格な対Unit Direct FIREではSeize Opportunityの条件付きSHOOTING補正と加算できる。従来の`marksmanship`は旧称Iron Verdictからv0.37でSeize Opportunityへ改名している。今回は新ID・別技能で同じMTG名を再採用し、旧Skill ID／ビルドを移動・改名しない。
+- **カテゴリ変更**：機体クラス対応のTempered Steel 3件を`機体固定`、No Quarter／Last Word／Iron Verdictを`武器固定`へ。Shadow of DoubtとFault Lineを`敵弱体化`へ移動。`攻撃・弾薬`はその他の攻撃・弾薬系研究候補を維持。対空索敵は`索敵・情報`。これらは研究UIの表示整理であり、発動条件や元IDの変更ではない。
+- **件数・互換性**：現役32（確定23／検討中9）、アーカイブ11。Skill Lv1〜3は各1P、12P総予算は仮置きのまま。`fd-skill-lab-v1`保存キー、JSONインポート／エクスポート、旧取得履歴とアーカイブ返却ポイントは変更なし。**本編Core／WeaponCatalog.csには手を加えない**。
