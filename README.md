@@ -1,6 +1,13 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.39 (2026-10-29).** 30 active skills: **21 confirmed**, 9 provisional, with eleven archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.40 (2026-10-30).** 32 active skills: **23 confirmed**, 9 provisional, with eleven archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.40 — Sight Beyond Sight, Iron Verdict, category cleanup (2026-10-30)
+
+- New confirmed **Sight Beyond Sight** (`anti-air-recon`), [real MTG card](https://scryfall.com/card/dtk/75/sight-beyond-sight). When this pilot attempts to detect a **flying** enemy (ordinary sensors or ACTIVE SCAN), use TargetSignature **+1/+2/+3** at Lv1/2/3 for that detection calculation only. The enemy's actual Signature, pilot INSIGHT, Detection Power and other observers' calculations remain unchanged; legal Local Tracks are shared over normal Datalink. The existing flying-Unit negative-Signature convention represents 3D sensor geometry projected onto 2D Hexes, not necessarily physical stealth.
+- New confirmed **Iron Verdict** (`heavy-rail-proficiency`), [real MTG card](https://scryfall.com/card/khm/17/iron-verdict): **effective SHOOTING +2/+4/+6** exclusively while using Heavy Rail on eligible shooting Attacks. Heavy Rail's 4-slot requirement, ammunition, movement modifier, CritPen and other weapon stats are unaltered. Valid conditional bonuses from **Seize Opportunity** and **Tempered Steel (Heavy)** can stack. **Historical naming caveat:** Iron Verdict was formerly the name of `marksmanship` before that skill was renamed Seize Opportunity in v0.37. The new Heavy Rail skill has its own ID; old `marksmanship` builds remain unchanged.
+- Category cleanup: split `機体・武器固定` into **`機体固定`** (3 Frame class skills) and **`武器固定`** (Last Word, No Quarter, Iron Verdict); put **Shadow of Doubt** and **Fault Line** in **`敵弱体化`** instead of `攻撃・弾薬`; add **`索敵・情報`** for Sight Beyond Sight. These are organizational changes only.
+- **32 active skills (23 confirmed, 9 provisional); 11 archived**. Stable saved skill IDs, `fd-skill-lab-v1`, `retiredSkillLevels`, retired-point refunds and old JSON import/export remain compatible. Both new skills are research-confirmed only: **the production Core and physical weapon definitions were not modified**.
 
 ## v0.39 — Retire Stillness in Motion; rebalance Confront the Unknown (2026-10-29)
 
