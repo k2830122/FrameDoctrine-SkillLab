@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.36（2026-10-29）：** 現役28件（確定19、検討中・保留9）＋アーカイブ10件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.37（2026-10-29）：** 現役30件（確定21、検討中・保留9）＋アーカイブ10件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -485,3 +485,22 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - どの武器でも指定可能な汎用案は、装備容量1の万能なAssault Rifleを選べば編成制約が弱くなるため、武器ごとに技能を分けて育成ポイントと装備構成のトレードオフを明確にする。
 - Assault LanceとSniper Rifleはどちらも装備容量2。Assault Lance専用MELEE +2/+4/+6は設計方針に合意。Sniper Rifle専用SHOOTING +2/+4/+6は比較検討案。名前と登録は未確定であり、このリリースでは追加しない。
 - 旧ランク取得履歴は `retiredSkillLevels` に保持。スキル取得ポイントは再配分可能。現役28（確定19・検討中9）、アーカイブ10。Core未変更。
+
+## 2026-10-29 — v0.37 武器専用2技能の確定と汎用2技能の改名
+
+既存の条件付き汎用技能2件と、追加する武器固定技能2件で、行動条件と装備選択のトレードオフを明確にした。追加の行動コマンドは設けず、MTGカードは名前のみを採用する。
+
+| スキル（安定ID） | 発動条件／武器制約 | Lv1/2/3 効果 | 変更内容 |
+| --- | --- | --- | --- |
+| **Collision Course** (`momentum-melee`) | 同Activationで通常MOVEにより実際に3Hex以上進入後の適格な白兵。武器自由 | MELEE +2/+4/+6 | 旧Through the Breachから改名のみ |
+| **No Quarter** (`assault-lance-proficiency`) | Assault Lanceによる適格な白兵Attack判定中のみ。MOVE条件なし | MELEE +2/+4/+6 | 新規、設計確定 |
+| **Seize Opportunity** (`marksmanship`) | 自通常MOVE前の通常Unit対象Direct FIRE。武器自由 | SHOOTING +2/+4/+6 | 旧Iron Verdictから改名のみ |
+| **Last Word** (`sniper-rifle-proficiency`) | Sniper Rifleによる適格な射撃Attack判定中のみ。MOVE条件なし | SHOOTING +2/+4/+6 | 新規、設計確定 |
+
+- **数値解釈**：通常命中HitRawはそれぞれLv1/2/3でクランプ前+6/+12/+18ポイント相当。効果は当該武器によるAttack判定中だけで、装備だけでは常時Ability上昇しない。
+- **武器固有条件**：Assault Lanceは容量2、射程1〜2Hex、CritPen NO。Sniper Rifleは容量2、射程2〜10Hex、弾薬4、通常MOVE後−20pt、CritPen YES。SHOOTINGの増加は適格なCritPen計算で実効Ability・100%超過HitRawにも反映するが、Assault LanceのCritPen NOを変更しない。
+- **重複**：通常MOVEで3Hex以上進入した後にAssault Lanceで白兵するならCollision CourseとNo Quarterを加算。通常MOVE前にSniper RifleでUnit対象Direct FIREするならSeize OpportunityとLast Wordを加算。独立の条件を満たす限り、互いに排他ではない。
+- **機会費用**：汎用側は移動距離または先行射撃できる位置・射線・Trackの確保が必要。武器固定側は容量2の専用武器を選ぶ制約、狙撃銃側は限られた弾薬もある。汎用の愛用武器旧案`charlene-favorite-weapon`は復活させない。
+- **育成／互換性**：各レベル1P、最大Lv3。12P予算はSkill Labでの比較用仮値。現役30（確定21・研究中9）、アーカイブ10。既存の`momentum-melee`・`marksmanship`を含む安定ID、`fd-skill-lab-v1`保存キー、JSONインポート／エクスポート形式、`retiredSkillLevels`および旧ポイントの返却規則を維持。
+- 元カード：[Collision Course](https://scryfall.com/card/dft/10/collision-course)、[No Quarter](https://scryfall.com/card/tmp/193/no-quarter)、[Seize Opportunity](https://scryfall.com/card/tdm/119/seize-opportunity)、[Last Word](https://scryfall.com/card/dst/23/last-word)。カードの元効果はゲーム技能の効果に流用しない。
+- **本編Coreの仕様変更・コーディングは別工程**。この確定はSkill Lab上のパイロットスキル設計に対するもの。

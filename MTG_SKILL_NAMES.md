@@ -1,15 +1,17 @@
-# Approved MTG Skill Names — v0.34 (2026-10-29)
+# Approved MTG Skill Names — v0.37 (2026-10-29)
 
-**19 confirmed skills (17 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Stable Skill IDs, existing costs and levels are unchanged, except `suppressive-fire` whose previously provisional effect was explicitly finalized in this version. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
+**21 confirmed skills (19 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Stable Skill IDs, existing costs and levels are unchanged, except `suppressive-fire` whose previously provisional effect was explicitly finalized in this version. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
 | Skill ID | Current name / MTG card image | Skill effect | Source card's original effect (brief) |
 | --- | --- | --- | --- |
 | `frame-light` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (light)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Light搭乗時 SHOOTING・MELEE +1/+2/+3 | アーティファクト・クリーチャー全体+2/+2 |
 | `frame-standard` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (standard)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Standard搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
 | `frame-heavy` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (heavy)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Heavy搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
-| `marksmanship` | **[Iron Verdict](https://scryfall.com/card/khm/17/iron-verdict)**<br>![Iron Verdict MTG card](https://api.scryfall.com/cards/khm/17?format=image&version=small) | 通常MOVE前の対Unit射撃で SHOOTING +2/+4/+6 | タップ状態のクリーチャーに5ダメージ、予顕 |
+| `marksmanship` | **[Seize Opportunity](https://scryfall.com/card/tdm/119/seize-opportunity)**<br>![Seize Opportunity MTG card](https://api.scryfall.com/cards/tdm/119?format=image&version=small) | 通常MOVE前の対Unit射撃で SHOOTING +2/+4/+6（旧Iron Verdict） | 上2枚を一時使用可能、または最大2体を+2/+1 |
+| `sniper-rifle-proficiency` | **[Last Word](https://scryfall.com/card/dst/23/last-word)**<br>![Last Word MTG card](https://api.scryfall.com/cards/dst/23?format=image&version=small) | Sniper Rifleによる適格な射撃中のみ SHOOTING +2/+4/+6 | 打ち消されない呪文で対象の呪文を打ち消す |
 | `mobile-evasion` | **[Escape Velocity](https://scryfall.com/card/thb/132/escape-velocity)**<br>![Escape Velocity MTG card](https://api.scryfall.com/cards/thb/132?format=image&version=small) | 通常MOVEで3Hex以上移動すると REFLEX +2/+4/+6 | 速攻と攻撃修整を付与、脱出可能 |
-| `momentum-melee` | **[Through the Breach](https://scryfall.com/card/chk/193/through-the-breach)**<br>![Through the Breach MTG card](https://api.scryfall.com/cards/chk/193?format=image&version=small) | 3Hex以上通常MOVE後の白兵で MELEE +2/+4/+6 | 手札のクリーチャーを一時的に速攻で戦場へ出す |
+| `momentum-melee` | **[Collision Course](https://scryfall.com/card/dft/10/collision-course)**<br>![Collision Course MTG card](https://api.scryfall.com/cards/dft/10?format=image&version=small) | 3Hex以上通常MOVE後の白兵で MELEE +2/+4/+6（旧Through the Breach） | 自軍クリーチャー／機体数に応じて対象へダメージ、またはアーティファクト破壊 |
+| `assault-lance-proficiency` | **[No Quarter](https://scryfall.com/card/tmp/193/no-quarter)**<br>![No Quarter MTG card](https://api.scryfall.com/cards/tmp/193?format=image&version=small) | Assault Lanceによる適格な白兵中のみ MELEE +2/+4/+6 | パワーの小さいクリーチャーとのブロック戦闘で破壊 |
 | `guardian-reaction` | **[Shielded Passage](https://scryfall.com/card/gtc/24/shielded-passage)**<br>![Shielded Passage MTG card](https://api.scryfall.com/cards/gtc/24?format=image&version=small) | 味方のCOVER／ミサイル迎撃時 REFLEX +3/+6/+9 | クリーチャーへの次のダメージを軽減 |
 | `brace-discipline` | **[Decisive Denial](https://scryfall.com/card/stx/382/decisive-denial)**<br>![Decisive Denial MTG card](https://api.scryfall.com/cards/stx/382?format=image&version=small) | BRACEのArmor追加+1/+2/+3、最終1ダメージを0に | クリーチャー間の格闘か、相手の呪文の打ち消しを選択 |
 | `conceal-discipline` | **[Moment of Silence](https://scryfall.com/card/mmq/28/moment-of-silence)**<br>![Moment of Silence MTG card](https://api.scryfall.com/cards/mmq/28?format=image&version=small) | CONCEAL時Signature低下（暫定−2/−3/−4）、自機センサー停止 | 相手の次の戦闘フェイズを飛ばす |
@@ -26,7 +28,7 @@
 
 ## Unassigned / candidate names
 
-- **Last Word**: formerly used for stationary-fire skill; not currently assigned.
+- **Last Word**: formerly used for stationary-fire skill in v0.28; reassigned to Sniper Rifle proficiency in v0.37.
 - **Cost of Brilliance**: promising future title, deliberately unassigned.
 - **Against All Odds**: reassigned from the former solo-skill use to the confirmed `lethal-endurance` survival skill (v0.34). The previously provisional **Against the Odds** (`against-the-odds`, low-accuracy CritPen) was **archived in v0.35**, resolving the near-duplicate names.
 
@@ -58,3 +60,14 @@
 
 - Provisional `charlene-favorite-weapon` / **Charlene** was moved to the archive. Existing 19 confirmed MTG skill names remain unchanged.
 - Dedicated skills for Assault Lance and Sniper Rifle are under discussion; names and new entries will be added only after selection.
+
+## v0.37 — approved MTG titles (2026-10-29)
+
+| Stable ID | Previous title | Approved title | Source |
+| --- | --- | --- | --- |
+| `marksmanship` | Iron Verdict | **Seize Opportunity** | [TDM #119](https://scryfall.com/card/tdm/119/seize-opportunity) |
+| `momentum-melee` | Through the Breach | **Collision Course** | [DFT #10](https://scryfall.com/card/dft/10/collision-course) |
+| `assault-lance-proficiency` (new) | — | **No Quarter** | [TMP #193](https://scryfall.com/card/tmp/193/no-quarter) |
+| `sniper-rifle-proficiency` (new) | — | **Last Word** | [DST #23](https://scryfall.com/card/dst/23/last-word) |
+
+All four are real MTG card titles; source card mechanics are not ported. Current 21 confirmed skills, 9 provisional, 10 archived. Existing IDs and save compatibility are maintained. Production Core unchanged.
