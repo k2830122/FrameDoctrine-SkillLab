@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.37（2026-10-29）：** 現役30件（確定21、検討中・保留9）＋アーカイブ10件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.38（2026-10-29）：** 現役31件（確定22、検討中・保留9）＋アーカイブ10件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -504,3 +504,11 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - **育成／互換性**：各レベル1P、最大Lv3。12P予算はSkill Labでの比較用仮値。現役30（確定21・研究中9）、アーカイブ10。既存の`momentum-melee`・`marksmanship`を含む安定ID、`fd-skill-lab-v1`保存キー、JSONインポート／エクスポート形式、`retiredSkillLevels`および旧ポイントの返却規則を維持。
 - 元カード：[Collision Course](https://scryfall.com/card/dft/10/collision-course)、[No Quarter](https://scryfall.com/card/tmp/193/no-quarter)、[Seize Opportunity](https://scryfall.com/card/tdm/119/seize-opportunity)、[Last Word](https://scryfall.com/card/dst/23/last-word)。カードの元効果はゲーム技能の効果に流用しない。
 - **本編Coreの仕様変更・コーディングは別工程**。この確定はSkill Lab上のパイロットスキル設計に対するもの。
+
+## 2026-10-29 — v0.38 Final Fortune 設計確定
+
+- 新規 `final-fortune`（**Final Fortune**）を確定。元MTGカード：[Final Fortune](https://scryfall.com/card/mir/173/final-fortune)。カード本来の効果は移植しない。
+- ミッション開始後の**毎回の自軍Faction Phase開始時**に各所有パイロットごとに好調50%・不調50%を独立抽選。初回も同様。結果は次の自軍Phase開始まで、敵軍Phaseを含めて持続。連続好調・不調を許し救済・交互切替なし。
+- Lv1：好調SHOOTING・MELEE +4／不調REFLEX −6。Lv2：好調+5／不調−5。Lv3：好調+6／不調−4。基礎Abilityは不変、実効Abilityを補正。命中・回避・CritPen等は既存の適格な共通式を使用。
+- 武器・機体制約なし。攻撃強化と防御リスクの両面を持つ個性重視のパッシブ。初期1Pおすすめ技能としての採用可能性はあるが、パイロット割当は未確定。各Lv1P、最大Lv3。新コマンド・MP・クールダウン・使用回数カウンターなし。
+- Skill Labは育成配分と好調／不調の両効果を表示するだけで、実際の確率抽選・戦闘進行は行わない。現役31（確定22、検討中9）、アーカイブ10。既存ID、`fd-skill-lab-v1`、JSON入出力、退役履歴を維持。本編Coreは未変更。
