@@ -1,6 +1,6 @@
-# Approved MTG Skill Names — v0.39 (2026-10-29)
+# Approved MTG Skill Names — v0.40 (2026-10-30)
 
-**21 confirmed skills (19 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Stable Skill IDs, existing costs and levels are unchanged, except `suppressive-fire` whose previously provisional effect was explicitly finalized in this version. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
+**23 confirmed skills (21 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Two new confirmed IDs are `anti-air-recon` and `heavy-rail-proficiency`; old `marksmanship` remains Seize Opportunity, and its former name Iron Verdict has been assigned to Heavy Rail proficiency. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
 | Skill ID | Current name / MTG card image | Skill effect | Source card's original effect (brief) |
 | --- | --- | --- | --- |
@@ -10,6 +10,7 @@
 | `final-fortune` | **[Final Fortune](https://scryfall.com/card/mir/173/final-fortune)**<br>![Final Fortune MTG card](https://api.scryfall.com/cards/mir/173?format=image&version=small) | 各自軍Faction Phase開始時50%抽選。好調SHOOTING・MELEE +4/+5/+6、不調REFLEX −6/−5/−4 | 追加ターンを得るが、その終了時にゲームに敗北する |
 | `marksmanship` | **[Seize Opportunity](https://scryfall.com/card/tdm/119/seize-opportunity)**<br>![Seize Opportunity MTG card](https://api.scryfall.com/cards/tdm/119?format=image&version=small) | 通常MOVE前の対Unit射撃で SHOOTING +2/+4/+6（旧Iron Verdict） | 上2枚を一時使用可能、または最大2体を+2/+1 |
 | `sniper-rifle-proficiency` | **[Last Word](https://scryfall.com/card/dst/23/last-word)**<br>![Last Word MTG card](https://api.scryfall.com/cards/dst/23?format=image&version=small) | Sniper Rifleによる適格な射撃中のみ SHOOTING +2/+4/+6 | 打ち消されない呪文で対象の呪文を打ち消す |
+| `heavy-rail-proficiency` | **[Iron Verdict](https://scryfall.com/card/khm/17/iron-verdict)**<br>![Iron Verdict MTG card](https://api.scryfall.com/cards/khm/17?format=image&version=small) | Heavy Railでの適格な射撃中だけSHOOTING +2/+4/+6 | タップ状態のクリーチャーへ5ダメージ、予顕あり |
 | `mobile-evasion` | **[Escape Velocity](https://scryfall.com/card/thb/132/escape-velocity)**<br>![Escape Velocity MTG card](https://api.scryfall.com/cards/thb/132?format=image&version=small) | 通常MOVEで3Hex以上移動すると REFLEX +2/+4/+6 | 速攻と攻撃修整を付与、脱出可能 |
 | `momentum-melee` | **[Collision Course](https://scryfall.com/card/dft/10/collision-course)**<br>![Collision Course MTG card](https://api.scryfall.com/cards/dft/10?format=image&version=small) | 3Hex以上通常MOVE後の白兵で MELEE +2/+4/+6（旧Through the Breach） | 自軍クリーチャー／機体数に応じて対象へダメージ、またはアーティファクト破壊 |
 | `assault-lance-proficiency` | **[No Quarter](https://scryfall.com/card/tmp/193/no-quarter)**<br>![No Quarter MTG card](https://api.scryfall.com/cards/tmp/193?format=image&version=small) | Assault Lanceによる適格な白兵中のみ MELEE +2/+4/+6 | パワーの小さいクリーチャーとのブロック戦闘で破壊 |
@@ -18,6 +19,7 @@
 | `conceal-discipline` | **[Moment of Silence](https://scryfall.com/card/mmq/28/moment-of-silence)**<br>![Moment of Silence MTG card](https://api.scryfall.com/cards/mmq/28?format=image&version=small) | CONCEAL時Signature低下（暫定−2/−3/−4）、自機センサー停止 | 相手の次の戦闘フェイズを飛ばす |
 | `fired-up` | **[Repercussion](https://scryfall.com/card/uds/95/repercussion)**<br>![Repercussion MTG card](https://api.scryfall.com/cards/uds/95?format=image&version=small) | 敵の攻撃でHitを受けた次のActivation、SHOOTING・MELEE +6/+9/+12 | クリーチャーが受けたダメージをそのコントローラーにも与える |
 | `scan-interpretation` | **[Confront the Unknown](https://scryfall.com/card/soi/198/confront-the-unknown)**<br>![Confront the Unknown MTG card](https://api.scryfall.com/cards/soi/198?format=image&version=small) | ACTIVE SCAN中だけ INSIGHT +4/+8/+12、scanner Signature合計 +3/+4/+5 | 調査を行い、手掛かり数に応じてクリーチャーを強化 |
+| `anti-air-recon` | **[Sight Beyond Sight](https://scryfall.com/card/dtk/75/sight-beyond-sight)**<br>![Sight Beyond Sight MTG card](https://api.scryfall.com/cards/dtk/75?format=image&version=small) | 飛行型敵への自機索敵判定で対象Signature項+1/+2/+3（実値変更なし） | 名前だけを採用。原カードのゲーム効果は移植しない |
 | `solo-operator` | **[Audacity](https://scryfall.com/card/bro/169/audacity)**<br>![Audacity MTG card](https://api.scryfall.com/cards/bro/169?format=image&version=small) | 味方が4Hex以内にいないとき基礎INSIGHT依存でSHOOTING上昇 | クリーチャーに+2/+0とトランプル、死亡時ドロー |
 | `pick-your-ground` | **[Dead of Winter](https://scryfall.com/card/mh1/85/dead-of-winter)**<br>![Dead of Winter MTG card](https://api.scryfall.com/cards/mh1/85?format=image&version=small) | 森林・瓦礫・掩体などの地形防御を追加−5/−10/−15pt | 氷雪パーマネント数に応じて非氷雪クリーチャー全体を弱体化 |
 | `fault-line` | **[Fault Line](https://scryfall.com/card/usg/185/fault-line)**<br>![Fault Line MTG card](https://api.scryfall.com/cards/usg/185?format=image&version=small) | CritPen成功直後から対象Armor −2/−4/−6（同Attack後続Hitにも適用） | 地上クリーチャーと各プレイヤーへXダメージ |
@@ -25,6 +27,12 @@
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 | `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
 | `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv別Attack開始HP条件で致命的AttackをHP1で耐える（回数制限なし、同一Attack全Hit保証） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+
+## v0.40 — newly approved names and reused historical title
+
+- **Sight Beyond Sight** (DTK #75) is approved for flying-target detection (`anti-air-recon`). Applies an additional +1/+2/+3 to TargetSignature in **this observer's** flying-enemy detection check only.
+- **Iron Verdict** (KHM #17) is approved for Heavy Rail proficiency (`heavy-rail-proficiency`), effective SHOOTING +2/+4/+6 during eligible Heavy Rail shooting. **Iron Verdict was previously the name of `marksmanship`**, which was renamed **Seize Opportunity** in v0.37. The two skills must not share a stable ID or cause older saved skills to be relabeled.
+- Current totals: **23 confirmed**, **9 provisional**, **11 archived**. Earlier release/history sections below retain their historically correct labels and figures. Core unchanged.
 
 ## Unassigned / candidate names
 
