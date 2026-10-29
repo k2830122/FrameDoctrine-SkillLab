@@ -1,6 +1,16 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.36 (2026-10-29).** 28 active skills: **19 confirmed**, 9 provisional, with ten archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.37 (2026-10-29).** 30 active skills: **21 confirmed**, 9 provisional, with ten archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.37 — Confirm two weapon proficiencies and rename two skills (2026-10-29)
+
+- **Seize Opportunity** replaces the display name **Iron Verdict** on existing ID `marksmanship`: normal Unit-target Direct FIRE **before own normal MOVE**, effective SHOOTING +2/+4/+6. Unrestricted firearm choice. Existing effects and stable ID unchanged.
+- **Collision Course** replaces the display name **Through the Breach** on existing ID `momentum-melee`: successful normal MOVE entry of at least 3 Hex in the same Activation before eligible melee, effective MELEE +2/+4/+6. Any eligible melee weapon. Existing effects and stable ID unchanged.
+- New confirmed **No Quarter** (`assault-lance-proficiency`): effective MELEE +2/+4/+6 only during Assault Lance melee Attack checks, with no additional MOVE requirement. Assault Lance remains CritPen NO, capacity 2.
+- New confirmed **Last Word** (`sniper-rifle-proficiency`): effective SHOOTING +2/+4/+6 only during Sniper Rifle shooting Attack checks, with no additional MOVE requirement. Sniper Rifle remains CritPen YES and retains range 2–10 Hex, 4 shots, capacity 2 and the normal post-MOVE −20 accuracy modifier.
+- Conditions are independent: No Quarter and Collision Course can stack, as can Last Word and Seize Opportunity, when both conditions apply. No new active command, cooldown or resource bar. Each rank costs 1P; the Lab's current 12P budget remains provisional.
+- Active **30 (21 confirmed, 9 provisional)**; archived **10**. The old generic favorite-weapon skill `charlene-favorite-weapon` stays archived, with its historical levels preserved. New skills use independent IDs. Existing IDs, `fd-skill-lab-v1` storage key, previously saved builds, rank refund history and JSON import/export compatibility are preserved.
+- Changes apply to **Skill Lab only**; the production game Core has not been updated.
 
 ## v0.36 — Retire generic favorite-weapon skill (2026-10-29)
 
