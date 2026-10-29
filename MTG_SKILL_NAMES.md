@@ -53,3 +53,8 @@
 
 - Archived **Against the Odds** (`against-the-odds`) due to the undesired incentive to reduce hit chance. It is no longer an active skill.
 - Confirmed **Against All Odds** (`lethal-endurance`) remains the sole active skill using this phrase. The 19 confirmed names and MTG card references did not change.
+
+## v0.36 — generic favorite-weapon proposal archived (2026-10-29)
+
+- Provisional `charlene-favorite-weapon` / **Charlene** was moved to the archive. Existing 19 confirmed MTG skill names remain unchanged.
+- Dedicated skills for Assault Lance and Sniper Rifle are under discussion; names and new entries will be added only after selection.
