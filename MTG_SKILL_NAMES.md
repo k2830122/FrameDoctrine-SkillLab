@@ -83,6 +83,8 @@ All four are real MTG card titles; source card mechanics are not ported. Current
 
 ### Archived approved title — original v0.38 row
 
+| Skill ID | Original approved MTG title | Former Skill effect | Source card's original effect |
+| --- | --- | --- | --- |
 | `observation-discipline` | **[Stillness in Motion](https://scryfall.com/card/tdm/334/stillness-in-motion)**<br>![Stillness in Motion MTG card](https://api.scryfall.com/cards/tdm/334?format=image&version=small) | 通常MOVEせずActivation終了で次の自Activationまで INSIGHT +4/+8/+12 | クリーチャーに関わる能力を備えたエンチャント |
 
 Current totals: **21 confirmed**, **9 provisional**, **11 archived**. Prior release notes below or above are historical and retain their original counts. Core unchanged.
