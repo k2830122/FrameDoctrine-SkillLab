@@ -1,6 +1,6 @@
-# Approved MTG Skill Names — v0.31 (2026-10-29)
+# Approved MTG Skill Names — v0.34 (2026-10-29)
 
-**17 confirmed skills (15 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Stable Skill IDs, existing costs and levels are unchanged, except `suppressive-fire` whose previously provisional effect was explicitly finalized in this version. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
+**19 confirmed skills (17 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Stable Skill IDs, existing costs and levels are unchanged, except `suppressive-fire` whose previously provisional effect was explicitly finalized in this version. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
 | Skill ID | Current name / MTG card image | Skill effect | Source card's original effect (brief) |
 | --- | --- | --- | --- |
@@ -21,12 +21,14 @@
 | `fault-line` | **[Fault Line](https://scryfall.com/card/usg/185/fault-line)**<br>![Fault Line MTG card](https://api.scryfall.com/cards/usg/185?format=image&version=small) | CritPen成功直後から対象Armor −2/−4/−6（同Attack後続Hitにも適用） | 地上クリーチャーと各プレイヤーへXダメージ |
 | `survival-cache` | **[Survival Cache](https://scryfall.com/card/roe/44/survival-cache)**<br>![Survival Cache MTG card](https://api.scryfall.com/cards/roe/44?format=image&version=small) | Repair Kitの回復量8HPを12/16/20HPへ強化 | 2点回復、条件付きドロー、反復 |
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
+| `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
+| `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv別Attack開始HP条件で致命的AttackをHP1で耐える（回数制限なし、同一Attack全Hit保証） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
 
 ## Unassigned / candidate names
 
 - **Last Word**: formerly used for stationary-fire skill; not currently assigned.
 - **Cost of Brilliance**: promising future title, deliberately unassigned.
-- **Against All Odds**: no longer assigned to solo skill. The separate provisional **Against the Odds** remains a distinct, unconfirmed skill; it has not been renamed.
+- **Against All Odds**: reassigned from the former solo-skill use to the newly confirmed `lethal-endurance` survival skill (v0.34). The separate provisional **Against the Odds** (`against-the-odds`, CritPen) remains a distinct unconfirmed skill; its current name is very similar and needs future review.
 
 ## v0.31 approved changes
 
@@ -40,3 +42,9 @@
 | `suppressive-fire` | 牽制射撃（仮） | Shadow of Doubt（設計確定） |
 
 **Repercussion remains unchanged.** Labels: `コマンド強化` for COVER/BRACE/CONCEAL/ACTIVE SCAN skills, `位置・地形` for terrain and separation/position skills, and `装備・消耗品` for the Repair Kit skill. Historical documents retain prior names when describing past releases.
+
+## v0.34 — survival skills and archive update (2026-10-29)
+
+- Confirmed **Brink of Disaster** for `last-stand-ability`: HP≤50%, base INSIGHT–dependent REFLEX bonus.
+- Confirmed **Against All Odds** for `lethal-endurance`: HP1 survival when Attack-start HP qualifies, without an artificial per-mission limit.
+- No other confirmed skill names changed. The five archived candidates First Watch, Steady Nerves, Stay Frosty, Right on Cue and 据置精密貫徹 are no longer active. Main Core not modified.
