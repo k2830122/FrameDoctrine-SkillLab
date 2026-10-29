@@ -28,7 +28,7 @@
 
 - **Last Word**: formerly used for stationary-fire skill; not currently assigned.
 - **Cost of Brilliance**: promising future title, deliberately unassigned.
-- **Against All Odds**: reassigned from the former solo-skill use to the newly confirmed `lethal-endurance` survival skill (v0.34). The separate provisional **Against the Odds** (`against-the-odds`, CritPen) remains a distinct unconfirmed skill; its current name is very similar and needs future review.
+- **Against All Odds**: reassigned from the former solo-skill use to the confirmed `lethal-endurance` survival skill (v0.34). The previously provisional **Against the Odds** (`against-the-odds`, low-accuracy CritPen) was **archived in v0.35**, resolving the near-duplicate names.
 
 ## v0.31 approved changes
 
@@ -48,3 +48,8 @@
 - Confirmed **Brink of Disaster** for `last-stand-ability`: HP≤50%, base INSIGHT–dependent REFLEX bonus.
 - Confirmed **Against All Odds** for `lethal-endurance`: HP1 survival when Attack-start HP qualifies, without an artificial per-mission limit.
 - No other confirmed skill names changed. The five archived candidates First Watch, Steady Nerves, Stay Frosty, Right on Cue and 据置精密貫徹 are no longer active. Main Core not modified.
+
+## v0.35 — archived near-duplicate title (2026-10-29)
+
+- Archived **Against the Odds** (`against-the-odds`) due to the undesired incentive to reduce hit chance. It is no longer an active skill.
+- Confirmed **Against All Odds** (`lethal-endurance`) remains the sole active skill using this phrase. The 19 confirmed names and MTG card references did not change.
