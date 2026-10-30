@@ -542,7 +542,7 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 
 - **現役技能は Decisive Denial**（既存安定ID `brace-discipline`、確定）を維持。旧Decisive DenialのBRACE Armor +1/+2/+3追加・最終1Damage→0の特殊処理を廃止し、旧Shielded Passage（`guardian-reaction`）のCOVER／ミサイル迎撃専門性を、WAITでReactionを保持する防御態勢へ統合した。改名の必要はなく、同じMTG正式名を継続する。
 - **発動条件**：WAITによってReactionを獲得し、AVAILABLEな間に適格な敵Attackを自機が受ける、または味方をCOVERする場合。自分への通常攻撃ではReactionを使う必要なし。適格なCOVER時はReactionを消費するが、開始時の防御態勢をそのAttack全体の終わりまで維持する。通常INTERCEPTでReactionを使った後の別Attackには発動しない。
-- **自衛／COVER（Lv1/2/3）**：実効REFLEX +1/+2/+3、実効Armor +2/+4/+6。通常Direct FIRE・単体Melee・単体Missile着弾におけるREFLEX上昇で敵HitRaw −3/−6/−9pt（クランプ前）。Armor増分は通常の貫通・損害計算へ適用し、CritPenによる装甲無視と最低1Damage規則は残る。COVERは隣接1Hexの味方へコミットされた適格な単体Attackを引き受ける既存手順のまま。
+- **自衛／COVER（Lv1/2/3）**：実効REFLEX +1/+2/+3、実効Armor +2/+4/+6。通常Direct FIRE・単体Melee・単体Missile着弾におけるREFLEX上昇で敵HitRaw −3/−6/−9pt（クランプ前）。Armor増分は通常の貫通・損害計算へ適用し、CritPenによる装甲無視と最低1Damage規則は残る。範囲・Hex対象Attack等でREFLEXによるHit判定が無くても、通常Armorが適用される損害処理には技能Armor補正を使う（新たなREFLEX回避判定は設けない）。COVERは隣接1Hexの味方へコミットされた適格な単体Attackを引き受ける既存手順のまま。**敵INTERCEPTなどReactionにより発生したAttackは現行CoreでCOVER不可**。ACTIVE SCANの露見直後に発生する敵INTERCEPTへの身代わりは、今回のSkill Lab改訂だけでは実現しない。
 - **自他へのMissile Intercept（Lv1/2/3）**：迎撃中の実効REFLEX +3/+6/+9、通常のMissile Intercept HitRaw +6/+12/+18pt（クランプ前）。反応権・迎撃武器・射程・弾薬を追加しない。自分宛ミサイルを迎撃して失敗した場合、同一Missile Attackの着弾解決まで防御用のREFLEX/Armorも保持する。味方宛の迎撃は味方自身のArmor/REFLEXを強化しない。
 - **Repercussion**：仕様変更なし。被害をArmorで減らしてもHitした事実は残り、次Activationの反撃能力が上昇する。旧Decisive Denialの例外的なダメージ0変換は今後適用しない。BRACEコマンド本体の通常Armor +2は維持する。
 - **旧Shielded Passageの保存・返還**：`guardian-reaction`の旧仕様と名前を`ARCHIVED_SKILLS`とUIアーカイブへ移す。`retiredSkillLevels`が旧Lvを保持し、各Lv1Pを返却。現在の`brace-discipline`取得Lvはそのまま統合後のDecisive Denial取得Lvとして利用できる。両方の旧Lvを自動的に合計／移行しない。
