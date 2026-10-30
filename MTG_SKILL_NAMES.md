@@ -1,4 +1,4 @@
-# Approved MTG Skill Names — v0.43 (2026-10-31)
+# Approved MTG Skill Names — v0.44 (2026-10-31)
 
 **24 confirmed skills (22 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
@@ -16,7 +16,7 @@
 | `mobile-evasion` | **[Escape Velocity](https://scryfall.com/card/thb/132/escape-velocity)**<br>![Escape Velocity MTG card](https://api.scryfall.com/cards/thb/132?format=image&version=small) | 通常MOVEで3Hex以上移動すると REFLEX +2/+4/+6 | 速攻と攻撃修整を付与、脱出可能 |
 | `momentum-melee` | **[Collision Course](https://scryfall.com/card/dft/10/collision-course)**<br>![Collision Course MTG card](https://api.scryfall.com/cards/dft/10?format=image&version=small) | 3Hex以上通常MOVE後の白兵で MELEE +2/+4/+6（旧Through the Breach） | 自軍クリーチャー／機体数に応じて対象へダメージ、またはアーティファクト破壊 |
 | `assault-lance-proficiency` | **[No Quarter](https://scryfall.com/card/tmp/193/no-quarter)**<br>![No Quarter MTG card](https://api.scryfall.com/cards/tmp/193?format=image&version=small) | Assault Lanceによる適格な白兵中のみ MELEE +2/+4/+6 | パワーの小さいクリーチャーとのブロック戦闘で破壊 |
-| `brace-discipline` | **[Decisive Denial](https://scryfall.com/card/stx/382/decisive-denial)**<br>![Decisive Denial MTG card](https://api.scryfall.com/cards/stx/382?format=image&version=small) | WAITでReaction保持中、自衛／COVERでREFLEX +1/+2/+3・Armor +2/+4/+6、自他Missile InterceptでREFLEX +3/+6/+9。BRACE強化・最終1ダメージ0特例は廃止 | クリーチャー間の格闘か、相手の呪文の打ち消しを選択 |
+| `brace-discipline` | **[Decisive Denial](https://scryfall.com/card/stx/382/decisive-denial)**<br>![Decisive Denial MTG card](https://api.scryfall.com/cards/stx/382?format=image&version=small) | 味方への合法なCOVERを実行したAttack中だけ自機Armor +2/+4/+6。REFLEX・Missile Intercept強化なし。Reaction保持だけでは無効 | クリーチャー間の格闘か、相手の呪文の打ち消しを選択 |
 | `conceal-discipline` | **[Moment of Silence](https://scryfall.com/card/mmq/28/moment-of-silence)**<br>![Moment of Silence MTG card](https://api.scryfall.com/cards/mmq/28?format=image&version=small) | CONCEAL時Signature低下（暫定−2/−3/−4）、自機センサー停止 | 相手の次の戦闘フェイズを飛ばす |
 | `fired-up` | **[Repercussion](https://scryfall.com/card/uds/95/repercussion)**<br>![Repercussion MTG card](https://api.scryfall.com/cards/uds/95?format=image&version=small) | 敵の攻撃でHitを受けた次のActivation、SHOOTING・MELEE +6/+9/+12 | クリーチャーが受けたダメージをそのコントローラーにも与える |
 | `scan-interpretation` | **[Confront the Unknown](https://scryfall.com/card/soi/198/confront-the-unknown)**<br>![Confront the Unknown MTG card](https://api.scryfall.com/cards/soi/198?format=image&version=small) | ACTIVE SCAN中だけ INSIGHT +4/+8/+12、scanner Signature合計 +3/+4/+5 | 調査を行い、手掛かり数に応じてクリーチャーを強化 |
@@ -28,6 +28,12 @@
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 | `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
 | `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv別Attack開始HP条件で致命的AttackをHP1で耐える（回数制限なし、同一Attack全Hit保証） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+
+## v0.44 — Decisive Denial becomes COVER-only Armor (2026-10-31)
+
+- Keep the approved title and ID `brace-discipline`. Only when a legal COVER Reaction actually redirects an enemy Attack from a nearby ally does this Skill grant its user's Armor **+2/+4/+6** at Lv1/2/3 for the entirety of that Attack. CritPen still ignores Armor; standard minimum 1 Damage remains.
+- No REFLEX bonus, no ordinary self-defense bonus from an AVAILABLE Reaction, and no bonus to Missile Intercept, BRACE or ordinary INTERCEPT. Existing legal single-target missile Attacks may still be COVERed, which is distinct from intercepting the missile.
+- Historic v0.42 and Shielded Passage records stay intact. 24 confirmed / 8 provisional / 12 archived, with unchanged storage ID, purchased levels and Core.
 
 ## v0.43 — New Avoid Fate; rename Glimmer of Genius (2026-10-31)
 

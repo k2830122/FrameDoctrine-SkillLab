@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.43（2026-10-31）：** 現役32件（確定24、検討中・保留8）＋アーカイブ12件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.44（2026-10-31）：** 現役32件（確定24、検討中・保留8）＋アーカイブ12件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -557,3 +557,12 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - **効果**：Lv1/2/3で累積上限2/4/6回、最大REFLEX +2/+4/+6。増加はAttackの後から有効。同Missionで後から被弾・修理しても蓄積は失われず、Mission終了でリセット。パイロット基礎Ability、恒久的育成、キャンペーンXPは増えない。通常防御HitRawではREFLEX+1あたり敵命中値−3pt（クランプ前）で、ほかの適格なREFLEX強化と加算される。被攻撃・被弾リスクの代償と上限付き正のフィードバックを容認。追加コマンド／MP／専用回数制限なし。
 - **Glimmer of Genius**：現役の旧Final Fortune（既存ID `final-fortune`）の**名称のみ変更**。元MTGカード：[Glimmer of Genius](https://scryfall.com/card/kld/49/glimmer-of-genius)。運命による幸不幸ではなく、本人の才能・好不調の不安定さを表す。毎回の自軍Faction Phase開始時の独立50/50抽選、好調SHOOTING・MELEE +4/+5/+6、不調REFLEX −6/−5/−4、次の自軍Phaseまで持続などの効果は維持。
 - **集計**：現役32件（確定24・検討中8）＋アーカイブ12件。各Rank 1P、総育成12Pは暫定。既存ID・`fd-skill-lab-v1`・過去の取得履歴・JSON入出力を維持。Skill Labは育成配分と効果説明のみで実戦回避／累積判定や50%抽選を実行しない。**本編Coreは変更しない**。
+
+
+## 2026-10-31 — v0.44 Decisive DenialをCOVER専用に限定
+
+- **確定改訂**：スキルID `brace-discipline` とMTGカード名 **Decisive Denial** は維持。発動条件を**実際にReactionを消費して、隣接味方への適格なCOVERが成立した場合のみ**に限定する。
+- **Lv1/2/3**：COVERで肩代わりする敵Attackの全Hitを通じ、自機のArmorが **+2/+4/+6**。対象Attackが終了すれば失効。元のArmor値へ足して通常Penetrationと最低1Damage規則を適用。CritPen成功HitはArmorを無視する。新しいダメージ0特例なし。
+- **明示的に削除**：旧v0.42のReaction AVAILABLE保持だけで発動する自衛用Armor/REFLEX、COVER時REFLEX、自己／味方宛Missile Intercept時REFLEX。通常の自衛、WAIT保持そのもの、Missile Intercept（自他）、通常INTERCEPT、BRACEでは一切発動しない。単体ミサイルAttackそのものを合法にCOVERした場合は、Missile InterceptではなくCOVERなのでArmor補正対象。
+- 目的は**COVER強化だけ**。WAIT自体を無条件に強化しない。元CoreのCOVER適格性・Reaction消費・敵Reaction由来INTERCEPTやArea/Hex等の対象外規則は変更しない。DRS/ARS物理Optionと元のBRACE命令はCoreに残る。
+- 変更後も現役32（確定24、保留8）・アーカイブ12。スキルLv1〜3は各1Pで不変。保存キー `fd-skill-lab-v1`、旧取得Lvとアーカイブ返却履歴の互換維持。戦闘実装ではなくSkill Labの配分／効果表示のみ更新。

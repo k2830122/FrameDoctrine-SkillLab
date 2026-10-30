@@ -1,6 +1,12 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.43 (2026-10-31).** 32 active skills: **24 confirmed**, 8 provisional, with twelve archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.44 (2026-10-31).** 32 active skills: **24 confirmed**, 8 provisional, with twelve archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.44 — Decisive Denial: COVER-only Armor (2026-10-31)
+
+- **Decisive Denial** retains confirmed ID `brace-discipline` and its MTG title, but only buffs the pilot's **Armor by +2/+4/+6 (Lv1/2/3) for the entire enemy Attack legally redirected through COVER to protect an adjacent ally**. COVER must actually execute and consume the regular WAIT-granted Reaction. Its Armor modifier remains effective on all Hits in that redirected Attack after Reaction consumption.
+- **Removed** every REFLEX bonus, all Missile Intercept buffs (whether defending self or ally), and passive self-defense benefits from merely holding Reaction AVAILABLE. No BRACE enhancement, extra Reaction, command, or final-1-Damage-to-0 exception. CritPen still bypasses Armor; ordinary minimum 1 Damage applies. COVER legality, including the exclusion of hostile INTERCEPT/reaction attacks and area/directional attacks, is unchanged. COVER of an otherwise eligible single-target missile can still use Armor, but using **Missile Intercept** cannot trigger this skill.
+- All 32 active skills (24 confirmed, 8 provisional) and 12 archived, `fd-skill-lab-v1`, old skill IDs, purchase ranks and import/export remain compatible. Historic v0.42 descriptions are intentionally kept as history. Skill Lab only, production Core untouched.
 
 ## v0.43 — Avoid Fate + Glimmer of Genius (2026-10-31)
 
