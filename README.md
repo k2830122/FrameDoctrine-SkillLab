@@ -1,6 +1,14 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.40 (2026-10-30).** 32 active skills: **23 confirmed**, 9 provisional, with eleven archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.41 (2026-10-30).** 32 active skills: **24 confirmed**, 8 provisional, with eleven archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.41 — Figure of Destiny confirmed, mission-only kill stacking (2026-10-30)
+
+- Confirm existing `kill-momentum-growth` (stable ID unchanged) under the verified MTG card title **[Figure of Destiny](https://scryfall.com/card/eve/139/figure-of-destiny)**.
+- On each enemy Unit destroyed by this pilot, **SHOOTING and MELEE each gain +2 effective Ability** for the rest of that mission. The Lv1/2/3 stack caps are **2/4/6 kills**, yielding maximum +4/+8/+12 to both. Every attack remains subject to its ordinary range, Track, hit, armor and CritPen rules.
+- Count destroyed **enemy Units**, not decoys, friendlies or map objects. If an Attack destroys several eligible Units, add the relevant number of stacks **after the entire Attack** completes. The attack itself cannot benefit retroactively. A new mission starts with zero Skill stacks; these are not persistent baseline Ability/XP/Training Point growth.
+- There is **no choice of Ability** on kills or during sortie preparation: both SHOOTING and MELEE rise automatically. No new button, cooldown, Mission-long consumable currency or XP system is introduced.
+- **32 active skills (24 confirmed, 8 provisional), 11 archived.** The existing Skill ID, `fd-skill-lab-v1` saved skill levels, JSON import/export and retired-rank refunds remain compatible. **Skill Lab still previews learning points/effects rather than running combat.** Main Core unmodified.
 
 ## v0.40 — Sight Beyond Sight, Iron Verdict, category cleanup (2026-10-30)
 
