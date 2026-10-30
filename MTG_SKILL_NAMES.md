@@ -1,4 +1,4 @@
-# Approved MTG Skill Names — v0.44 (2026-10-31)
+# Approved MTG Skill Names — v0.45 (2026-10-31)
 
 **24 confirmed skills (22 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
@@ -28,6 +28,11 @@
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 | `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
 | `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv別Attack開始HP条件で致命的AttackをHP1で耐える（回数制限なし、同一Attack全Hit保証） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+
+## v0.45 — COVER opportunity study (2026-10-31)
+
+- Decisive Denial's approved name, ID and COVER-only Armor +2/+4/+6 effect are unchanged. The pilot cannot gain this bonus when personally targeted rather than protecting an adjacent ally. A non-battle, assumption-driven COVER opportunity and per-hit Armor comparison was added to Skill Lab.
+- The weapon-mechanics descriptions for No Quarter, Collision Course, Fault Line and a provisional dual-fire idea were updated to match the **2026-10-29 canonical design** (Assault Lance Range 1 and CritPen YES; additional applicable CritPen-capable direct weapons and Explosive Axe). No skill naming, skill level or points changed; the game's current code still awaits the weapon design migration.
 
 ## v0.44 — Decisive Denial becomes COVER-only Armor (2026-10-31)
 

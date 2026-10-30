@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.44（2026-10-31）：** 現役32件（確定24、検討中・保留8）＋アーカイブ12件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.45（2026-10-31）：** 現役32件（確定24、検討中・保留8）＋アーカイブ12件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -566,3 +566,12 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - **明示的に削除**：旧v0.42のReaction AVAILABLE保持だけで発動する自衛用Armor/REFLEX、COVER時REFLEX、自己／味方宛Missile Intercept時REFLEX。通常の自衛、WAIT保持そのもの、Missile Intercept（自他）、通常INTERCEPT、BRACEでは一切発動しない。単体ミサイルAttackそのものを合法にCOVERした場合は、Missile InterceptではなくCOVERなのでArmor補正対象。
 - 目的は**COVER強化だけ**。WAIT自体を無条件に強化しない。元CoreのCOVER適格性・Reaction消費・敵Reaction由来INTERCEPTやArea/Hex等の対象外規則は変更しない。DRS/ARS物理Optionと元のBRACE命令はCoreに残る。
 - 変更後も現役32（確定24、保留8）・アーカイブ12。スキルLv1〜3は各1Pで不変。保存キー `fd-skill-lab-v1`、旧取得Lvとアーカイブ返却履歴の互換維持。戦闘実装ではなくSkill Labの配分／効果表示のみ更新。
+
+
+## 2026-10-31 — v0.45 Decisive Denialの運用評価・簡易試算
+
+- **現在の技能効果は変更なし**：合法な味方COVERで肩代わりするAttack中だけArmor +2/+4/+6（Lv1/2/3）。通常自衛・単なるReaction保持・Missile Interceptに効果なし。
+- **重要な発動機会の問題**：COVERには護衛対象と護衛者の距離が1Hexであること、護衛者のReactionがAVAILABLEであること、攻撃が合法な単体対象Attackであること、護衛者が実際にCOVERを選ぶことが必要。隣接している護衛者自身が敵AIの通常の標的になった場合、Decisive Denialは発動しない。敵が脆い護衛対象を優先する可能性はあるが、常にそうするとは限らず、AIの射程・命中・敵側Track・目的・位置等の要因を含めて実戦検証すべき。
+- **Skill Labのwhat-if**：ペアへの敵Attack回数 × 護衛対象への標的率 × COVER適格攻撃率 × 隣接＆Reaction保持率 × COVERを選ぶ率、を独立仮定の概算回数として表示。これはAI推定やHeadless Battle結果ではなく、条件の感度を見る研究ツール。別表では本編の確定Armor・Penetration・最低1Damage式を用い、Light/Standard/Heavyと代表的なWeapon Power/Penの組合せについて、**命中した通常1Hit・CritPenなし**を比較。被弾確率、CritPen、HP上限、多段Hit、攻撃標的AI等は実行しない。過去の仮定付き期待ダメージ値は実測と誤認しない。
+- **最新Core武器設計との整合**：2026-10-29改訂の確定武器表に従いAssault Lance射程1・CritPen YES、Heavy Autocannon／Shotgun／Recoilless Rifle／Explosive Axe CritPen YESを現役の関連Skill説明に反映。Combat Knifeは将来装備から退役予定。ただし現時点の本編WeaponCatalog.csは旧設定のままで、Skill Lab以外を改変しない。
+- 24確定・8検討中／アーカイブ12、`fd-skill-lab-v1`・各ID・取得Lvの互換維持。使用頻度とCOVERしたい攻撃の割合についてはHeadless Battle運用後に再評価する。

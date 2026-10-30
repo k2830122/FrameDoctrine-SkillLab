@@ -1,6 +1,13 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.44 (2026-10-31).** 32 active skills: **24 confirmed**, 8 provisional, with twelve archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.45 (2026-10-31).** 32 active skills: **24 confirmed**, 8 provisional, with twelve archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.45 — COVER opportunity estimator and 2026-10-29 weapon design reconciliation (2026-10-31)
+
+- **Decisive Denial remains unchanged**: a successful legal COVER gives the coverer's Armor +2/+4/+6 (Lv1/2/3) for that Attack; no REFLEX, self-defense, Reaction-holding or Missile Intercept bonus. The coverer may itself be the enemy's selected target because it must occupy a neighboring Hex; such direct attacks **do not** trigger Decisive Denial.
+- The Skill Lab now has an **optional COVER opportunity / damage what-if** under an expandable panel. Input paired incoming Attack count, chosen protectee target fraction, COVER-eligible fraction, adjacency + Reaction readiness, voluntary COVER fraction, defending Frame and example weapon. It calculates indicative `Attack count × fractions` and a deterministic **per-successful-non-CritPen-Hit** Armor/Penetration table. These inputs are explicitly assumptions, **not a 50,000-trial Headless Battle run, observed enemy targeting behavior, or measured campaign damage savings**. Do not infer enemy target-selection AI necessarily chooses the easier kill; its actual weights and legitimate knowledge matter. Real COVER frequency should later be measured in production Headless Battle.
+- Corrected the **current Skill Lab guidance**, not historical release notes, for the canonical **2026-10-29 approved weapon revisions** in [CORE_SPEC.md](https://github.com/k2830122/FrameDoctrine/blob/master/docs/CORE_SPEC.md): Assault Lance **Range 1, CritPen YES**, and Heavy Autocannon, Shotgun, Recoilless Rifle, Explosive Axe **CritPen YES**; Combat Knife retires from planned active equipment. Updated No Quarter, Collision Course, Fault Line and the provisional dual-fire note. The actual production `WeaponCatalog.cs` still carries old values, pending separate implementation.
+- Existing IDs and save format unchanged: **32 active (24 confirmed, 8 provisional), 12 archived**. This addition does not simulate battlefield target selection, Reaction usage or attack outcome, and does not change the production Core.
 
 ## v0.44 — Decisive Denial: COVER-only Armor (2026-10-31)
 
