@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.40（2026-10-30）：** 現役32件（確定23、検討中・保留9）＋アーカイブ11件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.41（2026-10-30）：** 現役32件（確定24、検討中・保留8）＋アーカイブ11件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -528,3 +528,12 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - **Iron Verdict**（新規ID `heavy-rail-proficiency`、確定、元ネタMTG [Iron Verdict](https://scryfall.com/card/khm/17/iron-verdict)）：Heavy Railの適格な射撃Attack中のみ実効SHOOTING +2/+4/+6（通常対Unit HitRawで+6/+12/+18pt）。追加MOVE条件なし。Heavy Rail容量4、射程3〜9、Mag2、移動後命中補正−20pt、CritPen YESなど固有条件は維持。Heavy Frameへの搭乗時はTempered Steel (Heavy)、通常MOVE前の適格な対Unit Direct FIREではSeize Opportunityの条件付きSHOOTING補正と加算できる。従来の`marksmanship`は旧称Iron Verdictからv0.37でSeize Opportunityへ改名している。今回は新ID・別技能で同じMTG名を再採用し、旧Skill ID／ビルドを移動・改名しない。
 - **カテゴリ変更**：機体クラス対応のTempered Steel 3件を`機体固定`、No Quarter／Last Word／Iron Verdictを`武器固定`へ。Shadow of DoubtとFault Lineを`敵弱体化`へ移動。`攻撃・弾薬`はその他の攻撃・弾薬系研究候補を維持。対空索敵は`索敵・情報`。これらは研究UIの表示整理であり、発動条件や元IDの変更ではない。
 - **件数・互換性**：現役32（確定23／検討中9）、アーカイブ11。Skill Lv1〜3は各1P、12P総予算は仮置きのまま。`fd-skill-lab-v1`保存キー、JSONインポート／エクスポート、旧取得履歴とアーカイブ返却ポイントは変更なし。**本編Core／WeaponCatalog.csには手を加えない**。
+
+## 2026-10-30 — v0.41 Figure of Destiny 確定
+
+- 既存の研究ID `kill-momentum-growth` を変更せず、MTG実在カード [Figure of Destiny](https://scryfall.com/card/eve/139/figure-of-destiny) を正式技能名として採用。現役32件（確定24件／検討中8件）、アーカイブ11件。
+- **発動**：同じMissionで本人が敵Unitを撃破するたびに自動発動。SHOOTINGとMELEEの**実効値がそれぞれ+2**。最大累積回数はLv1=2回、Lv2=4回、Lv3=6回。最大補正は各+4/+8/+12。下限0回、ミッション終了時／新Mission開始時に0に戻り、Campaignの恒久Abilityや経験値にしない。
+- **判定への影響**：通常Direct FIRE・Meleeでは1撃破あたりクランプ前HitRaw+6pt、最大+12/+24/+36pt。既存のCritPen将来設計では対象武器がCritPen YESなら実効Abilityと超過HitRawを反映。武器のPower・Pen・Shots・射程・弾薬などは直接変わらない。
+- **撃破単位と順序**：敵Unitに対する実際の撃破帰属のみカウント。Decoy・友軍・無生物は含まない。同一Attackの複数敵撃破は敵Unit数だけ認めるが、同Attackの解決後に加算して以降のAttackへ適用。対象死亡を知らないFactionへ新しい情報を漏らさない。正式実装時の撃破帰属など細目は本編Coreの知識／ログ規則に従う。
+- **操作・育成方針**：撃破ごとにAbilityを選択しない。出撃準備時にも指定しない。元の「任意Abilityを1回+1、1/2/3回累積」という案を破棄し、両攻撃Abilityの自動強化へ移行した。追加のコマンド／XPシステムなし。
+- **互換**：各レベル取得1Pのまま、安定ID `kill-momentum-growth` と `fd-skill-lab-v1`、旧ビルド取得履歴、JSON互換、アーカイブ返却ポイントを維持。Skill Labは配分・効果表示のみで戦闘中の撃破カウンターは実行しない。**本編Coreには未実装**。
