@@ -1,6 +1,15 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.41 (2026-10-30).** 32 active skills: **24 confirmed**, 8 provisional, with eleven archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.42 (2026-10-31).** 31 active skills: **23 confirmed**, 8 provisional, with twelve archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.42 — Combine Shielded Passage into Decisive Denial (2026-10-31)
+
+- **Decisive Denial** remains the sole confirmed defensive specialist on existing stable ID `brace-discipline`. Its old BRACE-specific effect is replaced by a **WAIT-granted, AVAILABLE Reaction defensive posture**.
+- While that Reaction is AVAILABLE, **self-defense and qualifying COVER** use effective **REFLEX +1/+2/+3** and **Armor +2/+4/+6** at Lv1/2/3. A valid COVER spends Reaction but retains these defensive modifiers for the **entire redirected Attack**; ordinary self-defense does not spend Reaction merely for being targeted.
+- When using **Missile Intercept to defend self or another Friendly Unit**, effective REFLEX is **+3/+6/+9** for the interception roll (standard missile-intercept raw chance +6/+12/+18 percentage points). If the defender attempts interception against an incoming missile **aimed at self** and it fails, that very Missile Attack continues to use the normal self-defense REFLEX/Armor modifier through terminal resolution. Other subsequent Attacks cannot use this buff once Reaction is spent. Outgoing normal INTERCEPT is **not** improved by this skill.
+- Skill no longer improves BRACE. Remove its special-case 'final 1 Damage becomes 0'; normal minimum 1 Damage and Critical Penetration/Armor rules remain. **BRACE itself and its usual +2 Armor are not removed from the Core**. Original DRS/ARS physical Options are also unchanged pending separate migration decisions. **Repercussion is unchanged**: a Hit still counts after armor mitigates damage.
+- **Shielded Passage** (stable ID `guardian-reaction`, former ally-only COVER/Missile Intercept REFLEX +3/+6/+9) moves to `ARCHIVED_SKILLS`. Its old ranks migrate to `retiredSkillLevels`; each old rank **refunds one point**. Existing `brace-discipline` allocations remain Decisive Denial allocations. This is *not* an automatic old-skill-level merge, and points from both former skills never stack.
+- Updated the formula reference, archived UI record, Option research review, README, design notes and MTG name registry. **31 active (23 confirmed, 8 provisional) + 12 archived**. Saved key `fd-skill-lab-v1`, old JSON import/export and archive-history compatibility remain. Skill Lab only displays allocation/effects, **production Core unchanged**.
 
 ## v0.41 — Figure of Destiny confirmed, mission-only kill stacking (2026-10-30)
 
