@@ -1,14 +1,15 @@
-# Approved MTG Skill Names — v0.42 (2026-10-31)
+# Approved MTG Skill Names — v0.43 (2026-10-31)
 
-**23 confirmed skills (21 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
+**24 confirmed skills (22 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
 | Skill ID | Current name / MTG card image | Skill effect | Source card's original effect (brief) |
 | --- | --- | --- | --- |
 | `frame-light` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (light)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Light搭乗時 SHOOTING・MELEE +1/+2/+3 | アーティファクト・クリーチャー全体+2/+2 |
 | `frame-standard` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (standard)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Standard搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
 | `frame-heavy` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (heavy)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Heavy搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
-| `final-fortune` | **[Final Fortune](https://scryfall.com/card/mir/173/final-fortune)**<br>![Final Fortune MTG card](https://api.scryfall.com/cards/mir/173?format=image&version=small) | 各自軍Faction Phase開始時50%抽選。好調SHOOTING・MELEE +4/+5/+6、不調REFLEX −6/−5/−4 | 追加ターンを得るが、その終了時にゲームに敗北する |
+| `final-fortune` | **[Glimmer of Genius](https://scryfall.com/card/kld/49/glimmer-of-genius)**<br>![Glimmer of Genius MTG card](https://api.scryfall.com/cards/kld/49?format=image&version=small) | 各自軍Faction Phase開始時50%抽選。好調SHOOTING・MELEE +4/+5/+6、不調REFLEX −6/−5/−4（旧Final Fortuneと効果同一） | エネルギー2個を得てカードを2枚引く |
 | `kill-momentum-growth` | **[Figure of Destiny](https://scryfall.com/card/eve/139/figure-of-destiny)**<br>![Figure of Destiny MTG card](https://api.scryfall.com/cards/eve/139?format=image&version=small) | 本人による敵撃破1体ごとにSHOOTING・MELEE各+2。最大累積2/4/6体（最大各+4/+8/+12）、Mission内限定 | 段階的に能力を強化できるクリーチャー。原カードの能力値やコストは移植しない |
+| `avoid-fate` | **[Avoid Fate](https://scryfall.com/card/leg/175/avoid-fate)**<br>![Avoid Fate MTG card](https://api.scryfall.com/cards/leg/175?format=image&version=small) | 敵の適格な1Attackを全Hit回避するたびREFLEX +1、最大2/4/6回（最大+2/+4/+6）。Mission内限定、被弾しても維持 | 自分のパーマネントを対象とするインスタントまたはオーラ呪文を打ち消す |
 | `marksmanship` | **[Seize Opportunity](https://scryfall.com/card/tdm/119/seize-opportunity)**<br>![Seize Opportunity MTG card](https://api.scryfall.com/cards/tdm/119?format=image&version=small) | 通常MOVE前の対Unit射撃で SHOOTING +2/+4/+6（旧Iron Verdict） | 上2枚を一時使用可能、または最大2体を+2/+1 |
 | `sniper-rifle-proficiency` | **[Last Word](https://scryfall.com/card/dst/23/last-word)**<br>![Last Word MTG card](https://api.scryfall.com/cards/dst/23?format=image&version=small) | Sniper Rifleによる適格な射撃中のみ SHOOTING +2/+4/+6 | 打ち消されない呪文で対象の呪文を打ち消す |
 | `heavy-rail-proficiency` | **[Iron Verdict](https://scryfall.com/card/khm/17/iron-verdict)**<br>![Iron Verdict MTG card](https://api.scryfall.com/cards/khm/17?format=image&version=small) | Heavy Railでの適格な射撃中だけSHOOTING +2/+4/+6 | タップ状態のクリーチャーへ5ダメージ、予顕あり |
@@ -27,6 +28,12 @@
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 | `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
 | `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv別Attack開始HP条件で致命的AttackをHP1で耐える（回数制限なし、同一Attack全Hit保証） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+
+## v0.43 — New Avoid Fate; rename Glimmer of Genius (2026-10-31)
+
+- **Avoid Fate** [LEG #175](https://scryfall.com/card/leg/175/avoid-fate), new confirmed ID `avoid-fate`: after an eligible enemy Attack aimed at this pilot ends with every Hit Attempt missing, add +1 effective REFLEX (one per Attack, not per Hit). Lv1/2/3 caps +2/+4/+6; persists despite damage until Mission end, then resets. Avoid Fate is conceptually paired with Figure of Destiny but has an independent stable ID.
+- Existing Final Fortune is renamed **Glimmer of Genius** [KLD #49](https://scryfall.com/card/kld/49/glimmer-of-genius). Keep the established `final-fortune` ID, each friendly Faction Phase's 50/50 good/bad roll, and all Lv stats unchanged. Historical v0.38 records retain their original name.
+- **24 confirmed skills, 22 distinct MTG titles** (3 Tempered Steel variants share a title). 8 provisional, 12 archived. No production Core changes or saved-build migration.
 
 ## v0.42 — Decisive Denial replaces two defensive skill roles (2026-10-31)
 

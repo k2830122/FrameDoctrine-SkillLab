@@ -1,6 +1,13 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.42 (2026-10-31).** 31 active skills: **23 confirmed**, 8 provisional, with twelve archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.43 (2026-10-31).** 32 active skills: **24 confirmed**, 8 provisional, with twelve archived retired skills. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.43 — Avoid Fate + Glimmer of Genius (2026-10-31)
+
+- New confirmed **[Avoid Fate](https://scryfall.com/card/leg/175/avoid-fate)** (`avoid-fate`): after an eligible enemy Attack against this pilot resolves with **all Hit Attempts missing**, grow effective REFLEX **+1**. Lv1/2/3 caps are 2/4/6 successful evaded Attacks, so maximum bonuses are +2/+4/+6. Multiple Hit Attempts in one Attack count only once, and even one Hit prevents gaining a stack. Eligible direct fire, melee, and REFLEX-based terminal missile Hits count. A valid COVER redirection may count if this pilot becomes the actual defender. Invalid Attacks, misses aimed at other units, and attacks without the usual REFLEX-based Hit check do not qualify.
+- The new cumulative bonus applies **after the entire Attack**, never retroactively. It **remains after later damage or repairs** and resets at each new Mission. Usual effective REFLEX calculations apply (e.g., normal enemy HitRaw −3pt per REFLEX before clamping). No added command, MP, cooldown, charge system, persistent experience, or permanent stat growth.
+- Existing **Final Fortune** is renamed **[Glimmer of Genius](https://scryfall.com/card/kld/49/glimmer-of-genius)**. The stable ID `final-fortune`, independent 50% good/bad roll each friendly Faction Phase, and the Lv bonuses **good SHOOTING/MELEE +4/+5/+6; bad REFLEX −6/−5/−4** all remain intact. The name represents the pilot's fluctuating brilliance, not changing external fortune.
+- **32 active: 24 confirmed / 8 provisional; 12 archived.** Keep `fd-skill-lab-v1` and all old skill IDs, ranks, retired histories and JSON import/export compatibility. The lab models point allocation and text/formula previews, **not actual battlefield evasion stacks or randomized phases**. Production Core unchanged.
 
 ## v0.42 — Combine Shielded Passage into Decisive Denial (2026-10-31)
 

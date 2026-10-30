@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.42（2026-10-31）：** 現役31件（確定23、検討中・保留8）＋アーカイブ12件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.43（2026-10-31）：** 現役32件（確定24、検討中・保留8）＋アーカイブ12件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -548,3 +548,12 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - **旧Shielded Passageの保存・返還**：`guardian-reaction`の旧仕様と名前を`ARCHIVED_SKILLS`とUIアーカイブへ移す。`retiredSkillLevels`が旧Lvを保持し、各Lv1Pを返却。現在の`brace-discipline`取得Lvはそのまま統合後のDecisive Denial取得Lvとして利用できる。両方の旧Lvを自動的に合計／移行しない。
 - **本編Coreとの分離**：既存DRS／ARS Optionは現在のCoreで実装済み。これらOptionの廃止・技能との重複方針は別途判断し、今回変更しない。Skill Lab自体はReaction保持や被弾を模擬せず技能配分・条件と効果だけを表示する。
 - **結果**：現役31件（確定23・検討中8）、アーカイブ12件。`fd-skill-lab-v1`・既存ID・旧ビルドの互換性を維持する。
+
+
+## 2026-10-31 — v0.43 Avoid Fate確定／Glimmer of Geniusへ改名
+
+- **Avoid Fate**（新安定ID `avoid-fate`）を設計確定。MTG原カード名：[Avoid Fate](https://scryfall.com/card/leg/175/avoid-fate)。Figure of Destinyの撃破成長と対になる、Mission内回避成長スキル。
+- **発動**：自機に対して合法な敵Attackが開始され、REFLEXを参照するHit Attemptを1回以上実行し、そのAttack内の全HitがMISSなら、Attack全体の終了後に+1実効REFLEX。SMG・GPMG等の複数Hitで全MISSでも1回のみ。1Hitでも命中した場合は成長なし。合法なCOVERで自機が最終防御者となった場合も対象、COVERそのものはトリガーではない。自機以外へのMISS、Hit AttemptなしのArea/Hex対象Attack、成立しなかった攻撃は対象外。
+- **効果**：Lv1/2/3で累積上限2/4/6回、最大REFLEX +2/+4/+6。増加はAttackの後から有効。同Missionで後から被弾・修理しても蓄積は失われず、Mission終了でリセット。パイロット基礎Ability、恒久的育成、キャンペーンXPは増えない。通常防御HitRawではREFLEX+1あたり敵命中値−3pt（クランプ前）で、ほかの適格なREFLEX強化と加算される。被攻撃・被弾リスクの代償と上限付き正のフィードバックを容認。追加コマンド／MP／専用回数制限なし。
+- **Glimmer of Genius**：現役の旧Final Fortune（既存ID `final-fortune`）の**名称のみ変更**。元MTGカード：[Glimmer of Genius](https://scryfall.com/card/kld/49/glimmer-of-genius)。運命による幸不幸ではなく、本人の才能・好不調の不安定さを表す。毎回の自軍Faction Phase開始時の独立50/50抽選、好調SHOOTING・MELEE +4/+5/+6、不調REFLEX −6/−5/−4、次の自軍Phaseまで持続などの効果は維持。
+- **集計**：現役32件（確定24・検討中8）＋アーカイブ12件。各Rank 1P、総育成12Pは暫定。既存ID・`fd-skill-lab-v1`・過去の取得履歴・JSON入出力を維持。Skill Labは育成配分と効果説明のみで実戦回避／累積判定や50%抽選を実行しない。**本編Coreは変更しない**。
