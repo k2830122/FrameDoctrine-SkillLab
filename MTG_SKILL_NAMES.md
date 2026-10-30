@@ -36,6 +36,8 @@
 
 ### Archived approved name — Shielded Passage (original v0.41)
 
+| Skill ID | Historical name / MTG card image | Historical Skill effect | Source card's original effect |
+| --- | --- | --- | --- |
 | `guardian-reaction` | **[Shielded Passage](https://scryfall.com/card/gtc/24/shielded-passage)**<br>![Shielded Passage MTG card](https://api.scryfall.com/cards/gtc/24?format=image&version=small) | 味方のCOVER／ミサイル迎撃時 REFLEX +3/+6/+9 | クリーチャーへの次のダメージを軽減 |
 
 ## v0.41 — Figure of Destiny (2026-10-30)
