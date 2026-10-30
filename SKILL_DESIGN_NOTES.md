@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.41（2026-10-30）：** 現役32件（確定24、検討中・保留8）＋アーカイブ11件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.42（2026-10-31）：** 現役31件（確定23、検討中・保留8）＋アーカイブ12件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -537,3 +537,14 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - **撃破単位と順序**：敵Unitに対する実際の撃破帰属のみカウント。Decoy・友軍・無生物は含まない。同一Attackの複数敵撃破は敵Unit数だけ認めるが、同Attackの解決後に加算して以降のAttackへ適用。対象死亡を知らないFactionへ新しい情報を漏らさない。正式実装時の撃破帰属など細目は本編Coreの知識／ログ規則に従う。
 - **操作・育成方針**：撃破ごとにAbilityを選択しない。出撃準備時にも指定しない。元の「任意Abilityを1回+1、1/2/3回累積」という案を破棄し、両攻撃Abilityの自動強化へ移行した。追加のコマンド／XPシステムなし。
 - **互換**：各レベル取得1Pのまま、安定ID `kill-momentum-growth` と `fd-skill-lab-v1`、旧ビルド取得履歴、JSON互換、アーカイブ返却ポイントを維持。Skill Labは配分・効果表示のみで戦闘中の撃破カウンターは実行しない。**本編Coreには未実装**。
+
+## 2026-10-31 — v0.42 Decisive Denialへ防御技能を統合
+
+- **現役技能は Decisive Denial**（既存安定ID `brace-discipline`、確定）を維持。旧Decisive DenialのBRACE Armor +1/+2/+3追加・最終1Damage→0の特殊処理を廃止し、旧Shielded Passage（`guardian-reaction`）のCOVER／ミサイル迎撃専門性を、WAITでReactionを保持する防御態勢へ統合した。改名の必要はなく、同じMTG正式名を継続する。
+- **発動条件**：WAITによってReactionを獲得し、AVAILABLEな間に適格な敵Attackを自機が受ける、または味方をCOVERする場合。自分への通常攻撃ではReactionを使う必要なし。適格なCOVER時はReactionを消費するが、開始時の防御態勢をそのAttack全体の終わりまで維持する。通常INTERCEPTでReactionを使った後の別Attackには発動しない。
+- **自衛／COVER（Lv1/2/3）**：実効REFLEX +1/+2/+3、実効Armor +2/+4/+6。通常Direct FIRE・単体Melee・単体Missile着弾におけるREFLEX上昇で敵HitRaw −3/−6/−9pt（クランプ前）。Armor増分は通常の貫通・損害計算へ適用し、CritPenによる装甲無視と最低1Damage規則は残る。COVERは隣接1Hexの味方へコミットされた適格な単体Attackを引き受ける既存手順のまま。
+- **自他へのMissile Intercept（Lv1/2/3）**：迎撃中の実効REFLEX +3/+6/+9、通常のMissile Intercept HitRaw +6/+12/+18pt（クランプ前）。反応権・迎撃武器・射程・弾薬を追加しない。自分宛ミサイルを迎撃して失敗した場合、同一Missile Attackの着弾解決まで防御用のREFLEX/Armorも保持する。味方宛の迎撃は味方自身のArmor/REFLEXを強化しない。
+- **Repercussion**：仕様変更なし。被害をArmorで減らしてもHitした事実は残り、次Activationの反撃能力が上昇する。旧Decisive Denialの例外的なダメージ0変換は今後適用しない。BRACEコマンド本体の通常Armor +2は維持する。
+- **旧Shielded Passageの保存・返還**：`guardian-reaction`の旧仕様と名前を`ARCHIVED_SKILLS`とUIアーカイブへ移す。`retiredSkillLevels`が旧Lvを保持し、各Lv1Pを返却。現在の`brace-discipline`取得Lvはそのまま統合後のDecisive Denial取得Lvとして利用できる。両方の旧Lvを自動的に合計／移行しない。
+- **本編Coreとの分離**：既存DRS／ARS Optionは現在のCoreで実装済み。これらOptionの廃止・技能との重複方針は別途判断し、今回変更しない。Skill Lab自体はReaction保持や被弾を模擬せず技能配分・条件と効果だけを表示する。
+- **結果**：現役31件（確定23・検討中8）、アーカイブ12件。`fd-skill-lab-v1`・既存ID・旧ビルドの互換性を維持する。
