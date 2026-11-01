@@ -1,13 +1,13 @@
-# Approved MTG Skill Names — v0.49 (2026-11-01)
+# Approved Skill Names — v0.50 (2026-11-01)
 
-**26 confirmed skills (24 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
+**26 confirmed skills (24 distinct names; the 3 Machine Over Matter variants share one title).** New names are user-approved; exact MTG-card provenance is not asserted when unverified. Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
 | Skill ID | Current name / MTG card image | Skill effect | Source card's original effect (brief) |
 | --- | --- | --- | --- |
-| `frame-light` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (light)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Light搭乗時 SHOOTING・MELEE +1/+2/+3 | アーティファクト・クリーチャー全体+2/+2 |
-| `frame-standard` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (standard)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Standard搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
-| `frame-heavy` | **[Tempered Steel](https://scryfall.com/card/som/24/tempered-steel)** (heavy)<br>![Tempered Steel MTG card](https://api.scryfall.com/cards/som/24?format=image&version=small) | Heavy搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
-| `final-fortune` | **[Glimmer of Genius](https://scryfall.com/card/kld/49/glimmer-of-genius)**<br>![Glimmer of Genius MTG card](https://api.scryfall.com/cards/kld/49?format=image&version=small) | 各自軍Faction Phase開始時50%抽選。好調SHOOTING・MELEE +4/+5/+6、不調REFLEX −6/−5/−4（旧Final Fortuneと効果同一） | エネルギー2個を得てカードを2枚引く |
+| `frame-light` | **Machine Over Matter** (light) | Light搭乗時 SHOOTING・MELEE +1/+2/+3 | 同名MTGカードの出典未確認 |
+| `frame-standard` | **Machine Over Matter** (standard) | Standard搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
+| `frame-heavy` | **Machine Over Matter** (heavy) | Heavy搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
+| `final-fortune` | **Mercurial Mind** | 各自軍Faction Phase開始時50%抽選。好調SHOOTING・MELEE +4/+5/+6、不調REFLEX −6/−5/−4（旧Final Fortuneと効果同一） | 同名MTGカードの出典未確認 |
 | `kill-momentum-growth` | **[Figure of Destiny](https://scryfall.com/card/eve/139/figure-of-destiny)**<br>![Figure of Destiny MTG card](https://api.scryfall.com/cards/eve/139?format=image&version=small) | 本人による敵撃破1体ごとにSHOOTING・MELEE各+2。最大累積2/4/6体（最大各+4/+8/+12）、Mission内限定 | 段階的に能力を強化できるクリーチャー。原カードの能力値やコストは移植しない |
 | `avoid-fate` | **[Avoid Fate](https://scryfall.com/card/leg/175/avoid-fate)**<br>![Avoid Fate MTG card](https://api.scryfall.com/cards/leg/175?format=image&version=small) | 敵の適格な1Attackを全Hit回避するたびREFLEX +1、最大2/4/6回（最大+2/+4/+6）。Mission内限定、被弾しても維持 | 自分のパーマネントを対象とするインスタントまたはオーラ呪文を打ち消す |
 | `marksmanship` | **[Seize Opportunity](https://scryfall.com/card/tdm/119/seize-opportunity)**<br>![Seize Opportunity MTG card](https://api.scryfall.com/cards/tdm/119?format=image&version=small) | 通常MOVE前の対Unit射撃で SHOOTING +2/+4/+6（旧Iron Verdict） | 上2枚を一時使用可能、または最大2体を+2/+1 |
@@ -23,13 +23,23 @@
 | `anti-air-recon` | **[Sight Beyond Sight](https://scryfall.com/card/dtk/75/sight-beyond-sight)**<br>![Sight Beyond Sight MTG card](https://api.scryfall.com/cards/dtk/75?format=image&version=small) | 飛行型敵への自機索敵判定で対象Signature項+1/+2/+3（実値変更なし） | 名前だけを採用。原カードのゲーム効果は移植しない |
 | `leave-no-trace` | **[Leave No Trace](https://scryfall.com/card/rav/23/leave-no-trace)**<br>![Leave No Trace MTG card](https://api.scryfall.com/cards/rav/23?format=image&version=small) | 常時Signature −1/−2/−3とDetection Power −4/−8/−12の交換。基本索敵予算−1/−2/−3 | 指定色のエンチャントを全て破壊 |
 | `solo-operator` | **[Audacity](https://scryfall.com/card/bro/169/audacity)**<br>![Audacity MTG card](https://api.scryfall.com/cards/bro/169?format=image&version=small) | 味方が4Hex以内にいないとき基礎INSIGHT依存でSHOOTING上昇 | クリーチャーに+2/+0とトランプル、死亡時ドロー |
-| `pick-your-ground` | **[Dead of Winter](https://scryfall.com/card/mh1/85/dead-of-winter)**<br>![Dead of Winter MTG card](https://api.scryfall.com/cards/mh1/85?format=image&version=small) | 森林・瓦礫・掩体などの地形防御を追加−5/−10/−15pt | 氷雪パーマネント数に応じて非氷雪クリーチャー全体を弱体化 |
+| `pick-your-ground` | **[Privileged Position](https://scryfall.com/card/rav/251/privileged-position)**<br>![Privileged Position MTG card](https://api.scryfall.com/cards/rav/251?format=image&version=small) | 森林・瓦礫・掩体などの地形防御を追加−5/−10/−15pt | 自軍の他のパーマネントに呪禁を付与 |
 | `leg-disrupting-shot` | **[Impede Momentum](https://scryfall.com/card/dmu/54/impede-momentum)**<br>![Impede Momentum MTG card](https://api.scryfall.com/cards/dmu/54?format=image&version=small) | 通常Direct FIRE／INTERCEPTで敵Unitへ1Hit以上命中した後、基礎INSIGHT×Lv÷2%で1Attackに1回の移動阻止抽選（0.5%保持）。移動だけ阻止し攻撃可。旧IDを維持 | 対象をタップし麻痺カウンターを置き、占術1。次のアンタップを遅らせる |
 | `fault-line` | **[Fault Line](https://scryfall.com/card/usg/185/fault-line)**<br>![Fault Line MTG card](https://api.scryfall.com/cards/usg/185?format=image&version=small) | CritPen成功直後から対象Armor −2/−4/−6（同Attack後続Hitにも適用） | 地上クリーチャーと各プレイヤーへXダメージ |
-| `survival-cache` | **[Survival Cache](https://scryfall.com/card/roe/44/survival-cache)**<br>![Survival Cache MTG card](https://api.scryfall.com/cards/roe/44?format=image&version=small) | Repair Kitの回復量8HPを12/16/20HPへ強化 | 2点回復、条件付きドロー、反復 |
+| `survival-cache` | **Emergency Weld** | Repair Kitの回復量8HPを12/16/20HPへ強化 | 同名MTGカードの出典未確認 |
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 | `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
 | `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv1: HP50%以下でArmor+2。Lv2: HP25%以下でさらにArmor+4（合計+6）。Lv3: そのArmor強化に加えAttack開始HP2以上ならHP1生存（同Attackの全Hit） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+
+## v0.50 — Approved renames / new growth category (2026-11-01)
+
+- `pick-your-ground`: **Privileged Position** (formerly Dead of Winter; previous name reserved for future reuse).
+- `survival-cache`: **Emergency Weld** (formerly Survival Cache).
+- `frame-light`, `frame-standard`, `frame-heavy`: **Machine Over Matter** (formerly Tempered Steel, three variants).
+- `final-fortune`: **Mercurial Mind** (formerly Glimmer of Genius).
+- Both **Figure of Destiny** and **Avoid Fate** now belong to the **ミッション内成長** group; no changes to functionality.
+- Confirmed **26 skills / 24 distinct titles**; 5 provisional and 15 archived. Names, UI group only; no core, effect, ID or save compatibility changes.
+- Card links/pictures are provided only where an exact source card was verified. Unverified same-name MTG provenance is left blank rather than using the old card under a new skill name.
 
 ## v0.49 — Two provisional concepts retired (2026-11-01)
 

@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.49（2026-11-01）：** 現役31件（確定26、検討中5）＋アーカイブ・再設計待ち15件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.50（2026-11-01）：** 現役31件（確定26、検討中5）＋アーカイブ・再設計待ち15件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -629,3 +629,18 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - **反射機動（仮）**（旧ID `reflex-followup-move`）は研究候補から除外。行動終了時にREFLEX×Lv%で追加移動する仮案を歴史として保持する。Light DISPLACE、MSUなど現行移動仕様は変更しない。
 - 両Skillとも旧取得Lvを`retiredSkillLevels`へ移動し、その分のTraining Pointは自動返還して新しい育成へ再配分可能。旧IDを流用しない。
 - 現役31件（**確定26、研究中5**）、アーカイブ15件。命名を再検討するのは**Dead of Winter、Survival Cache、Tempered Steel、Glimmer of Genius**の4件。変更に合意するまでは全て現行名・効果を維持。本編Coreには変更なし。
+
+
+## 2026-11-01 — v0.50 名称変更・ミッション内成長カテゴリ
+
+| 安定ID | 旧名 | 新名 |
+| --- | --- | --- |
+| `pick-your-ground` | Dead of Winter | **Privileged Position** |
+| `survival-cache` | Survival Cache | **Emergency Weld** |
+| `frame-light` / `frame-standard` / `frame-heavy` | Tempered Steel（Light/Standard/Heavy） | **Machine Over Matter**（Light/Standard/Heavy） |
+| `final-fortune` | Glimmer of Genius | **Mercurial Mind** |
+
+- **Dead of Winter** は別の将来スキルへの名前の候補として確保。旧名からの改名以外に新スキルを追加しない。
+- `kill-momentum-growth`（Figure of Destiny）と `avoid-fate`（Avoid Fate）を共通の **「ミッション内成長」** カテゴリへ移動。どちらも戦闘中の条件達成で実効Abilityが積み上がり、Mission終了時にリセットするため。この分類変更は効果の変更を含まない。
+- この変更では **名称とカテゴリだけ** を更新。全Skill ID・取得Lv・コスト・計算式・発動条件・効果・確定/研究状態・保存キー `fd-skill-lab-v1`・既存保存データとの互換性を維持。現役31（確定26／研究5）、アーカイブ15。本編Core変更なし。
+- MTGカードとして実在する同名タイトルを検証できない新名称について、出典や画像URLを捏造しない。過去の改名履歴は履歴として残す。

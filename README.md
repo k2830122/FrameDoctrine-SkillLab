@@ -1,6 +1,16 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.49 (2026-11-01).** 31 active skills: **26 confirmed**, 5 provisional; fifteen archived/paused skills. All confirmed skill names are exact MTG card titles; Antagonize's tuning numbers are intentionally pending. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.50 (2026-11-01).** 31 active skills: **26 confirmed**, 5 provisional; fifteen archived/paused skills. Confirmed skill names are generally drawn from MTG; the four user-approved v0.50 replacements are maintained as names even where exact MTG-card provenance is unverified. Antagonize's tuning numbers are intentionally pending. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.50 — User-approved names and shared mission-growth category (2026-11-01)
+
+- Renamed **Dead of Winter → Privileged Position** (`pick-your-ground`); old name **Dead of Winter** remains reserved for possible future reuse.
+- Renamed **Survival Cache → Emergency Weld** (`survival-cache`).
+- Renamed **Tempered Steel → Machine Over Matter** in all Light / Standard / Heavy variants (`frame-light`, `frame-standard`, `frame-heavy`).
+- Renamed **Glimmer of Genius → Mercurial Mind** (`final-fortune`) to convey volatile, changeable talent rather than gambling.
+- Grouped **Figure of Destiny** (`kill-momentum-growth`) and **Avoid Fate** (`avoid-fate`) under the new **ミッション内成長** category: both accumulate temporary Ability increases through mission events, with reset on mission end.
+- Names and category only: effects, activation conditions, numeric levels, point costs, stable IDs, existing purchases, `fd-skill-lab-v1` save/import/export compatibility and Core remain unchanged. Still **31 active skills (26 confirmed, 5 provisional) / 15 archived**. The historical records below are intentionally unedited.
+- Where an exact MTG card of the same name was not verified, no nonexistent Scryfall card URL or card artwork is asserted.
 
 ## v0.49 — Archive two unconfirmed candidates (2026-11-01)
 
