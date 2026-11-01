@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.52（2026-11-01）：** 現役31件（確定27、検討中4）＋アーカイブ・再設計待ち15件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.53（2026-11-02）：** 現役31件（確定27、検討中4）＋アーカイブ・再設計待ち15件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -663,3 +663,15 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 
 - 安定ID `final-fortune` の表示名を **Wax + Wane → Wax and Wane** へ変更。英語の成句「満ちては欠ける・盛衰を繰り返す」を優先した名称であり、MTGの実在する分割カードの正式名 **Wax // Wane** とは表記が異なるアレンジ。
 - 効果、抽選、Lv1～3、発動条件、保存データ、スキルID、確定状態は変更しない。現役31（確定27・研究4）、アーカイブ15、本編Core変更なし。v0.51以前の記録は履歴として保存。
+
+
+## 2026-11-02 — v0.53 スキル正式改名（名称監査）
+
+| ID | 旧称 | 現行確定名 | 備考 |
+| --- | --- | --- | --- |
+| `anti-air-recon` | Sight Beyond Sight | **High Alert** | 対空索敵。厳戒（high alert）と上空を意識させる二重の連想。対空攻撃強化とは別スキル。 |
+| `marksmanship` | Seize Opportunity | **Steady Aim** | 自通常MOVE前の適格な対Unit Direct FIREでSHOOTINGが増える既存ルール。照準コマンドは新設しない。 |
+| `pick-your-ground` | Privileged Position | **Familiar Ground** | 森林・瓦礫・掩体等の有利な地形を活かす。 |
+| `leg-disrupting-shot` | Impede Momentum | **Off Balance** | 射撃命中後のINSIGHT依存移動阻止。「転倒」状態の新設はしない。 |
+
+全名称は実在するMTGカード名。変更範囲は表示名・参照名・出典のみ。既存のSkill ID、取得Lv・確定状況、全発動条件、効果と確率、保存キー `fd-skill-lab-v1`、全保存済みビルドの互換性、現役31件（確定27／検討4）・アーカイブ15件は維持。本編Coreは変更しない。旧名称は履歴として残す。

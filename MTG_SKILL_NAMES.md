@@ -1,6 +1,6 @@
-# Approved Skill Names — v0.52 (2026-11-01)
+# Approved Skill Names — v0.53 (2026-11-02)
 
-**27 confirmed skills (25 distinct names; the 3 Machine Over Matter variants share one title).** New names are user-approved; exact MTG-card provenance is not asserted when unverified. Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
+**27 confirmed skills (25 distinct names; the 3 Machine Over Matter variants share one title).** New names are user-approved; exact MTG-card provenance is not asserted when unverified. Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Steady Aim and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
 | Skill ID | Current name / MTG card image | Skill effect | Source card's original effect (brief) |
 | --- | --- | --- | --- |
@@ -11,7 +11,7 @@
 | `kill-momentum-growth` | **[Figure of Destiny](https://scryfall.com/card/eve/139/figure-of-destiny)**<br>![Figure of Destiny MTG card](https://api.scryfall.com/cards/eve/139?format=image&version=small) | 本人による敵撃破1体ごとにSHOOTING・MELEE各+2。最大累積2/4/6体（最大各+4/+8/+12）、Mission内限定 | 段階的に能力を強化できるクリーチャー。原カードの能力値やコストは移植しない |
 | `avoid-fate` | **[Avoid Fate](https://scryfall.com/card/leg/175/avoid-fate)**<br>![Avoid Fate MTG card](https://api.scryfall.com/cards/leg/175?format=image&version=small) | 敵の適格な1Attackを全Hit回避するたびREFLEX +1、最大2/4/6回（最大+2/+4/+6）。Mission内限定、被弾しても維持 | 自分のパーマネントを対象とするインスタントまたはオーラ呪文を打ち消す |
 | `paired-fire` | **[Dual Strike](https://scryfall.com/card/khm/132/dual-strike)** | 同一のAssault Rifle／SMG／Shotgun2丁連動FIRE。各銃HitRaw−40/−30/−20pt、SHOOTING/REFLEX平均、片丁のみなら通常射撃 | インスタント／ソーサリーをコピーする能力を持つ呪文 |
-| `marksmanship` | **[Seize Opportunity](https://scryfall.com/card/tdm/119/seize-opportunity)**<br>![Seize Opportunity MTG card](https://api.scryfall.com/cards/tdm/119?format=image&version=small) | 通常MOVE前の対Unit射撃で SHOOTING +2/+4/+6（旧Iron Verdict） | 上2枚を一時使用可能、または最大2体を+2/+1 |
+| `marksmanship` | **[Steady Aim](https://scryfall.com/card/war/177/steady-aim)**<br>![Steady Aim MTG card](https://api.scryfall.com/cards/war/177?format=image&version=small) | 通常MOVE前の対Unit射撃で SHOOTING +2/+4/+6（旧Iron Verdict） | 実在するMTGカードから名称のみ採用。原カードの効果はゲームへ移植しない |
 | `sniper-rifle-proficiency` | **[Last Word](https://scryfall.com/card/dst/23/last-word)**<br>![Last Word MTG card](https://api.scryfall.com/cards/dst/23?format=image&version=small) | Sniper Rifleによる適格な射撃中のみ SHOOTING +2/+4/+6 | 打ち消されない呪文で対象の呪文を打ち消す |
 | `heavy-rail-proficiency` | **[Iron Verdict](https://scryfall.com/card/khm/17/iron-verdict)**<br>![Iron Verdict MTG card](https://api.scryfall.com/cards/khm/17?format=image&version=small) | Heavy Autocannon（武装容量3・Shots2）での適格な射撃中のみSHOOTING +2/+4/+6。旧IDは保存互換保持、Heavy Railには無効 | タップ状態クリーチャーへ5ダメージ、予顕あり |
 | `mobile-evasion` | **[Escape Velocity](https://scryfall.com/card/thb/132/escape-velocity)**<br>![Escape Velocity MTG card](https://api.scryfall.com/cards/thb/132?format=image&version=small) | 通常MOVEで3Hex以上移動すると REFLEX +2/+4/+6 | 速攻と攻撃修整を付与、脱出可能 |
@@ -21,16 +21,27 @@
 | `brace-antagonize` | **[Antagonize](https://scryfall.com/card/snc/100/antagonize)**<br>![Antagonize MTG card](https://api.scryfall.com/cards/snc/100?format=image&version=small) | 通常BRACE実行中、敵AIの合法かつ既知のAttack標的としての優先度をLvに応じて増加（具体的加点は未定・強制対象指定なし） | 対象クリーチャーに攻撃修整を与える |
 | `fired-up` | **[Repercussion](https://scryfall.com/card/uds/95/repercussion)**<br>![Repercussion MTG card](https://api.scryfall.com/cards/uds/95?format=image&version=small) | 敵の攻撃でHitを受けた次のActivation、SHOOTING・MELEE +6/+9/+12 | クリーチャーが受けたダメージをそのコントローラーにも与える |
 | `scan-interpretation` | **[Confront the Unknown](https://scryfall.com/card/soi/198/confront-the-unknown)**<br>![Confront the Unknown MTG card](https://api.scryfall.com/cards/soi/198?format=image&version=small) | ACTIVE SCAN中だけ INSIGHT +4/+8/+12、scanner Signature合計 +3/+4/+5 | 調査を行い、手掛かり数に応じてクリーチャーを強化 |
-| `anti-air-recon` | **[Sight Beyond Sight](https://scryfall.com/card/dtk/75/sight-beyond-sight)**<br>![Sight Beyond Sight MTG card](https://api.scryfall.com/cards/dtk/75?format=image&version=small) | 飛行型敵への自機索敵判定で対象Signature項+1/+2/+3（実値変更なし） | 名前だけを採用。原カードのゲーム効果は移植しない |
+| `anti-air-recon` | **[High Alert](https://scryfall.com/card/rna/182/high-alert)**<br>![High Alert MTG card](https://api.scryfall.com/cards/rna/182?format=image&version=small) | 飛行型敵への自機索敵判定で対象Signature項+1/+2/+3（実値変更なし） | 実在するMTGカードから名称のみ採用。原カードの効果はゲームへ移植しない |
 | `leave-no-trace` | **[Leave No Trace](https://scryfall.com/card/rav/23/leave-no-trace)**<br>![Leave No Trace MTG card](https://api.scryfall.com/cards/rav/23?format=image&version=small) | 常時Signature −1/−2/−3とDetection Power −4/−8/−12の交換。基本索敵予算−1/−2/−3 | 指定色のエンチャントを全て破壊 |
 | `solo-operator` | **[Audacity](https://scryfall.com/card/bro/169/audacity)**<br>![Audacity MTG card](https://api.scryfall.com/cards/bro/169?format=image&version=small) | 味方が4Hex以内にいないとき基礎INSIGHT依存でSHOOTING上昇 | クリーチャーに+2/+0とトランプル、死亡時ドロー |
-| `pick-your-ground` | **[Privileged Position](https://scryfall.com/card/rav/251/privileged-position)**<br>![Privileged Position MTG card](https://api.scryfall.com/cards/rav/251?format=image&version=small) | 森林・瓦礫・掩体などの地形防御を追加−5/−10/−15pt | 自軍の他のパーマネントに呪禁を付与 |
-| `leg-disrupting-shot` | **[Impede Momentum](https://scryfall.com/card/dmu/54/impede-momentum)**<br>![Impede Momentum MTG card](https://api.scryfall.com/cards/dmu/54?format=image&version=small) | 通常Direct FIRE／INTERCEPTで敵Unitへ1Hit以上命中した後、基礎INSIGHT×Lv÷2%で1Attackに1回の移動阻止抽選（0.5%保持）。移動だけ阻止し攻撃可。旧IDを維持 | 対象をタップし麻痺カウンターを置き、占術1。次のアンタップを遅らせる |
+| `pick-your-ground` | **[Familiar Ground](https://scryfall.com/card/wth/127/familiar-ground)**<br>![Familiar Ground MTG card](https://api.scryfall.com/cards/wth/127?format=image&version=small) | 森林・瓦礫・掩体などの地形防御を追加−5/−10/−15pt | 実在するMTGカードから名称のみ採用。原カードの効果はゲームへ移植しない |
+| `leg-disrupting-shot` | **[Off Balance](https://scryfall.com/card/nem/15/off-balance)**<br>![Off Balance MTG card](https://api.scryfall.com/cards/nem/15?format=image&version=small) | 通常Direct FIRE／INTERCEPTで敵Unitへ1Hit以上命中した後、基礎INSIGHT×Lv÷2%で1Attackに1回の移動阻止抽選（0.5%保持）。移動だけ阻止し攻撃可。旧IDを維持 | 実在するMTGカードから名称のみ採用。原カードの効果はゲームへ移植しない |
 | `fault-line` | **[Fault Line](https://scryfall.com/card/usg/185/fault-line)**<br>![Fault Line MTG card](https://api.scryfall.com/cards/usg/185?format=image&version=small) | CritPen成功直後から対象Armor −2/−4/−6（同Attack後続Hitにも適用） | 地上クリーチャーと各プレイヤーへXダメージ |
 | `survival-cache` | **[Emergency Weld](https://scryfall.com/card/bro/93/emergency-weld)** | Repair Kitの回復量8HPを12/16/20HPへ強化 | 墓地のアーティファクト・クリーチャーカードを手札に戻し、1/1アーティファクト・兵士トークンを作る |
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 | `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
 | `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv1: HP50%以下でArmor+2。Lv2: HP25%以下でさらにArmor+4（合計+6）。Lv3: そのArmor強化に加えAttack開始HP2以上ならHP1生存（同Attackの全Hit） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+
+## v0.53 — Four renamed approved skills (2026-11-02)
+
+| Stable ID | Old name | New name (verified MTG card) |
+| --- | --- | --- |
+| `anti-air-recon` | Sight Beyond Sight | **[High Alert](https://scryfall.com/card/rna/182/high-alert)** |
+| `marksmanship` | Seize Opportunity | **[Steady Aim](https://scryfall.com/card/war/177/steady-aim)** |
+| `pick-your-ground` | Privileged Position | **[Familiar Ground](https://scryfall.com/card/wth/127/familiar-ground)** |
+| `leg-disrupting-shot` | Impede Momentum | **[Off Balance](https://scryfall.com/card/nem/15/off-balance)** |
+
+Only names and active-name references changed. Skill IDs, all ability bonuses and triggers, player save key, status counts, and main game Core remain unchanged. Prior entries are historical.
 
 ## v0.52 — Wax and Wane display name (2026-11-01)
 

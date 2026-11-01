@@ -1,6 +1,19 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.52 (2026-11-01).** 31 active skills: **27 confirmed**, 4 provisional; fifteen archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize's tuning numbers are intentionally pending. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.53 (2026-11-02).** 31 active skills: **27 confirmed**, 4 provisional; fifteen archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize's tuning numbers are intentionally pending. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.53 — Four confirmed skill renames (2026-11-02)
+
+Naming audit only: stable Skill IDs, effects, level values, passive triggers, build point allocation and `fd-skill-lab-v1` save/import/export all remain unchanged. Earlier release notes are preserved as historical records.
+
+| Stable ID | Previous title | Current MTG-card title |
+| --- | --- | --- |
+| `anti-air-recon` | Sight Beyond Sight | **[High Alert](https://scryfall.com/card/rna/182/high-alert)** |
+| `marksmanship` | Seize Opportunity | **[Steady Aim](https://scryfall.com/card/war/177/steady-aim)** |
+| `pick-your-ground` | Privileged Position | **[Familiar Ground](https://scryfall.com/card/wth/127/familiar-ground)** |
+| `leg-disrupting-shot` | Impede Momentum | **[Off Balance](https://scryfall.com/card/nem/15/off-balance)** |
+
+**31 active (27 confirmed, four provisional), 15 archived.** High Alert is explicitly anti-air *detection*, not an anti-air attack skill; the latter remains available for future design. The main game Core is unchanged.
 
 ## v0.52 — Display spelling: Wax and Wane (2026-11-01)
 
