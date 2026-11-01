@@ -1,6 +1,11 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.51 (2026-11-01).** 31 active skills: **27 confirmed**, 4 provisional; fifteen archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize's tuning numbers are intentionally pending. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.52 (2026-11-01).** 31 active skills: **27 confirmed**, 4 provisional; fifteen archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize's tuning numbers are intentionally pending. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.52 — Display spelling: Wax and Wane (2026-11-01)
+
+- Renamed the active skill `final-fortune` from **Wax + Wane** to **Wax and Wane**. This is the familiar natural English idiom for fluctuating good and bad periods. The original MTG split-card name is **Wax // Wane** (Invasion #296); **Wax and Wane** is an intentional adaptation, not asserted to be the exact name of an MTG card.
+- Pure display-name change. Status confirmed, 50/50 per-phase ability effects and every level, stable ID, player save data (`fd-skill-lab-v1`), 27 confirmed / 4 provisional / 15 archived counts, and game Core remain unchanged. v0.51 naming history is preserved below.
 
 ## v0.51 — Dual Strike and Wax + Wane (2026-11-01)
 

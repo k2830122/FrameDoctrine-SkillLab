@@ -1,4 +1,4 @@
-# Approved Skill Names — v0.51 (2026-11-01)
+# Approved Skill Names — v0.52 (2026-11-01)
 
 **27 confirmed skills (25 distinct names; the 3 Machine Over Matter variants share one title).** New names are user-approved; exact MTG-card provenance is not asserted when unverified. Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
@@ -7,7 +7,7 @@
 | `frame-light` | **[Machine Over Matter](https://scryfall.com/card/bro/57/machine-over-matter)** (light) | Light搭乗時 SHOOTING・MELEE +1/+2/+3 | アーティファクト・クリーチャーがいるとコスト減少、非土地パーマネントを手札へ戻す |
 | `frame-standard` | **[Machine Over Matter](https://scryfall.com/card/bro/57/machine-over-matter)** (standard) | Standard搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
 | `frame-heavy` | **[Machine Over Matter](https://scryfall.com/card/bro/57/machine-over-matter)** (heavy) | Heavy搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
-| `final-fortune` | **[Wax + Wane](https://mtg.wtf/card/inv/296a/Wax)** | 各自軍Faction Phase開始時50%抽選。好調SHOOTING・MELEE +4/+5/+6、不調REFLEX −6/−5/−4（旧Final Fortuneと効果同一） | 原名Wax // Wane。片面でクリーチャーを強化、片面でエンチャントを破壊する分割カード |
+| `final-fortune` | **[Wax and Wane](https://mtg.wtf/card/inv/296a/Wax)** | 各自軍Faction Phase開始時50%抽選。好調SHOOTING・MELEE +4/+5/+6、不調REFLEX −6/−5/−4（旧Final Fortuneと効果同一） | 原名Wax // Wane。片面でクリーチャーを強化、片面でエンチャントを破壊する分割カード |
 | `kill-momentum-growth` | **[Figure of Destiny](https://scryfall.com/card/eve/139/figure-of-destiny)**<br>![Figure of Destiny MTG card](https://api.scryfall.com/cards/eve/139?format=image&version=small) | 本人による敵撃破1体ごとにSHOOTING・MELEE各+2。最大累積2/4/6体（最大各+4/+8/+12）、Mission内限定 | 段階的に能力を強化できるクリーチャー。原カードの能力値やコストは移植しない |
 | `avoid-fate` | **[Avoid Fate](https://scryfall.com/card/leg/175/avoid-fate)**<br>![Avoid Fate MTG card](https://api.scryfall.com/cards/leg/175?format=image&version=small) | 敵の適格な1Attackを全Hit回避するたびREFLEX +1、最大2/4/6回（最大+2/+4/+6）。Mission内限定、被弾しても維持 | 自分のパーマネントを対象とするインスタントまたはオーラ呪文を打ち消す |
 | `paired-fire` | **[Dual Strike](https://scryfall.com/card/khm/132/dual-strike)** | 同一のAssault Rifle／SMG／Shotgun2丁連動FIRE。各銃HitRaw−40/−30/−20pt、SHOOTING/REFLEX平均、片丁のみなら通常射撃 | インスタント／ソーサリーをコピーする能力を持つ呪文 |
@@ -31,6 +31,11 @@
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 | `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
 | `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv1: HP50%以下でArmor+2。Lv2: HP25%以下でさらにArmor+4（合計+6）。Lv3: そのArmor強化に加えAttack開始HP2以上ならHP1生存（同Attackの全Hit） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+
+## v0.52 — Wax and Wane display name (2026-11-01)
+
+- `final-fortune` adopts **Wax and Wane** as its final displayed English skill name. Earlier name: Wax + Wane; before that Mercurial Mind. Source and inspiration: MTG's existing split card **Wax // Wane** (Invasion #296), whose **exact** printed/Oracle card-name syntax differs from this intentional natural-language adaptation. Source link in the registry points to the original card, not to a card literally titled Wax and Wane.
+- No gameplay, ID, rank, save or roster-count changes. Current 27 confirmed (25 distinct names), 4 provisional, 15 archived.
 
 ## v0.51 — Dual Strike / Wax + Wane (2026-11-01)
 
