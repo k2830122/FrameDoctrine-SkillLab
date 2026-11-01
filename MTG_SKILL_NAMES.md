@@ -1,6 +1,6 @@
-# Approved MTG Skill Names — v0.47 (2026-11-01)
+# Approved MTG Skill Names — v0.48 (2026-11-01)
 
-**25 confirmed skills (23 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
+**26 confirmed skills (24 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
 | Skill ID | Current name / MTG card image | Skill effect | Source card's original effect (brief) |
 | --- | --- | --- | --- |
@@ -24,11 +24,18 @@
 | `leave-no-trace` | **[Leave No Trace](https://scryfall.com/card/rav/23/leave-no-trace)**<br>![Leave No Trace MTG card](https://api.scryfall.com/cards/rav/23?format=image&version=small) | 常時Signature −1/−2/−3とDetection Power −4/−8/−12の交換。基本索敵予算−1/−2/−3 | 指定色のエンチャントを全て破壊 |
 | `solo-operator` | **[Audacity](https://scryfall.com/card/bro/169/audacity)**<br>![Audacity MTG card](https://api.scryfall.com/cards/bro/169?format=image&version=small) | 味方が4Hex以内にいないとき基礎INSIGHT依存でSHOOTING上昇 | クリーチャーに+2/+0とトランプル、死亡時ドロー |
 | `pick-your-ground` | **[Dead of Winter](https://scryfall.com/card/mh1/85/dead-of-winter)**<br>![Dead of Winter MTG card](https://api.scryfall.com/cards/mh1/85?format=image&version=small) | 森林・瓦礫・掩体などの地形防御を追加−5/−10/−15pt | 氷雪パーマネント数に応じて非氷雪クリーチャー全体を弱体化 |
+| `leg-disrupting-shot` | **[Impede Momentum](https://scryfall.com/card/dmu/54/impede-momentum)**<br>![Impede Momentum MTG card](https://api.scryfall.com/cards/dmu/54?format=image&version=small) | 通常Direct FIRE／INTERCEPTで敵Unitへ1Hit以上命中した後、基礎INSIGHT×Lv÷2%で1Attackに1回の移動阻止抽選（0.5%保持）。移動だけ阻止し攻撃可。旧IDを維持 | 対象をタップし麻痺カウンターを置き、占術1。次のアンタップを遅らせる |
 | `fault-line` | **[Fault Line](https://scryfall.com/card/usg/185/fault-line)**<br>![Fault Line MTG card](https://api.scryfall.com/cards/usg/185?format=image&version=small) | CritPen成功直後から対象Armor −2/−4/−6（同Attack後続Hitにも適用） | 地上クリーチャーと各プレイヤーへXダメージ |
 | `survival-cache` | **[Survival Cache](https://scryfall.com/card/roe/44/survival-cache)**<br>![Survival Cache MTG card](https://api.scryfall.com/cards/roe/44?format=image&version=small) | Repair Kitの回復量8HPを12/16/20HPへ強化 | 2点回復、条件付きドロー、反復 |
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 | `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
 | `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv1: HP50%以下でArmor+2。Lv2: HP25%以下でさらにArmor+4（合計+6）。Lv3: そのArmor強化に加えAttack開始HP2以上ならHP1生存（同Attackの全Hit） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+
+## v0.48 — Impede Momentum officially named (2026-11-01)
+
+- **[Impede Momentum](https://scryfall.com/card/dmu/54/impede-momentum)** is adopted for the former provisional movement suppression skill `leg-disrupting-shot`; stable ID, three level percentages and INSIGHT dependency are unchanged. The skill is now confirmed and grouped with enemy debuffs.
+- **26 confirmed skills, 24 unique approved MTG titles, 7 provisional, 13 archived**. Audacity and Brink of Disaster remain unchanged. No other confirmed skill was renamed.
+- Naming-family audit and tentative semantic mismatch suggestions are in the v0.48 README / design notes; these suggestions authorize no additional name changes.
 
 ## v0.47 — Movement suppression probability changed (2026-11-01)
 

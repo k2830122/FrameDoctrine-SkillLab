@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.47（2026-11-01）：** 現役33件（確定25、検討中8）＋アーカイブ・再設計待ち13件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.48（2026-11-01）：** 現役33件（確定26、検討中7）＋アーカイブ・再設計待ち13件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -611,3 +611,13 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - **要検討：Audacity と Brink of Disaster**。双方の現行式 `1+floor(基礎INSIGHT×Lv/6)` は、INSIGHTを1上げてもSkillの効果に変化がない値が存在し、次の1Pで突然SHOOTING/REFLEXが+1される。単に`floor`を除去して小数SHOOTING/REFLEXを作ると、既存の最終整数HitChance処理で新たな見えない段差が生じ、根本解決ではない。効果そのものをより滑らかな数値にするか、INSIGHT依存を外してLvごとの固定効果とする等の再設計を議論する。ユーザーの明示承認前に変更しない。
 - **残るシステム上の段差**：`BasicDetectionBudget=floor(DetectionPower/4)` は本編Core由来なので、INSIGHT単独への1P投資では索敵範囲に差が出ないことがあり得る。これも本編の索敵仕様として長期的には検討対象だが、このスキル更新ではDetection式を変更しない。新しい移動阻止確率は、少なくとも該当Skill取得中のINSIGHT+1が直接の追加利益になるよう意図したもの。
 - **開発研究用Skill Lab**では検証のため数式を残してよい。最終製品UIにはそれをコピーせず、効果値と1P差分のみ提示する。確定25・未確定8・アーカイブ13の件数は不変。本編Core・保存キー`fd-skill-lab-v1`・既存IDは不変。
+
+
+## 2026-11-01 — v0.48：Impede Momentum正式採用・現役名称レビュー
+
+- `leg-disrupting-shot` は旧仮称「脚部制圧射撃（仮）」から **Impede Momentum** ([MTG DMU #54](https://scryfall.com/card/dmu/54/impede-momentum))に正式改名。適用範囲・発動確率・INSIGHT依存・多段Hitで追加判定1回・移動のみ阻害・IR-9の将来廃止方針はv0.47のまま。移動阻止は敵弱体化カテゴリーに分類し、同カテゴリーのShadow of Doubt（REFLEX低下）・Fault Line（Armor低下）と並べる。旧Skill IDおよび取得Lvは保存互換のため変更しない。
+- 現役33件＝**確定26、研究中7**。アーカイブ13件で変更なし。命名は既存MTGカードの実在名に限定。Tempered Steelの3機体版が同名なので確定26件の固有名は24。研究中7件は日本語仮称であり、不統一は仕様決定前の暫定状態。
+- 現役確定名の傾向：①戦術的な行為・判断（Seize Opportunity, Decisive Denial, Antagonize, Confront the Unknown, Impede Momentum）、②運動・物理（Escape Velocity, Collision Course, Leave No Trace, Fault Line）、③運命・危機と人格（Audacity, Figure of Destiny, Avoid Fate, Brink of Disaster, Against All Odds, Glimmer of Genius）、④装備・兵站・強化（Tempered Steel, Survival Cache, Iron Verdict, Last Word, No Quarter）等が混在するが、技能の個性を表すため許容する。
+- 改名検討のみ（**未確定・変更しない**）：Dead of Winterは冬季以外の森林・瓦礫・掩体にも適用するため題意と一部ずれる。Survival Cacheは回復効率であり備蓄を増やす能力ではない。Tempered SteelはArmorではなく機体別SHOOTING/MELEEを強化する。Glimmer of Geniusは不調時REFLEX低下という二面性が名前から伝わりにくい。名前の見直しは任意で、今すぐの改名を推奨するものではない。
+- AudacityとBrink of Disasterはユーザー判断により**現行のINSIGHT依存整数Ability補正式を維持**し、追加の小数能力値化／索敵式変更は行わない。
+- 本編Core・旧ID・保存形式`fd-skill-lab-v1`・育成上限の仮設定は不変。
