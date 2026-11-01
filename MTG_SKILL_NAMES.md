@@ -1,6 +1,6 @@
-# Approved MTG Skill Names — v0.45 (2026-10-31)
+# Approved MTG Skill Names — v0.46 (2026-11-01)
 
-**24 confirmed skills (22 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
+**25 confirmed skills (23 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
 | Skill ID | Current name / MTG card image | Skill effect | Source card's original effect (brief) |
 | --- | --- | --- | --- |
@@ -12,22 +12,38 @@
 | `avoid-fate` | **[Avoid Fate](https://scryfall.com/card/leg/175/avoid-fate)**<br>![Avoid Fate MTG card](https://api.scryfall.com/cards/leg/175?format=image&version=small) | 敵の適格な1Attackを全Hit回避するたびREFLEX +1、最大2/4/6回（最大+2/+4/+6）。Mission内限定、被弾しても維持 | 自分のパーマネントを対象とするインスタントまたはオーラ呪文を打ち消す |
 | `marksmanship` | **[Seize Opportunity](https://scryfall.com/card/tdm/119/seize-opportunity)**<br>![Seize Opportunity MTG card](https://api.scryfall.com/cards/tdm/119?format=image&version=small) | 通常MOVE前の対Unit射撃で SHOOTING +2/+4/+6（旧Iron Verdict） | 上2枚を一時使用可能、または最大2体を+2/+1 |
 | `sniper-rifle-proficiency` | **[Last Word](https://scryfall.com/card/dst/23/last-word)**<br>![Last Word MTG card](https://api.scryfall.com/cards/dst/23?format=image&version=small) | Sniper Rifleによる適格な射撃中のみ SHOOTING +2/+4/+6 | 打ち消されない呪文で対象の呪文を打ち消す |
-| `heavy-rail-proficiency` | **[Iron Verdict](https://scryfall.com/card/khm/17/iron-verdict)**<br>![Iron Verdict MTG card](https://api.scryfall.com/cards/khm/17?format=image&version=small) | Heavy Railでの適格な射撃中だけSHOOTING +2/+4/+6 | タップ状態のクリーチャーへ5ダメージ、予顕あり |
+| `heavy-rail-proficiency` | **[Iron Verdict](https://scryfall.com/card/khm/17/iron-verdict)**<br>![Iron Verdict MTG card](https://api.scryfall.com/cards/khm/17?format=image&version=small) | Heavy Autocannon（武装容量3・Shots2）での適格な射撃中のみSHOOTING +2/+4/+6。旧IDは保存互換保持、Heavy Railには無効 | タップ状態クリーチャーへ5ダメージ、予顕あり |
 | `mobile-evasion` | **[Escape Velocity](https://scryfall.com/card/thb/132/escape-velocity)**<br>![Escape Velocity MTG card](https://api.scryfall.com/cards/thb/132?format=image&version=small) | 通常MOVEで3Hex以上移動すると REFLEX +2/+4/+6 | 速攻と攻撃修整を付与、脱出可能 |
 | `momentum-melee` | **[Collision Course](https://scryfall.com/card/dft/10/collision-course)**<br>![Collision Course MTG card](https://api.scryfall.com/cards/dft/10?format=image&version=small) | 3Hex以上通常MOVE後の白兵で MELEE +2/+4/+6（旧Through the Breach） | 自軍クリーチャー／機体数に応じて対象へダメージ、またはアーティファクト破壊 |
 | `assault-lance-proficiency` | **[No Quarter](https://scryfall.com/card/tmp/193/no-quarter)**<br>![No Quarter MTG card](https://api.scryfall.com/cards/tmp/193?format=image&version=small) | Assault Lanceによる適格な白兵中のみ MELEE +2/+4/+6 | パワーの小さいクリーチャーとのブロック戦闘で破壊 |
 | `brace-discipline` | **[Decisive Denial](https://scryfall.com/card/stx/382/decisive-denial)**<br>![Decisive Denial MTG card](https://api.scryfall.com/cards/stx/382?format=image&version=small) | 味方への合法なCOVERを実行したAttack中だけ自機Armor +2/+4/+6。REFLEX・Missile Intercept強化なし。Reaction保持だけでは無効 | クリーチャー間の格闘か、相手の呪文の打ち消しを選択 |
-| `conceal-discipline` | **[Moment of Silence](https://scryfall.com/card/mmq/28/moment-of-silence)**<br>![Moment of Silence MTG card](https://api.scryfall.com/cards/mmq/28?format=image&version=small) | CONCEAL時Signature低下（暫定−2/−3/−4）、自機センサー停止 | 相手の次の戦闘フェイズを飛ばす |
+| `brace-antagonize` | **[Antagonize](https://scryfall.com/card/snc/100/antagonize)**<br>![Antagonize MTG card](https://api.scryfall.com/cards/snc/100?format=image&version=small) | 通常BRACE実行中、敵AIの合法かつ既知のAttack標的としての優先度をLvに応じて増加（具体的加点は未定・強制対象指定なし） | 対象クリーチャーに攻撃修整を与える |
 | `fired-up` | **[Repercussion](https://scryfall.com/card/uds/95/repercussion)**<br>![Repercussion MTG card](https://api.scryfall.com/cards/uds/95?format=image&version=small) | 敵の攻撃でHitを受けた次のActivation、SHOOTING・MELEE +6/+9/+12 | クリーチャーが受けたダメージをそのコントローラーにも与える |
 | `scan-interpretation` | **[Confront the Unknown](https://scryfall.com/card/soi/198/confront-the-unknown)**<br>![Confront the Unknown MTG card](https://api.scryfall.com/cards/soi/198?format=image&version=small) | ACTIVE SCAN中だけ INSIGHT +4/+8/+12、scanner Signature合計 +3/+4/+5 | 調査を行い、手掛かり数に応じてクリーチャーを強化 |
 | `anti-air-recon` | **[Sight Beyond Sight](https://scryfall.com/card/dtk/75/sight-beyond-sight)**<br>![Sight Beyond Sight MTG card](https://api.scryfall.com/cards/dtk/75?format=image&version=small) | 飛行型敵への自機索敵判定で対象Signature項+1/+2/+3（実値変更なし） | 名前だけを採用。原カードのゲーム効果は移植しない |
+| `leave-no-trace` | **[Leave No Trace](https://scryfall.com/card/rav/23/leave-no-trace)**<br>![Leave No Trace MTG card](https://api.scryfall.com/cards/rav/23?format=image&version=small) | 常時Signature −1/−2/−3とDetection Power −4/−8/−12の交換。基本索敵予算−1/−2/−3 | 指定色のエンチャントを全て破壊 |
 | `solo-operator` | **[Audacity](https://scryfall.com/card/bro/169/audacity)**<br>![Audacity MTG card](https://api.scryfall.com/cards/bro/169?format=image&version=small) | 味方が4Hex以内にいないとき基礎INSIGHT依存でSHOOTING上昇 | クリーチャーに+2/+0とトランプル、死亡時ドロー |
 | `pick-your-ground` | **[Dead of Winter](https://scryfall.com/card/mh1/85/dead-of-winter)**<br>![Dead of Winter MTG card](https://api.scryfall.com/cards/mh1/85?format=image&version=small) | 森林・瓦礫・掩体などの地形防御を追加−5/−10/−15pt | 氷雪パーマネント数に応じて非氷雪クリーチャー全体を弱体化 |
 | `fault-line` | **[Fault Line](https://scryfall.com/card/usg/185/fault-line)**<br>![Fault Line MTG card](https://api.scryfall.com/cards/usg/185?format=image&version=small) | CritPen成功直後から対象Armor −2/−4/−6（同Attack後続Hitにも適用） | 地上クリーチャーと各プレイヤーへXダメージ |
 | `survival-cache` | **[Survival Cache](https://scryfall.com/card/roe/44/survival-cache)**<br>![Survival Cache MTG card](https://api.scryfall.com/cards/roe/44?format=image&version=small) | Repair Kitの回復量8HPを12/16/20HPへ強化 | 2点回復、条件付きドロー、反復 |
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 | `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
-| `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv別Attack開始HP条件で致命的AttackをHP1で耐える（回数制限なし、同一Attack全Hit保証） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+| `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv1: HP50%以下でArmor+2。Lv2: HP25%以下でさらにArmor+4（合計+6）。Lv3: そのArmor強化に加えAttack開始HP2以上ならHP1生存（同Attackの全Hit） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+
+## v0.46 — Antagonize / Leave No Trace and revisions (2026-11-01)
+
+- **Against All Odds** (`lethal-endurance`) now upgrades through HP ≤50%: Armor+2 (Lv1), HP ≤25%: +4 more Armor (+6 total from Lv2), then at Lv3 survival of one lethal Attack down to HP1 if starting at HP≥2. Original Lv1/2 HP1-survival variants are superseded.
+- **Iron Verdict** (`heavy-rail-proficiency`) now strengthens Heavy Autocannon (Armament Capacity 3, 2 Hit Attempts), **not** Heavy Rail. Its stable historical ID remains unchanged to avoid relabeling and breaking saved builds.
+- New **[Antagonize](https://scryfall.com/card/snc/100/antagonize)** (`brace-antagonize`) is a BRACE-triggered enemy targeting-utility skill with Lv1–3 tiers but **unspecified numerical utility** pending real AI tuning. No automatic Track or forced targeting.
+- New **[Leave No Trace](https://scryfall.com/card/rav/23/leave-no-trace)** (`leave-no-trace`) provides persistent Signature −1/−2/−3 and Detection Power −4/−8/−12, a deliberate Sensor-budget tradeoff.
+- Previous **Moment of Silence** (`conceal-discipline`) is paused and moved to archived research pending redesign; existing skill purchases are migrated to `retiredSkillLevels` with rank points refunded. The historical card name and unchanged prior specification are documented below.
+- **25 confirmed, 23 distinct MTG titles**, 8 provisional, 13 archived/paused. No Core changes, no new game action; the planned enemy interleaving remains a separate game implementation.
+
+### Archived approved name — Moment of Silence (v0.45, paused v0.46)
+
+| Skill ID | Historical name / MTG card | Archived v0.45 effect |
+| --- | --- | --- |
+| `conceal-discipline` | **[Moment of Silence](https://scryfall.com/card/mmq/28/moment-of-silence)**<br>![Moment of Silence MTG card](https://api.scryfall.com/cards/mmq/28?format=image&version=small) | CONCEAL時Signature低下（暫定−2/−3/−4）、自機センサー停止 | 相手の次の戦闘フェイズを飛ばす |
 
 ## v0.45 — COVER opportunity study (2026-10-31)
 

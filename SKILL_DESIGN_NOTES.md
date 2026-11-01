@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.45（2026-10-31）：** 現役32件（確定24、検討中・保留8）＋アーカイブ12件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.46（2026-11-01）：** 現役33件（確定25、検討中8）＋アーカイブ・再設計待ち13件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -575,3 +575,30 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - **Skill Labのwhat-if**：ペアへの敵Attack回数 × 護衛対象への標的率 × COVER適格攻撃率 × 隣接＆Reaction保持率 × COVERを選ぶ率、を独立仮定の概算回数として表示。これはAI推定やHeadless Battle結果ではなく、条件の感度を見る研究ツール。別表では本編の確定Armor・Penetration・最低1Damage式を用い、Light/Standard/Heavyと代表的なWeapon Power/Penの組合せについて、**命中した通常1Hit・CritPenなし**を比較。被弾確率、CritPen、HP上限、多段Hit、攻撃標的AI等は実行しない。過去の仮定付き期待ダメージ値は実測と誤認しない。
 - **最新Core武器設計との整合**：2026-10-29改訂の確定武器表に従いAssault Lance射程1・CritPen YES、Heavy Autocannon／Shotgun／Recoilless Rifle／Explosive Axe CritPen YESを現役の関連Skill説明に反映。Combat Knifeは将来装備から退役予定。ただし現時点の本編WeaponCatalog.csは旧設定のままで、Skill Lab以外を改変しない。
 - 24確定・8検討中／アーカイブ12、`fd-skill-lab-v1`・各ID・取得Lvの互換維持。使用頻度とCOVERしたい攻撃の割合についてはHeadless Battle運用後に再評価する。
+
+
+## 2026-11-01 — v0.46：Against All Odds／Iron Verdict再設計、Antagonize／Leave No Trace確定
+
+**Against All Odds（既存 `lethal-endurance`）**
+
+- Lv1: 現在HPが最大HPの50%以下（かつ生存）ならArmor +2。Lv2: HP25%以下でさらにArmor +4、合計+6。各Hitのダメージ解決後に新閾値へ達した場合、後続Hitのみ補正を適用。HP回復で閾値を上回れば失効。既存Brink of DisasterはREFLEX強化のままで、双方を組み合わせられる。Decisive Denialの合法COVER時Armor補正とも加算可能。
+- Lv3では上記のLv1・Lv2効果を保持しつつ、**敵Attack開始時HPが2以上**なら、そのAttackでの致命ダメージをHP1で耐える。多段Hitの同Attack全体で保証を維持。ただし開始時HP1の別Attackでは発動しない。Lv1/2ではHP1生存保証なし。通常Armor／Penetration・CritPen装甲無視・最低1Damageは維持。従来の「低いLvの方が生存保証条件が緩い／Lv3を取る動機が弱い」という保険型を廃止。
+
+**Iron Verdict（既存 `heavy-rail-proficiency`）**
+
+- スキル名・**内部IDは保存互換のため変更しない**。対象は容量4のHeavy Railではなく**容量3のHeavy Autocannonのみ**に切替。実効SHOOTING +2/+4/+6（通常HitRaw +6/+12/+18pt）。Standardは全武装容量、Heavyは残り1容量を使用可能。Heavy Autocannonは1AttackでShots2・AmmoCost2・Magazine6、移動命中補正−10、射程2–7。CritPen YESは2026-10-29最新確定の**将来設計**で、Coreの現行コードは未移行。
+
+**Antagonize（新規 `brace-antagonize`、[MTG](https://scryfall.com/card/snc/100/antagonize)）**
+
+- 通常**BRACEを実際に実行**すると、BRACEが有効な間、敵AIがこの機体を**合法かつ既知のAttack候補**として評価する際の標的UtilityをLv別に加点する。直接攻撃対象を強制変更したり、敵のTrackを新設したり、隠れているUnitを見透かさせたりはしない。敵の任務や射程、適格な攻撃対象評価を維持する。BRACEはMain Actionを消費し、WAITによるReactionを与えない。Lv1→Lv3で加点は大きくなるが、**具体的なUtility係数は現時点で未確定**。これを「効果の骨格確定・数値調整待ち」として確定技能に掲載。本編Alien AI・交互差込方式の実装は別タスク。
+
+**Leave No Trace（新規 `leave-no-trace`、[MTG](https://scryfall.com/card/rav/23/leave-no-trace)）**
+
+- 常時**Signature −1/−2/−3**と引換えに、**Detection Power −4/−8/−12**。BasicDetectionBudget=floor(DetectionPower/4)なので、DP減少に伴う基本索敵予算の低下は厳密に1/2/3。対象Signature減少も相手側のDetectionBudgetを各Lv減らす。必ずしも同じHex数だけ索敵範囲が縮むわけではなく、地形Sensor Cost・障害物・煙の影響がある。
+- 本人の通常センサーは低下するが、味方Datalinkの合法Track受信は継続可能。ACTIVE SCANの瞬間DP+12はLv3の通常DP−12をその瞬間だけ相殺する。Scanner Signature・FIRE Signatureその他の加算成分は消えず、既存Trackを強制消去もしない。装備・コマンド追加なし。Light/Standard/Heavyどれにも使える。
+
+**Moment of Silence**
+
+- `conceal-discipline` はCONCEAL連動技能としての価値が新しい常時隠密型と重なり、**再設計待ちとしてアーカイブ**。現役スキルから外すが旧技能定義は研究履歴に保存。過去の取得Lvを`retiredSkillLevels`へ保管して1P/レベルを再配分可能にする。Leave No Traceへ勝手にランク移行しない。本編のCONCEALそのものと物理Optionは維持。
+
+- **全体：現役33（確定25・検討中8）、アーカイブ13**。取得総枠12Pは仮置き。技能配分／カード・解説／JSON保存の互換を維持。本編Core未変更。現行ゲームの敵Faction Phaseはまだ存在し、プレイヤー1機行動ごとに敵行動を割り込ませる新しい進行方式は別途将来実装の構想。古い自軍Faction Phase依存スキルの持続時点もその際に整理する。
