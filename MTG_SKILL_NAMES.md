@@ -1,4 +1,4 @@
-# Approved MTG Skill Names — v0.46 (2026-11-01)
+# Approved MTG Skill Names — v0.47 (2026-11-01)
 
 **25 confirmed skills (23 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
@@ -29,6 +29,12 @@
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 | `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
 | `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv1: HP50%以下でArmor+2。Lv2: HP25%以下でさらにArmor+4（合計+6）。Lv3: そのArmor強化に加えAttack開始HP2以上ならHP1生存（同Attackの全Hit） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+
+## v0.47 — Movement suppression probability changed (2026-11-01)
+
+- The existing provisional skill `leg-disrupting-shot` remains unnamed in English; new effect: **base INSIGHT × Lv / 2%**, without truncating half-percentage-point chances, on an eligible enemy Unit-targeted FIRE/INTERCEPT Attack with at least one Hit (once per Attack, never once per Hit). Its eventual MTG card title is still undecided.
+- IR-9's innate Forced Halt is superseded in **future design**, but current production Core is not migrated. Audacity and Brink of Disaster's hidden base-INSIGHT floor breakpoints are flagged for future redesign; their mechanics remain unchanged. Final game UI should present actual Skill values and hypothetical +1 Ability deltas, rather than exposing internal formulas.
+- Still **25 confirmed skills / 23 distinct MTG names**, 8 provisional, 13 archived.
 
 ## v0.46 — Antagonize / Leave No Trace and revisions (2026-11-01)
 
