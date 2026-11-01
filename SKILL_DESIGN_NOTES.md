@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.50（2026-11-01）：** 現役31件（確定26、検討中5）＋アーカイブ・再設計待ち15件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.51（2026-11-01）：** 現役31件（確定27、検討中4）＋アーカイブ・再設計待ち15件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -644,3 +644,16 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - `kill-momentum-growth`（Figure of Destiny）と `avoid-fate`（Avoid Fate）を共通の **「ミッション内成長」** カテゴリへ移動。どちらも戦闘中の条件達成で実効Abilityが積み上がり、Mission終了時にリセットするため。この分類変更は効果の変更を含まない。
 - この変更では **名称とカテゴリだけ** を更新。全Skill ID・取得Lv・コスト・計算式・発動条件・効果・確定/研究状態・保存キー `fd-skill-lab-v1`・既存保存データとの互換性を維持。現役31（確定26／研究5）、アーカイブ15。本編Core変更なし。
 - MTGカードとして実在する同名タイトルを検証できない新名称について、出典や画像URLを捏造しない。過去の改名履歴は履歴として残す。
+
+
+## 2026-11-01 — v0.51 Dual Strike確定／Wax + Wane採用
+
+**Dual Strike**（既存ID `paired-fire`）：対象はAssault Rifle・SMG・Shotgun各容量1、同一種2丁の連動装備。通常Main ActionのUnit対象Direct FIREで双方が発砲可能なら必ず同時射撃（任意OFF・追加コマンド・追加Optionなし）、独立した2つのAttackを一つのMain Action内で実行する。片方だけ発砲可能なら通常単独FIREへフォールバック。装弾・RELOADはそれぞれ独立。
+
+- **Lv1/2/3**：双銃の各HitRawへ−40/−30/−20pt。二丁用Ability=`floor((effective SHOOTING+effective REFLEX)/2)`を通常のSHOOTING項・CritPen基本式RelevantSkillの代わりに使用。100%超過命中値は各Attackでペナルティ後に算出。片丁時は平均値も二丁ペナルティも適用せず通常SHOOTINGと通常CritPen式に戻す。
+- **同時性**：両銃は攻撃開始時の敵Armor・REFLEX・HPなどを共有し、片方のDamage・Fault Line等による状態変化は、もう片丁のHit／CritPen／Damageに適用しない。各銃内部では多段Hitを従来どおり順次解決する（同じSMGの先行Hitで発生したFault Lineは同銃後続Hitに有効）。演出・内部処理順で結果は変わらない。両方の弾薬は発砲時消費し、先に表示した側が敵を倒しても他方は発砲済み・弾薬消費済み。自動転射なし。
+- **範囲**：SMG×2の最大6Hit判定・弾薬3+3、Assault Rifle／Shotgun×2の最大2Hit判定・弾薬1+1。容量2以上の銃、Disposable Rocketなど指定外の武器、INTERCEPT／ミサイル／Area／Hex／白兵は対象外。COVER／Reaction／Signatureイベント詳細は別途実装検証。
+
+**Wax + Wane**（既存ID `final-fortune`）：旧Mercurial Mindを改名。正式なMTG原カードは分割カードWax // Wane（Invasion #296）で、ゲーム表示名はWax + Wane。各自軍Faction Phaseの独立50/50抽選、好調SHOOTING・MELEE +4/+5/+6／不調REFLEX −6/−5/−4の効果・取得データはすべて不変。
+
+**現役31（確定27／研究4）・アーカイブ15。保存互換と本編Core不変。**

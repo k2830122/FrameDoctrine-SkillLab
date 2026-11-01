@@ -1,15 +1,16 @@
-# Approved Skill Names — v0.50 (2026-11-01)
+# Approved Skill Names — v0.51 (2026-11-01)
 
-**26 confirmed skills (24 distinct names; the 3 Machine Over Matter variants share one title).** New names are user-approved; exact MTG-card provenance is not asserted when unverified. Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
+**27 confirmed skills (25 distinct names; the 3 Machine Over Matter variants share one title).** New names are user-approved; exact MTG-card provenance is not asserted when unverified. Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
 | Skill ID | Current name / MTG card image | Skill effect | Source card's original effect (brief) |
 | --- | --- | --- | --- |
-| `frame-light` | **Machine Over Matter** (light) | Light搭乗時 SHOOTING・MELEE +1/+2/+3 | 同名MTGカードの出典未確認 |
-| `frame-standard` | **Machine Over Matter** (standard) | Standard搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
-| `frame-heavy` | **Machine Over Matter** (heavy) | Heavy搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
-| `final-fortune` | **Mercurial Mind** | 各自軍Faction Phase開始時50%抽選。好調SHOOTING・MELEE +4/+5/+6、不調REFLEX −6/−5/−4（旧Final Fortuneと効果同一） | 同名MTGカードの出典未確認 |
+| `frame-light` | **[Machine Over Matter](https://scryfall.com/card/bro/57/machine-over-matter)** (light) | Light搭乗時 SHOOTING・MELEE +1/+2/+3 | アーティファクト・クリーチャーがいるとコスト減少、非土地パーマネントを手札へ戻す |
+| `frame-standard` | **[Machine Over Matter](https://scryfall.com/card/bro/57/machine-over-matter)** (standard) | Standard搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
+| `frame-heavy` | **[Machine Over Matter](https://scryfall.com/card/bro/57/machine-over-matter)** (heavy) | Heavy搭乗時 SHOOTING・MELEE +1/+2/+3 | 同上 |
+| `final-fortune` | **[Wax + Wane](https://mtg.wtf/card/inv/296a/Wax)** | 各自軍Faction Phase開始時50%抽選。好調SHOOTING・MELEE +4/+5/+6、不調REFLEX −6/−5/−4（旧Final Fortuneと効果同一） | 原名Wax // Wane。片面でクリーチャーを強化、片面でエンチャントを破壊する分割カード |
 | `kill-momentum-growth` | **[Figure of Destiny](https://scryfall.com/card/eve/139/figure-of-destiny)**<br>![Figure of Destiny MTG card](https://api.scryfall.com/cards/eve/139?format=image&version=small) | 本人による敵撃破1体ごとにSHOOTING・MELEE各+2。最大累積2/4/6体（最大各+4/+8/+12）、Mission内限定 | 段階的に能力を強化できるクリーチャー。原カードの能力値やコストは移植しない |
 | `avoid-fate` | **[Avoid Fate](https://scryfall.com/card/leg/175/avoid-fate)**<br>![Avoid Fate MTG card](https://api.scryfall.com/cards/leg/175?format=image&version=small) | 敵の適格な1Attackを全Hit回避するたびREFLEX +1、最大2/4/6回（最大+2/+4/+6）。Mission内限定、被弾しても維持 | 自分のパーマネントを対象とするインスタントまたはオーラ呪文を打ち消す |
+| `paired-fire` | **[Dual Strike](https://scryfall.com/card/khm/132/dual-strike)** | 同一のAssault Rifle／SMG／Shotgun2丁連動FIRE。各銃HitRaw−40/−30/−20pt、SHOOTING/REFLEX平均、片丁のみなら通常射撃 | インスタント／ソーサリーをコピーする能力を持つ呪文 |
 | `marksmanship` | **[Seize Opportunity](https://scryfall.com/card/tdm/119/seize-opportunity)**<br>![Seize Opportunity MTG card](https://api.scryfall.com/cards/tdm/119?format=image&version=small) | 通常MOVE前の対Unit射撃で SHOOTING +2/+4/+6（旧Iron Verdict） | 上2枚を一時使用可能、または最大2体を+2/+1 |
 | `sniper-rifle-proficiency` | **[Last Word](https://scryfall.com/card/dst/23/last-word)**<br>![Last Word MTG card](https://api.scryfall.com/cards/dst/23?format=image&version=small) | Sniper Rifleによる適格な射撃中のみ SHOOTING +2/+4/+6 | 打ち消されない呪文で対象の呪文を打ち消す |
 | `heavy-rail-proficiency` | **[Iron Verdict](https://scryfall.com/card/khm/17/iron-verdict)**<br>![Iron Verdict MTG card](https://api.scryfall.com/cards/khm/17?format=image&version=small) | Heavy Autocannon（武装容量3・Shots2）での適格な射撃中のみSHOOTING +2/+4/+6。旧IDは保存互換保持、Heavy Railには無効 | タップ状態クリーチャーへ5ダメージ、予顕あり |
@@ -26,10 +27,16 @@
 | `pick-your-ground` | **[Privileged Position](https://scryfall.com/card/rav/251/privileged-position)**<br>![Privileged Position MTG card](https://api.scryfall.com/cards/rav/251?format=image&version=small) | 森林・瓦礫・掩体などの地形防御を追加−5/−10/−15pt | 自軍の他のパーマネントに呪禁を付与 |
 | `leg-disrupting-shot` | **[Impede Momentum](https://scryfall.com/card/dmu/54/impede-momentum)**<br>![Impede Momentum MTG card](https://api.scryfall.com/cards/dmu/54?format=image&version=small) | 通常Direct FIRE／INTERCEPTで敵Unitへ1Hit以上命中した後、基礎INSIGHT×Lv÷2%で1Attackに1回の移動阻止抽選（0.5%保持）。移動だけ阻止し攻撃可。旧IDを維持 | 対象をタップし麻痺カウンターを置き、占術1。次のアンタップを遅らせる |
 | `fault-line` | **[Fault Line](https://scryfall.com/card/usg/185/fault-line)**<br>![Fault Line MTG card](https://api.scryfall.com/cards/usg/185?format=image&version=small) | CritPen成功直後から対象Armor −2/−4/−6（同Attack後続Hitにも適用） | 地上クリーチャーと各プレイヤーへXダメージ |
-| `survival-cache` | **Emergency Weld** | Repair Kitの回復量8HPを12/16/20HPへ強化 | 同名MTGカードの出典未確認 |
+| `survival-cache` | **[Emergency Weld](https://scryfall.com/card/bro/93/emergency-weld)** | Repair Kitの回復量8HPを12/16/20HPへ強化 | 墓地のアーティファクト・クリーチャーカードを手札に戻し、1/1アーティファクト・兵士トークンを作る |
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 | `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
 | `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv1: HP50%以下でArmor+2。Lv2: HP25%以下でさらにArmor+4（合計+6）。Lv3: そのArmor強化に加えAttack開始HP2以上ならHP1生存（同Attackの全Hit） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+
+## v0.51 — Dual Strike / Wax + Wane (2026-11-01)
+
+- `paired-fire` confirmed as **Dual Strike** (MTG Kaldheim #132), with simultaneous matched slot-1 weapons and SHOOTING/REFLEX mean replacing ordinary shooting skill, per-gun HitRaw penalty −40/−30/−20. Enemy initial snapshot shared, independent attacks, no cross-gun Fault Line benefit, ordinary one-gun fallback when unavailable.
+- `final-fortune` **Mercurial Mind → Wax + Wane**, after the MTG split card **Wax // Wane** (Invasion #296); + is the display convention.
+- Previously unverified source names **Machine Over Matter** and **Emergency Weld** are MTG cards from The Brothers' War (#57, #93); source links refreshed. Now **27 confirmed / 25 distinct titles**, four provisional, 15 archived. All stable IDs, save data and main-game Core unchanged.
 
 ## v0.50 — Approved renames / new growth category (2026-11-01)
 
