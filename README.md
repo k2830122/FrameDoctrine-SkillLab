@@ -1,6 +1,12 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.48 (2026-11-01).** 33 active skills: **26 confirmed**, 7 provisional; thirteen archived/paused skills. All confirmed skill names are exact MTG card titles; Antagonize's tuning numbers are intentionally pending. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.49 (2026-11-01).** 31 active skills: **26 confirmed**, 5 provisional; fifteen archived/paused skills. All confirmed skill names are exact MTG card titles; Antagonize's tuning numbers are intentionally pending. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. Names of confirmed skills use actual MTG card titles. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.49 — Archive two unconfirmed candidates (2026-11-01)
+
+- **突撃貫徹** (`lance-charge`) and **反射機動（仮）** (`reflex-followup-move`) are archived at the user's request, leaving **31 active (26 confirmed, 5 provisional) and 15 archived/paused**. Both are moved out of active search, filtering and point allocation, with original IDs and complete historical descriptions preserved. On load/import, old purchased ranks migrate into `retiredSkillLevels` and free their points; no ranks transfer to another skill.
+- Existing confirmed Skill names and mechanics are unchanged. **Dead of Winter, Survival Cache, Tempered Steel and Glimmer of Genius** are under naming reconsideration only; do not rename them without a separate decision.
+- Skill Lab remains an acquisition and effect preview, not a combat runtime. Core unchanged.
 
 ## v0.48 — Impede Momentum confirmed and naming audit (2026-11-01)
 

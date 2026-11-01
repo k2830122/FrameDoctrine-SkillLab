@@ -1,4 +1,4 @@
-# Approved MTG Skill Names — v0.48 (2026-11-01)
+# Approved MTG Skill Names — v0.49 (2026-11-01)
 
 **26 confirmed skills (24 distinct MTG names; the 3 Tempered Steel variants share one title).** Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Seize Opportunity and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
@@ -30,6 +30,11 @@
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 | `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
 | `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv1: HP50%以下でArmor+2。Lv2: HP25%以下でさらにArmor+4（合計+6）。Lv3: そのArmor強化に加えAttack開始HP2以上ならHP1生存（同Attackの全Hit） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+
+## v0.49 — Two provisional concepts retired (2026-11-01)
+
+- Archived `lance-charge` (突撃貫徹) and `reflex-followup-move` (反射機動（仮）), while retaining their saved-build retired rank history and refunding Training Points. Neither had an approved MTG title, so the confirmed registry of **26 skills / 24 distinct MTG titles** is unchanged.
+- Now **31 active (26 confirmed / 5 provisional), 15 archived**. Four already-confirmed titles (Dead of Winter, Survival Cache, Tempered Steel, Glimmer of Genius) are *only* under review; no renames yet.
 
 ## v0.48 — Impede Momentum officially named (2026-11-01)
 

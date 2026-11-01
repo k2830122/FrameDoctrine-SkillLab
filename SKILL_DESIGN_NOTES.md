@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.48（2026-11-01）：** 現役33件（確定26、検討中7）＋アーカイブ・再設計待ち13件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.49（2026-11-01）：** 現役31件（確定26、検討中5）＋アーカイブ・再設計待ち15件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -621,3 +621,11 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - 改名検討のみ（**未確定・変更しない**）：Dead of Winterは冬季以外の森林・瓦礫・掩体にも適用するため題意と一部ずれる。Survival Cacheは回復効率であり備蓄を増やす能力ではない。Tempered SteelはArmorではなく機体別SHOOTING/MELEEを強化する。Glimmer of Geniusは不調時REFLEX低下という二面性が名前から伝わりにくい。名前の見直しは任意で、今すぐの改名を推奨するものではない。
 - AudacityとBrink of Disasterはユーザー判断により**現行のINSIGHT依存整数Ability補正式を維持**し、追加の小数能力値化／索敵式変更は行わない。
 - 本編Core・旧ID・保存形式`fd-skill-lab-v1`・育成上限の仮設定は不変。
+
+
+## 2026-11-01 — v0.49：研究案2件をアーカイブ
+
+- **突撃貫徹**（旧ID `lance-charge`）は研究候補から除外。助走後Assault LanceのArmor Penetration +1/+2/+3という仮案を歴史として保持する。既存のCollision Course／No Quarterの仕様には触れない。
+- **反射機動（仮）**（旧ID `reflex-followup-move`）は研究候補から除外。行動終了時にREFLEX×Lv%で追加移動する仮案を歴史として保持する。Light DISPLACE、MSUなど現行移動仕様は変更しない。
+- 両Skillとも旧取得Lvを`retiredSkillLevels`へ移動し、その分のTraining Pointは自動返還して新しい育成へ再配分可能。旧IDを流用しない。
+- 現役31件（**確定26、研究中5**）、アーカイブ15件。命名を再検討するのは**Dead of Winter、Survival Cache、Tempered Steel、Glimmer of Genius**の4件。変更に合意するまでは全て現行名・効果を維持。本編Coreには変更なし。
