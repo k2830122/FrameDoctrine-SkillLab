@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.53（2026-11-02）：** 現役31件（確定27、検討中4）＋アーカイブ・再設計待ち15件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.54（2026-11-02）：** 現役29件（確定25、検討中4）＋アーカイブ・再設計待ち17件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -675,3 +675,12 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 | `leg-disrupting-shot` | Impede Momentum | **Off Balance** | 射撃命中後のINSIGHT依存移動阻止。「転倒」状態の新設はしない。 |
 
 全名称は実在するMTGカード名。変更範囲は表示名・参照名・出典のみ。既存のSkill ID、取得Lv・確定状況、全発動条件、効果と確率、保存キー `fd-skill-lab-v1`、全保存済みビルドの互換性、現役31件（確定27／検討4）・アーカイブ15件は維持。本編Coreは変更しない。旧名称は履歴として残す。
+
+
+## 2026-11-02 — v0.54 WAIT／BRACE／COVER等の廃止方向に伴う退役
+
+- 新しい擬似リアルタイム風のターン制は、全Unit各1回のActivationを維持しながら陣営の手番を混在させる。陣営手番配分・AI個体選択の細部は未確定。新戦闘設計ではWAITによるReaction取得、通常INTERCEPT、敵ミサイルの迎撃、BRACE、CONCEAL、COVERを廃止する方向。Main Actionに適切な対象がなければ行動完了でよい。通常の味方攻撃ミサイルは別概念。
+- **Decisive Denial**（`brace-discipline`）はCOVER専用なので、**Antagonize**（`brace-antagonize`）はBRACE専用なのでアーカイブ。技能を別効果に転用しない。旧Lvは`retiredSkillLevels`へ移行し1Lvあたり1Pを返還。Skill IDは保存互換用に予約。
+- **Leave No Trace**はCONCEALと別の常時スキルなので維持。**Off Balance**は通常FIREからの移動阻止が残るため維持（旧INTERCEPT部分は将来変更の対象）。その他、被弾・回避・索敵・通常射撃に関わる現役スキルは変更なし。
+- 旧COVERの発動機会／Armor軽減what-ifはアクティブ画面から撤去。旧データはアーカイブとGit履歴に残す。新たな行動順制に合わせて将来、Wax and Wane、Shadow of Doubt、Escape Velocity等のFaction Phase基準の時点を見直す必要があるが、今回の変更では未確定の時点を決めない。
+- **現役29（確定25／研究4）・アーカイブ17。メインCore未変更。**

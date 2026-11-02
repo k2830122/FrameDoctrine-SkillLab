@@ -1,6 +1,18 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.53 (2026-11-02).** 31 active skills: **27 confirmed**, 4 provisional; fifteen archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize's tuning numbers are intentionally pending. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.54 (2026-11-02).** 29 active skills: **25 confirmed**, 4 provisional; seventeen archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize and Decisive Denial have been archived under the revised battle command design. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.54 — Archive obsolete BRACE/COVER skills (2026-11-02)
+
+The future interleaved-turn design plans to remove WAIT-granted Reaction, offensive INTERCEPT, enemy Missile Intercept, BRACE, CONCEAL and COVER. A Unit may simply end its activation without a Main Action. Each Unit still acts at most once per Turn, with faction opportunities interleaved by a scheduler yet to be finalized. **The main-game Core has not been modified; it still uses the old rules.**
+
+- **Decisive Denial** (`brace-discipline`) archived because its WAIT/Reaction-based COVER trigger disappears. Former effect was Armor +2/+4/+6 during a substituted attack.
+- **Antagonize** (`brace-antagonize`) archived because its BRACE trigger disappears. Former target-priority bonus was not yet numerically tuned.
+- Removed obsolete COVER opportunity/damage estimator from current Skill Lab UI and removed its JavaScript event handlers. Historical skill definitions and acquisition levels remain in `ARCHIVED_SKILLS` and `retiredSkillLevels`.
+- Existing `fd-skill-lab-v1` saved builds and JSON imports automatically migrate ranks by ID. Former skill points are no longer spent and may be reallocated (e.g., Lv3 + Lv2 returns 5P), without automatically purchasing any other skill. Original Skill IDs remain reserved.
+- **Leave No Trace** stays active because it does not use CONCEAL; **Off Balance** stays active because ordinary Direct FIRE can trigger it. Legacy INTERCEPT-specific branches of Off Balance and Faction Phase-dependent duration language in other live skills require separate future rule adaptation; this archival commit does not invent those changes.
+
+**29 active (25 confirmed + 4 provisional), 17 archived.** No other skill changes, no production Core modifications.
 
 ## v0.53 — Four confirmed skill renames (2026-11-02)
 

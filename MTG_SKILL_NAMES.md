@@ -1,6 +1,6 @@
-# Approved Skill Names — v0.53 (2026-11-02)
+# Approved Skill Names — v0.54 (2026-11-02)
 
-**27 confirmed skills (25 distinct names; the 3 Machine Over Matter variants share one title).** New names are user-approved; exact MTG-card provenance is not asserted when unverified. Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) now absorbs Shielded Passage's former protective role, while Shielded Passage (`guardian-reaction`) is archived and its previous acquisition points are refunded. All other confirmed IDs, including Figure of Destiny, Steady Aim and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
+**25 confirmed active skills (23 distinct names; the 3 Machine Over Matter variants share one title).** New names are user-approved; exact MTG-card provenance is not asserted when unverified. Names are independent of original card mechanics. Decisive Denial (`brace-discipline`) and Antagonize (`brace-antagonize`) are archived after the retirement of COVER and BRACE; Shielded Passage (`guardian-reaction`) remains archived. All other confirmed IDs, including Figure of Destiny, Steady Aim and Iron Verdict, remain unchanged. Original cards are linked and card artwork can be viewed on Scryfall; the inline images below are referenced from the public Scryfall image endpoint, not copied into this repository.
 
 | Skill ID | Current name / MTG card image | Skill effect | Source card's original effect (brief) |
 | --- | --- | --- | --- |
@@ -17,8 +17,6 @@
 | `mobile-evasion` | **[Escape Velocity](https://scryfall.com/card/thb/132/escape-velocity)**<br>![Escape Velocity MTG card](https://api.scryfall.com/cards/thb/132?format=image&version=small) | 通常MOVEで3Hex以上移動すると REFLEX +2/+4/+6 | 速攻と攻撃修整を付与、脱出可能 |
 | `momentum-melee` | **[Collision Course](https://scryfall.com/card/dft/10/collision-course)**<br>![Collision Course MTG card](https://api.scryfall.com/cards/dft/10?format=image&version=small) | 3Hex以上通常MOVE後の白兵で MELEE +2/+4/+6（旧Through the Breach） | 自軍クリーチャー／機体数に応じて対象へダメージ、またはアーティファクト破壊 |
 | `assault-lance-proficiency` | **[No Quarter](https://scryfall.com/card/tmp/193/no-quarter)**<br>![No Quarter MTG card](https://api.scryfall.com/cards/tmp/193?format=image&version=small) | Assault Lanceによる適格な白兵中のみ MELEE +2/+4/+6 | パワーの小さいクリーチャーとのブロック戦闘で破壊 |
-| `brace-discipline` | **[Decisive Denial](https://scryfall.com/card/stx/382/decisive-denial)**<br>![Decisive Denial MTG card](https://api.scryfall.com/cards/stx/382?format=image&version=small) | 味方への合法なCOVERを実行したAttack中だけ自機Armor +2/+4/+6。REFLEX・Missile Intercept強化なし。Reaction保持だけでは無効 | クリーチャー間の格闘か、相手の呪文の打ち消しを選択 |
-| `brace-antagonize` | **[Antagonize](https://scryfall.com/card/snc/100/antagonize)**<br>![Antagonize MTG card](https://api.scryfall.com/cards/snc/100?format=image&version=small) | 通常BRACE実行中、敵AIの合法かつ既知のAttack標的としての優先度をLvに応じて増加（具体的加点は未定・強制対象指定なし） | 対象クリーチャーに攻撃修整を与える |
 | `fired-up` | **[Repercussion](https://scryfall.com/card/uds/95/repercussion)**<br>![Repercussion MTG card](https://api.scryfall.com/cards/uds/95?format=image&version=small) | 敵の攻撃でHitを受けた次のActivation、SHOOTING・MELEE +6/+9/+12 | クリーチャーが受けたダメージをそのコントローラーにも与える |
 | `scan-interpretation` | **[Confront the Unknown](https://scryfall.com/card/soi/198/confront-the-unknown)**<br>![Confront the Unknown MTG card](https://api.scryfall.com/cards/soi/198?format=image&version=small) | ACTIVE SCAN中だけ INSIGHT +4/+8/+12、scanner Signature合計 +3/+4/+5 | 調査を行い、手掛かり数に応じてクリーチャーを強化 |
 | `anti-air-recon` | **[High Alert](https://scryfall.com/card/rna/182/high-alert)**<br>![High Alert MTG card](https://api.scryfall.com/cards/rna/182?format=image&version=small) | 飛行型敵への自機索敵判定で対象Signature項+1/+2/+3（実値変更なし） | 実在するMTGカードから名称のみ採用。原カードの効果はゲームへ移植しない |
@@ -31,6 +29,12 @@
 | `suppressive-fire` | **[Shadow of Doubt](https://scryfall.com/card/rav/253/shadow-of-doubt)**<br>![Shadow of Doubt MTG card](https://api.scryfall.com/cards/rav/253?format=image&version=small) | 通常Direct FIREで全Hit外すと敵REFLEX −2/−4/−6（当該Faction Phaseまで） | プレイヤーのライブラリー探索を禁止しカードを引く |
 | `last-stand-ability` | **[Brink of Disaster](https://scryfall.com/card/wwk/52/brink-of-disaster)**<br>![Brink of Disaster MTG card](https://api.scryfall.com/cards/wwk/52?format=image&version=small) | HP50%以下でREFLEX = +1 + floor(基礎INSIGHT×Lv/6)（低HP中持続） | エンチャントされたクリーチャー／土地がタップされるとそれを破壊 |
 | `lethal-endurance` | **[Against All Odds](https://scryfall.com/card/one/1/against-all-odds)**<br>![Against All Odds MTG card](https://api.scryfall.com/cards/one/1?format=image&version=small) | Lv1: HP50%以下でArmor+2。Lv2: HP25%以下でさらにArmor+4（合計+6）。Lv3: そのArmor強化に加えAttack開始HP2以上ならHP1生存（同Attackの全Hit） | 小型のアーティファクト／クリーチャーを墓地から復帰、またはパーマネントを一時追放して戻す |
+
+## v0.54 — Archived BRACE and COVER skills (2026-11-02)
+
+- **[Decisive Denial](https://scryfall.com/card/stx/382/decisive-denial)** (`brace-discipline`) retired because COVER and its WAIT-granted Reaction are removed in the new design; historical Armor +2/+4/+6 remains only in archived metadata.
+- **[Antagonize](https://scryfall.com/card/snc/100/antagonize)** (`brace-antagonize`) retired because BRACE is removed; historical AI target-attraction levels remain archived.
+- Their entries are no longer present in the table of *active approved* titles. Older Git revisions preserve their complete original source-card register rows. Saved ranks and stable IDs are preserved. There are **25 confirmed active entries (23 distinct titles)**, 4 provisional, 17 archived.
 
 ## v0.53 — Four renamed approved skills (2026-11-02)
 
