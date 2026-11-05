@@ -1,6 +1,24 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.57 (2026-11-06).** 26 active skills: **25 confirmed**, 1 provisional; twenty archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize and Decisive Denial have been archived under the revised battle command design. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.58 (2026-11-06).** 28 active skills: **27 confirmed**, 1 provisional; twenty archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize and Decisive Denial have been archived under the revised battle command design. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.58 — Inevitable End, Full Bore and new combat timing (2026-11-06)
+
+Two user-approved names are verified against the repository's 20,731-name MTG expansion snapshot (branch `research/mtg-naming-20261029`):
+
+- **[Inevitable End](https://scryfall.com/card/thb/102/inevitable-end)** (`finisher-half-hp`): target enemy HP strictly below 50% at Attack start; eligible Direct FIRE or MELEE gets effective SHOOTING and MELEE **+3/+5/+7** (Lv1/2/3). Only the appropriate Ability enters each attack's accuracy and, where legal, CritPen.
+- **[Full Bore](https://scryfall.com/card/eoe/135/full-bore)** (`full-health-offense`): own Unit HP equals maximum at Attack start; eligible Direct FIRE or MELEE gets effective SHOOTING and MELEE **+2/+3/+4**. Damage breaks the condition and full repair restores it.
+- Values are approved as the current Skill Lab starting levels, still tunable in playtest. The Lab does not execute Attack/HP/sensor state or enemy AI. No guaranteed CritPen is granted to weapons without it.
+
+Existing active Skill Lab effects were synchronized to the newer interleaved-combat design:
+- **Escape Velocity**: successful entry into 5 Hexes (not merely 5 movement-cost points); REFLEX +2/+4/+6 until the Unit's next Activation starts. Light/Standard/Heavy MOVE budgets remain 7/6/5.
+- **Shadow of Doubt**: target REFLEX reduction persists until the *target enemy Unit's* next Activation begins, not the end of the attacker's Faction Phase.
+- **Wax and Wane**: independent 50/50 roll at each **global Turn start**, effect persists for the full Turn.
+- **Off Balance**: base INSIGHT × Lv / 2% after an eligible hit, at most once per Attack; can deny only **still-unused ordinary MOVE in the current global Turn**. No carryover to next Turn; old INTERCEPT branch is superseded.
+- **Steady Aim** still requires FIRE before the actor's normal MOVE. **Last Word / Iron Verdict** weapon specialization retains its existing SHOOTING values. The ordinary Unit-targeted Direct FIRE range penalty is -7 hit points per Hex beyond 4; legacy post-MOVE firing -10/-20 penalties no longer apply in the selected future design. Do not extend that hit equation silently to guided Missiles or Area/Hex/Direction attack families.
+- **Dual Strike** retains linked attacks and individual hit penalties. Each gun receives ordinary distance penalty. Small-arms Firing Signature remains the standard non-additive max (+2, or eligible suppressor +1), not two separate +2 contributions stacked into +4; exposure lasts until the firing Unit's next Activation start.
+
+**28 active (27 confirmed + 1 provisional), 20 archived.** Stable existing IDs and `fd-skill-lab-v1` save/import/export preserved. **Production battle Core is unchanged**; these are Skill Lab design/effect previews. Historical release notes below remain unchanged.
 
 ## v0.57 — Archive two long-standing provisional skills (2026-11-06)
 
