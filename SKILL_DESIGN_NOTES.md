@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.57（2026-11-06）：** 現役26件（確定25、検討中1）＋アーカイブ・再設計待ち20件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.58（2026-11-06）：** 現役28件（確定27、検討中1）＋アーカイブ・再設計待ち20件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -738,3 +738,30 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - **未確定**：Lv1～3の数値、正式名、攻撃時判定点、損傷・修理での再発動、特殊武器・白兵への詳細適用。研究案として保持し、Skill Labのカードを自動追加しない。
 
 両新案は、射撃と白兵の両方を強化する点だけが選ばれた**設計方向**であり、実装決定や正式なスキル名・数値確定を意味しない。今後採用する場合には既存スキルとの重複を評価し、MTGカード名20,731件のリポジトリ所蔵一覧を候補母集団とする。
+
+
+## 2026-11-06 — v0.58 Inevitable End / Full Bore採用・交互行動制に合わせて現役スキル更新
+
+**正式採用したMTGカード名：** [Inevitable End](https://scryfall.com/card/thb/102/inevitable-end)（敵HP半分未満のとどめ型）と [Full Bore](https://scryfall.com/card/eoe/135/full-bore)（自機HP満タン型）。双方、`research/mtg-naming-20261029` のTSV 8本／実在カード名20,731件に存在することを照合済み。新規固定IDはそれぞれ `finisher-half-hp` と `full-health-offense`（過去のアーカイブIDとは重複しない）。
+
+| 現役スキル／ID | 新しいLv1／2／3 | 条件／ルール |
+| --- | --- | --- |
+| **Inevitable End** / `finisher-half-hp` | 実効SHOOTING・MELEE +3 / +5 / +7 | 敵Unit残HPが最大HPの **50%未満**。対象のAttack開始時に判定し、同Attackの途中で初めてHPが半分を下回ってもそのAttackでは発動しない。 |
+| **Full Bore** / `full-health-offense` | 実効SHOOTING・MELEE +2 / +3 / +4 | 自機HPが最大HPに一致。Attack開始時に判定。1HPでも減ると無効、修理で全快すれば次Attackから再発動可能。 |
+
+2件は新規に **確定**としてSkill Labへ登録。値は採用した初期比較／バランス数値で、実測に応じた調整は妨げない。攻撃中に実効SHOOTINGとMELEEの両方が増えるが、実際のHitRawは適格な射撃ならSHOOTING、白兵ならMELEEを参照する。直接の無条件CritPen加算ではなく、対応するCritPen YES武器のみ実効Ability／命中100%超過HitRawを通じて従来式でCritPen確率にも影響する。誘導ミサイル、Hex／Area、Direction攻撃の専用命中式に普通の単体Direct FIRE式を流用しない。未知の敵HPを勝手にUIに出さない。
+
+### 併せて更新した現役スキル
+
+| 名前 | 最新仕様（旧説明より優先） |
+| --- | --- |
+| **Escape Velocity** / `mobile-evasion` | 通常MOVEで実際に **5HEX以上進入**（旧3HEXから変更）。次の自身のActivation開始時までREFLEX +2/+4/+6。地形コストと移動距離は別。Heavyの移動予算5でも経路が許せば発動。 |
+| **Shadow of Doubt** / `suppressive-fire` | 全Hit MISS後のREFLEX−2/−4/−6を、**対象となった敵の次のActivation開始時**まで維持。旧攻撃側Faction Phase終了では失効しない。 |
+| **Wax and Wane** / `final-fortune` | 各**全体Turn開始時**に50/50の独立抽選、その全体Turn中継続。好調SHOOTING・MELEE +4/+5/+6／不調REFLEX −6/−5/−4は不変。 |
+| **Off Balance** / `leg-disrupting-shot` | 通常Direct FIREの1Hit以上命中後、1Attackに1回、基礎INSIGHT×Lv÷2%で移動阻止。**対象にその全体Turn中の通常MOVE機会が残る場合だけ有効**。既に移動・行動済みなら阻止を付与せず、次Turnへの持ち越しなし。旧INTERCEPT分岐は廃止対象。 |
+| **Steady Aim** / `marksmanship` | 通常MOVE前の射撃という条件・SHOOTING +2/+4/+6を維持。通常MOVEした後の攻撃は新設計で命中ペナルティなしだがSteady Aimは発動しない。 |
+| **Last Word / Iron Verdict / Dual Strike** | それぞれ従来の武器条件とLv補正を維持し、通常単体Direct FIREに **5HEX以遠1HEXにつきHitRaw −7pt**、移動後射撃ペナルティ廃止を適用。Dual Strikeは2丁とも独立した距離補正、Firing Signatureは既存の最大値ルール（小火器+2、適格Suppressor+1）で合算+4にならず、次自身のActivation開始で解除。 |
+
+**引き続き現役で効果は不変**：Audacity（孤立距離5HEX以上・INSIGHT依存の現行式を維持）、Collision Course（白兵助走は3HEXのままでEscape Velocityと異なる）、Machine Over Matter、Familiar Ground、High Alert、Confront the Unknown、Leave No Trace、Figure of Destiny、Avoid Fate、Repercussion、Against All Odds、Brink of Disaster、No Quarter、Fault Line、Emergency Weld。その他の個別効果も今回変更しない。
+
+**境界：** Skill Lab側のカード／計算プレビュー／設計メモのみ更新。本編Coreの旧Faction Phase実装や射撃計算コードは今回変更していない。本編の新戦闘ルールの正本は `k2830122/FrameDoctrine/docs/CORE_SPEC.md`。保存キー `fd-skill-lab-v1` と全既存Skill ID／取得Lvは不変。現役28（確定27・研究1）、アーカイブ20。
