@@ -684,3 +684,28 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - **Leave No Trace**はCONCEALと別の常時スキルなので維持。**Off Balance**は通常FIREからの移動阻止が残るため維持（旧INTERCEPT部分は将来変更の対象）。その他、被弾・回避・索敵・通常射撃に関わる現役スキルは変更なし。
 - 旧COVERの発動機会／Armor軽減what-ifはアクティブ画面から撤去。旧データはアーカイブとGit履歴に残す。新たな行動順制に合わせて将来、Wax and Wane、Shadow of Doubt、Escape Velocity等のFaction Phase基準の時点を見直す必要があるが、今回の変更では未確定の時点を決めない。
 - **現役29（確定25／研究4）・アーカイブ17。メインCore未変更。**
+
+
+## 2026-11-05 — 新交互行動制へのスキル適合・露見リスク（設計決定／実装待ち）
+
+本節は2026-11-02 v0.54以前の Faction Phase／旧WAIT・INTERCEPT／MOVE命中ペナルティを前提とする研究メモより新しい。**ここに記した発動・持続ルールが優先する**。ただし、これはMarkdown上の設計合意であり、Skill Labのスキルカード、保存形式、本編Coreの実行処理はこのコミットでは変更しない。
+
+**戦闘の共通前提**（本編の `FrameDoctrine/docs/CORE_SPEC.md` が正本）：
+
+- 1つの全体Turnの中で、敵味方の人数比に応じて陣営の行動機会を分配する。**必ず1対1で交互にはしない**。各Unitは原則全体Turn中に1回、自分のActivation内で通常MOVEとMain Actionを最後まで完結させる。MOVEの後で別のUnitを動かしてから同じUnitで攻撃することはない。全体Turn末→次Turn冒頭で同じUnitがほぼ連続して動くことは許容する。
+- 普通のUnit対象Direct FIREは4HEXまで距離ペナルティなし、5HEX以遠は超過1HEXごとにHitRaw **−7pt**。自己MOVE後の武器別−10／−20pt射撃ペナルティは廃止する設計。各武器の射程、Track、LOS、遮蔽・敵REFLEXは引き続き有効。誘導ミサイル／Hex・Area／Direction攻撃の固有命中式には通常FIRE式を勝手に適用しない。
+- 発砲によるSignature上昇は攻撃後から**次のそのUnit自身の合法なActivation開始時**まで（全体Turnの境界では消えない）。標的を撃破しても他の敵から見つかる可能性が残り、見つかれば人数比交互行動制の次の敵の機会に攻撃され得る。次ActivationでSignatureが戻っても合法なTrack／Last Known情報は強制消去しない。
+
+**既存スキルの扱い**：
+
+| スキル | 2026-11-05時点の決定・扱い |
+| --- | --- |
+| **Audacity** (`solo-operator`) | **現行の孤立距離（ほかの全味方から5HEX以上）・INSIGHT依存SHOOTING式を維持**。Light偵察機の先行時にも後衛の孤立時にも発動可能だが、発砲でSignatureが上がり、直後の敵の行動で集中攻撃される危険がある。高い数値を理由とした弱体化は**未採用**。 |
+| **Escape Velocity** (`mobile-evasion`) | **通常MOVEで実際に5HEX以上進入**した場合に発動（旧3HEX条件を変更）。REFLEX **+2/+4/+6は維持**。効果は次の自身のActivation開始まで。Light/Standard/Heavyの移動予算は7/6/5。Heavyでもコスト合計5以内の5HEX経路が存在すれば発動できるが、地形により達成が難しい。経路のコスト5と進入5HEXは別概念。 |
+| **Shadow of Doubt** (`suppressive-fire`) | 既存REFLEX **−2/−4/−6、全Hit MISS条件は維持**。対象となった敵Unitの**次のActivation開始時**に弱体化を解除。対象が未行動なら同Turn中に敵AIが行動させることで解除でき、行動済みなら次Turnの当該Unit Activationまで残る。従来の「攻撃側Faction Phase終了時」の期限を置換する。 |
+| **Wax and Wane** (`final-fortune`) | 独立50/50好調・不調抽選を**全体Turn開始時**に行い、そのTurn中の各陣営の行動機会にわたって保持する。各Lvの好調SHOOTING・MELEE +4/+5/+6／不調REFLEX −6/−5/−4は維持。旧「自軍Faction Phase開始時」の抽選は新設計では用いない。 |
+| **Off Balance** (`leg-disrupting-shot`) | **通常Direct FIREで命中後1Attackにつき1回**の基礎INSIGHT×Lv÷2%を現状維持。**当該全体Turnでまだ通常MOVEの機会が残っている敵**を阻止する。既に行動／通常MOVE済みの敵にはそのTurnの阻止効果は無く、**次Turnへの移動禁止の持ち越しはしない**。旧INTERCEPT分岐は廃止対象。数値倍増案は採用せず、必要なら実戦検証後に判断する。 |
+| **Steady Aim** (`marksmanship`) | 通常MOVE前の合法なDirect FIREでSHOOTING +2/+4/+6という条件・数値を維持。旧移動後命中ペナルティがなくなるため、「移動前に射撃できる場所・Track・射線を確保する」という位置取りの難しさそのものがコストになる。 |
+| **その他** | 現行Lv数値の一律弱体化を行わない。Repercussion、Figure of Destiny等のバランス評価は実戦検証待ちで、過去の減額試案を正式変更と扱わない。 |
+
+**未確定事項**：人数比スケジューラーの具体的配列方法、増援／撃破時の再計算、移動阻止に対する特殊移動・特殊種の例外、敵AIの行動順最適化、旧Phase依存の残余効果。**実装チケット・Core移行が完了したという意味ではない**。
