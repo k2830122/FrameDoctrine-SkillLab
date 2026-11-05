@@ -285,11 +285,26 @@ renderCards();
 }
 
 const FORMULA_HELP={
+ "finisher-half-hp": [
+  "対象敵のAttack開始時HPが最大HPの半分未満なら適格な射撃・白兵中SHOOTING・MELEE+3/+5/+7。ちょうど50%では発動しない。",
+  "通常HitRawは+9/+15/+21pt。CritPen YESの適格Hitでは実効Abilityと余剰命中を使い、CritPen NOへは能力を新付与しない。",
+  "Attack開始時HP固定。同じAttackの先行HitでHPが半分未満になっても途中発動しない。未知の敵HPをUIで露出させない。"
+ ],
+ "full-health-offense": [
+  "自機のAttack開始時HPが最大HPと一致する間、適格な射撃・白兵中SHOOTING・MELEE+2/+3/+4。",
+  "通常HitRawは+6/+9/+12pt。CritPen YESでは実効Abilityと余剰命中を通常計算。",
+  "HPを1でも失うと不発。修理で全快すれば再発動する。"
+ ],
+ "mobile-evasion": [
+  "通常MOVEで実際に進入成功したHexが5個以上で発動。移動コスト合計5を条件とするのではない。",
+  "Lv1/2/3の実効REFLEXは+2/+4/+6。次の自身のActivation開始時まで継続し、全体Turn境界で失効しない。",
+  "Light/Standard/Heavyの移動予算7/6/5。Heavyでも移動コスト合計5以内で5HEX進めれば発動。移動後射撃ペナルティは廃止。"
+ ],
+
  "final-fortune": [
-  "毎回の自軍Faction Phase開始時に独立50%抽選。初回もミッション開始後の最初の自軍Phase開始時。",
-  "好調：Lv1/2/3でSHOOTING・MELEE +4/+5/+6。不調：REFLEX −6/−5/−4。次の自軍Phaseまで維持、敵軍Phase中も有効。",
-  "好調時は通常命中HitRaw +12/+15/+18pt。不調時は敵の通常攻撃HitRaw +18/+15/+12pt相当（いずれもクランプ前）。好不調の連続可。",
-  "Skill Labは両状態の補正を表示するだけで抽選や戦闘を実行しない。"
+  "全体Turn開始時に独立50/50抽選。初回Turn 1開始時も抽選し、Unitの行動順に依存しない。",
+  "好調：SHOOTING・MELEE+4/+5/+6。不調：REFLEX−6/−5/−4。次の全体Turn開始時まで維持。",
+  "好調時の通常HitRaw+12/+15/+18pt、不調時の被命中HitRaw+18/+15/+12pt相当（クランプ前）。"
  ],
  "avoid-fate": [
   "敵の適格な1Attackを全Hit回避するごとにREFLEX +1。多段Hitを全回避した場合もAttack終了後に1回だけ成長する。",
@@ -314,16 +329,14 @@ const FORMULA_HELP={
   "同じ白兵で3Hex以上通常MOVE条件を満たすとCollision CourseのMELEE補正も加算。"
  ],
  "sniper-rifle-proficiency": [
-  "Sniper Rifleによる射撃Attack判定中だけ実効SHOOTING +2/+4/+6（通常HitRaw +6/+12/+18pt）。MOVE条件なし。",
-  "装備容量2、射程2〜10Hex、弾薬4、移動後補正−20。CritPen YESの適格な計算に実効SHOOTING・超過HitRawが反映。",
-  "通常MOVE前の対Unit Direct FIREならSteady AimのSHOOTING補正も加算。"
+  "Sniper Rifleによる合法な通常対Unit射撃中、実効SHOOTING+2/+4/+6（HitRaw+6/+12/+18pt）。",
+  "装備容量2、射程2〜10HEX、弾薬4発。旧移動後−20ptは廃止。距離5HEX以遠は通常Direct FIREとして1HEXごと−7pt。",
+  "CritPen YES。通常MOVE前ならSteady Aimとも加算可能。"
  ],
  "heavy-rail-proficiency": [
-  "v0.46から対象はHeavy RailではなくHeavy Autocannon。Skill ID heavy-rail-proficiencyは保存互換のため維持。",
-  "Heavy Autocannon使用中だけ実効SHOOTING +2/+4/+6。通常のUnit対象Direct FIRE HitRaw +6/+12/+18pt（クランプ前）。",
-  "容量3、ACC90、Power11、Pen5、射程2–7、Magazine6、Shots2（1Attackで2発）、MOVE後命中補正−10。",
-  "2026-10-29確定武器設計ではCritPen YES（Coreコードへの変更は未実施）。攻撃全体で最大1回のCritPenに実効SHOOTINGと100%超過HitRawを使用。",
-  "Standard Frameなら武装容量3全使用、Heavyなら武装容量1残る。適格ならMachine Over MatterとSteady Aimの補正も加算。Heavy Railでは絶対に発動しない。"
+  "対象武器はHeavy RailではなくHeavy Autocannon。旧安定IDは保存互換のため維持。",
+  "Heavy Autocannonでの合法な攻撃中、SHOOTING+2/+4/+6。容量3、ACC90、射程2〜7HEX、2Hit、Mag6。",
+  "旧移動後−10ptは廃止。5HEX以遠は通常Direct FIREとして各HEX−7pt。CritPen YESはCore改訂待ち。"
  ],
  "last-stand-ability": [
   "HPが最大HPの50%以下かつHP>0の間に自動発動。REFLEXだけを強化する。",
@@ -341,10 +354,9 @@ const FORMULA_HELP={
   "例：Standard Armor6がHP50%以下で8、HP25%以下で12。Decisive Denial Lv3で合法COVERした同Attackにはさらに+6、最大Armor18。Skill LabはHPの推移を実戦シミュレートしない。"
  ],
  "suppressive-fire": [
-  "通常の対Unit Direct FIREでAttack全HitがMISSの場合のみ発動。SMG・GPMGも1Hit命中すれば不発。Armor軽減だけではMISS扱いにならない。",
-  "Lv1/2/3：対象実効REFLEX −2/−4/−6。通常の後続命中値へ+6/+12/+18pt相当。",
-  "発動元Attack終了後に適用し、攻撃側Faction Phase終了まで。複数回成功は非累積・最大低下のみ。",
-  "Reaction／INTERCEPT・ミサイル・Area／Hex攻撃には無効。独立した追加コマンドやMP・クールダウン・回数制限は不要。"
+  "通常Unit対象Direct FIREでAttack全HitがMISSのとき、Attack終了後に対象実効REFLEX−2/−4/−6。",
+  "対象敵の次のActivation開始時に解除。敵が未行動ならそのTurn中に解除可能、行動済みなら次Turnまで残り得る。",
+  "同Attackの命中には作用しない。複数回成功は最大の低下のみ。ミサイル・Area/Hex・旧INTERCEPTは対象外。"
  ],
  "fault-line": [
   "効果：CritPen成功のHitのダメージ処理直後に対象のArmorをLv1/2/3で−2/−4/−6。通常のCritPen成功HitはArmor無視のまま。",
@@ -363,24 +375,10 @@ const FORMULA_HELP={
   "Skillは回復効率のみ強化。Repair Kitの物理Option装備が必要で、追加チャージ・独立した修理行動・追加装備枠を与えない。"
  ],
  "paired-fire": [
- "Dual Strike（確定）：Assault Rifle・SMG・Shotgunの同一武器定義2丁を容量合計2で連結。通常Main Action単体Direct FIREで両丁撃てる限り必ず同時発砲、操作ON/OFFなし。",
- "二丁Ability=floor((実効SHOOTING+実効REFLEX)/2)。各Attack HitRaw=武器ACC+3×(二丁Ability−敵REFLEX)+通常状況補正−Lv別ペナルティ40/30/20pt。HitChanceは0〜100%に制限。",
- "SHOOTING16／REFLEX10なら二丁Ability13。敵REFLEX10・他補正なしでAssault Rifle／SMG各銃64/74/84%、Shotgun各銃74/84/94%（Lv1/2/3）。",
- "CritPen基礎式のRelevantSkillにも二丁Abilityを使用。各銃の独立Attackで最大1回CritPen判定、100%超過HitRawは二丁ペナルティ後の値から計算。適格性・Armor条件は既存どおり。",
- "同時射撃は1 Main Action、独立した2 Attack、敵状態は攻撃開始時点で共有。片方の先行表示でArmor低下・ダメージ・デバフが起きてももう片丁のAttackには影響しない。同じSMGの後続Hitにはその銃でのFault Lineが有効。",
- "双方同時発砲なら双方の弾薬を消費し、片方が敵を倒しても相方の発射を取り消さず別敵へ転射しない。SMG×2は3+3Hit試行・弾薬3+3、Assault Rifle／Shotgun×2は1+1Hit試行・弾薬1+1。",
- "片丁だけ使用可能なら通常の単独FIREへ戻り、通常SHOOTINGとCritPenを使い二丁用ペナルティなし。両方使用不可なら発砲不可。",
- "GPMG-6／Sniper Rifle等の容量2以上、Disposable Rocket等の未指定武器、通常INTERCEPT／ミサイル迎撃／ミサイル／範囲／白兵は対象外。COVER／Reaction／Signature細目は本編実装時に要検討。"
-],
- "against-the-odds": [
-  "研究基準（係数・上限は未確定）：H=clamp(floor(HitRaw),0,100)",
-  "C0=min(100, max(2, 4+0.5×(実効SHOOTINGまたはMELEE−10)) + 0.5×max(0,floor(HitRaw)−100))",
-  "BonusRaw = min(10×Lv, 60×Lv×((100−H)/100)^2) ポイント",
-  "Bonus = floor(BonusRaw×2)/2 （0.5pt単位で切り捨て）",
-  "FinalCritPen = min(100, C0+Bonus)",
-  "命中率70%：Lv1/2/3 Bonus +5/+10.5/+16pt。基礎CritPen 4%なら 9/14.5/20%",
-  "命中率60%：Lv1/2/3 Bonus +9.5/+19/+28.5pt。基礎CritPen 4%なら 13.5/23/32.5%",
-  "CritPen YESかつ通常貫通後に装甲が残るHitのみ。多段Direct FIREでCritPenはAttackごとに1回、Combat KnifeのAreaMeleeでは対象ごとに1回。"
+  "同一Assault Rifle／SMG／Shotgun2丁の通常Unit対象Direct FIRE。二丁Ability=floor((実効SHOOTING+実効REFLEX)/2)。",
+  "各銃HitRaw=武器ACC+3×(二丁Ability−対象REFLEX)+他の補正−Lv別ペナルティ40/30/20pt−7×max(0,距離HEX−4)。",
+  "移動後射撃ペナルティなし。小火器Signature+2は既存の最大値ルールで二丁分を加算しない（適格なSuppressorは+1）。次の自身のActivation開始で解除。",
+  "双方が撃てれば独立2Attack、片丁しか撃てなければ通常単独FIREへ戻る。"
  ],
  "reaction-shooter": [
   "通常INTERCEPT：HitRaw = 武器命中値 + 3 × (実効SHOOTING − 対象REFLEX) + 状況補正",
@@ -449,11 +447,9 @@ const FORMULA_HELP={
   "Lv1〜3: clamp(実効REFLEX × Lv%, 0%, 100%)"
  ],
  "leg-disrupting-shot": [
-  "命中後の移動阻止率 = clamp(出撃時の基礎INSIGHT × Skill Lv ÷ 2, 0, 100)%（切り捨てなし、0.5%刻み）。Lv1/2/3でINSIGHT10なら5/10/15%、11なら5.5/11/16.5%。",
-  "HitRawとHitChanceの通常射撃判定にはSHOOTINGを使用。移動阻止は適格な単体Attackで1Hit以上が命中した後、1Attackにつき追加抽選1回。全Hit MISSなら不発。",
-  "Movement-triggered INTERCEPTで成功：その場で現在MOVEを中断（次Activationへ持越しなし）。通常FIREなどで成功：敵の次Activationの通常MOVEだけ禁止、合法なFIRE/MELEE等は許す。",
-  "敵種別ごとの一般的な耐性倍率は設けず、高REFLEX敵は命中しにくいことで実効阻止率が低下。一部の特殊敵の免疫例・特殊移動の扱いは実装時に検討。IR-9固有Forced Haltは将来廃止方針で、まだ本編Coreに実装が残る。",
-  "試算画面は設計研究用。最終ゲームUIでは隠れた計算式を表示せず、現在の効果値と能力強化後の差分をプレビューする方針。"
+  "移動阻止率=clamp(基礎INSIGHT×Lv÷2,0,100)%、0.5%を維持。適格なAttackで1Hit以上命中後に最大1回判定。",
+  "敵が現在の全体Turnでまだ通常MOVEの機会を持つとき、その残りの通常MOVEを禁止。既移動・行動済みなら阻止しない。",
+  "次Turnへ移動阻止は持ち越さない。敵のFIREやMELEEは妨げない。旧INTERCEPT分岐は廃止対象。"
  ],
  "moving-fire-discipline": [
   "Lv1〜3: min(武器の移動時の減少量, floor(実効REFLEX × Lv / 3)) ポイント軽減",
@@ -475,7 +471,7 @@ const FORMULA_HELP={
   "相手の合法Trackを無条件に消さない。FIREなどSignatureを生む行動、Proximity・Datalink・煙・ジャマー等は既存の独立ルールに従う。"
  ]
 };
-const DYNAMIC_LEVELS=new Set(["last-stand-ability","solo-operator","certain-evasion","reflex-second-chance","leg-disrupting-shot","moving-fire-discipline","paired-fire"]);
+const DYNAMIC_LEVELS=new Set(["last-stand-ability","solo-operator","leg-disrupting-shot","paired-fire","finisher-half-hp","full-health-offense"]);
 const statValue=k=>BASE[k]+state.abilityBonus[k];
 const clampChance=x=>Math.max(0,Math.min(100,x));
 const signedPenalty=n=>n<0?"−"+Math.abs(n):String(n);
@@ -484,9 +480,11 @@ function sampleLevelText(s,lv){
  if(s.id==="paired-fire"){
    const penalty=[40,30,20][lv-1],dual=Math.floor((sh+r)/2);
    const acc=clampChance(Math.floor(95+3*(dual-10)-penalty)),shot=clampChance(Math.floor(105+3*(dual-10)-penalty));
-   return "二丁Ability "+dual+"（SHOOTING "+sh+"・REFLEX "+r+"の平均切り捨て）、各HitRaw−"+penalty+"pt。対象REFLEX10例：Assault Rifle／SMG各"+acc+"%、Shotgun各"+shot+"%。片丁のみなら通常FIRE（Assault Rifle "+clampChance(Math.floor(95+3*(sh-10)))+"%）";
+   return "二丁Ability "+dual+"（SHOOTING "+sh+"・REFLEX "+r+"の平均切り捨て）、各HitRaw−"+penalty+"pt。対象REFLEX10・4HEX例：Assault Rifle／SMG各"+acc+"%、Shotgun各"+shot+"%。5HEX以遠は各銃−7pt／HEX。片丁のみ通常FIRE（Assault Rifle "+clampChance(Math.floor(95+3*(sh-10)))+"%）";
   }
-  if(s.id==="solo-operator")return "SHOOTING +"+(1+Math.floor(a*lv/6))+"（出撃時の基礎INSIGHT "+a+"、Lv"+lv+"）";
+  if(s.id==="finisher-half-hp")return "敵HP50%未満：SHOOTING・MELEE +"+[3,5,7][lv-1]+"（通常命中値 +"+(3*[3,5,7][lv-1])+"pt相当）";
+   if(s.id==="full-health-offense")return "自機HP満タン：SHOOTING・MELEE +"+[2,3,4][lv-1]+"（通常命中値 +"+(3*[2,3,4][lv-1])+"pt相当）";
+   if(s.id==="solo-operator")return "SHOOTING +"+(1+Math.floor(a*lv/6))+"（出撃時の基礎INSIGHT "+a+"、Lv"+lv+"）";
   if(s.id==="last-stand-ability")return "HP50%以下：REFLEX +"+(1+Math.floor(a*lv/6))+"（出撃時の基礎INSIGHT "+a+"、Lv"+lv+"）";
   if(s.id==="certain-evasion")return "REFLEX +"+(lv===1?Math.ceil(a/6):lv===2?Math.ceil(a/4):Math.ceil(a/3));
  
