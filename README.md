@@ -1,6 +1,13 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.54 (2026-11-02).** 29 active skills: **25 confirmed**, 4 provisional; seventeen archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize and Decisive Denial have been archived under the revised battle command design. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.56 (2026-11-06).** 28 active skills: **25 confirmed**, 3 provisional; eighteen archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize and Decisive Denial have been archived under the revised battle command design. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.56 — Archive tentative guaranteed-hit skill (2026-11-06)
+
+- `必中の一撃（仮）` (`decisive-shot`) moves from active research candidates to archived history. The proposed guaranteed-hit charges and unresolved trigger/target rules are **not approved for implementation**.
+- Legacy ranks migrate to `retiredSkillLevels` with 1 Training Point refunded per level; existing build saves and JSON import/export preserve ID-based compatibility.
+- `二連速射（仮）` (`double-tap`) and `見切り回避（仮）` (`reflex-second-chance`) remain **provisional, not yet approved**. A possible low-target-HP offensive passive and Dual Strike firing Signature are discussion topics, not adopted changes.
+- **28 active (25 confirmed / 3 provisional), 18 archived**. Core unchanged; no other active skill effects changed. v0.55 improved changelog visibility only.
 
 ## v0.54 — Archive obsolete BRACE/COVER skills (2026-11-02)
 
