@@ -1,6 +1,13 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.59 (2026-11-06).** 28 active skills: **27 confirmed**, 1 provisional; twenty archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize and Decisive Denial have been archived under the revised battle command design. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.60 (2026-11-06).** 28 active skills: **27 confirmed**, 1 provisional; twenty archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize and Decisive Denial have been archived under the revised battle command design. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.60 — Five-HEX activation conditions (2026-11-06)
+
+- **Collision Course** (`momentum-melee`): requires successful entry into **at least five HEXes** during the Unit's normal MOVE in the same Activation before an eligible MELEE Attack; prior three-HEX requirement is superseded. Effective MELEE +2/+4/+6 remains unchanged. Actual entered HEX count, not Movement Cost, matters; REPOSITION/Light DISPLACE do not count.
+- **Escape Velocity** (`mobile-evasion`): its existing **at least five actual HEX entries** requirement is unchanged; level cards are reworded to explicitly state “five or more.” REFLEX +2/+4/+6 activates upon entering the fifth HEX until the next own Activation begins.
+- Skill IDs, names, ranks, balance effects, 28 active (27 confirmed/1 provisional), 20 archived, save/import/export compatibility and Core behavior are unchanged. ACTIVE SCAN retirement and archiving Confront the Unknown are still under discussion, **not** enacted in this update.
+- Historical entries below retain their original wording where applicable; v0.60 supersedes any older Collision Course 3-HEX statements.
 
 ## v0.59 — Familiar Ground uses actual canopy interference (2026-11-06)
 
