@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.60（2026-11-06）：** 現役28件（確定27、検討中1）＋アーカイブ・再設計待ち20件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.61（2026-11-07）：** 現役28件（確定27、検討中1）＋アーカイブ・再設計待ち20件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -791,3 +791,36 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - スキル名称、安定ID、全Lv効果値、現役28（確定27／研究1）、アーカイブ20、ポイント／取得履歴、`fd-skill-lab-v1`保存互換、JSON入出力は維持。
 - **ACTIVE SCANの廃止およびConfront the Unknownのアーカイブは検討中**であり、今回の変更には含めない。本編戦闘Core・研究ビューアも変更しない。
 - 上方に残る「Collision Courseは3HEX助走」「Escape Velocityは旧Faction Phaseまで」等は変更前の履歴であり、このv0.60の現行条件を優先する。
+
+
+## 2026-11-07 — v0.61：オプション消耗品化・最大1枠の研究方針
+
+**方向性（本編Core未移管）：** オプションを恒常的な数値強化から、出撃前に用途を選ぶ消耗型戦術道具へ絞る。全機体共通で**最大1つ装備、装備なしも許可**する方向。これはSkill Lab上の設計研究であり、Production OptionCatalogの削除・装備枠変更・保存互換の変更ではない。
+
+### 残す方向の5種類（現行カタログ値）
+
+| Option | 現行Main Action／回数 | 射程・効果・仕様 | 現行寿命／今後の判断 |
+| --- | --- | --- | --- |
+| **Smoke Dispenser** | Main Action／2回／Mission | 設置0〜3HEX（自HEX可）、半径1HEX（中心＋周囲6）、通常索敵とDirect FIREを敵味方双方遮断、Signature不変 | 次の自Faction Phase開始で消滅。**新Turn制への置換は未決** |
+| **Recon Probe** | Main Action／2回／Mission | 設置0〜2HEX、DP20（基本Budget5）、Signature −1、HP1・Armor0・Evasion0・Move0、非占有・合法TrackをDatalink共有 | 第4後続自Faction Phase開始で消滅。**新Turn制では未決** |
+| **Decoy** | Main Action／2回／Mission | 設置1〜2HEX、HP1・Armor0・Evasion0・Move0、配備元の見かけ上の機体・武器・Signatureを固定複製、HEX占有・敵の隣接／命中破壊で正体判明 | 第4後続自Faction Phase開始で消滅。**新Turn制では未決** |
+| **Jammer Beacon** | Main Action／2回／Mission | 設置0〜2HEX、妨害半径3HEX（建物・煙は無視）、Signature +3、HP1・Armor0・Evasion0・Move0、保護外ネットワークの送受信遮断、非占有 | 第4後続自Faction Phase開始で消滅。**新Turn制では未決** |
+| **Repair Kit** | Main Action／2回／Mission | 自機または隣接友軍1HEX、HP+8、最大HP超過不可、HP0蘇生不可 | 即時回復。効果時間の再定義は不要 |
+
+### 整理・アーカイブ方針の15種類
+
+- Sensor Stabilizer / Fire Control Stabilizer / Maneuver Assist System / Close Combat Assist System / Defensive Response Suite / Armor Reinforcement Suite / Signature Reduction Suite：スキルへの能力分担や旧コマンド廃止・パッシブ撤去により装備として整理。全てが現役スキルに一対一で移管されたとは主張しない。
+- Powered Manipulator Unit / Burst Propulsion Unit / Mobility Sequencer Unit：REPOSITION、DISPLACE、主行動後MOVEの廃止で設計上の存在意義を失うため整理。
+- Countermeasure Dispenser：敵ミサイル攻撃廃止で不要。
+- Firing Signature Suppressor / Expanded Ammo：常時付け得になりやすいため整理。
+- Optical Camouflage：独立した自己強化コマンドを増やすため整理。
+- Active Scan Amplifier：ACTIVE SCAN廃止なら不要になる見通しのためアーカイブ方向。ただし**ACTIVE SCAN本体の廃止・Confront the Unknown技能のアーカイブは検討中であり今回決定しない**。
+
+### 未解決・検証待ち
+
+- 新しい全体Turn・交互Activation制の持続時間（Smokeの短寿命／Probe・Decoy・Jammerの中期寿命）の開始・失効境界とバランス。旧Faction Phase境界を機械的に読み替えない。
+- 敵Alien側の情報共有がJammer Beaconと相互作用するか。
+- 実在建物・道路・森林に合わせたデプロイ先判定、建物越し設置、Recon Probeの新索敵モデルとの整合。
+- Decoyの敵AI評価と持続時間。スタングレネード案は**保留、現役候補として追加しない**。
+
+**変更範囲：** Skill Labにオプション研究カタログを追加して研究方針・従来カタログ値・未解決点を可視化。スキル本体の28現役／20アーカイブ、ID、取得Lv、保存キー`fd-skill-lab-v1`、本編CoreのOption定義・効果は変更なし。
