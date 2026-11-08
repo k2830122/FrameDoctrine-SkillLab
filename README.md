@@ -1,6 +1,14 @@
 # FRAME DOCTRINE — PILOT SKILL LAB
 
-**Current release: v0.61 (2026-11-07).** 28 active skills: **27 confirmed**, 1 provisional; twenty archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize and Decisive Denial have been archived under the revised battle command design. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+**Current release: v0.62 (2026-11-08).** 28 active skills: **27 confirmed**, 1 provisional; twenty archived/paused skills. Confirmed skill names are generally drawn from MTG; all four v0.50 replacements have now been verified as MTG card names in the archived catalog. Antagonize and Decisive Denial have been archived under the revised battle command design. Existing stable skill IDs, `fd-skill-lab-v1` save/import/export compatibility and archived Training Point refunds are preserved. The lab previews allocation and effects rather than executing enemy AI or battles. The skill-name source register marks unverified card-name provenance explicitly. Existing skill IDs and `fd-skill-lab-v1` save/import/export compatibility are maintained. This is still an acquisition/effects simulator, not a battle engine.
+
+## v0.62 — Familiar Ground attack-scoped REFLEX (2026-11-08)
+
+- **Familiar Ground** (`pick-your-ground`): keep the existing trigger—an otherwise legal enemy ordinary Unit-targeted Direct FIRE Attack whose physical firing line intersects a tree canopy and receives the baseline canopy **−10 HitRaw points**.
+- Replace the former direct additional HitRaw **−5/−10/−15pt** with **effective defender REFLEX +2/+4/+6** (Lv1/2/3) during that Attack only. The usual Direct FIRE formula converts this to additional enemy HitRaw **−6/−12/−18pt**; total canopy-plus-Skill **−16/−22/−28pt** before final HitChance clamp.
+- Apply to every Hit Attempt within the same Attack. End the temporary bonus when that Attack ends; no carry-over, no cumulative benefit from multiple canopies, and no permanent base-REFLEX change.
+- No Forest-Hex requirement. A building-blocked, illegal Attack does not trigger the Skill. Do not broaden it to missiles, melee, Area/Hex/Direction, sensing or missile interception. Armor and Signature remain unchanged.
+- **Skill Lab design/display update only**: Familiar Ground title and MTG provenance, stable ID, acquired ranks, save/import/export compatibility, 28 active (27 confirmed, 1 provisional), 20 archived, independent combat mock and production Core all remain unchanged.
 
 ## v0.61 — Option loadout simplification study (2026-11-07)
 
