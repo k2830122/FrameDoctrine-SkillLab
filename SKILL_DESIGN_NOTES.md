@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.62（2026-11-08）：** 現役28件（確定27、検討中1）＋アーカイブ・再設計待ち20件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.63（2026-11-08）：** 現役28件（確定27、検討中1）＋アーカイブ・再設計待ち21件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -833,3 +833,12 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 - 同じAttackの多段Hitすべてに適用し、Attack終了時に解除。次のAttackへの持ち越し・複数樹冠での累積はない。基礎REFLEX、Armor、Signatureは変わらない。敵HitRawへの旧直接追加 **−5/−10/−15pt** は廃止、二重加算しない。
 - 誘導ミサイル、MELEE、Area／Hex／Direction、索敵、ミサイル迎撃など別処理へ拡張しない。実地での樹冠干渉頻度、効果バランス、最終Core移管は別工程。
 - **現役28（確定27／検討1）・アーカイブ20、MTG名、安定ID、取得Lv、保存キー `fd-skill-lab-v1`、JSON入出力の互換性維持。本編Core・独立戦闘モックは変更なし。** 旧v0.59の説明は設計履歴として残し本決定を優先する。
+
+
+## 2026-11-08 — v0.63：Anticipateの採用・Confront the Unknownの退役
+
+**Anticipate（設計確定）**：新規Skill ID `pre-activation-reflex`。実在するMTGカード [Anticipate](https://scryfall.com/card/dtk/45/anticipate) から名称を採用し、元カードの効果は使用しない。各全体Turn開始から本人のActivation開始直前まで、未行動中に実効REFLEX `max(1, floor(出撃時の基礎INSIGHT × Skill Lv / 10))` を上昇。基礎INSIGHTは恒久育成反映・出撃時固定。一時INSIGHTは係数に含めない。INSIGHT 10→Lv1/2/3 **+1/+2/+3**、14→**+1/+2/+4**、18→**+1/+3/+5**、20→**+2/+4/+6**。通常Direct FIRE・単体MELEEなど適格な被攻撃時のREFLEX防御判定に適用する。本人Activation開始時に失効してそのTurn中は戻らず、次の全体Turn開始時に再び有効。Unit選択・プレビューは失効条件でない。前Turn終盤の短射程前衛前進などの戦術的運用が可能。Escape Velocity等と通常の実効Ability加算で共存し、追加コマンド・回数管理なし。発動頻度・重複強度は実戦検証待ち。
+
+**Confront the Unknown（アーカイブ）**：旧安定ID `scan-interpretation` を現役から外し、旧効果（ACTIVE SCAN時のINSIGHT +4/+8/+12、scanner Signature合計 +3/+4/+5）とMTGカード名を歴史として残す。既存取得Lvは同IDの `retiredSkillLevels` に移管し、1Lv=1Pを育成へ返還する。新技能へ旧Lvを勝手に引き継がない。**ACTIVE SCAN本体は今後の戦闘設計で廃止予定だが、今回Coreや独立戦闘モックから削除しない。** Active Scan Amplifierも今回変更しない。
+
+**件数と互換性**：現役28（確定27／検討1）、アーカイブ21。保存キー `fd-skill-lab-v1`、保存JSON version 1、他SkillsのID・取得Lv・アーカイブランク・ポイント計算は維持。過去v0.61時点の未決定記述は歴史資料として残し、今回のSkill Labアーカイブ判断を優先する。
