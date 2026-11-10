@@ -1,6 +1,6 @@
 # Skill Lab — パッシブ中心のスキル設計・コスト一覧
 
-**現行版 v0.63（2026-11-08）：** 現役28件（確定27、検討中1）＋アーカイブ・再設計待ち21件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
+**現行版 v0.64（2026-11-11）：** 現役30件（確定29、検討中1）＋アーカイブ・再設計待ち21件。確定スキル名は日本語UIでも英語表記。現行の第3Pilot Ability表示はINSIGHT（旧AWARENESS）。以下の以前の検討メモは歴史的な記録であり、競合する場合には末尾の最新バージョンの決定を優先する。
 
 
 **2026-10-23の研究メモ。正式ゲーム仕様・実装依頼ではない。途中で方針変更可能。**
@@ -842,3 +842,28 @@ First Watch／Right on Cue／Steady Nerves／Stay Frostyの確定解除は継続
 **Confront the Unknown（アーカイブ）**：旧安定ID `scan-interpretation` を現役から外し、旧効果（ACTIVE SCAN時のINSIGHT +4/+8/+12、scanner Signature合計 +3/+4/+5）とMTGカード名を歴史として残す。既存取得Lvは同IDの `retiredSkillLevels` に移管し、1Lv=1Pを育成へ返還する。新技能へ旧Lvを勝手に引き継がない。**ACTIVE SCAN本体は今後の戦闘設計で廃止予定だが、今回Coreや独立戦闘モックから削除しない。** Active Scan Amplifierも今回変更しない。
 
 **件数と互換性**：現役28（確定27／検討1）、アーカイブ21。保存キー `fd-skill-lab-v1`、保存JSON version 1、他SkillsのID・取得Lv・アーカイブランク・ポイント計算は維持。過去v0.61時点の未決定記述は歴史資料として残し、今回のSkill Labアーカイブ判断を優先する。
+
+
+## 2026-11-11 — v0.64：Tunnel Vision／Solidarityを正式採用
+
+ユーザーと検討した①自機索敵特化、③隣接支援の2案について、名前・数値・条件を正式採用。双方とも実在MTGカード名（[Tunnel Vision](https://scryfall.com/card/rav/72/tunnel-vision)、[Solidarity](https://scryfall.com/card/uds/20/solidarity)）に基づく。
+
+### Tunnel Vision（新規 ID `direct-track-specialist`）
+
+- **Lv1/2/3**：合法な通常Unit対象Direct FIREのAttack開始時に射手本人が対象を有効にLocal Trackしているなら **実効SHOOTING +2/+4/+6**。自機Local Trackなし・Datalink経由の受信可能な共有Trackだけなら **実効SHOOTING −1/−2/−3**。自機・共有の両方がある場合は自機側ボーナスを優先し、二重適用しない。
+- Local Trackは射線が通ることと同一視しない。法的な現在Trackがなければ既存規則で攻撃不可となる。情報源はAttack開始時に判定・固定。通常HitRawはSHOOTING 1点につき3ptなので自機+6/+12/+18pt、共有のみ−3/−6/−9pt。適格なCritPenは通常どおり実効SHOOTINGに従う。
+- 誘導Missile（SHOOTING非参照）、Area/Hex/Direction、MELEE、センサー、Datalink、Signatureの値には適用しない。Audacity等とは条件成立時に重複加算してよい。射撃後のFiring Signature／敵への露見リスクは従来どおり。
+- **0→1→2→3で+2／−1ずつの等間隔**。自機観測が有効な偵察機の高火力と共有Track依存射撃の弱点を表裏一体の性能として設計。突出・発砲すること自体の危険は既存戦闘規則で発生する。
+
+### Solidarity（新規 ID `post-activation-solidarity`）
+
+- **発動時点：所有者の当該全体TurnのActivation終了直後。失効時点：その全体Turn終了時。** 次Turnに持ち越さない。行動前・Activation実行中は不発。
+- 有効中、所有者本人を除いた隣接距離1HEXの生存中味方全員へ、Lv1/2/3で**実効REFLEX +2/+4/+6**。距離は随時判定し、隣接を外れれば解除、再隣接すれば同じTurn中に適用する。本人には補正なし。
+- 所有者は通常のMOVE・射撃・白兵を行ってよい。最低移動距離・移動必須・攻撃見送り・追加主行動等は要求しない。同じ味方へ複数Solidarity所有者が隣接しても**最大補正のみ適用**。ほかの適格なREFLEXスキルとの通常加算は可能。
+- 通常単体被攻撃のHitRawはLv1/2/3で敵側−6/−12/−18pt相当。行動順・位置取り・守る側が狙われる危険と、Turn終了時失効が主な制約。**0→1→2→3で+2ずつの等間隔**。
+
+### 境界と今後の作業
+
+- **友軍射線遮断なし**は合意した将来の戦闘設計方針。画面上のUnitは誇張された戦術シンボルで、交互Activationは同時並行の戦場を抽象化する。友軍シンボルが射線を遮る／誤射する新判定は設けない。ただし今回のSkill Lab更新はCore LOSの実装を直接変更しない。
+- Skill Labにはカード、効果テキスト、Lv0からの線形成長、取得・検索・育成予算の表示を追加する。実際のLocal Track、Datalink、隣接、行動順は研究用Labでは動的に再現しない。本編Coreと別戦闘モックは変更なし。
+- **現役30（確定29／検討1）、アーカイブ21。** 既存28スキルのLv効果・数値を一切変えず、旧取得Lv／保存キー`fd-skill-lab-v1`／JSON version 1／アーカイブ履歴を保持。以前の監査で判明したLv0を含めて非等間隔の技能についての**全体バランス見直しは後日**、本変更に混ぜない。
